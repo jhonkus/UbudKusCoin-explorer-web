@@ -9,16 +9,15 @@ import { getBloks, GetTransactions } from '../grpc/lib/useFetch';
 export default function Home() {
 
 
-  const [blockPage, setBlockPage] = useState(1);
-  const [txPage, setTxPage] = useState(1);
+  const [blockPage, setBlockPage] = useState(0);
+  const [txPage, setTxPage] = useState(0);
 
   const { blocksList } = getBloks(blockPage);
   const { transactionsList } = GetTransactions(txPage);
-  console.log(transactionsList);
-  // console.log(blocksList);
-
+ 
   useEffect(() => {
-
+    setBlockPage(1);
+    setTxPage(1);
   }, [])
 
 
