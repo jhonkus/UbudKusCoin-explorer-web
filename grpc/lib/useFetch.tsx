@@ -6,7 +6,8 @@ import { BChainService } from "../services/bchain_pb_service";
 import { PagingRequest } from '../services/bchain_pb'
 
 const host = "http://54.254.238.133:5001";
-// const host = "http://localhost:5001";
+
+// const host = "https://127.0.0.1:5001";
 export const getBloks = (pagenum: number) => {
 
   const req = new PagingRequest();

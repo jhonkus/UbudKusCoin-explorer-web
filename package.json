@@ -9,6 +9,7 @@
     "protots": "./protogen.sh"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.4.5",
     "@improbable-eng/grpc-web": "^0.15.0",
     "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
     "@types/google-protobuf": "^3.15.5",
