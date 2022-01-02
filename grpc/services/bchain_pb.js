@@ -1,4 +1,4 @@
-// source: grpc/bchain.proto
+// source: bchain.proto
 /**
  * @fileoverview
  * @enhanceable

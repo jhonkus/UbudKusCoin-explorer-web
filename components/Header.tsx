@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 const Header = () => {
   return (
@@ -10,7 +10,6 @@ const Header = () => {
               UKC Scan
             </a>
           </Link>
-
 
           <ul className='nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0'>
             <li>
@@ -56,6 +55,6 @@ const Header = () => {
         </div>
       </div>
     </header>
-  );
-};
-export default Header;
+  )
+}
+export default Header

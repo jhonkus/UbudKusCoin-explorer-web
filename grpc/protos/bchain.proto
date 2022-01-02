@@ -1,7 +1,5 @@
 ﻿syntax = "proto3";
 
-option csharp_namespace = "GrpcService";
-
 
 service BChainService {
   rpc GenesisBlock(EmptyRequest) returns (BlockResponse);

@@ -1,12 +1,12 @@
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
 
 export default function Login() {
-    return (
+  return (
         <div className={'container'}>
             <Header />
             <h1>Login</h1>
             <Footer />
         </div>
-    )
+  )
 }
