@@ -5,3 +5,8 @@
 .subtitle {
     font-size: 11px;
 }
+
+.colWide {
+    text-align: center;
+    width: 200px;
+}

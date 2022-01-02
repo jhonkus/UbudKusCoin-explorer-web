@@ -36,7 +36,7 @@ type BChainServiceGetBlocks = {
   readonly service: typeof BChainService;
   readonly requestStream: false;
   readonly responseStream: false;
-  readonly requestType: typeof bchain_pb.BlockRequest;
+  readonly requestType: typeof bchain_pb.PagingRequest;
   readonly responseType: typeof bchain_pb.BlocksResponse;
 };
 
@@ -49,12 +49,21 @@ type BChainServiceGetBalance = {
   readonly responseType: typeof bchain_pb.BalanceResponse;
 };
 
-type BChainServiceGetTransactions = {
+type BChainServiceGetAccountTransactions = {
   readonly methodName: string;
   readonly service: typeof BChainService;
   readonly requestStream: false;
   readonly responseStream: false;
   readonly requestType: typeof bchain_pb.AccountRequest;
+  readonly responseType: typeof bchain_pb.TransactionsResponse;
+};
+
+type BChainServiceGetTransactions = {
+  readonly methodName: string;
+  readonly service: typeof BChainService;
+  readonly requestStream: false;
+  readonly responseStream: false;
+  readonly requestType: typeof bchain_pb.PagingRequest;
   readonly responseType: typeof bchain_pb.TransactionsResponse;
 };
 
@@ -65,6 +74,7 @@ export class BChainService {
   static readonly SendCoin: BChainServiceSendCoin;
   static readonly GetBlocks: BChainServiceGetBlocks;
   static readonly GetBalance: BChainServiceGetBalance;
+  static readonly GetAccountTransactions: BChainServiceGetAccountTransactions;
   static readonly GetTransactions: BChainServiceGetTransactions;
 }
 
@@ -128,12 +138,12 @@ export class BChainServiceClient {
     callback: (error: ServiceError|null, responseMessage: bchain_pb.TrxResponse|null) => void
   ): UnaryResponse;
   getBlocks(
-    requestMessage: bchain_pb.BlockRequest,
+    requestMessage: bchain_pb.PagingRequest,
     metadata: grpc.Metadata,
     callback: (error: ServiceError|null, responseMessage: bchain_pb.BlocksResponse|null) => void
   ): UnaryResponse;
   getBlocks(
-    requestMessage: bchain_pb.BlockRequest,
+    requestMessage: bchain_pb.PagingRequest,
     callback: (error: ServiceError|null, responseMessage: bchain_pb.BlocksResponse|null) => void
   ): UnaryResponse;
   getBalance(
@@ -145,13 +155,22 @@ export class BChainServiceClient {
     requestMessage: bchain_pb.AccountRequest,
     callback: (error: ServiceError|null, responseMessage: bchain_pb.BalanceResponse|null) => void
   ): UnaryResponse;
-  getTransactions(
+  getAccountTransactions(
     requestMessage: bchain_pb.AccountRequest,
     metadata: grpc.Metadata,
     callback: (error: ServiceError|null, responseMessage: bchain_pb.TransactionsResponse|null) => void
   ): UnaryResponse;
-  getTransactions(
+  getAccountTransactions(
     requestMessage: bchain_pb.AccountRequest,
+    callback: (error: ServiceError|null, responseMessage: bchain_pb.TransactionsResponse|null) => void
+  ): UnaryResponse;
+  getTransactions(
+    requestMessage: bchain_pb.PagingRequest,
+    metadata: grpc.Metadata,
+    callback: (error: ServiceError|null, responseMessage: bchain_pb.TransactionsResponse|null) => void
+  ): UnaryResponse;
+  getTransactions(
+    requestMessage: bchain_pb.PagingRequest,
     callback: (error: ServiceError|null, responseMessage: bchain_pb.TransactionsResponse|null) => void
   ): UnaryResponse;
 }

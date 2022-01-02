@@ -143,7 +143,7 @@ export namespace AccountRequest {
   }
 }
 
-export class BlockRequest extends jspb.Message {
+export class PagingRequest extends jspb.Message {
   getPageNumber(): number;
   setPageNumber(value: number): void;
 
@@ -151,16 +151,16 @@ export class BlockRequest extends jspb.Message {
   setResultPerPage(value: number): void;
 
   serializeBinary(): Uint8Array;
-  toObject(includeInstance?: boolean): BlockRequest.AsObject;
-  static toObject(includeInstance: boolean, msg: BlockRequest): BlockRequest.AsObject;
+  toObject(includeInstance?: boolean): PagingRequest.AsObject;
+  static toObject(includeInstance: boolean, msg: PagingRequest): PagingRequest.AsObject;
   static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
   static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-  static serializeBinaryToWriter(message: BlockRequest, writer: jspb.BinaryWriter): void;
-  static deserializeBinary(bytes: Uint8Array): BlockRequest;
-  static deserializeBinaryFromReader(message: BlockRequest, reader: jspb.BinaryReader): BlockRequest;
+  static serializeBinaryToWriter(message: PagingRequest, writer: jspb.BinaryWriter): void;
+  static deserializeBinary(bytes: Uint8Array): PagingRequest;
+  static deserializeBinaryFromReader(message: PagingRequest, reader: jspb.BinaryReader): PagingRequest;
 }
 
-export namespace BlockRequest {
+export namespace PagingRequest {
   export type AsObject = {
     pageNumber: number,
     resultPerPage: number,

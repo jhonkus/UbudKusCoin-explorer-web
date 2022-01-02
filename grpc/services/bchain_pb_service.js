@@ -42,7 +42,7 @@ BChainService.GetBlocks = {
   service: BChainService,
   requestStream: false,
   responseStream: false,
-  requestType: bchain_pb.BlockRequest,
+  requestType: bchain_pb.PagingRequest,
   responseType: bchain_pb.BlocksResponse
 };
 
@@ -55,12 +55,21 @@ BChainService.GetBalance = {
   responseType: bchain_pb.BalanceResponse
 };
 
+BChainService.GetAccountTransactions = {
+  methodName: "GetAccountTransactions",
+  service: BChainService,
+  requestStream: false,
+  responseStream: false,
+  requestType: bchain_pb.AccountRequest,
+  responseType: bchain_pb.TransactionsResponse
+};
+
 BChainService.GetTransactions = {
   methodName: "GetTransactions",
   service: BChainService,
   requestStream: false,
   responseStream: false,
-  requestType: bchain_pb.AccountRequest,
+  requestType: bchain_pb.PagingRequest,
   responseType: bchain_pb.TransactionsResponse
 };
 
@@ -200,6 +209,37 @@ BChainServiceClient.prototype.getBalance = function getBalance(requestMessage, m
     callback = arguments[1];
   }
   var client = grpc.unary(BChainService.GetBalance, {
+    request: requestMessage,
+    host: this.serviceHost,
+    metadata: metadata,
+    transport: this.options.transport,
+    debug: this.options.debug,
+    onEnd: function (response) {
+      if (callback) {
+        if (response.status !== grpc.Code.OK) {
+          var err = new Error(response.statusMessage);
+          err.code = response.status;
+          err.metadata = response.trailers;
+          callback(err, null);
+        } else {
+          callback(null, response.message);
+        }
+      }
+    }
+  });
+  return {
+    cancel: function () {
+      callback = null;
+      client.close();
+    }
+  };
+};
+
+BChainServiceClient.prototype.getAccountTransactions = function getAccountTransactions(requestMessage, metadata, callback) {
+  if (arguments.length === 2) {
+    callback = arguments[1];
+  }
+  var client = grpc.unary(BChainService.GetAccountTransactions, {
     request: requestMessage,
     host: this.serviceHost,
     metadata: metadata,
