@@ -2,19 +2,19 @@ import fs from 'fs'
 import path from 'path'
 import getConfig from 'next/config'
 
-const grpc = require('@grpc/grpc-js');
-const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = __dirname + "/bchain.proto";
+// const grpc = require('@grpc/grpc-js');
+// const protoLoader = require("@grpc/proto-loader");
+// const PROTO_PATH = __dirname + "/bchain.proto";
 
-const host = "54.254.238.133:5002";
+// const host = "54.254.238.133:5002";
 
-const options = {
-    keepCase: true,
-    longs: String,
-    enums: String,
-    defaults: true,
-    oneofs: true,
-};
+// const options = {
+//     keepCase: true,
+//     longs: String,
+//     enums: String,
+//     defaults: true,
+//     oneofs: true,
+// };
 
 // const packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
