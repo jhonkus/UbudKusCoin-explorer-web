@@ -1,5 +1,5 @@
 import path from 'path'
-import getConfig from 'next/config'
+// import getConfig from 'next/config'
 
 // const grpc = require('@grpc/grpc-js');
 // const protoLoader = require("@grpc/proto-loader");
@@ -26,7 +26,7 @@ export default function handler(req, res) {
     //     grpc.credentials.createInsecure()
     // );
 
-    const { serverRuntimeConfig } = getConfig()
+    // const { serverRuntimeConfig } = getConfig()
 
     // client.GetBlocks({ page_number: 1, result_per_page: 20 }, function (err, response) {
  
@@ -40,7 +40,7 @@ export default function handler(req, res) {
 
     const dirRelativeToPublicFolder = 'img'
 
-    // const dir = path.resolve('./public', dirRelativeToPublicFolder);
+    const dir = path.resolve('./public', dirRelativeToPublicFolder);
   
     // const filenames = fs.readdirSync(dir);
   
@@ -50,7 +50,7 @@ export default function handler(req, res) {
 
     // const dirRelativeToPublicFolder = 'img'
 
-    const dir = path.join(serverRuntimeConfig.PROJECT_ROOT, './public', dirRelativeToPublicFolder);
+//    const dir = path.join(serverRuntimeConfig.PROJECT_ROOT, './public', dirRelativeToPublicFolder);
   
     // const filenames = fs.readdirSync(dir);
 
