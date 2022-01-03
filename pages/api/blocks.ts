@@ -5,7 +5,7 @@ const grpc = require('@grpc/grpc-js');
 const protoLoader = require("@grpc/proto-loader");
 
 const dirRelativeToPublicFolder = 'protos'
-const dir = path.resolve('./public', dirRelativeToPublicFolder);
+const dir = path.resolve('./grpc', dirRelativeToPublicFolder);
 const PROTO_PATH = dir + '/bchain.proto';
 const host = "54.254.238.133:5002";
 
