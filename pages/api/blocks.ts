@@ -18,10 +18,10 @@ const proto = grpc.loadPackageDefinition(packageDefinition);
 
 
 export default function handler(req, res) {
-    const client = new proto.BChainService(
-        host,
-        grpc.credentials.createInsecure()
-    );
+    // const client = new proto.BChainService(
+    //     host,
+    //     grpc.credentials.createInsecure()
+    // );
     
     // client.GetBlocks({page_number: 1, result_per_page: 20} , function(err, response) {
     //     // console.log('Data:', response); // API response
