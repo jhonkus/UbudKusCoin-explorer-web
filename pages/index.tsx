@@ -2,24 +2,82 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Head from 'next/head'
 import styles from './Home.module.css'
-import { useEffect, useState } from 'react'
-import { getBloks, GetTransactions } from '../grpc/lib/useFetch';
+import useSwr from 'swr'
 
+const fetcher = (url) => fetch(url).then((res) => res.json())
+
+/**
+ * Block component
+ * @returns 
+ */
+const Blocks = () => {
+  const { data, error } = useSwr('/api/blocks', fetcher)
+
+  if (error) return <div>Failed to load blocks</div>
+  if (!data) return <div>Loading...</div>
+
+  return (
+    <>
+      <h5>Latest Blocks</h5>
+      <table className={'table-table-striped'}>
+        <tbody>
+          {data.blocks.map((block) => (
+            <tr key={block.Height}>
+              <td>BK</td>
+              <td className={styles.colWide}>
+                {block.Height} <br />
+                {block.TimeStamp}
+              </td>
+              <td className={styles.address}>
+                Validate by: {block.Validator?.substring(0, 10)}
+                <br />
+                {block.NumOfTx} txns
+              </td>
+              <td className={styles.colWide}>{block.TotalAmount} UKC</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  )
+}
+/**
+ * 
+ * @returns Transactions component
+ */
+const Transactions = () => {
+  const { data, error } = useSwr('/api/transactions', fetcher)
+
+  if (error) return <div>Failed to load transactions</div>
+  if (!data) return <div>Loading...</div>
+
+  console.log('trx: ', data)
+  return (
+    <>
+      <h5>Latest Transactions</h5>
+      <table className="table table-striped">
+        <tbody>
+
+          {data?.transactions?.map((tx) => (
+
+            <tr key={tx.Hash}>
+              <td>TX</td>
+              <td>{tx.Hash.substring(0, 10)}...</td>
+              <td className={styles.address}>
+                From: {tx.Sender.substring(0, 10)} ...
+                <br />
+                To: {tx.Recipient.substring(0, 10)}...</td>
+              <td>{tx.Amount}</td>
+            </tr>
+
+          ))}
+
+        </tbody>
+      </table>
+    </>)
+}
 
 export default function Home() {
-
-
-  const [blockPage, setBlockPage] = useState(0);
-  const [txPage, setTxPage] = useState(0);
-
-  const { blocksList } = getBloks(blockPage);
-  const { transactionsList } = GetTransactions(txPage);
- 
-  useEffect(() => {
-    setBlockPage(1);
-    setTxPage(1);
-  }, [])
-
 
   return (
     <div className={'container'}>
@@ -36,53 +94,10 @@ export default function Home() {
 
         <div className={'row'}>
           <div className={'col-md-6'}>
-            <h5>Latest Blocks</h5>
-            <table className={'table-table-striped'}>
-
-              <tbody>
-
-                {blocksList?.map((block) => (
-
-                  <tr key={block.height}>
-                    <td>BK</td>
-                    <td className={styles.colWide}>
-                      {block.height} <br/>
-                      {block.timestamp}
-                    </td>
-                    <td className={styles.address}>
-                      Validate by: {block.validator?.substring(0, 10)}
-                      <br/>
-                      {block.numoftx} txns 
-                    </td>
-                    <td className={styles.colWide}>{block.totalamount} UKC</td>
-                  </tr>
-
-                ))}
-
-              </tbody>
-            </table>
+            <Blocks />
           </div>
           <div className='col-md-6'>
-            <h5>Latest Transactions</h5>
-            <table className="table table-striped">
-              <tbody>
-
-                {transactionsList?.map((tx) => (
-
-                  <tr key={tx.hash}>
-                    <td>TX</td>
-                    <td>{tx.hash.substring(0, 10)}...</td>
-                    <td className={styles.address}>
-                      From: {tx.sender.substring(0, 10)} ...
-                      <br />
-                      To: {tx.recipient.substring(0, 10)}...</td>
-                    <td>{tx.amount}</td>
-                  </tr>
-
-                ))}
-
-              </tbody>
-            </table>
+            <Transactions />
           </div>
 
         </div>
