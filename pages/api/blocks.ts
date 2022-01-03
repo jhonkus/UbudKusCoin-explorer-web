@@ -43,7 +43,7 @@ export default function handler(req, res) {
 
     const dir = path.resolve('./public', dirRelativeToPublicFolder);
   
-    const filenames = fs.readdirSync(dir);
+    // const filenames = fs.readdirSync(dir);
   
     // const proto = filenames.map(name => path.join('/', dirRelativeToPublicFolder, name))
   
@@ -57,7 +57,7 @@ export default function handler(req, res) {
 
     
     res.statusCode = 200
-    res.json({file: filenames});
+    res.json({file: dir});
 
     // res.status(200).json('finish')
 }
