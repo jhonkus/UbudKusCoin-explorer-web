@@ -14,7 +14,7 @@ const options = {
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
-const proto = grpc.loadPackageDefinition(packageDefinition);
+// const proto = grpc.loadPackageDefinition(packageDefinition);
 
 
 export default function handler(req, res) {
