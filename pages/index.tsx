@@ -11,7 +11,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
  * @returns 
  */
 const Blocks = () => {
-  const { data, error } = useSwr('/api/blocks', fetcher)
+  const { data, error } = useSwr('/api/blocks', fetcher, { refreshInterval: 60000 })
 
   if (error) return <div>Failed to load blocks</div>
   if (!data) return <div>Loading...</div>
@@ -46,12 +46,11 @@ const Blocks = () => {
  * @returns Transactions component
  */
 const Transactions = () => {
-  const { data, error } = useSwr('/api/transactions', fetcher)
+  const { data, error } = useSwr('/api/transactions', fetcher, { refreshInterval: 30000 })
 
   if (error) return <div>Failed to load transactions</div>
   if (!data) return <div>Loading...</div>
 
-  console.log('trx: ', data)
   return (
     <>
       <h5>Latest Transactions</h5>
