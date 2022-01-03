@@ -1,6 +1,6 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "bchain.proto";
+const PROTO_PATH = "/bchain.proto";
   
 const host = "54.254.238.133:5002";
 
