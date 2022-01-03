@@ -1,6 +1,6 @@
 const grpc = require('@grpc/grpc-js');
 const protoLoader = require("@grpc/proto-loader");
-const PROTO_PATH = "./grpc/protos/bchain.proto";
+const PROTO_PATH = "bchain.proto";
   
 const host = "54.254.238.133:5002";
 
@@ -14,23 +14,26 @@ const options = {
 
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, options);
 
-// const proto = grpc.loadPackageDefinition(packageDefinition);
+const proto = grpc.loadPackageDefinition(packageDefinition);
 
 
 export default function handler(req, res) {
-    // const client = new proto.BChainService(
-    //     host,
-    //     grpc.credentials.createInsecure()
-    // );
+    const client = new proto.BChainService(
+        host,
+        grpc.credentials.createInsecure()
+    );
     
-    // client.GetBlocks({page_number: 1, result_per_page: 20} , function(err, response) {
-    //     // console.log('Data:', response); // API response
-    //     // console.log(err);
+    client.GetBlocks({page_number: 1, result_per_page: 20} , function(err, response) {
+        // console.log('Data:', response); // API response
+        // console.log(err);
 
-    //     res.status(200).json(response)
+        if (!err) {
+            res.status(200).json(response)
+        } else {
+            res.status(200).json(err)
+        }
+       });
     
-    // });
     
-    
-    res.status(200).json('finish')
+    // res.status(200).json('finish')
 }
