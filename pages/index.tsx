@@ -1,8 +1,8 @@
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Head from 'next/head'
-import Blocks from '../components/Blocks'
-import Transactions from '../components/Transactions'
+import Header from '../components/header/Header'
+import Footer from '../components/footer/Footer'
+import Blocks from '../components/blocks/Blocks'
+import Transactions from '../components/transactions/Transactions'
 
 export default function Home() {
   return (
@@ -25,7 +25,6 @@ export default function Home() {
           <div className='col-md-6'>
             <Transactions />
           </div>
-
         </div>
       </main>
       <Footer />

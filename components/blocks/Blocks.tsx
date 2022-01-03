@@ -2,13 +2,13 @@ import styles from './Blocks.module.css'
 import useSwr from 'swr'
 import Link from 'next/link'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
 /**
  * Block component
  * @returns 
  */
  const Blocks = () => {
+
+    const fetcher = (url) => fetch(url).then((res) => res.json())
 
     const { data, error } = useSwr('/api/blocks', fetcher, { refreshInterval: 60000 })
     if (error) return <div>Failed to load blocks</div>
@@ -27,7 +27,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
                   {block.TimeStamp}
                 </td>
                 <td className={styles.address}>
-                  Validate by: <Link href={`/address/${block.Validator}`}><a>{block.Validator?.substring(0, 10)}</a></Link>
+                  Validate by: <Link href={`/address/${block?.Validator}`}><a>{block.Validator?.substring(0, 10)}</a></Link>
                   <br />
                   {block.NumOfTx} txns
                 </td>
