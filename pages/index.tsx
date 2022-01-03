@@ -3,6 +3,9 @@ import Footer from '../components/Footer'
 import Head from 'next/head'
 import styles from './Home.module.css'
 import useSwr from 'swr'
+import { useRouter } from "next/router";
+import React from 'react'
+import Link from 'next/link'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -12,7 +15,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json())
  */
 const Blocks = () => {
   const { data, error } = useSwr('/api/blocks', fetcher, { refreshInterval: 60000 })
-
+  const router = useRouter();
   if (error) return <div>Failed to load blocks</div>
   if (!data) return <div>Loading...</div>
 
@@ -25,11 +28,11 @@ const Blocks = () => {
             <tr key={block.Height}>
               <td>BK</td>
               <td className={styles.colWide}>
-                {block.Height} <br />
+                <Link href={`/blocks/${block.Height}`}><a> {block.Height} </a></Link><br />
                 {block.TimeStamp}
               </td>
               <td className={styles.address}>
-                Validate by: {block.Validator?.substring(0, 10)}
+                Validate by: <Link href={`/address/${block.Validator}`}><a>{block.Validator?.substring(0, 10)}</a></Link>
                 <br />
                 {block.NumOfTx} txns
               </td>
@@ -61,11 +64,15 @@ const Transactions = () => {
 
             <tr key={tx.Hash}>
               <td>TX</td>
-              <td>{tx.Hash.substring(0, 10)}...</td>
+              <td>
+                <Link href={`/transactions/${tx.Hash}`}><a>{tx.Hash.substring(0, 10)}...
+                </a>
+                </Link>
+              </td>
               <td className={styles.address}>
-                From: {tx.Sender.substring(0, 10)} ...
+                From: <Link href={`/address/${tx.Sender}`}><a>{tx.Sender.substring(0, 10)} ...</a></Link>
                 <br />
-                To: {tx.Recipient.substring(0, 10)}...</td>
+                To: <Link href={`/address/${tx.Recipient}`}><a>{tx.Recipient.substring(0, 10)}...</a></Link></td>
               <td>{tx.Amount}</td>
             </tr>
 
@@ -105,5 +112,3 @@ export default function Home() {
     </div>
   )
 }
-
-
