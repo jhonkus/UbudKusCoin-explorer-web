@@ -1,96 +1,16 @@
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Head from 'next/head'
-import styles from './Home.module.css'
-import useSwr from 'swr'
-import { useRouter } from "next/router";
-import React from 'react'
-import Link from 'next/link'
-
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
-/**
- * Block component
- * @returns 
- */
-const Blocks = () => {
-  const { data, error } = useSwr('/api/blocks', fetcher, { refreshInterval: 60000 })
-  const router = useRouter();
-  if (error) return <div>Failed to load blocks</div>
-  if (!data) return <div>Loading...</div>
-
-  return (
-    <>
-      <h5>Latest Blocks</h5>
-      <table className={'table-table-striped'}>
-        <tbody>
-          {data.blocks.map((block) => (
-            <tr key={block.Height}>
-              <td>BK</td>
-              <td className={styles.colWide}>
-                <Link href={`/blocks/${block.Height}`}><a> {block.Height} </a></Link><br />
-                {block.TimeStamp}
-              </td>
-              <td className={styles.address}>
-                Validate by: <Link href={`/address/${block.Validator}`}><a>{block.Validator?.substring(0, 10)}</a></Link>
-                <br />
-                {block.NumOfTx} txns
-              </td>
-              <td className={styles.colWide}>{block.TotalAmount} UKC</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </>
-  )
-}
-/**
- * 
- * @returns Transactions component
- */
-const Transactions = () => {
-  const { data, error } = useSwr('/api/transactions', fetcher, { refreshInterval: 30000 })
-
-  if (error) return <div>Failed to load transactions</div>
-  if (!data) return <div>Loading...</div>
-
-  return (
-    <>
-      <h5>Latest Transactions</h5>
-      <table className="table table-striped">
-        <tbody>
-
-          {data?.transactions?.map((tx) => (
-
-            <tr key={tx.Hash}>
-              <td>TX</td>
-              <td>
-                <Link href={`/transactions/${tx.Hash}`}><a>{tx.Hash.substring(0, 10)}...
-                </a>
-                </Link>
-              </td>
-              <td className={styles.address}>
-                From: <Link href={`/address/${tx.Sender}`}><a>{tx.Sender.substring(0, 10)} ...</a></Link>
-                <br />
-                To: <Link href={`/address/${tx.Recipient}`}><a>{tx.Recipient.substring(0, 10)}...</a></Link></td>
-              <td>{tx.Amount}</td>
-            </tr>
-
-          ))}
-
-        </tbody>
-      </table>
-    </>)
-}
+import Blocks from '../components/Blocks'
+import Transactions from '../components/Transactions'
 
 export default function Home() {
-
   return (
     <div className={'container'}>
       <Header />
       <main className={'d-flex flex-column min-vh-100'}>
         <Head>
-          <title>Ubudkus Coin Explorer</title>
+          <title>UbudkusCoin Explorer</title>
           <meta name='description' content='web app for ubudkuscoin blockchain explorer' />
           <link rel='icon' href='/favicon.ico' />
         </Head>
@@ -112,3 +32,5 @@ export default function Home() {
     </div>
   )
 }
+
+
