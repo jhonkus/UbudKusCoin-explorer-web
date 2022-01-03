@@ -1,4 +1,3 @@
-import fs from 'fs'
 import path from 'path'
 import getConfig from 'next/config'
 
@@ -11,7 +10,7 @@ import getConfig from 'next/config'
 // const options = {
 //     keepCase: true,
 //     longs: String,
-//     enums: String,
+//     enums: String, 
 //     defaults: true,
 //     oneofs: true,
 // };
@@ -41,7 +40,7 @@ export default function handler(req, res) {
 
     const dirRelativeToPublicFolder = 'img'
 
-    const dir = path.resolve('./public', dirRelativeToPublicFolder);
+    // const dir = path.resolve('./public', dirRelativeToPublicFolder);
   
     // const filenames = fs.readdirSync(dir);
   
@@ -51,7 +50,7 @@ export default function handler(req, res) {
 
     // const dirRelativeToPublicFolder = 'img'
 
-    // const dir = path.join(serverRuntimeConfig.PROJECT_ROOT, './public', dirRelativeToPublicFolder);
+    const dir = path.join(serverRuntimeConfig.PROJECT_ROOT, './public', dirRelativeToPublicFolder);
   
     // const filenames = fs.readdirSync(dir);
 
