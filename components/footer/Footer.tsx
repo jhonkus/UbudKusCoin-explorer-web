@@ -13,7 +13,7 @@ const Footer = () => {
             </Link>
           </li>
           <li className='nav-item'>
-            <Link href="/transactions">
+            <Link href="/txns">
               <a className='nav-link px-2 text-muted'>
                 Transactions
               </a>

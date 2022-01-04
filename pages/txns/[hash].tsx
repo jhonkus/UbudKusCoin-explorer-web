@@ -27,7 +27,7 @@ export default function TransactionDetail() {
   }
 
   return (
-    <div className='container'>
+    <div className="container">
       <Header />
       <div className={styles.title}><h5>Transaction Details</h5></div>
       <div className="card">

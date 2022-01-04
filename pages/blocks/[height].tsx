@@ -24,7 +24,7 @@ export default function BlockDetail() {
     return (<div>Please back </div>)
   }
   return (
-    <div className={'container'}>
+    <div className="container">
       <Header />
       <div className={styles.title}><h5>Block #{block?.Height}</h5></div>
       <div className="card">

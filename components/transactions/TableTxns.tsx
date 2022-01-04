@@ -1,15 +1,14 @@
 import styles from './Txns.module.css'
 import Link from 'next/link'
-import { useTransactions } from '../../services/useFetch';
+import { useTxns } from '../../services/useFetch';
 import toDate from '../../utils/util';
 
 /**
  * 
  * @returns Transactions component
  */
-const TableTxns = () => {
-
-  const { transactions, isLoading, isError } = useTransactions();
+ const TableTxns = ({ page = 1 }) => {
+  const { transactions, isLoading, isError } = useTxns(page, 25);
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load transactions</div>
 
@@ -37,7 +36,7 @@ const TableTxns = () => {
 
                 <tr key={tx.Hash}>
                   <td>
-                    <Link href={`/transactions/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                    <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
                     </span></a></Link>
                   </td>
                   <td>
@@ -60,17 +59,6 @@ const TableTxns = () => {
 
             </tbody>
           </table>
-          <nav aria-label="Page navigation example">
-            <ul className="pagination">
-              <li className="page-item"><a className="page-link" href="#">First</a></li>
-              <li className="page-item"><a className="page-link" href="#">Prev</a></li>
-              <li className="page-item"><a className="page-link" href="#">1</a></li>
-              <li className="page-item"><a className="page-link" href="#">2</a></li>
-              <li className="page-item"><a className="page-link" href="#">3</a></li>
-              <li className="page-item"><a className="page-link" href="#">Next</a></li>
-              <li className="page-item"><a className="page-link" href="#">Last</a></li>
-            </ul>
-          </nav>
         </div></div>
     </>)
 }

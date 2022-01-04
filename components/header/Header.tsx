@@ -20,7 +20,7 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <Link href="/transactions">
+              <Link href="/txns">
                 <a className='nav-link px-2 text-white'>
                   Trasactions
                 </a>
