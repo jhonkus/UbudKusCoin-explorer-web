@@ -4,7 +4,8 @@ import store from '../../redux/store';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import styles from './TransactionsDetail.module.css'
+import styles from './TxnsDetail.module.css'
+import toDate from '../../utils/util';
 
 type RootState = ReturnType<typeof store.getState>;
 
@@ -28,7 +29,7 @@ export default function TransactionDetail() {
   return (
     <div className='container'>
       <Header />
-      <h5>Transaction Details</h5>
+      <div className={styles.title}><h5>Transaction Details</h5></div>
       <div className="card">
        
         <div className="card-body">
@@ -41,11 +42,7 @@ export default function TransactionDetail() {
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Block</div>  <div className={`col ${styles.scCol}`}> : ?</div>
-          </div>
-
-          <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">TimeStamp</div>  <div className={`col ${styles.scCol}`}> : {transaction.TimeStamp}</div>
+            <div className="col-3">TimeStamp</div>  <div className={`col ${styles.scCol}`}> : {toDate(transaction.TimeStamp)}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>

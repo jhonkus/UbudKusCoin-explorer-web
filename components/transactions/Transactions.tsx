@@ -1,16 +1,7 @@
 import styles from './Transactions.module.css'
 import Link from 'next/link'
 import { useTransactions } from '../../services/useFetch';
-
-function toDate(unixTimestamp) {
-  const date = new Date(unixTimestamp * 1000);
-  const formattedTime = date.getDate() +
-    "/" + (date.getMonth() + 1) +
-    "/" + date.getFullYear() +
-    " " + date.getHours() +
-    ":" + date.getMinutes();
-  return formattedTime;
-}
+import toDate from '../../utils/util';
 
 /**
  * 

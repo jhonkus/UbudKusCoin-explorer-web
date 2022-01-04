@@ -1,17 +1,9 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
 import { useBlocks } from '../../services/useFetch'
+import toDate from '../../utils/util';
 
 
-function toDate(unixTimestamp) {
-  const date = new Date(unixTimestamp * 1000);
-  const formattedTime = date.getDate() +
-    "/" + (date.getMonth() + 1) +
-    "/" + date.getFullYear() +
-    " " + date.getHours() +
-    ":" + date.getMinutes();
-  return formattedTime;
-}
 /**
  * Block component
  * @returns 
