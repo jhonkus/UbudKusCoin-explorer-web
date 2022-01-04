@@ -6,7 +6,7 @@ export default function transactions(req, res) {
             if (!err) {
                 res.statusCode = 200
                 res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Cache-Control', 'max-age=100');
+                // res.setHeader('Cache-Control', 'max-age=100');
                 res.end(JSON.stringify(response));
             } else {
                 res.json(err);

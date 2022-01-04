@@ -6,7 +6,7 @@ const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json())
 
 export function useBlocks() {
     const dispatch = useDispatch();
-    const { data, error } = useSWR('/api/blocks', fetcher, { refreshInterval: 30000 })
+    const { data, error } = useSWR('/api/blocks', fetcher, { refreshInterval: 10000 })
     if (!error && data?.blocks){
         dispatch(saveBlocks(data?.blocks) )
     }
@@ -19,7 +19,7 @@ export function useBlocks() {
 
 export function useTransactions() {
     const dispatch = useDispatch();
-    const { data, error } = useSWR('/api/transactions', fetcher, { refreshInterval: 30000 })
+    const { data, error } = useSWR('/api/transactions', fetcher, { refreshInterval: 10000 })
     if (!error && data?.transactions){
         dispatch(saveTransactions(data?.transactions) )
     }
