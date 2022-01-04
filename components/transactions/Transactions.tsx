@@ -2,6 +2,16 @@ import styles from './Transactions.module.css'
 import Link from 'next/link'
 import { useTransactions } from '../../services/useFetch';
 
+function toDate(unixTimestamp) {
+  const date = new Date(unixTimestamp * 1000);
+  const formattedTime = date.getDate() +
+    "/" + (date.getMonth() + 1) +
+    "/" + date.getFullYear() +
+    " " + date.getHours() +
+    ":" + date.getMinutes();
+  return formattedTime;
+}
+
 /**
  * 
  * @returns Transactions component
@@ -14,24 +24,27 @@ const Transactions = () => {
 
   return (
     <>
-      <h5>Latest Transactions</h5>
-      <table className="table table-striped">
+      <div className={styles.subTitle}><h5>Latest Transactions</h5></div>
+      <table className="table">
         <tbody>
 
           {transactions?.map((tx) => (
 
             <tr key={tx.Hash}>
-              <td>TX</td>
+              <td><div className={styles.tx}>TX</div></td>
               <td>
-                <Link href={`/transactions/${tx.Hash}`}><a>{tx.Hash.substring(0, 10)}...
-                </a>
-                </Link>
+                <Link href={`/transactions/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                </span></a></Link>
+                <br />
+                <span className={styles.dateTx}>{toDate(tx.TimeStamp)}</span>
               </td>
               <td className={styles.address}>
-                From: <Link href={`/address/${tx.Sender}`}><a>{tx.Sender.substring(0, 10)} ...</a></Link>
+                <span className={styles.addrsLabel}>From :</span> <span className={styles.addrs}>{tx.Sender.substring(0, 20)} ...</span>
                 <br />
-                To: <Link href={`/address/${tx.Recipient}`}><a>{tx.Recipient.substring(0, 10)}...</a></Link></td>
-              <td>{tx.Amount}</td>
+                <span className={styles.addrsLabel}>To :</span> <span className={styles.addrs}>{tx.Recipient.substring(0, 20)}...</span></td>
+              <td>
+                <div className={styles.amount}>{tx.Amount} Ukc </div>
+                </td>
             </tr>
 
           ))}

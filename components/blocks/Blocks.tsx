@@ -2,6 +2,16 @@ import styles from './Blocks.module.css'
 import Link from 'next/link'
 import { useBlocks } from '../../services/useFetch'
 
+
+function toDate(unixTimestamp) {
+  const date = new Date(unixTimestamp * 1000);
+  const formattedTime = date.getDate() +
+    "/" + (date.getMonth() + 1) +
+    "/" + date.getFullYear() +
+    " " + date.getHours() +
+    ":" + date.getMinutes();
+  return formattedTime;
+}
 /**
  * Block component
  * @returns 
@@ -12,25 +22,31 @@ const Blocks = () => {
   if (isError) return <div>Failed to load blocks</div>
   return (
     <>
-      <h5>Latest Blocks</h5>
-      <table className={'table-table-striped'}>
+      <div className={styles.subTitle}>
+        <h5>Latest Blocks</h5>
+      </div>
+      <table className="table">
         <tbody>
           {blocks.map((block) => (
             <tr key={block.Height}>
-              <td>BK</td>
-              <td className={styles.colWide}>
+              <td>
+                <div className={styles.bk}>BK</div>
+              </td>
+              <td>
                 <Link href={`/blocks/${block.Height}`}>
-                  <a>{block.Height}</a>
+                  <a><span className={styles.heightBlock}>{block.Height}</span></a>
                 </Link>
                 <br />
-                {block.TimeStamp}
+                <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
               </td>
-              <td className={styles.address}>
-                Validate by: <Link href={`/address/${block?.Validator}`}><a>{block.Validator?.substring(0, 10)}</a></Link>
+              <td>
+                <span className={styles.validatorLabel}>Created by : </span><span className={styles.validator}>{block.Validator?.substring(0, 20)} ...</span>
                 <br />
-                {block.NumOfTx} txns
+                <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
               </td>
-              <td className={styles.colWide}>{block.TotalAmount} UKC</td>
+              <td>
+                <div className={styles.amount}>{block.TotalAmount} Ukc
+                </div></td>
             </tr>
           ))}
         </tbody>

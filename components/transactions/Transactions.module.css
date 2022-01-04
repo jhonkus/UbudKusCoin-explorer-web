@@ -1,12 +1,40 @@
-.address {
-    font-size: 10px;
+.dateTx {
+    font-size: 12px;
+    color: gray;
 }
 
-.subtitle {
-    font-size: 11px;
-}
-
-.colWide {
+.tx {
+    padding: 10px;
     text-align: center;
-    width: 200px;
+    background-color: #dddddd;
+}
+
+.amount {
+    padding: 10px;
+    font-size: 11px;
+    text-align: center;
+    color: black;
+    background-color: #eeeeee;
+}
+
+
+.hashTx {
+    font-size: 14px;
+    color: blue;
+}
+
+.addrsLabel {
+    font-size: 12px;
+    color: gray;
+    width: 50px;
+}
+
+.addrs {
+    font-size: 12px;
+    color: black;
+}
+
+.subTitle {
+    margin-left: 8px;
+    color: gray;
 }
