@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import balanceReducer from './balanceSlice';
 import blockReducer from './blockSlice';
+import transactionReducer from './transactionSlice';
 
 export default configureStore({
   reducer: {
-    balance: balanceReducer,
-    block: blockReducer
+    blocks: blockReducer,
+    transactions: transactionReducer
   }
 });

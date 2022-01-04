@@ -1,53 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface BlockModel {
-    Version: string,
-    Height: string,
-    TimeStamp: string,
-    PrevHash: string,
-    Hash: string,
-    Transactions: string,
-    Validator: string,
-    MerkleRoot: string,
-    NumOfTx: number,
-    TotalAmount: number,
-    TotalReward: number,
-    Difficulty: number
-}
-
-const block: BlockModel = {
-    Version: "",
-    Height: "",
-    TimeStamp: "",
-    PrevHash: "",
-    Hash: "",
-    Transactions: "",
-    Validator: "",
-    MerkleRoot: "",
-    NumOfTx: 0,
-    TotalAmount: 0,
-    TotalReward: 0,
-    Difficulty: 0
-}
+// interface Block {
+//     Version: string,
+//     Height: string,
+//     TimeStamp: string,
+//     PrevHash: string,
+//     Hash: string,
+//     Transactions: string,
+//     Validator: string,
+//     MerkleRoot: string,
+//     NumOfTx: number,
+//     TotalAmount: number,
+//     TotalReward: number,
+//     Difficulty: number
+// }
 
 const initialState = {
-    current: block
+    blocks: []
 };
 
-export const name = 'block';
+export const name = 'blocks';
 
 const blockSlice = createSlice({
     name,
     initialState,
     reducers: {
-        currentBlock(state, action) {
+        saveBlocks(state, action) {
             return {
                 ...state,
-                current: action.payload,
+                blocks: action.payload,
             };
-        },
+        }
     },
 });
 
-export const { currentBlock } = blockSlice.actions;
+export const { saveBlocks } = blockSlice.actions;
 export default blockSlice.reducer;

@@ -1,44 +1,26 @@
 import styles from './Blocks.module.css'
-import useSwr from 'swr'
 import Link from 'next/link'
-import { useDispatch } from 'react-redux'
-import { currentBlock } from '../../redux/blockSlice'
-import { useRouter } from 'next/router'
+import { useBlocks } from '../../services/useFetch'
 
 /**
  * Block component
  * @returns 
  */
 const Blocks = () => {
-
-  const router = useRouter()
-  const dispatch = useDispatch();
-
-  const handleClick = (block) => {
-    console.log("block height", block);
-    dispatch(
-      currentBlock(block)
-    )
-    router.push(`/blocks/${block.Height}`)
-  };
-
-  const fetcher = (url) => fetch(url).then((res) => res.json())
-
-  const { data, error } = useSwr('/api/blocks', fetcher, { refreshInterval: 60000 })
-  if (error) return <div>Failed to load blocks</div>
-  if (!data) return <div>Loading...</div>
-
+  const { blocks, isLoading, isError } = useBlocks();
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Failed to load blocks</div>
   return (
     <>
       <h5>Latest Blocks</h5>
       <table className={'table-table-striped'}>
         <tbody>
-          {data.blocks.map((block) => (
+          {blocks.map((block) => (
             <tr key={block.Height}>
               <td>BK</td>
               <td className={styles.colWide}>
-                <Link href='/'>
-                  <a onClick={() => handleClick(block)}>{block.Height}</a>
+                <Link href={`/blocks/${block.Height}`}>
+                  <a>{block.Height}</a>
                 </Link>
                 <br />
                 {block.TimeStamp}
