@@ -28,61 +28,64 @@ export default function BlockDetail() {
   const [block, setBlock] = useState(Object);
 
   useEffect(() => {
-    const savedBlock = savedBlocks?.blocks?.find(({ Height }) => Height === height);
-    setBlock(savedBlock);
+    const block = savedBlocks?.blocks?.find(({ Height }) => Height === height);
+    setBlock(block);
   }, [height, savedBlocks?.blocks]);
 
-
+  if (!block) {
+    return (<div>Please back </div>)
+  }
   return (
     <div className={'container'}>
       <Header />
       <h1>Block #{block?.Height}</h1>
-      <ul className="list-group">
-        <li className="list-group-item">
-          Height: {block.Height}
-        </li>
 
-        <li className="list-group-item">
-          TimeStamp: {block.TimeStamp}
-        </li>
+      <div className="container">
+        <div className="row">
+          <div className="col-3">Height</div><div className="col"> :  {block.Height}</div>
+        </div>
 
-        <li className="list-group-item">
-          PrevHash: {block.PrevHash}
-        </li>
+        <div className="row">
+          <div className="col-3">TimeStamp</div><div className="col"> :  {block.TimeStamp}</div>
+        </div>
 
-        <li className="list-group-item">
-          Hash: {block.Hash}
-        </li>
+        <div className="row">
+          <div className="col-3"> PrevHash</div><div className="col"> :  {block.PrevHash}</div>
+        </div>
 
-        <li className="list-group-item">
-          Transactions: {block.transactions?.length} transaction(s) in this block
-        </li>
+        <div className="row">
+          <div className="col-3">Hash</div><div className="col"> :  {block.Hash}</div>
+        </div>
+
+        <div className="row">
+          <div className="col-3">Transactions</div><div className="col"> :  {block.transactions?.length} transaction(s) in this block</div>
+        </div>
 
 
-        <li className="list-group-item">
-          Validator: {block.Validator}
-        </li>
+        <div className="row">
+          <div className="col-3">Validator</div><div className="col"> :  {block.Validator}</div>
+        </div>
 
-        <li className="list-group-item">
-          MerkleRoot: {block.MerkleRoot}
-        </li>
+        <div className="row">
+          <div className="col-3"> MerkleRoot</div><div className="col"> :  {block.MerkleRoot}</div>
+        </div>
 
-        <li className="list-group-item">
-          NumOfTx: {block.NumOfTx}
-        </li>
+        <div className="row">
+          <div className="col-3"> NumOfTx</div><div className="col"> :  {block.NumOfTx}</div>
+        </div>
 
-        <li className="list-group-item">
-          Difficulty: {block.Difficulty}
-        </li>
+        <div className="row">
+          <div className="col-3">Difficulty</div><div className="col"> :  {block.Difficulty}</div>
+        </div>
 
-        <li className="list-group-item">
-          TotalAmount: {block.TotalAmount}
-        </li>
+        <div className="row">
+          <div className="col-3">TotalAmount</div><div className="col"> :  {block.TotalAmount}</div>
+        </div>
 
-        <li className="list-group-item">
-          TotalReward: {block.TotalReward}
-        </li>
-      </ul>
+        <div className="row">
+          <div className="col-3"> TotalReward</div><div className="col"> :  {block.TotalReward}</div>
+        </div>
+      </div>
       <Footer />
     </div>
   )
