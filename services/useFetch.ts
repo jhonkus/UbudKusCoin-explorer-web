@@ -4,12 +4,8 @@ import { saveBlocks } from "../redux/blockSlice";
 import { saveTransactions } from "../redux/transactionSlice";
 const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json())
 
-export function useBlocks() {
-    const dispatch = useDispatch();
-    const { data, error } = useSWR('/api/blocks', fetcher, { refreshInterval: 10000 })
-    if (!error && data?.blocks){
-        dispatch(saveBlocks(data?.blocks) )
-    }
+export function useBlocks(page=1, numOfRow = 10) {
+    const { data, error } = useSWR(`/api/blocks/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
     return {
         blocks: data?.blocks,
         isLoading: !error && !data,
@@ -19,7 +15,7 @@ export function useBlocks() {
 
 export function useTransactions() {
     const dispatch = useDispatch();
-    const { data, error } = useSWR('/api/transactions', fetcher, { refreshInterval: 10000 })
+    const { data, error } = useSWR('/api/transactions', fetcher, { refreshInterval: 30000 })
     if (!error && data?.transactions){
         dispatch(saveTransactions(data?.transactions) )
     }

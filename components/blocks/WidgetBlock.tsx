@@ -9,7 +9,7 @@ import toDate from '../../utils/util';
  * @returns 
  */
 const WidgetBlocks = () => {
-  const { blocks, isLoading, isError } = useBlocks();
+  const { blocks, isLoading, isError } = useBlocks(1,10);
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load blocks</div>
   return (

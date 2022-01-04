@@ -1,15 +1,15 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
-import { useBlocks } from '../../services/useFetch'
 import toDate from '../../utils/util';
+import { useBlocks } from '../../services/useFetch';
 
 
 /**
  * Block component
  * @returns 
  */
-const TableBlocks = () => {
-  const { blocks, isLoading, isError } = useBlocks();
+const TableBlocks = ({ page = 1 }) => {
+  const { blocks, isLoading, isError } = useBlocks(page, 25);
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load blocks</div>
   return (
@@ -55,17 +55,6 @@ const TableBlocks = () => {
           ))}
         </tbody>
       </table>
-      <nav aria-label="Page navigation example">
-        <ul className="pagination">
-          <li className="page-item"><a className="page-link" href="#">First</a></li>
-          <li className="page-item"><a className="page-link" href="#">Prev</a></li>
-          <li className="page-item"><a className="page-link" href="#">1</a></li>
-          <li className="page-item"><a className="page-link" href="#">2</a></li>
-          <li className="page-item"><a className="page-link" href="#">3</a></li>
-          <li className="page-item"><a className="page-link" href="#">Next</a></li>
-          <li className="page-item"><a className="page-link" href="#">Last</a></li>
-        </ul>
-      </nav>
     </>
   )
 }

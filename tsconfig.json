@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "pages/api/blocks/[...slug].js"  ],
   "exclude": [
     "node_modules"
   ]
