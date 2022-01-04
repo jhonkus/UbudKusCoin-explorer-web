@@ -53,3 +53,8 @@
     margin-left: 5px;
     color: gray;
 }
+
+.divRow {
+    padding: 8px;
+    border-bottom: 1px solid #dddddd;
+}

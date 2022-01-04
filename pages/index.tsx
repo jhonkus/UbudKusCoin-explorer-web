@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="container-fluid">
       <Header />
-      <main className={'d-flex flex-column min-vh-100'}>
+      <main className="d-flex flex-column min-vh-100">
         <Head>
           <title>The UbudkusCoin Explorer</title>
           <meta name='description' content='web app for ubudkuscoin blockchain explorer' />
@@ -18,12 +18,14 @@ export default function Home() {
           <h5 className='display-5 fw-bold'>The UKC Blockchain Explorer</h5>
         </div>
 
-        <div className={'row'}>
-          <div className={'col-md-6'}>
+        <div className="row">
+          <div className="col">
             <WidgetBlocks />
+            <br/>
           </div>
-          <div className='col-md-6'>
+          <div className='col'>
             <WidgetTxns />
+            <br/>
           </div>
         </div>
       </main>

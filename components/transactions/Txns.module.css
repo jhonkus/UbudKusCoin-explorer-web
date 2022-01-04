@@ -12,7 +12,6 @@
 .amount {
     padding: 10px;
     font-size: 11px;
-    text-align: center;
     color: black;
     background-color: #eeeeee;
 }
@@ -46,3 +45,7 @@
     color: gray;
 }
 
+.divRow {
+    padding: 8px;
+    border-bottom: 1px solid #dddddd;
+}
