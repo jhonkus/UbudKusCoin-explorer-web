@@ -8,7 +8,7 @@ import toDate from '../../utils/util';
  * Block component
  * @returns 
  */
-const Blocks = () => {
+const WidgetBlocks = () => {
   const { blocks, isLoading, isError } = useBlocks();
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load blocks</div>
@@ -47,4 +47,4 @@ const Blocks = () => {
   )
 }
 
-export default Blocks
+export default WidgetBlocks

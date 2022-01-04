@@ -1,4 +1,4 @@
-import styles from './Transactions.module.css'
+import styles from './Txns.module.css'
 import Link from 'next/link'
 import { useTransactions } from '../../services/useFetch';
 import toDate from '../../utils/util';
@@ -7,7 +7,7 @@ import toDate from '../../utils/util';
  * 
  * @returns Transactions component
  */
-const Transactions = () => {
+const WidgetTxns = () => {
 
   const { transactions, isLoading, isError } = useTransactions();
   if (isLoading) return <div>Loading...</div>
@@ -45,4 +45,4 @@ const Transactions = () => {
     </>)
 }
 
-export default Transactions
+export default WidgetTxns

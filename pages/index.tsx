@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
-import Blocks from '../components/blocks/Blocks'
-import Transactions from '../components/transactions/Transactions'
+import WidgetTxns from '../components/transactions/WidgetTxns'
+import WidgetBlocks from '../components/blocks/WidgetBlock'
 
 export default function Home() {
 
@@ -21,10 +21,10 @@ export default function Home() {
 
         <div className={'row'}>
           <div className={'col-md-6'}>
-            <Blocks />
+            <WidgetBlocks />
           </div>
           <div className='col-md-6'>
-            <Transactions />
+            <WidgetTxns />
           </div>
         </div>
       </main>
