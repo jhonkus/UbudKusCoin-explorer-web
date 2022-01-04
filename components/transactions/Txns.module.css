@@ -1,5 +1,5 @@
 .dateTx {
-    font-size: 12px;
+    font-size: 0.8em;
     color: gray;
 }
 
@@ -11,41 +11,41 @@
 
 .amount {
     padding: 10px;
-    font-size: 11px;
+    font-size: 0.8em;
     color: black;
     background-color: #eeeeee;
 }
 
 
 .hashTx {
-    font-size: 14px;
+    font-size: 1.2em;
     color: blue;
 }
 
 .addrsLabel {
-    font-size: 12px;
+    font-size: 0.8em;
     color: gray;
     width: 50px;
 }
 
 .addrs {
-    font-size: 12px;
+    font-size: 0.8em;
     color: black;
 }
 
 .subTitle {
-    margin-left: 8px;
+    margin-left: 0.8em;
     color: gray;
 }
 
 .tableTitle {
-    margin-top: 25px;
+    margin-top: 2em;
     margin-bottom: 15px;
     margin-left: 5px;
     color: gray;
 }
 
 .divRow {
-    padding: 8px;
+    padding: 0.8em;
     border-bottom: 1px solid #dddddd;
 }
