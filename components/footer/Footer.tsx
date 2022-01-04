@@ -19,13 +19,13 @@ const Footer = () => {
               </a>
             </Link>
           </li>
-          <li className='nav-item'>
+          {/* <li className='nav-item'>
             <Link href="/about">
               <a className='nav-link px-2 text-muted'>
                 About
               </a>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <p className='text-center text-muted'>©2022 UbudKus Coin</p>
       </footer>

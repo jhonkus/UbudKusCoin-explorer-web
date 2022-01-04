@@ -26,13 +26,13 @@ const Header = () => {
                 </a>
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link href="/about">
                 <a className='nav-link px-2 text-white'>
                   About
                 </a>
               </Link>
-            </li>
+            </li> */}
           </ul>
 
           <form className='col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3'>
