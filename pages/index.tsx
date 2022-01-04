@@ -5,10 +5,8 @@ import WidgetTxns from '../components/transactions/WidgetTxns'
 import WidgetBlocks from '../components/blocks/WidgetBlock'
 
 export default function Home() {
-
   return (
     <div className="container-fluid">
-
       <Header />
       <main className={'d-flex flex-column min-vh-100'}>
         <Head>
