@@ -9,10 +9,10 @@ service BChainService {
   rpc SendCoin(SendRequest)  returns (SendResponse);
   rpc GetBlocks(PagingRequest) returns (BlocksResponse);
   rpc GetBlockByHeight(CommonRequest) returns (BlockResponse);
-  rpc GetTxnsByHash(CommonRequest) returns (TrxResponse);
+  rpc GetTxnByHash(CommonRequest) returns (TxnResponse);
   rpc GetBalance(CommonRequest) returns (BalanceResponse);
-  rpc GetAccountTransactions(CommonRequest) returns (TrxsResponse);
-  rpc GetTransactions(PagingRequest) returns (TrxsResponse);
+  rpc GetTxnsByAccount(CommonRequest) returns (TxnsResponse);
+  rpc GetTxns(PagingRequest) returns (TxnsResponse);
 }
 
 message SearchRequest {
@@ -23,19 +23,19 @@ message SearchRequest {
 
 
 message SendRequest{
-   string trx_id = 1;
+   string txn_id = 1;
    string public_key = 2;
-   TrxInput trx_input = 3;
-   TrxOutput trx_output = 4;
+   TxnInput txn_input = 3;
+   TxnOutput txn_output = 4;
 }
 
-message TrxInput{
+message TxnInput{
 	int64 time_stamp = 1;
 	string sender_address = 2;
 	string signature = 3;
 }
 
-message TrxOutput{
+message TxnOutput{
 	string recipient_address = 1;
 	double amount = 2;
 	float fee = 3;
@@ -47,7 +47,7 @@ message PagingRequest{
 }
 
 message CommonRequest{
-  string trxHash = 1;
+  string txnHash = 1;
   int32 blockHeight = 2;
   string address = 3;
 }
@@ -60,15 +60,15 @@ message BlockResponse {
   BlockModel block = 1;
 }
 
-message TrxsResponse {
-  repeated TrxModel transactions = 1;
+message TxnsResponse {
+  repeated TxnModel transactions = 1;
 }
 
 message BalanceResponse {
   double balance = 1;
 }
 
-message TrxModel {
+message TxnModel {
 	string Hash = 1;
 	int64 TimeStamp = 2;
 	string Sender = 3;
@@ -100,6 +100,6 @@ message SendResponse {
   string result = 1;
 }
 
-message TrxResponse {
-  TrxModel trx = 1;
+message TxnResponse {
+  TxnModel txn = 1;
 }

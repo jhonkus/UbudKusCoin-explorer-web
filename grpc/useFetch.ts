@@ -14,6 +14,16 @@ export function getBlock(height = '1') {
     }
 }
 
+export function getTxn(hash = 'hash') {
+    const { data, error } = useSWR(`/api/txn/${hash}`, fetcher)
+    return {
+        txn: data?.txn,
+        isLoading: !error && !data,
+        isError: error
+    }
+}
+
+
 export function getBlocks(page = 1, numOfRow = 10) {
     const dispatch = useDispatch();
     const { data, error } = useSWR(`/api/blocks/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })

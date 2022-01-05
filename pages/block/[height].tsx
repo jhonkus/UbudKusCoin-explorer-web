@@ -1,22 +1,21 @@
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { useRouter } from 'next/router';
-import styles from './Height.module.css'
+import styles from './Detail.module.css'
 import toDate from '../../utils/util';
 import { getBlock } from '../../grpc/useFetch'
 
 // type RootState = ReturnType<typeof store.getState>;
 
-export default function BlockHeight() {
+export default function Block() {
   const router = useRouter()
   const { height } = router.query;
+  console.log('height:',height);
+
   const { block, isLoading, isError } = getBlock(height?.toString());
   if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Failed to load blocks</div>
+  if (isError) return <div>Failed to load block</div>
 
-  if (!block) {
-    return (<div>Please back </div>)
-  }
   return (
     <div className="container">
       <Header />
@@ -87,7 +86,7 @@ export default function BlockHeight() {
   )
 }
 
-BlockHeight.getInitialProps = async({ req }) => {
+Block.getInitialProps = async({ req }) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
   return { userAgent }
 }
