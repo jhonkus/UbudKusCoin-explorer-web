@@ -1,6 +1,7 @@
 .dateTx {
     font-size: 0.6em;
     color: gray;
+    white-space:nowrap;
 }
 
 .tx {
@@ -14,11 +15,15 @@
 .amount {
     padding: 5px;
     font-size: 0.7em;
-    width: 100%;
+    min-width: 10%;
     text-align: end;
     background-color: #eee;
+    white-space:nowrap;
 }
 
+.tableHeader{
+    font-size: 0.8em;
+}
 
 .hashTx {
     font-size: 0.8em;
@@ -32,6 +37,18 @@
 
 .addrs {
     color: grey;
+}
+
+.addrsInTable {
+    font-size: 0.7em;
+    color: grey;
+}
+
+.amountInTable {
+    padding: 5px;
+    font-size: 0.7em;
+    text-align: end;
+    white-space:nowrap;
 }
 
 .subTitle {

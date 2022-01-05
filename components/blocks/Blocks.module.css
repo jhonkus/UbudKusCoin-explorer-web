@@ -68,3 +68,15 @@
     color: green;
     font-size: 0.8em;
 }
+
+.addrsInTable {
+    font-size: 0.7em;
+    color: grey;
+}
+
+.amountInTable {
+    padding: 5px;
+    font-size: 0.7em;
+    text-align: end;
+    white-space:nowrap;
+}

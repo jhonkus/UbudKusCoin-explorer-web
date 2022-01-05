@@ -5,7 +5,7 @@ import TableBlocks from '../../components/blocks/TableBlocks'
 export default function Blocks(props: any) {
   const pageNum = parseInt(props.page, 10);
   return (
-    <div className="container-fluid">
+    <div className="container">
       <Header />
       <TableBlocks page={pageNum} />
       <Footer />

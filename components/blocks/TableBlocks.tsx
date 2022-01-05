@@ -21,6 +21,7 @@ const Pagination = ({ pageNum = 1 }) => {
     </nav>
   )
 }
+
 /**
  * Block component
  * @returns 
@@ -32,46 +33,56 @@ const TableBlocks = ({ page = 1 }) => {
   return (
     <>
       <div className={styles.tableTitle}>
-        <h3>Blocks</h3>
+        <h5>Blocks</h5>
       </div>
-      <Pagination pageNum={page} />
-      <div className="row">
-        <div className="col-sm">Block</div>
-        <div className="col-sm">Time Stamp</div>
-        <div className="col-sm">Miner</div>
-        <div className="col-sm">Num Of Tx</div>
-        <div className="col-sm">Value</div>
-        <div className="col-sm">Reward</div>
-      </div>
+      <div className="card">
 
-      {blocks.map((block) => (
-        <div className="row" key={block.Height}>
+        <div className="card-body">
+          <Pagination pageNum={page} />
+          <div className="table-responsive">
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th className={styles.tableHeader}>Block</th>
+                  <th className={styles.tableHeader}>Time Stamp</th>
+                  <th className={styles.tableHeader}>Miner</th>
+                  <th className={styles.tableHeader}>Num Of Tx</th>
+                  <th className={styles.tableHeader}>Value</th>
+                  <th className={styles.tableHeader}>Reward</th>
+                </tr>
+              </thead>
+              <tbody>
 
-          <div className="col-sm">
-            <Link href={`/blocks/${block.Height}`}>
-              <a><span className={styles.heightBlock}>{block.Height}</span></a>
-            </Link>
-          </div>
-          <div className="col-sm">
-            <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
-          </div>
-          <div className="col-sm">
-            <span className={styles.validator}>{block.Validator?.substring(0, 20)}...</span>
-          </div>
-          <div className="col-sm">
-            <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
-          </div>
-          <div className="col-sm">
-            <div className={styles.amount}>{block.TotalAmount} Ukc
-            </div></div>
-          <div className="col-sm">
-            <div className={styles.amount}>{block.TotalReward} Ukc
-            </div></div>
+                {blocks.map((block) => (
+                  <tr key={block.Height}>
+                    <td>
+                      <Link href={`/blocks/${block.Height}`}>
+                        <a><span className={styles.heightBlock}>{block.Height}</span></a>
+                      </Link>
+                    </td>
+                    <td>
+                      <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
+                    </td>
+                    <td>
+                      <span className={styles.addrsInTable}>{block.Validator?.substring(0, 20)}...</span>
+                    </td>
+                    <td>
+                      <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
+                    </td>
+                    <td>
+                      <div className={styles.amountInTable}>{block.TotalAmount} Ukuci</div>
+                    </td>
+                    <td>
+                      <div className={styles.amountInTable}>{block.TotalReward.toFixed(8)}</div>
+                    </td>
+                  </tr>
+                ))}
 
-        </div>
-      ))}
-
-      <Pagination pageNum={page} />
+              </tbody>
+            </table>
+          </div>
+          <Pagination pageNum={page} />
+        </div></div>
     </>
   )
 }
