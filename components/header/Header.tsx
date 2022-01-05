@@ -18,6 +18,9 @@ const Header = () => {
             <li className="nav-item">
               <Link href="/"><a className="nav-link active" aria-current="page">Home</a></Link>
             </li>
+            <li className="nav-item">
+              <Link href="https://ubudkuscoin.com"><a  target="_blank" className="nav-link active" aria-current="page">Main site</a></Link>
+            </li>
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Blockchain
