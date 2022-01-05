@@ -3,8 +3,14 @@
 }
 
 .rowDiv {
-    margin-left: 10px;
-    height: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #eee;
+}
+
+.value {
+    color: grey;
+    font-size: 0.95em;
 }
 
 .title {

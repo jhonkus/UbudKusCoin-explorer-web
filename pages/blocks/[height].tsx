@@ -32,48 +32,59 @@ export default function BlockDetail() {
         <div className="card-body">
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Height</div><div className="col"> :  {block.Height}</div>
+            <div className="col-sm-4">Height </div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.Height}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">TimeStamp</div><div className="col"> :  { toDate(block.TimeStamp)}</div>
+            <div className="col-sm-4">Time stamp </div>
+            <div className={`col-sm-8 ${styles.value}`}>{ toDate(block.TimeStamp)}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3"> PrevHash</div><div className="col"> :  {block.PrevHash}</div>
+            <div className="col-sm-4">Prev. hash </div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.PrevHash}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Hash</div><div className="col"> :  {block.Hash}</div>
+            <div className="col-sm-4">Hash </div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.Hash}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Transactions</div><div className="col"> :  {block.transactions?.length} transaction(s) in this block</div>
+            <div className="col-sm-4">Transactions </div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.transactions?.length} transaction(s) in this block</div>
           </div>
 
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Validator</div><div className="col"> :  {block.Validator}</div>
+            <div className="col-sm-4">Validator</div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.Validator}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3"> MerkleRoot</div><div className="col"> :  {block.MerkleRoot}</div>
+            <div className="col-sm-4">MerkleRoot </div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.MerkleRoot}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3"> NumOfTx</div><div className="col"> :  {block.NumOfTx}</div>
+            <div className="col-sm-4">NumOfTx</div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.NumOfTx}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Difficulty</div><div className="col"> :  {block.Difficulty}</div>
+            <div className="col-sm-4">Difficulty</div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.Difficulty}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">TotalAmount</div><div className="col"> :  {block.TotalAmount}</div>
+            <div className="col-sm-4">TotalAmount</div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.TotalAmount}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3"> TotalReward</div><div className="col"> :  {block.TotalReward}</div>
+            <div className="col-sm-4">TotalReward</div>
+            <div className={`col-sm-8 ${styles.value}`}>{block.TotalReward}</div>
           </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ import logoUkc from '../../public/logoUkc.png'
 const Header = () => {
   return (
     // <!-- Responsive navbar-->
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
         <Link href="/"><a className="navbar-brand">
           <Image src={logoUkc} alt="Logo Ukc" width="30" height="24" className="d-inline-block align-text-top" />
