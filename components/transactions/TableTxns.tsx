@@ -1,6 +1,6 @@
 import styles from './Txns.module.css'
 import Link from 'next/link'
-import { useTxns } from '../../services/useFetch';
+import { getTxns } from '../../grpc/useFetch';
 import toDate from '../../utils/util';
 
 const Pagination = ({ pageNum = 1 }) => {
@@ -26,7 +26,7 @@ const Pagination = ({ pageNum = 1 }) => {
  * @returns Transactions component
  */
 const TableTxns = ({ page = 1 }) => {
-  const { transactions, isLoading, isError } = useTxns(page, 25);
+  const { transactions, isLoading, isError } = getTxns(page, 25);
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load transactions</div>
 

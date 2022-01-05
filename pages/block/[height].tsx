@@ -1,24 +1,18 @@
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
-import store from '../../redux/store';
-import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import styles from './BlockDetail.module.css'
+import styles from './Height.module.css'
 import toDate from '../../utils/util';
+import { getBlock } from '../../grpc/useFetch'
 
-type RootState = ReturnType<typeof store.getState>;
+// type RootState = ReturnType<typeof store.getState>;
 
-export default function BlockDetail() {
-  const savedBlocks = useSelector((state: RootState) => state.blocks);
+export default function BlockHeight() {
   const router = useRouter()
   const { height } = router.query;
-  const [block, setBlock] = useState(Object);
-
-  useEffect(() => {
-    const block = savedBlocks?.blocks?.find(({ Height }) => Height === height);
-    setBlock(block);
-  }, [height, savedBlocks?.blocks]);
+  const { block, isLoading, isError } = getBlock(height?.toString());
+  if (isLoading) return <div>Loading...</div>
+  if (isError) return <div>Failed to load blocks</div>
 
   if (!block) {
     return (<div>Please back </div>)
@@ -91,4 +85,9 @@ export default function BlockDetail() {
       <Footer />
     </div>
   )
+}
+
+BlockHeight.getInitialProps = async({ req }) => {
+  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
+  return { userAgent }
 }

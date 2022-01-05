@@ -1,6 +1,6 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
-import { useBlocks } from '../../services/useFetch'
+import { getBlocks } from '../../grpc/useFetch'
 import toDate from '../../utils/util';
 
 
@@ -9,7 +9,7 @@ import toDate from '../../utils/util';
  * @returns 
  */
 const WidgetBlocks = () => {
-  const { blocks, isLoading, isError } = useBlocks(1, 10);
+  const { blocks, isLoading, isError } = getBlocks(1, 10);
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load blocks</div>
   return (
@@ -27,7 +27,7 @@ const WidgetBlocks = () => {
               <div className={styles.bk}>BK</div>
             </div>
             <div className="col-sm-3 d-flex flex-column">
-              <Link href={`/blocks/${block.Height}`}>
+              <Link href={`/block/${block.Height}`}>
                 <a><span className={styles.heightBlock}>{block.Height}</span></a>
               </Link>
               <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>

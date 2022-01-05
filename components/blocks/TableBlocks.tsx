@@ -1,12 +1,12 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
 import toDate from '../../utils/util';
-import { useBlocks } from '../../services/useFetch';
+import { getBlocks } from '../../grpc/useFetch';
 
 
 const Pagination = ({ pageNum = 1 }) => {
   return (
-    <nav aria-label="block paging">
+    <nav aria-label="block paging"> 
       <ul className="pagination">
         {/* <li className="page-item"><a className="page-link" href={`/blocks?page=1`}>First</a></li> */}
         <li className="page-item"><a className="page-link" href={`/blocks?page=${pageNum - 1}`}>Prev</a></li>
@@ -27,7 +27,7 @@ const Pagination = ({ pageNum = 1 }) => {
  * @returns 
  */
 const TableBlocks = ({ page = 1 }) => {
-  const { blocks, isLoading, isError } = useBlocks(page, 25);
+  const { blocks, isLoading, isError } = getBlocks(page, 25);
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load blocks</div>
   return (
@@ -56,7 +56,7 @@ const TableBlocks = ({ page = 1 }) => {
                 {blocks.map((block) => (
                   <tr key={block.Height}>
                     <td>
-                      <Link href={`/blocks/${block.Height}`}>
+                      <Link href={`/block/${block.Height}`}>
                         <a><span className={styles.heightBlock}>{block.Height}</span></a>
                       </Link>
                     </td>

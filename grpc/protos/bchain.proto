@@ -6,11 +6,13 @@ option csharp_namespace = "GrpcService";
 service BChainService {
   rpc GenesisBlock(EmptyRequest) returns (BlockResponse);
   rpc LastBlock(EmptyRequest)  returns (BlockResponse);
-  rpc SendCoin(SendRequest)  returns (TrxResponse);
+  rpc SendCoin(SendRequest)  returns (SendResponse);
   rpc GetBlocks(PagingRequest) returns (BlocksResponse);
-  rpc GetBalance(AccountRequest) returns (BalanceResponse);
-  rpc GetAccountTransactions(AccountRequest) returns (TransactionsResponse);
-  rpc GetTransactions(PagingRequest) returns (TransactionsResponse);
+  rpc GetBlockByHeight(CommonRequest) returns (BlockResponse);
+  rpc GetTxnsByHash(CommonRequest) returns (TrxResponse);
+  rpc GetBalance(CommonRequest) returns (BalanceResponse);
+  rpc GetAccountTransactions(CommonRequest) returns (TrxsResponse);
+  rpc GetTransactions(PagingRequest) returns (TrxsResponse);
 }
 
 message SearchRequest {
@@ -39,14 +41,15 @@ message TrxOutput{
 	float fee = 3;
 }
 
-
-message AccountRequest{
-   string address = 1;
-}
-
 message PagingRequest{
   int32 page_number = 1;
   int32 result_per_page = 2; 
+}
+
+message CommonRequest{
+  string trxHash = 1;
+  int32 blockHeight = 2;
+  string address = 3;
 }
 
 message BlocksResponse {
@@ -57,7 +60,7 @@ message BlockResponse {
   BlockModel block = 1;
 }
 
-message TransactionsResponse {
+message TrxsResponse {
   repeated TrxModel transactions = 1;
 }
 
@@ -72,6 +75,7 @@ message TrxModel {
 	string Recipient = 4;
 	double Amount = 5;
 	float Fee = 6;
+  int64 Height = 7;
 }
 
 message BlockModel {
@@ -92,6 +96,10 @@ message BlockModel {
 message EmptyRequest {
 }
 
-message TrxResponse {
+message SendResponse {
   string result = 1;
+}
+
+message TrxResponse {
+  TrxModel trx = 1;
 }

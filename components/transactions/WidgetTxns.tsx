@@ -1,6 +1,6 @@
 import styles from './Txns.module.css'
 import Link from 'next/link'
-import { useTxns } from '../../services/useFetch';
+import { getTxns } from '../../grpc/useFetch';
 import toDate from '../../utils/util';
 
 /**
@@ -9,7 +9,7 @@ import toDate from '../../utils/util';
  */
 const WidgetTxns = () => {
 
-  const { transactions, isLoading, isError } = useTxns();
+  const { transactions, isLoading, isError } = getTxns();
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load transactions</div>
 
