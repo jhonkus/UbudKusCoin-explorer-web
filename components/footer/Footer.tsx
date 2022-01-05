@@ -27,7 +27,7 @@ const Footer = () => {
             </Link>
           </li> */}
         </ul>
-        <p className='text-center text-muted'>©2022 UbudKus Coin</p>
+        <p className='text-center text-muted'>©2022 Ubudkuscoin.com</p>
       </footer>
     </div>
   )

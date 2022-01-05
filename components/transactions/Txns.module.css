@@ -4,16 +4,17 @@
 }
 
 .tx {
-    padding: 4px;
+    padding: 3px;
     max-width: 40px;
-    font-size: 0.7em;
+    font-size: 0.6em;
     text-align: center;
     background-color: #dddddd;
 }
 
 .amount {
-    padding: 10px;
-    font-size: 0.75em;
+    padding: 5px;
+    font-size: 0.7em;
+    width: 100%;
     text-align: end;
     background-color: #eee;
 }
@@ -21,7 +22,7 @@
 
 .hashTx {
     font-size: 0.8em;
-    color:green;
+    color: green;
 }
 
 .addrsLabel {

@@ -24,19 +24,19 @@ const WidgetBlocks = () => {
         {blocks.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
-              <span className={styles.bk}>BK</span>
+              <div className={styles.bk}>BK</div>
             </div>
-            <div className="col-sm-2 d-flex flex-column">
+            <div className="col-sm-3 d-flex flex-column">
               <Link href={`/blocks/${block.Height}`}>
                 <a><span className={styles.heightBlock}>{block.Height}</span></a>
               </Link>
               <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-5 d-flex flex-column">
-              <span className={styles.validatorLabel}>Created by : <span className={styles.validator}>{block.Validator?.substring(0, 20)}...</span></span>
+              <span className={styles.validatorLabel}>Created by : <span className={styles.validator}>{block.Validator?.substring(0, 16)}...</span></span>
               <span className={styles.numTx}>{block.NumOfTx} <span className={styles.lblTx}>txns</span></span>
             </div>
-            <div className="col-sm-4 align-self-center">
+            <div className="col-sm-3 align-self-center">
               <div className={`align-self-end ${styles.amount}`}>{block.TotalAmount} Ukc</div>
             </div>
           </div>

@@ -27,21 +27,21 @@ const WidgetTxns = () => {
               <div className={styles.tx}>TX</div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
-              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 12)}...
               </span></a></Link>
               <span className={styles.dateTx}>{toDate(tx.TimeStamp)}</span>
             </div>
-            <div className="col-sm-4">
+            <div className="col-sm-5">
               <div className="d-flex flex-column">
                 <span className={styles.addrsLabel}>From&nbsp;&nbsp; 
-                  <span className={styles.addrs}>{tx.Sender.substring(0, 20)} ...</span>
+                  <span className={styles.addrs}>{tx.Sender.substring(0, 16)} ...</span>
                 </span>
                 <span className={styles.addrsLabel}>To&nbsp;&nbsp;
-                  <span className={styles.addrs}>{tx.Recipient.substring(0, 20)}...</span>
+                  <span className={styles.addrs}>{tx.Recipient.substring(0, 16)}...</span>
                 </span>
               </div>
             </div>
-            <div className="col-sm-4">
+            <div className="col-sm-3">
               <div className={styles.amount}>{tx.Amount} Ukc </div>
             </div>
           </div>
