@@ -19,11 +19,11 @@ export default function Home() {
         </div>
 
         <div className="row">
-          <div className="col">
+          <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
             <WidgetBlocks />
             <br/>
           </div>
-          <div className='col'>
+          <div className='col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6'>
             <WidgetTxns />
             <br/>
           </div>
