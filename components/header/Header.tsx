@@ -1,60 +1,41 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import logoUkc from '../../public/logoUkc.png'
 
 const Header = () => {
   return (
-    <header className='p-3 bg-dark text-white'>
-      <div className='container'>
-        <div className='d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start'>
-          <Link href="/">
-            <a className='d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none'>
-              UKC Scan
-            </a>
-          </Link>
-
-          <ul className='nav col-8 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0'>
-            <li>
-              <Link href="/blocks">
-                <a className='nav-link px-2 text-white'>
-                  Blocks
-                </a>
-              </Link>
+    // <!-- Responsive navbar-->
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="container">
+        <Link href="/"><a className="navbar-brand">
+          <Image src={logoUkc} alt="Logo Ukc" width="30" height="24" className="d-inline-block align-text-top" />
+          &nbsp;&nbsp;UKCScan
+        </a>
+        </Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li className="nav-item">
+              <Link href="/"><a className="nav-link active" aria-current="page">Home</a></Link>
             </li>
-            <li>
-              <Link href="/txns">
-                <a className='nav-link px-2 text-white'>
-                  Trasactions
-                </a>
-              </Link>
+            <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Blockchain
+              </a>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><Link href="/blocks"><a className="dropdown-item">View blocks</a></Link></li>
+                <li><Link href="/txns"><a className="dropdown-item">View txns</a></Link></li>
+              </ul>
             </li>
-            {/* <li>
-              <Link href="/about">
-                <a className='nav-link px-2 text-white'>
-                  About
-                </a>
-              </Link>
-            </li> */}
+            <li>&nbsp;&nbsp;&nbsp;</li>
           </ul>
-
-          <form className='col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3'>
-            <input
-              type='search'
-              className='form-control form-control-dark'
-              placeholder='Search...'
-              aria-label='Search'
-            />
+          <form className="d-flex">
+            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button className="btn btn-outline-success" type="submit">Search</button>
           </form>
-
-          <div className='text-end'>
-            <button type='button' className='btn btn-outline-light me-2'>
-              <Link href="/login">Login</Link>
-            </button>
-            <button type='button' className='btn btn-warning'>
-            <Link href="/signup">Sign-up</Link>
-            </button>
-          </div>
         </div>
       </div>
-    </header>
+    </nav>
   )
 }
 export default Header

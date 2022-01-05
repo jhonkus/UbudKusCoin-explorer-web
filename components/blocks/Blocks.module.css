@@ -10,6 +10,7 @@
 .numTx {
     font-size: 0.8em;
     color: green;
+    white-space: nowrap;
 }
 
 .lblTx {
@@ -56,6 +57,7 @@
     margin-bottom: 15px;
     margin-left: 5px;
     color: gray;
+    white-space: nowrap;
 }
 
 .divRow {
@@ -78,5 +80,10 @@
     padding: 5px;
     font-size: 0.7em;
     text-align: end;
-    white-space:nowrap;
+    white-space: nowrap;
+}
+
+.tableHeader {
+    font-size: 0.8em;
+    white-space: nowrap;
 }

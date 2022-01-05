@@ -1,7 +1,7 @@
 .dateTx {
     font-size: 0.6em;
     color: gray;
-    white-space:nowrap;
+    white-space: nowrap;
 }
 
 .tx {
@@ -18,11 +18,12 @@
     min-width: 10%;
     text-align: end;
     background-color: #eee;
-    white-space:nowrap;
+    white-space: nowrap;
 }
 
-.tableHeader{
+.tableHeader {
     font-size: 0.8em;
+    white-space: nowrap;
 }
 
 .hashTx {
@@ -48,7 +49,7 @@
     padding: 5px;
     font-size: 0.7em;
     text-align: end;
-    white-space:nowrap;
+    white-space: nowrap;
 }
 
 .subTitle {
