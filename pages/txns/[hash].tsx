@@ -34,31 +34,32 @@ export default function TransactionDetail() {
        
         <div className="card-body">
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Transaction Hash</div>  <div className={`col ${styles.scCol}`}> : {transaction.Hash}</div>
+            <div className="col-sm-4">Transaction Hash</div>  <div className={`col-sm-8 ${styles.value}`}>{transaction.Hash}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Status</div>  <div className={`col ${styles.scCol}`}> : success</div>
+            <div className="col-sm-4">Status</div>  
+            <div className={`col-sm-8 ${styles.value}`}>success</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">TimeStamp</div>  <div className={`col ${styles.scCol}`}> : {toDate(transaction.TimeStamp)}</div>
+            <div className="col-sm-4">TimeStamp</div>  <div className={`col-sm-8 ${styles.value}`}>{toDate(transaction.TimeStamp)}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">From</div>  <div className={`col ${styles.scCol}`}> : {transaction.Sender}</div>
+            <div className="col-sm-4">From</div>  <div className={`col-sm-8 ${styles.value}`}>{transaction.Sender}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">To</div>  <div className={`col ${styles.scCol}`}> : {transaction.Recipient}</div>
+            <div className="col-sm-4">To</div>  <div className={`col-sm-8 ${styles.value}`}>{transaction.Recipient}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Value</div>  <div className={`col ${styles.scCol}`}> : {transaction.Amount}</div>
+            <div className="col-sm-4">Value</div>  <div className={`col-sm-8 ${styles.value}`}>{transaction.Amount}</div>
           </div>
 
           <div className={`row ${styles.rowDiv}`}>
-            <div className="col-3">Transaction Fee</div>  <div className={`col ${styles.scCol}`}> : {transaction.Fee}</div>
+            <div className="col-sm-4">Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{transaction.Fee}</div>
           </div>
         </div>
       </div>
