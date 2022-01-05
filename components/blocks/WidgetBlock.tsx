@@ -16,37 +16,35 @@ const WidgetBlocks = () => {
     <div className="card">
       <div className="card-header">
         <div className={styles.subTitle}>
-          <h5>Latest Blocks</h5>
+          <h6>Latest Blocks</h6>
         </div>
       </div>
       <div className="card-body">
 
         {blocks.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
-            <div className="col-sm-2 col-md-3">
-              <div className={styles.bk}>BK</div>
+            <div className="col-sm-1 align-self-center">
+              <span className={styles.bk}>BK</span>
             </div>
-            <div className="col-sm-3  col-md-5">
+            <div className="col-sm-2 d-flex flex-column">
               <Link href={`/blocks/${block.Height}`}>
                 <a><span className={styles.heightBlock}>{block.Height}</span></a>
               </Link>
-              <br />
               <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
             </div>
-            <div className="col-sm-5  col-md-12">
-              <span className={styles.validatorLabel}>Created by : </span><span className={styles.validator}>{block.Validator?.substring(0, 20)}...</span>
-              <br />
-              <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
+            <div className="col-sm-5 d-flex flex-column">
+              <span className={styles.validatorLabel}>Created by : <span className={styles.validator}>{block.Validator?.substring(0, 20)}...</span></span>
+              <span className={styles.numTx}>{block.NumOfTx} <span className={styles.lblTx}>txns</span></span>
             </div>
-            <div className="col-sm-2  col-md-2">
-              <div className={styles.amount}>{block.TotalAmount} Ukc
-              </div></div>
+            <div className="col-sm-4 align-self-center">
+              <div className={`align-self-end ${styles.amount}`}>{block.TotalAmount} Ukc</div>
+            </div>
           </div>
         ))}
 
       </div>
       <div className="card-footer text-center">
-        <Link href="/blocks"><a>View all bloks</a></Link>
+        <Link href="/blocks"><a><span className={styles.viewall}>View all bloks</span></a></Link>
       </div>
     </div>
   )

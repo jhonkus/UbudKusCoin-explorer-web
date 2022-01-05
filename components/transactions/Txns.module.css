@@ -1,36 +1,36 @@
 .dateTx {
-    font-size: 0.8em;
+    font-size: 0.6em;
     color: gray;
 }
 
 .tx {
-    padding: 10px;
+    padding: 5px;
+    max-width: 40px;
+    font-size: 0.7em;
     text-align: center;
     background-color: #dddddd;
 }
 
 .amount {
     padding: 10px;
-    font-size: 0.8em;
-    color: black;
-    background-color: #eeeeee;
+    font-size: 0.75em;
+    text-align: end;
+    background-color: #eee;
 }
 
 
 .hashTx {
-    font-size: 1.2em;
-    color: blue;
+    font-size: 0.8em;
+    color:green;
 }
 
 .addrsLabel {
-    font-size: 0.8em;
-    color: gray;
-    width: 50px;
+    font-size: 0.7em;
+    color: black;
 }
 
 .addrs {
-    font-size: 0.8em;
-    color: black;
+    color: grey;
 }
 
 .subTitle {
@@ -46,6 +46,12 @@
 }
 
 .divRow {
-    padding: 0.8em;
+    padding-top: 6px;
+    padding-bottom: 6px;
     border-bottom: 1px solid #dddddd;
+}
+
+.viewall {
+    color: green;
+    font-size: 0.8em;
 }

@@ -1,48 +1,51 @@
 .validatorLabel {
-    font-size: 12px;
-    color: gray;
-}
-
-.validator {
-    font-size: 12px;
+    font-size: 0.7em;
     color: black;
 }
 
+.validator {
+    color: gray;
+}
+
 .numTx {
-    font-size: 12px;
-    color: blue;
+    font-size: 0.8em;
+    color: green;
 }
 
 .lblTx {
-    font-size: 12px;
+    font-size: 0.8em;
     color: gray;
 }
 
 
 .dateTx {
-    font-size: 12px;
+    font-size: 0.6em;
     color: gray;
 }
 
 
 .heightBlock {
-    font-size: 14px;
-    color: blue;
+    font-size: 0.85em;
+    color: green;
 }
 
 .bk {
-    padding: 10px;
+    padding: 5px;
+    max-width: 40px;
+    font-size: 0.7em;
     text-align: center;
     background-color: #dddddd;
 }
 
 .amount {
-    font-size: 11px;
-    color: black;
+    padding: 10px;
+    font-size: 0.75em;
+    text-align: end;
+    background-color: #eee;
 }
 
 .subTitle {
-    margin-left: 8px;
+    margin-left: 0.8em;
     color: gray;
 }
 
@@ -55,6 +58,12 @@
 }
 
 .divRow {
-    padding: 8px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     border-bottom: 1px solid #dddddd;
+}
+
+.viewall {
+    color: green;
+    font-size: 0.8em;
 }
