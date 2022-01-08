@@ -25,13 +25,19 @@ const WidgetBlocks = () => {
               <div className={styles.bk}>BK</div>
             </div>
             <div className="col-sm-3 d-flex flex-column">
-              <Link href={`/block/${block.Height}`}>
+              <Link href={`/block/height/${block.Height}`}>
                 <a><span className={styles.heightBlock}>{block.Height}</span></a>
               </Link>
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-5 d-flex flex-column">
-              <span className={styles.validatorLabel}>Created by : <span className={styles.validator}>{block.Validator?.substring(0, 16)}...</span></span>
+              <span className={styles.validatorLabel}>Validator : <span className={styles.validator}>
+                <Link href={`/address/${block.Validator}`}>
+                  <a>
+                    {block.Validator?.substring(0, 16)}...
+                  </a>
+                </Link>
+              </span></span>
               <span className={styles.numTx}>{block.NumOfTx} <span className={styles.lblTx}>txns</span></span>
             </div>
             <div className="col-sm-3 align-self-center">

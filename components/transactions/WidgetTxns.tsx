@@ -34,10 +34,20 @@ const WidgetTxns = () => {
             <div className="col-sm-5">
               <div className="d-flex flex-column">
                 <span className={styles.addrsLabel}>From&nbsp;&nbsp;
-                  <span className={styles.addrs}>{tx.Sender.substring(0, 16)} ...</span>
+                  <span className={styles.addrs}>
+                    <Link href={`/address/${tx.Sender}`}>
+                      <a>
+                        {tx.Sender.substring(0, 16)} ...
+                      </a>
+                    </Link></span>
                 </span>
                 <span className={styles.addrsLabel}>To&nbsp;&nbsp;
-                  <span className={styles.addrs}>{tx.Recipient.substring(0, 16)}...</span>
+                  <span className={styles.addrs}>
+                    <Link href={`/address/${tx.Recipient}`}>
+                      <a>
+                        {tx.Recipient.substring(0, 18)}...
+                      </a>
+                    </Link></span>
                 </span>
               </div>
             </div>

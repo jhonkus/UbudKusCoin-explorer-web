@@ -1,12 +1,11 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
-import { timeAgo } from '../../utils/util';
+import { timeAgo, formatAmount, formatFee } from '../../utils/util';
 import { getBlocks } from '../../grpc/useFetch';
-
 
 const Pagination = ({ pageNum = 1 }) => {
   return (
-    <nav aria-label="block paging"> 
+    <nav aria-label="block paging">
       <ul className="pagination">
         {/* <li className="page-item"><a className="page-link" href={`/blocks?page=1`}>First</a></li> */}
         <li className="page-item"><a className="page-link" href={`/blocks?page=${pageNum - 1}`}>Prev</a></li>
@@ -44,9 +43,9 @@ const TableBlocks = ({ page = 1 }) => {
               <thead>
                 <tr>
                   <th className={styles.tableHeader}>Block</th>
-                  <th className={styles.tableHeader}>Time Stamp</th>
-                  <th className={styles.tableHeader}>Miner</th>
-                  <th className={styles.tableHeader}>Num Of Tx</th>
+                  <th className={styles.tableHeader}>Age</th>
+                  <th className={styles.tableHeader}>Txn</th>
+                  <th className={styles.tableHeader}>Validator</th>
                   <th className={styles.tableHeader}>Value</th>
                   <th className={styles.tableHeader}>Reward</th>
                 </tr>
@@ -56,24 +55,28 @@ const TableBlocks = ({ page = 1 }) => {
                 {blocks.map((block) => (
                   <tr key={block.Height}>
                     <td>
-                      <Link href={`/block/${block.Height}`}>
-                        <a><span className={styles.heightBlock}>{block.Height}</span></a>
+                      <Link href={`/block/height/${block.Height}`}>
+                        <a className={styles.heightBlock}>{block.Height}</a>
                       </Link>
                     </td>
                     <td>
-                      <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
+                      <span className={styles.dateInTable}>{timeAgo(block.TimeStamp)}</span>
+                    </td>
+                    <td className={styles.numTxInTable}>
+                      <span >{block.NumOfTx} </span>
                     </td>
                     <td>
-                      <span className={styles.addrsInTable}>{block.Validator?.substring(0, 20)}...</span>
+                      <Link href={`/address/${block.Validator}`}>
+                        <a className={styles.addrsInTable}>
+                          {block.Validator?.substring(0, 20)}...
+                        </a>
+                      </Link>
                     </td>
                     <td>
-                      <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
+                      <div className={styles.amountInTable}>{formatAmount(block.TotalAmount)} Ukuci</div>
                     </td>
                     <td>
-                      <div className={styles.amountInTable}>{block.TotalAmount} Ukuci</div>
-                    </td>
-                    <td>
-                      <div className={styles.amountInTable}>{block.TotalReward.toFixed(8)}</div>
+                      <div className={styles.amountInTable}>{formatFee(block.TotalReward)}</div>
                     </td>
                   </tr>
                 ))}

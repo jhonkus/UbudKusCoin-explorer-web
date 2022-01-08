@@ -6,7 +6,17 @@ const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json())
 
 
 export function getBlock(height = '1') {
-    const { data, error } = useSWR(`/api/block/${height}`, fetcher)
+    const { data, error } = useSWR(`/api/block/height/${height}`, fetcher)
+    return {
+        block: data?.block,
+        isLoading: !error && !data,
+        isError: error
+    }
+}
+
+
+export function GetBlockByHash(hash = 'hash') {
+    const { data, error } = useSWR(`/api/block/hash/${hash}`, fetcher)
     return {
         block: data?.block,
         isLoading: !error && !data,

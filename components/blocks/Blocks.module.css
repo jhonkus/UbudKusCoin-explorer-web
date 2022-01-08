@@ -1,10 +1,10 @@
 .validatorLabel {
-    font-size: 0.7em;
-    color: black;
+    font-size: 0.75em;
+    color: #454545;
 }
 
 .validator {
-    color: gray;
+    color: green;
 }
 
 .numTx {
@@ -13,15 +13,22 @@
     white-space: nowrap;
 }
 
+.numTxInTable{
+    font-size: 0.85em;
+    color: green;
+    white-space: nowrap;
+}
+
 .lblTx {
     font-size: 0.8em;
-    color: gray;
+    color: #454545;
 }
 
 
 .dateTx {
     font-size: 0.7em;
-    color: gray;
+    color: #454545;
+    white-space: nowrap;
 }
 
 
@@ -48,15 +55,15 @@
 
 .subTitle {
     margin-left: 0.8em;
-    color: gray;
+    color: #454545;
 }
 
 
 .tableTitle {
-    margin-top: 25px;
+    margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 5px;
-    color: gray;
+    color: #454545;
     white-space: nowrap;
 }
 
@@ -72,16 +79,23 @@
 }
 
 .addrsInTable {
-    font-size: 0.7em;
-    color: grey;
+    font-size: 0.8em;
+    color: green;
 }
 
 .amountInTable {
     padding: 5px;
-    font-size: 0.7em;
+    font-size: 0.8em;
     text-align: end;
     white-space: nowrap;
 }
+
+.dateInTable {
+    font-size: 0.8em;
+    color: #454545;
+    white-space: nowrap;
+}
+
 
 .tableHeader {
     font-size: 0.8em;

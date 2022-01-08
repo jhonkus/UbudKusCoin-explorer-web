@@ -1,17 +1,17 @@
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Header from '../../../components/header/Header'
+import Footer from '../../../components/footer/Footer'
 import { useRouter } from 'next/router';
-import styles from './Detail.module.css'
-import { timeAgo, toDate } from '../../utils/util';
-import { getBlock } from '../../grpc/useFetch'
+import styles from '../Detail.module.css'
+import { timeAgo, toDate } from '../../../utils/util';
+import { GetBlockByHash } from '../../../grpc/useFetch'
 import Link from 'next/link';
 
 export default function Block() {
   const router = useRouter()
-  const { height } = router.query;
+  const { hash } = router.query;
 
 
-  const { block, isLoading, isError } = getBlock(height?.toString());
+  const { block, isLoading, isError } = GetBlockByHash(hash?.toString());
   if (isLoading) {
     return (
       <div className="container">
@@ -89,7 +89,7 @@ export default function Block() {
           <div className={`row ${styles.rowDiv}`}>
             <div className="col-sm-4">Prev. hash </div>
             <div className={`col-sm-8`}>
-              <Link href={`/block/${block.PrevHash}`}>
+              <Link href={`/block/hash/${block.PrevHash}`}>
                 <a className={styles.valueWithLink}>{block.PrevHash}</a>
               </Link>
             </div>

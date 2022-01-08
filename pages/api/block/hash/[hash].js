@@ -1,9 +1,11 @@
-const client = require("../../../grpc/client");
+const client = require("../../../../grpc/client");
 
 export default async function handler(req, res) {
-    const { height } = req.query
+    const { hash } = req.query
+    console.log('== hash:', hash);
+    
     return new Promise(() => {
-       client.GetBlockByHeight({ blockHeight: height }, function(err, response) {
+       client.GetBlockByHash({ blockHash: hash }, function(err, response) {
             if (!err) {
                 res.statusCode = 200
                 res.setHeader('Content-Type', 'application/json');

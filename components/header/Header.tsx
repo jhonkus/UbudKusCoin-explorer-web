@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import logoUkc from '../../public/logoUkc.png'
+import Search from '../search/search'
 
 const Header = () => {
   return (
@@ -38,10 +39,12 @@ const Header = () => {
             </li>
             <li>&nbsp;&nbsp;&nbsp;</li>
           </ul>
-          <form className="d-flex">
+          {/* <form className="d-flex"> */}
+          <Search/>
+            {/* 
             <input className="form-control me-2" type="search" placeholder="Search by address/txn hash/block" aria-label="Search" />
-            <button className="btn btn-outline-success" type="submit">Search</button>
-          </form>
+            <button className="btn btn-outline-success" type="submit">Search</button> */}
+          {/* </form> */}
         </div>
       </div>
     </nav>

@@ -37,7 +37,7 @@
 }
 
 .addrs {
-    color: grey;
+    color: green;
 }
 
 .addrsInTable {
@@ -58,7 +58,6 @@
 }
 
 .tableTitle {
-    margin-top: 2em;
     margin-bottom: 15px;
     margin-left: 5px;
     color: gray;
