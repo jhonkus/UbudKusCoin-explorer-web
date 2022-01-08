@@ -1,9 +1,7 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
 import { getBlocks } from '../../grpc/useFetch'
-import toDate from '../../utils/util';
-
-
+import { timeAgo, formatAmount } from '../../utils/util';
 /**
  * Block component
  * @returns 
@@ -30,14 +28,14 @@ const WidgetBlocks = () => {
               <Link href={`/block/${block.Height}`}>
                 <a><span className={styles.heightBlock}>{block.Height}</span></a>
               </Link>
-              <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
+              <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-5 d-flex flex-column">
               <span className={styles.validatorLabel}>Created by : <span className={styles.validator}>{block.Validator?.substring(0, 16)}...</span></span>
               <span className={styles.numTx}>{block.NumOfTx} <span className={styles.lblTx}>txns</span></span>
             </div>
             <div className="col-sm-3 align-self-center">
-              <div className={`align-self-end ${styles.amount}`}>{block.TotalAmount} Ukc</div>
+              <div className={`align-self-end ${styles.amount}`}>{formatAmount(block.TotalAmount)} Ukc</div>
             </div>
           </div>
         ))}

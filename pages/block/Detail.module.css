@@ -16,3 +16,8 @@
 .title {
     margin-top: 15px;
 }
+
+.valueWithLink {
+    color: green;
+    font-size: 0.95em;
+}

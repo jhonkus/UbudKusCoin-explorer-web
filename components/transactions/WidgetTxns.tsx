@@ -1,7 +1,7 @@
 import styles from './Txns.module.css'
 import Link from 'next/link'
 import { getTxns } from '../../grpc/useFetch';
-import toDate from '../../utils/util';
+import { formatAmount, timeAgo } from '../../utils/util';
 
 /**
  * 
@@ -29,11 +29,11 @@ const WidgetTxns = () => {
             <div className="col-sm-3  d-flex flex-column">
               <Link href={`/txn/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 12)}...
               </span></a></Link>
-              <span className={styles.dateTx}>{toDate(tx.TimeStamp)}</span>
+              <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
             </div>
             <div className="col-sm-5">
               <div className="d-flex flex-column">
-                <span className={styles.addrsLabel}>From&nbsp;&nbsp; 
+                <span className={styles.addrsLabel}>From&nbsp;&nbsp;
                   <span className={styles.addrs}>{tx.Sender.substring(0, 16)} ...</span>
                 </span>
                 <span className={styles.addrsLabel}>To&nbsp;&nbsp;
@@ -42,7 +42,7 @@ const WidgetTxns = () => {
               </div>
             </div>
             <div className="col-sm-3">
-              <div className={styles.amount}>{tx.Amount} Ukc </div>
+              <div className={styles.amount}>{formatAmount(tx.Amount)} Ukc </div>
             </div>
           </div>
 

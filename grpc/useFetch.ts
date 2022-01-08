@@ -14,6 +14,18 @@ export function getBlock(height = '1') {
     }
 }
 
+export function getAccount(address = 'address') {
+    const { data, error } = useSWR(`/api/address/${address}`, fetcher)
+    return {
+        transactions: data?.transactions,
+        blocks: data?.blocks,
+        balance: data?.balance,
+        numBlockValidate: data?.numBlockValidate,
+        isLoading: !error && !data,
+        isError: error
+    }
+}
+
 export function getTxn(hash = 'hash') {
     const { data, error } = useSWR(`/api/txn/${hash}`, fetcher)
     return {

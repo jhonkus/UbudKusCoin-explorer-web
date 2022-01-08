@@ -1,7 +1,8 @@
 import styles from './Txns.module.css'
 import Link from 'next/link'
 import { getTxns } from '../../grpc/useFetch';
-import toDate from '../../utils/util';
+import { timeAgo, formatAmount, formatFee } from '../../utils/util';
+
 
 const Pagination = ({ pageNum = 1 }) => {
   return (
@@ -43,7 +44,8 @@ const TableTxns = ({ page = 1 }) => {
               <thead>
                 <tr>
                   <th className={styles.tableHeader}>Txn Hash</th>
-                  <th className={styles.tableHeader}>Time Stamp</th>
+                  <th className={styles.tableHeader}>Block</th>
+                  <th className={styles.tableHeader}>Age</th>
                   <th className={styles.tableHeader}>From</th>
                   <th className={styles.tableHeader}>To</th>
                   <th className={styles.tableHeader}>Value</th>
@@ -60,7 +62,10 @@ const TableTxns = ({ page = 1 }) => {
                       </span></a></Link>
                     </td>
                     <td>
-                      <span className={styles.dateTx}>{toDate(tx.TimeStamp)}</span>
+                      <span className={styles.dateTx}>{tx.Height}</span>
+                    </td>
+                    <td>
+                      <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
                     </td>
                     <td className={styles.address}>
                       <span className={styles.addrsInTable}>{tx.Sender.substring(0, 15)}...</span>
@@ -68,10 +73,10 @@ const TableTxns = ({ page = 1 }) => {
                     <td>
                       <span className={styles.addrsInTable}>{tx.Recipient.substring(0, 15)}...</span></td>
                     <td>
-                      <div className={styles.amountInTable}>{tx.Amount} Ukucin </div>
+                      <div className={styles.amountInTable}>{formatAmount(tx.Amount)}</div>
                     </td>
                     <td>
-                      <div className={styles.amountInTable}>{tx.Fee.toFixed(8)}</div>
+                      <div className={styles.amountInTable}>{formatFee(tx.Fee)}</div>
                     </td>
                   </tr>
 

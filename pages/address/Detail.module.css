@@ -1,11 +1,11 @@
+.scCol {
+    color: darkblue;
+}
+
 .rowDiv {
     padding-top: 6px;
     padding-bottom: 6px;
     border-bottom: 1px solid #eee;
-}
-
-.title {
-    margin-top: 20px;
 }
 
 .value {
@@ -13,7 +13,17 @@
     font-size: 0.95em;
 }
 
+.title {
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+
 .valueWithLink {
     color: green;
     font-size: 0.95em;
+}
+
+.address {
+    color: gray;
+    font-size: 0.9em;
 }

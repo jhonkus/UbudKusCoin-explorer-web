@@ -1,6 +1,6 @@
 import styles from './Blocks.module.css'
 import Link from 'next/link'
-import toDate from '../../utils/util';
+import { timeAgo } from '../../utils/util';
 import { getBlocks } from '../../grpc/useFetch';
 
 
@@ -61,7 +61,7 @@ const TableBlocks = ({ page = 1 }) => {
                       </Link>
                     </td>
                     <td>
-                      <span className={styles.dateTx}>{toDate(block.TimeStamp)}</span>
+                      <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
                     </td>
                     <td>
                       <span className={styles.addrsInTable}>{block.Validator?.substring(0, 20)}...</span>

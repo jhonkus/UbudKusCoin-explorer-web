@@ -20,7 +20,7 @@
 
 
 .dateTx {
-    font-size: 0.6em;
+    font-size: 0.7em;
     color: gray;
 }
 
@@ -40,7 +40,7 @@
 
 .amount {
     padding: 5px;
-    font-size: 0.7em;
+    font-size: 0.75em;
     width: 100%;
     text-align: end;
     background-color: #eee;
