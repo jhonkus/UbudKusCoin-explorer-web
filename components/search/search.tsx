@@ -44,14 +44,9 @@ export default function Search() {
       className={styles.container}
       ref={searchRef}
     >
-
-
       <input className="form-control me-2" type="search" placeholder="Search by address/txn hash/block" aria-label="Search"
-
         onChange={onChange}
         onFocus={onFocus}
-
-
         value={query}
       />
       {active && results.length > 0 && (

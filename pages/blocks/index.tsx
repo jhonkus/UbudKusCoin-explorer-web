@@ -16,7 +16,7 @@ export default function Blocks(props: any) {
   )
 }
 
-Blocks.getInitialProps = async ({ query: { page = 1 } }) => {
+Blocks.getInitialProps = async({ query: { page = 1 } }) => {
   return {
     page
   }
