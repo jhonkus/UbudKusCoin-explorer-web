@@ -1,40 +1,40 @@
 .validatorLabel {
     font-size: 0.75em;
-    color: #454545;
+    
 }
 
 .validator {
-    color: green;
+    
 }
 
 .numTx {
     font-size: 0.8em;
-    color: green;
+    
     white-space: nowrap;
 }
 
 .numTxInTable{
     font-size: 0.85em;
-    color: green;
+    
     white-space: nowrap;
 }
 
 .lblTx {
     font-size: 0.8em;
-    color: #454545;
+   
 }
 
 
 .dateTx {
     font-size: 0.7em;
-    color: #454545;
+
     white-space: nowrap;
 }
 
 
 .heightBlock {
     font-size: 0.85em;
-    color: green;
+    
 }
 
 .bk {
@@ -60,10 +60,10 @@
 
 
 .tableTitle {
-    margin-top: 15px;
+    /* margin-top: 15px; */
     margin-bottom: 15px;
     margin-left: 5px;
-    color: #454545;
+
     white-space: nowrap;
 }
 
@@ -74,13 +74,13 @@
 }
 
 .viewall {
-    color: green;
+    
     font-size: 0.8em;
 }
 
 .addrsInTable {
     font-size: 0.8em;
-    color: green;
+    
 }
 
 .amountInTable {
@@ -92,7 +92,7 @@
 
 .dateInTable {
     font-size: 0.8em;
-    color: #454545;
+
     white-space: nowrap;
 }
 
