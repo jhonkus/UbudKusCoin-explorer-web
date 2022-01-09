@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import logoUkc from '../../public/logoUkc.png'
+import logoUkc from '../../public/logo-ubudkuscoin.png'
 
 const Header = () => {
   return (
