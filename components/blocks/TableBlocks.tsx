@@ -1,7 +1,9 @@
-import styles from './Blocks.module.css'
 import Link from 'next/link'
 import { timeAgo, formatAmount, formatFee } from '../../utils/util';
 import { getBlocks } from '../../grpc/useFetch';
+import ErrorComp from '../status/ErrorComp';
+import LoadingComp from '../status/LoadingComp';
+import styles from './Blocks.module.css'
 
 const Pagination = ({ pageNum = 1 }) => {
   return (
@@ -27,8 +29,10 @@ const Pagination = ({ pageNum = 1 }) => {
  */
 const TableBlocks = ({ page = 1 }) => {
   const { blocks, isLoading, isError } = getBlocks(page, 25);
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Failed to load blocks</div>
+
+  if (isLoading) return <LoadingComp />
+  if (isError) return <ErrorComp />
+  
   return (
     <div className="card">
 

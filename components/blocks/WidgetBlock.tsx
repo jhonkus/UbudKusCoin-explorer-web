@@ -1,9 +1,11 @@
-import styles from './Blocks.module.css';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
 import bk from '../../public/bk.png'
+import ErrorComp from '../status/ErrorComp';
+import LoadingComp from '../status/LoadingComp';
+import styles from './Blocks.module.css';
 
 /**
  * Block component
@@ -11,8 +13,10 @@ import bk from '../../public/bk.png'
  */
 const WidgetBlocks = () => {
   const { blocks, isLoading, isError } = getBlocks(1, 10);
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Failed to load blocks</div>
+  
+  if (isLoading) return <LoadingComp />
+  if (isError) return <ErrorComp />
+
   return (
     <div className="card">
       <div className="card-header">

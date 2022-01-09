@@ -1,8 +1,9 @@
-import styles from './Txns.module.css'
 import Link from 'next/link'
 import { getTxns } from '../../grpc/useFetch';
 import { timeAgo, formatAmount, formatFee } from '../../utils/util';
-
+import ErrorComp from '../status/ErrorComp';
+import LoadingComp from '../status/LoadingComp';
+import styles from './Txns.module.css'
 
 const Pagination = ({ pageNum = 1 }) => {
   return (
@@ -28,8 +29,8 @@ const Pagination = ({ pageNum = 1 }) => {
  */
 const TableTxns = ({ page = 1 }) => {
   const { transactions, isLoading, isError } = getTxns(page, 25);
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Failed to load transactions</div>
+  if (isLoading) return <LoadingComp />
+  if (isError) return <ErrorComp />
 
   return (
 
