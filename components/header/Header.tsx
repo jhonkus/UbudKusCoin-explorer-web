@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import logoUkc from '../../public/logoUkc.png'
-// import Search from '../search/search'
 
 const Header = () => {
   return (
@@ -32,7 +31,43 @@ const Header = () => {
           </form>
         </div>{/* <!-- End Search Bar --> */}
 
+        <nav className="header-nav">
+          <ul className="d-flex justify-content-center">
 
+            <li className="nav-item">
+              <Link href="/">
+                <a className="nav-link">
+                  <span>Home</span>
+                </a>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link href="/blocks">
+                <a className="nav-link">
+                  <span>Blocks</span>
+                </a>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link href="/txns">
+                <a className="nav-link">
+                  <span>Trancactions</span>
+                </a>
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link href="https://ubudkuscoin.com">
+                <a className="nav-link"  target="_blank">
+                  <span>Main web</span>
+                </a>
+              </Link>
+            </li>
+
+          </ul>
+        </nav>
       </header>
     </>
   )
