@@ -1,15 +1,10 @@
-import Footer from "../footer/Footer"
-import Header from "../header/Header"
-
 const LoadingComp = () => {
     return (
-        <>
-            <Header />
+        <div className="d-flex justify-content-center">
             <main id="main" className="main">
                 <p>Please wait loading ...</p>
             </main>
-            <Footer />
-        </>
+        </div>
     )
 }
 export default LoadingComp;
