@@ -31,15 +31,16 @@ const TableBlocks = ({ page = 1 }) => {
   if (isError) return <div>Failed to load blocks</div>
   return (
     <>
-      <div className={styles.tableTitle}>
-        <h5>Blocks</h5>
-      </div>
+
       <div className="card">
 
         <div className="card-body">
+          <div className="card-title"/>
+          <p>Showing Block #{(page-1)*25} to #{page*25}</p>
+
           <Pagination pageNum={page} />
           <div className="table-responsive">
-            <table className="table table-hover">
+            <table className="table datatable">
               <thead>
                 <tr>
                   <th className={styles.tableHeader}>Block</th>

@@ -1,6 +1,6 @@
 .dateTx {
     font-size: 0.70em;
-    color: gray;
+    
     white-space: nowrap;
 }
 
@@ -28,7 +28,7 @@
 
 .hashTx {
     font-size: 0.8em;
-    color: green;
+    
 }
 
 .addrsLabel {
@@ -37,7 +37,7 @@
 }
 
 .addrs {
-    color: green;
+    
 }
 
 .addrsInTable {
@@ -53,14 +53,13 @@
 }
 
 .subTitle {
-    margin-left: 0.8em;
-    color: gray;
+    color: #454545;
 }
 
 .tableTitle {
     margin-bottom: 15px;
     margin-left: 5px;
-    color: gray;
+    
 }
 
 .divRow {
@@ -70,6 +69,6 @@
 }
 
 .viewall {
-    color: green;
+    
     font-size: 0.8em;
 }

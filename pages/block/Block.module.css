@@ -1,23 +1,21 @@
 .scCol {
-    color: darkblue;
+
 }
 
 .rowDiv {
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
 
 .value {
-    color: grey;
     font-size: 0.95em;
 }
 
 .title {
-    margin-top: 15px;
+    font-size: 0.8em;
 }
 
 .valueWithLink {
-    color: green;
     font-size: 0.95em;
 }
