@@ -1,0 +1,17 @@
+.rowDiv {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.value {
+    font-size: 0.95em;
+}
+
+.title {
+    font-size: 0.8em;
+}
+
+.valueWithLink {
+    font-size: 0.95em;
+}

@@ -59,6 +59,21 @@ export function getBlocks(page = 1, numOfRow = 10) {
     }
 }
 
+
+
+export function GetTxnsByHeight(height = '0') {
+    const dispatch = useDispatch();
+    const { data, error } = useSWR(`/api/txns/block/${height}`, fetcher, { refreshInterval: 30000 })
+    if (!error && data?.transactions) {
+        dispatch(saveTransactions(data?.transactions))
+    }
+    return {
+        transactions: data?.transactions,
+        isLoading: !error && !data,
+        isError: error
+    }
+}
+
 export function getTxns(page = 1, numOfRow = 10) {
     const dispatch = useDispatch();
     const { data, error } = useSWR(`/api/txns/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
