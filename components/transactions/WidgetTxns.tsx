@@ -1,7 +1,9 @@
-import styles from './Txns.module.css'
-import Link from 'next/link'
+import styles from './Txns.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
 import { getTxns } from '../../grpc/useFetch';
 import { formatAmount, timeAgo } from '../../utils/util';
+import tximg from '../../public/tx.png'
 
 /**
  * 
@@ -22,9 +24,10 @@ const WidgetTxns = () => {
 
         {transactions?.map((tx) => (
           <div className={`row ${styles.divRow}`} key={tx.Hash}>
-
             <div className="col-sm-1 align-self-center">
-              <div className={styles.tx}>TX</div>
+              <div className={styles.tx}>
+                <Image src={tximg} alt="block icon" width="20" height="20" />
+              </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
               <Link href={`/txn/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 12)}...

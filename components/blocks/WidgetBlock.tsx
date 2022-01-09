@@ -1,7 +1,10 @@
-import styles from './Blocks.module.css'
-import Link from 'next/link'
+import styles from './Blocks.module.css';
+import Link from 'next/link';
+import Image from 'next/image';
 import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
+import bk from '../../public/bk.png'
+
 /**
  * Block component
  * @returns 
@@ -13,14 +16,16 @@ const WidgetBlocks = () => {
   return (
     <div className="card">
       <div className="card-header">
-          <h6 className={styles.subTitle}>Latest Blocks</h6>
+        <h6 className={styles.subTitle}>Latest Blocks</h6>
       </div>
       <div className="card-body">
 
         {blocks.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
-              <div className={styles.bk}>BK</div>
+              <div className={styles.bk}>
+                <Image src={bk} alt="block icon" width="20" height="20"/>
+              </div>
             </div>
             <div className="col-sm-3 d-flex flex-column">
               <Link href={`/block/height/${block.Height}`}>

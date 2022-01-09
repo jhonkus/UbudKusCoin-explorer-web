@@ -6,10 +6,7 @@
 
 .tx {
     padding: 3px;
-    max-width: 40px;
-    font-size: 0.7em;
     text-align: center;
-    background-color: #dddddd;
 }
 
 .amount {
