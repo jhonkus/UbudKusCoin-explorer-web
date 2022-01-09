@@ -13,9 +13,7 @@ const WidgetBlocks = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <div className={styles.subTitle}>
-          <h6>Latest Blocks</h6>
-        </div>
+          <h6 className={styles.subTitle}>Latest Blocks</h6>
       </div>
       <div className="card-body">
 

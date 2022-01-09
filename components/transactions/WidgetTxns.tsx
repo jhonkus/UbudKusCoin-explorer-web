@@ -16,7 +16,7 @@ const WidgetTxns = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <div className={styles.subTitle}><h6>Latest Transactions</h6></div>
+        <h6 className={styles.subTitle}>Latest Transactions</h6>
       </div>
       <div className="card-body">
 
