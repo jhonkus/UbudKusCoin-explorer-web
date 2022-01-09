@@ -95,6 +95,7 @@ export default function Block() {
 
                                 <div className="card-body">
 
+                                <div className="card-title"/>
 
                                     <ul className="nav nav-tabs">
                                         <li className="nav-item">

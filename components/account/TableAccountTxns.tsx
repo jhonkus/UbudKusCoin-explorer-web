@@ -41,10 +41,20 @@ const TableAccountTxns = ({ transactions }) => {
                   <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
                 </td>
                 <td className={styles.address}>
-                  <span className={styles.addrsInTable}>{tx.Sender.substring(0, 15)}...</span>
+                  <Link href={`/address/${tx.Sender}`}>
+                    <a>
+                      <span className={styles.addrsInTable}>{tx.Sender.substring(0, 15)}...</span>
+                    </a>
+                  </Link>
                 </td>
                 <td>
-                  <span className={styles.addrsInTable}>{tx.Recipient.substring(0, 15)}...</span></td>
+                  <Link href={`/address/${tx.Recipient}`}>
+                    <a>
+                      <span className={styles.addrsInTable}>
+                        {tx.Recipient.substring(0, 15)}...</span>
+                    </a>
+                  </Link>
+                </td>
                 <td>
                   <div className={styles.amountInTable}>{formatAmount(tx.Amount)}</div>
                 </td>

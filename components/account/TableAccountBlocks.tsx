@@ -6,16 +6,16 @@ import { timeAgo } from '../../utils/util';
  * Block Account component
  * @returns 
  */
-const TableAccountBlocks = ({blocks}) => {
+const TableAccountBlocks = ({ blocks }) => {
   return (
     <div className="table-responsive">
       <table className="table table-hover">
         <thead>
           <tr>
             <th className={styles.tableHeader}>Block</th>
-            <th className={styles.tableHeader}>Time Stamp</th>
-            <th className={styles.tableHeader}>Miner</th>
-            <th className={styles.tableHeader}>Num Of Tx</th>
+            <th className={styles.tableHeader}>Age</th>
+            <th className={styles.tableHeader}>Validator</th>
+            <th className={styles.tableHeader}>Transactions</th>
             <th className={styles.tableHeader}>Value</th>
             <th className={styles.tableHeader}>Reward</th>
           </tr>
@@ -33,7 +33,11 @@ const TableAccountBlocks = ({blocks}) => {
                 <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
               </td>
               <td>
-                <span className={styles.addrsInTable}>{block.Validator?.substring(0, 20)}...</span>
+                <Link href={`/address/${block.Validator}`}>
+                  <a>
+                    <span className={styles.addrsInTable}>{block.Validator?.substring(0, 20)}...</span>
+                  </a>
+                </Link>
               </td>
               <td>
                 <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>

@@ -9,8 +9,8 @@ const Header = () => {
       <head>
         <meta content="width=device-width, initial-scale=1.0" name="viewport" />
         <title>Ubudkuscoin.com</title>
-        <meta content="" name="description" />
-        <meta content="" name="keywords" />
+        <meta content="Ubudkuscoin is blockcahin with low energy" name="description" />
+        <meta content="blockchain, cryptocurrency, bali, putu kusuma" name="keywords" />
 
       </head>
       <header id="header" className="header fixed-top d-flex align-items-center">
