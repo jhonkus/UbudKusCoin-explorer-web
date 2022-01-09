@@ -41,7 +41,7 @@ export default function Txns(props: any) {
   )
 }
 
-Txns.getInitialProps = async ({ query: { page = 1 } }) => {
+Txns.getInitialProps = async({ query: { page = 1 } }) => {
   return {
     page
   }

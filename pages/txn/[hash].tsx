@@ -1,18 +1,25 @@
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './Txn.module.css'
+
+// custom function
 import { formatAmount, formatFee, timeAgo, toDate } from '../../utils/util';
 import { getTxn } from '../../grpc/useFetch'
-import Link from 'next/link';
+
+// custom compoents
+import Header from '../../components/header/Header'
+import Footer from '../../components/footer/Footer'
+import ErrorComp from '../../components/status/ErrorComp';
+import LoadingComp from '../../components/status/LoadingComp';
+import styles from './Txn.module.css';
+
 
 export default function Txn() {
   const router = useRouter()
   const { hash } = router.query;
 
   const { txn, isLoading, isError } = getTxn(hash?.toString());
-  if (isLoading) return <div>Loading...</div>
-  if (isError) return <div>Failed to load transaction</div>
+  if (isLoading) return  <LoadingComp />
+  if (isError) return <ErrorComp />
 
 
   return (
@@ -104,7 +111,7 @@ export default function Txn() {
   )
 }
 
-Txn.getInitialProps = async ({ req }) => {
+Txn.getInitialProps = async({ req }) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
   return { userAgent }
 }

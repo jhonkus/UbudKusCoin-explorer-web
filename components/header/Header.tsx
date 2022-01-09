@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import logoUkc from '../../public/logoUkc.png'
-import Search from '../search/search'
+// import Search from '../search/search'
 
 const Header = () => {
   return (
@@ -23,14 +23,14 @@ const Header = () => {
             </a>
           </Link>
           <i className="bi bi-list toggle-sidebar-btn"></i>
-        </div>{/*<!-- End Logo --> */}
+        </div>{/* <!-- End Logo --> */}
 
         <div className="search-bar">
           <form className="search-form d-flex align-items-center" method="POST" action="#">
             <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
             <button type="submit" title="Search"><i className="bi bi-search"></i></button>
           </form>
-        </div>{/*<!-- End Search Bar --> */}
+        </div>{/* <!-- End Search Bar --> */}
 
         <nav className="header-nav ms-auto">
           <ul className="d-flex align-items-center">
@@ -39,14 +39,14 @@ const Header = () => {
               <a className="nav-link nav-icon search-bar-toggle " href="#">
                 <i className="bi bi-search"></i>
               </a>
-            </li>{/*<!-- End Search Icon--> */}
+            </li>{/* <!-- End Search Icon--> */}
 
             <li className="nav-item dropdown">
 
               <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-bell"></i>
                 <span className="badge bg-primary badge-number">4</span>
-              </a>{/*<!-- End Notification Icon --> */}
+              </a>{/* <!-- End Notification Icon --> */}
 
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                 <li className="dropdown-header">
@@ -112,16 +112,16 @@ const Header = () => {
                   <a href="#">Show all notifications</a>
                 </li>
 
-              </ul>{/*<!-- End Notification Dropdown Items --> */}
+              </ul>{/* <!-- End Notification Dropdown Items --> */}
 
-            </li>{/*<!-- End Notification Nav --> */}
+            </li>{/* <!-- End Notification Nav --> */}
 
             <li className="nav-item dropdown">
 
               <a className="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                 <i className="bi bi-chat-left-text"></i>
                 <span className="badge bg-success badge-number">3</span>
-              </a>{/*<!-- End Messages Icon --> */}
+              </a>{/* <!-- End Messages Icon --> */}
 
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                 <li className="dropdown-header">
@@ -178,16 +178,16 @@ const Header = () => {
                   <a href="#">Show all messages</a>
                 </li>
 
-              </ul>{/*<!-- End Messages Dropdown Items --> */}
+              </ul>{/* <!-- End Messages Dropdown Items --> */}
 
-            </li>{/*<!-- End Messages Nav --> */}
+            </li>{/* <!-- End Messages Nav --> */}
 
             <li className="nav-item dropdown pe-3">
 
               <a className="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                 {/* <Image src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" /> */}
                 <span className="d-none d-md-block dropdown-toggle ps-2">K.Anderson</span>
-              </a>{/*<!-- End Profile Iamge Icon --> */}
+              </a>{/* <!-- End Profile Iamge Icon --> */}
 
               <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li className="dropdown-header">

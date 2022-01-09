@@ -1,10 +1,16 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+
+// custom function
 import { timeAgo, toDate } from '../../../utils/util';
 import { getBlock } from '../../../grpc/useFetch';
-import styles from '../Block.module.css';
+
+// custom component
 import Header from '../../../components/header/Header';
 import Footer from '../../../components/footer/Footer';
+import ErrorComp from '../../../components/status/ErrorComp';
+import LoadingComp from '../../../components/status/LoadingComp';
+import styles from '../Block.module.css';
 
 export default function Block() {
   const router = useRouter()
@@ -13,27 +19,9 @@ export default function Block() {
 
   const { block, isLoading, isError } = getBlock(height?.toString());
 
-  if (isLoading) {
-    return (
-      <>
-        <Header />
-        <main id="main" className="main">
-          Loading...
-        </main>
-        <Footer />
-      </>)
-  }
-
-  if (isError) {
-    return (
-      <>
-        <Header />
-        <main id="main" className="main">
-          Failed to load block information.
-        </main>
-        <Footer />
-      </>)
-  }
+  
+  if (isLoading) return  <LoadingComp />
+  if (isError) return <ErrorComp />
 
   return (
     <>

@@ -1,9 +1,13 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import Header from '../../../components/header/Header';
-import Footer from '../../../components/footer/Footer';
+
 import { GetBlockByHash } from '../../../grpc/useFetch';
 import { timeAgo, toDate } from '../../../utils/util';
+
+import Header from '../../../components/header/Header';
+import Footer from '../../../components/footer/Footer';
+import ErrorComp from '../../../components/status/ErrorComp';
+import LoadingComp from '../../../components/status/LoadingComp';
 import styles from '../Block.module.css';
 
 export default function BlockHash() {
@@ -12,27 +16,8 @@ export default function BlockHash() {
 
   const { block, isLoading, isError } = GetBlockByHash(hash?.toString());
 
-  if (isLoading) {
-    return (
-      <>
-        <Header />
-        <main id="main" className="main">
-          Loading...
-        </main>
-        <Footer />
-      </>)
-  }
-
-  if (isError) {
-    return (
-      <>
-        <Header />
-        <main id="main" className="main">
-          Failed to load block information.
-        </main>
-        <Footer />
-      </>)
-  }
+  if (isLoading) return  <LoadingComp />
+  if (isError) return <ErrorComp />
 
 
   return (
@@ -61,6 +46,7 @@ export default function BlockHash() {
         <section className="section">
           <div className="row">
             <div className="col-lg-12">
+
               <div className="card">
                 <div className="card-title" />
                 <div className="card-body">
@@ -129,7 +115,7 @@ export default function BlockHash() {
   )
 }
 
-BlockHash.getInitialProps = async ({ req }) => {
+BlockHash.getInitialProps = async({ req }) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
   return { userAgent }
 }
