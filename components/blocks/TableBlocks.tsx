@@ -30,64 +30,71 @@ const TableBlocks = ({ page = 1 }) => {
   if (isLoading) return <div>Loading...</div>
   if (isError) return <div>Failed to load blocks</div>
   return (
-    <>
+    <div className="card">
 
-      <div className="card">
-
-        <div className="card-body">
-          <div className="card-title"/>
-          <p>Showing Block #{(page-1)*25} to #{page*25}</p>
-
-          <Pagination pageNum={page} />
-          <div className="table-responsive">
-            <table className="table datatable">
-              <thead>
-                <tr>
-                  <th className={styles.tableHeader}>Block</th>
-                  <th className={styles.tableHeader}>Age</th>
-                  <th className={styles.tableHeader}>Txn</th>
-                  <th className={styles.tableHeader}>Validator</th>
-                  <th className={styles.tableHeader}>Value</th>
-                  <th className={styles.tableHeader}>Reward</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {blocks.map((block) => (
-                  <tr key={block.Height}>
-                    <td>
-                      <Link href={`/block/height/${block.Height}`}>
-                        <a className={styles.heightBlock}>{block.Height}</a>
-                      </Link>
-                    </td>
-                    <td>
-                      <span className={styles.dateInTable}>{timeAgo(block.TimeStamp)}</span>
-                    </td>
-                    <td className={styles.numTxInTable}>
-                      <span >{block.NumOfTx} </span>
-                    </td>
-                    <td>
-                      <Link href={`/address/${block.Validator}`}>
-                        <a className={styles.addrsInTable}>
-                          {block.Validator?.substring(0, 20)}...
-                        </a>
-                      </Link>
-                    </td>
-                    <td>
-                      <div className={styles.amountInTable}>{formatAmount(block.TotalAmount)} Ukuci</div>
-                    </td>
-                    <td>
-                      <div className={styles.amountInTable}>{formatFee(block.TotalReward)}</div>
-                    </td>
-                  </tr>
-                ))}
-
-              </tbody>
-            </table>
+      <div className="card-body">
+        <div className="card-title"/>
+        <div className="row">
+          <div className="col d-flex justify-content-start">
+            <p>Showing 25 blocks</p>
           </div>
-          <Pagination pageNum={page} />
-        </div></div>
-    </>
+          <div className="col d-flex justify-content-end">
+            <Pagination pageNum={page} />
+          </div>
+        </div>
+        <div className="table-responsive">
+          <table className="table datatable">
+            <thead>
+              <tr>
+                <th className={styles.tableHeader}>Block</th>
+                <th className={styles.tableHeader}>Age</th>
+                <th className={styles.tableHeader}>Txn</th>
+                <th className={styles.tableHeader}>Validator</th>
+                <th className={styles.tableHeader}>Value</th>
+                <th className={styles.tableHeader}>Reward</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {blocks.map((block) => (
+                <tr key={block.Height}>
+                  <td>
+                    <Link href={`/block/height/${block.Height}`}>
+                      <a className={styles.heightBlock}>{block.Height}</a>
+                    </Link>
+                  </td>
+                  <td>
+                    <span className={styles.dateInTable}>{timeAgo(block.TimeStamp)}</span>
+                  </td>
+                  <td className={styles.numTxInTable}>
+                    <span >{block.NumOfTx} </span>
+                  </td>
+                  <td>
+                    <Link href={`/address/${block.Validator}`}>
+                      <a className={styles.addrsInTable}>
+                        {block.Validator?.substring(0, 20)}...
+                      </a>
+                    </Link>
+                  </td>
+                  <td>
+                    <div className={styles.amountInTable}>{formatAmount(block.TotalAmount)} Ukuci</div>
+                  </td>
+                  <td>
+                    <div className={styles.amountInTable}>{formatFee(block.TotalReward)}</div>
+                  </td>
+                </tr>
+              ))}
+
+            </tbody>
+          </table>
+        </div>
+        <div className="row">
+          <div className="col d-flex justify-content-end">
+            <Pagination pageNum={page} />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
 

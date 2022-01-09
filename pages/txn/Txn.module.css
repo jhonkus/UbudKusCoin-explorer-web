@@ -1,6 +1,5 @@
 .rowDiv {
-    padding-top: 6px;
-    padding-bottom: 6px;
+    padding: 10px;
     border-bottom: 1px solid #eee;
 }
 
@@ -9,11 +8,11 @@
 }
 
 .value {
-    color: grey;
+    
     font-size: 0.95em;
 }
 
 .valueWithLink {
-    color: green;
+    
     font-size: 0.95em;
 }

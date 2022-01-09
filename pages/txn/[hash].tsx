@@ -1,7 +1,7 @@
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import { useRouter } from 'next/router';
-import styles from './Detail.module.css'
+import styles from './Txn.module.css'
 import { formatAmount, formatFee, timeAgo, toDate } from '../../utils/util';
 import { getTxn } from '../../grpc/useFetch'
 import Link from 'next/link';
@@ -51,7 +51,7 @@ export default function Txn() {
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Block</div>
                     <div className={`col-sm-8`}>
-                      <Link href={`/block/${txn.Height}`}>
+                      <Link href={`/block/height/${txn.Height}`}>
                         <a className={styles.valueWithLink}>{txn.Height}</a>
                       </Link>
                     </div>

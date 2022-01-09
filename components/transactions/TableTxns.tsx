@@ -32,62 +32,90 @@ const TableTxns = ({ page = 1 }) => {
   if (isError) return <div>Failed to load transactions</div>
 
   return (
-    <>
-      <div className={styles.tableTitle}><h5>Transactions</h5></div>
 
-      <div className="card">
+    <div className="card">
 
-        <div className="card-body">
-          <Pagination pageNum={page} />
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead>
-                <tr>
-                  <th className={styles.tableHeader}>Txn Hash</th>
-                  <th className={styles.tableHeader}>Block</th>
-                  <th className={styles.tableHeader}>Age</th>
-                  <th className={styles.tableHeader}>From</th>
-                  <th className={styles.tableHeader}>To</th>
-                  <th className={styles.tableHeader}>Value</th>
-                  <th className={styles.tableHeader}>Fee</th>
-                </tr>
-              </thead>
-              <tbody>
-
-                {transactions?.map((tx) => (
-
-                  <tr key={tx.Hash}>
-                    <td>
-                      <Link href={`/txn/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
-                      </span></a></Link>
-                    </td>
-                    <td>
-                      <span className={styles.dateTx}>{tx.Height}</span>
-                    </td>
-                    <td>
-                      <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
-                    </td>
-                    <td className={styles.address}>
-                      <span className={styles.addrsInTable}>{tx.Sender.substring(0, 15)}...</span>
-                    </td>
-                    <td>
-                      <span className={styles.addrsInTable}>{tx.Recipient.substring(0, 15)}...</span></td>
-                    <td>
-                      <div className={styles.amountInTable}>{formatAmount(tx.Amount)}</div>
-                    </td>
-                    <td>
-                      <div className={styles.amountInTable}>{formatFee(tx.Fee)}</div>
-                    </td>
-                  </tr>
-
-                ))}
-
-              </tbody>
-            </table>
+      <div className="card-body">
+        <div className="card-title" />
+        <div className="row">
+          <div className="col d-flex justify-content-start">
+            <p>Showing 25 transactions</p>
           </div>
-          <Pagination pageNum={page} />
-        </div></div>
-    </>)
+          <div className="col d-flex justify-content-end">
+            <Pagination pageNum={page} />
+          </div>
+        </div>
+
+        <div className="table-responsive">
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th className={styles.tableHeader}>Txn Hash</th>
+                <th className={styles.tableHeader}>Block</th>
+                <th className={styles.tableHeader}>Age</th>
+                <th className={styles.tableHeader}>From</th>
+                <th className={styles.tableHeader}>To</th>
+                <th className={styles.tableHeader}>Value</th>
+                <th className={styles.tableHeader}>Fee</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {transactions?.map((tx) => (
+
+                <tr key={tx.Hash}>
+                  <td>
+                    <Link href={`/txn/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                    </span></a></Link>
+                  </td>
+                  <td>
+
+                    <Link href={`/block/height/${tx.Height}`}><a>
+                      <span className={styles.hashTx}>{tx.Height}
+                      </span></a></Link>
+                  </td>
+                  <td>
+                    <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
+                  </td>
+                  <td className={styles.address}>
+                    <Link href={`/address/${tx.Sender}`}>
+                      <a>
+                        <span className={styles.addrsInTable}>
+                          {tx.Sender.substring(0, 20)}...
+                        </span>
+                      </a>
+                    </Link>
+                  </td>
+                  <td>
+                    <Link href={`/address/${tx.Recipient}`}>
+                      <a>
+                        <span className={styles.addrsInTable}>
+                          {tx.Recipient.substring(0, 20)}...
+                        </span>
+                      </a>
+                    </Link>
+                  </td>
+                  <td>
+                    <div className={styles.amountInTable}>{formatAmount(tx.Amount)}</div>
+                  </td>
+                  <td>
+                    <div className={styles.amountInTable}>{formatFee(tx.Fee)}</div>
+                  </td>
+                </tr>
+
+              ))}
+
+            </tbody>
+          </table>
+        </div>
+        <div className="row">
+          <div className="col d-flex justify-content-end">
+            <Pagination pageNum={page} />
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default TableTxns
