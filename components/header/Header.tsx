@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import logoUkc from '../../public/logo-ubudkuscoin.png'
+import ukclogo from '../../public/logo-ubudkuscoin.png'
 
 const Header = () => {
   return (
@@ -17,7 +17,7 @@ const Header = () => {
         <div className="d-flex align-items-center justify-content-between">
           <Link href="/">
             <a className="logo d-flex align-items-center">
-              <Image src={logoUkc} alt="Logo ubudkuscoin" />&nbsp;&nbsp;
+              <Image src={ukclogo} alt="Logo ubudkuscoin" />&nbsp;
               <span className="d-none d-lg-block">Ubudkuscoin</span>
             </a>
           </Link>
