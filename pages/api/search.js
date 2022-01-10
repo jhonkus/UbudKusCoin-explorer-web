@@ -1,6 +1,13 @@
 const client = require("../../grpc/client");
 
 export default function handler(req, res) {
+
+
+  if (req.method !== 'POST') {
+    res.status(405).send({ message: 'Only POST requests allowed' })
+    return;
+  }
+
   const param = req.query.q;
   return new Promise(() => {
     client.Search({ searchText: param }, function(err, response) {

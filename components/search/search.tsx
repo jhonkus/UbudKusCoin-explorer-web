@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './search.module.css'
 
-export default function Search() {
+export default function SearchInput() {
 
   const searchRef = useRef(null)
   const [query, setQuery] = useState('')
@@ -44,11 +44,17 @@ export default function Search() {
       className={styles.container}
       ref={searchRef}
     >
-      <input className="form-control me-2" type="search" placeholder="Search by address/txn hash/block" aria-label="Search"
+      <input type="search" name="query"  placeholder="Search by address/txn hash/block" title="Enter search keyword"
         onChange={onChange}
         onFocus={onFocus}
         value={query}
       />
+
+
+            {/* <input type="text" name="query" placeholder="Search by address/Txn hash/Block" title="Enter search keyword" />
+        */}
+
+
       {active && results.length > 0 && (
         <ul className={styles.results}>
           {results.map(({ Id, Title }) => (

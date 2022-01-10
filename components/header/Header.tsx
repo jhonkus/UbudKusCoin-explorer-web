@@ -1,17 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import ukclogo from '../../public/logo-ubudkuscoin.png'
-
+import SearchBox from '../search/SearchBox';
 const Header = () => {
   return (
     <>
-      {/* <head>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>Ubudkuscoin.com</title>
-        <meta content="Ubudkuscoin is blockcahin with low energy" name="description" />
-        <meta content="blockchain, cryptocurrency, bali, putu kusuma" name="keywords" />
 
-      </head> */}
       <header id="header" className="header fixed-top d-flex align-items-center">
 
         <div className="d-flex align-items-center justify-content-between">
@@ -25,10 +19,7 @@ const Header = () => {
         </div>{/* <!-- End Logo --> */}
 
         <div className="search-bar">
-          <form className="search-form d-flex align-items-center" method="POST" action="#">
-            <input type="text" name="query" placeholder="Search" title="Enter search keyword" />
-            <button type="submit" title="Search"><i className="bi bi-search"></i></button>
-          </form>
+          <SearchBox />
         </div>{/* <!-- End Search Bar --> */}
 
         <nav className="header-nav">
@@ -60,7 +51,7 @@ const Header = () => {
 
             <li className="nav-item">
               <Link href="https://ubudkuscoin.com">
-                <a className="nav-link"  target="_blank">
+                <a className="nav-link" target="_blank">
                   <span>Main web</span>
                 </a>
               </Link>
