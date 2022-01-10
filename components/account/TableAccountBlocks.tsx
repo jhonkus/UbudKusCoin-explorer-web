@@ -25,7 +25,7 @@ const TableAccountBlocks = ({ blocks }) => {
           {blocks.map((block) => (
             <tr key={block.Height}>
               <td>
-                <Link href={`/block/${block.Height}`}>
+                <Link href={`/block/height/${block.Height}`}>
                   <a><span className={styles.heightBlock}>{block.Height}</span></a>
                 </Link>
               </td>
