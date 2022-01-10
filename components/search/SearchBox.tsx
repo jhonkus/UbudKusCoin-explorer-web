@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 export default function SearchBox() {
     const router = useRouter();
 
-    const submitContact = async (event) => {
+    const submitContact = async(event) => {
         event.preventDefault();
         const searcText = event.target.query.value;
         const res = await fetch(`/api/search?q=${searcText}`, {

@@ -1,7 +1,6 @@
 import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import Link from 'next/link'
-import styles from './Search.module.css';
 
 export default function NoTxnId() {
     return (
