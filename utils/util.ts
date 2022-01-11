@@ -1,17 +1,11 @@
 var numeral = require('numeral');
 
-import TimeAgo from 'javascript-time-ago';
-// English.
-import en from 'javascript-time-ago/locale/en.json'
-
-
+import { format } from 'timeago.js';
 
 
 
 export function timeAgo(unixTimestamp) {
-    TimeAgo.addDefaultLocale(en)
-    const timeFormater = new TimeAgo('en-US')
-    return timeFormater.format(new Date(unixTimestamp * 1000));
+    return format(new Date(unixTimestamp * 1000));
 }
 
 

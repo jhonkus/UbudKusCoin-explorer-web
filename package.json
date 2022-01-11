@@ -19,7 +19,6 @@
     "bootstrap-icons": "^1.7.2",
     "google-protobuf": "^3.19.1",
     "gray-matter": "^4.0.3",
-    "javascript-time-ago": "^2.3.10",
     "next": "12.0.7",
     "next-redux-wrapper": "^7.0.5",
     "numeral": "^2.0.6",
@@ -29,7 +28,8 @@
     "redux": "^4.1.2",
     "remark": "^14.0.2",
     "remark-html": "^15.0.1",
-    "swr": "^1.1.2"
+    "swr": "^1.1.2",
+    "timeago.js": "^4.0.2"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^12.0.7",
