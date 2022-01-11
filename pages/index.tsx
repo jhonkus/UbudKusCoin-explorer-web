@@ -12,7 +12,7 @@ export default function Home() {
 
         <div className='px-4 py-5 my-5 text-center flex-grow-1'>
           <h1 className='display-6 fw-bold'>The UKC Blockchain Explorer</h1>
-          <p className="lead">Block created every 30 Seconds</p>
+          <p className="lead">Block created every 30 seconds</p>
         </div>
     
         <div className="row">

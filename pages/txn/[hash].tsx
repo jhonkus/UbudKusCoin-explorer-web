@@ -10,7 +10,10 @@ import Header from '../../components/header/Header'
 import Footer from '../../components/footer/Footer'
 import ErrorComp from '../../components/status/ErrorComp';
 import LoadingComp from '../../components/status/LoadingComp';
+import NotFound from '../../components/status/NotFound';
+
 import styles from './Txn.module.css';
+
 
 
 export default function Txn() {
@@ -20,7 +23,7 @@ export default function Txn() {
   const { txn, isLoading, isError } = getTxn(hash?.toString());
   if (isLoading) return  <LoadingComp />
   if (isError) return <ErrorComp />
-
+  if (!txn) return <NotFound />
 
   return (
     <>

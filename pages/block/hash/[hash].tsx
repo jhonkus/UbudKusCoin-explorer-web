@@ -8,6 +8,7 @@ import Header from '../../../components/header/Header';
 import Footer from '../../../components/footer/Footer';
 import ErrorComp from '../../../components/status/ErrorComp';
 import LoadingComp from '../../../components/status/LoadingComp';
+import NotFound from '../../../components/status/NotFound';
 import styles from '../Block.module.css';
 
 export default function BlockHash() {
@@ -18,8 +19,9 @@ export default function BlockHash() {
 
   if (isLoading) return  <LoadingComp />
   if (isError) return <ErrorComp />
+  if (!block) return <NotFound />
 
-
+  
   return (
 
     <>

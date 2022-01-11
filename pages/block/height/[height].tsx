@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 // custom function
-import { formatFee, timeAgo, toDate } from '../../../utils/util';
+import { timeAgo, toDate } from '../../../utils/util';
 import { getBlock } from '../../../grpc/useFetch';
 
 // custom component
@@ -35,7 +35,7 @@ export default function Block() {
   if (isLoading) return <LoadingComp />
   if (isError) return <ErrorComp />
 
-  if (!block){
+  if (!block) {
     return <NotFound />
   }
 
@@ -106,7 +106,7 @@ export default function Block() {
 
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Block Reward</div>
-                    <div className={`col-sm-8 ${styles.value}`}>{formatFee(block.TotalReward)}</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{block.TotalReward}</div>
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
