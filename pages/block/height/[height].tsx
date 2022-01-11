@@ -10,18 +10,34 @@ import Header from '../../../components/header/Header';
 import Footer from '../../../components/footer/Footer';
 import ErrorComp from '../../../components/status/ErrorComp';
 import LoadingComp from '../../../components/status/LoadingComp';
+import NotFound from '../../../components/status/NotFound';
 import styles from '../Block.module.css';
+import { useEffect, useState } from 'react';
 
 export default function Block() {
   const router = useRouter()
   const { height } = router.query;
-
+  const [prevHeight, setPrevHeight] = useState(0);
+  const [nextHeight, setNextHeight] = useState(0);
 
   const { block, isLoading, isError } = getBlock(height?.toString());
 
-  
-  if (isLoading) return  <LoadingComp />
+  useEffect(() => {
+    let prev = (parseInt(height?.toString() || '0') - 1);
+    prev = prev < 0 ? 0 : prev;
+
+    const next = (parseInt(height?.toString() || '1') + 1);
+
+    setPrevHeight(prev);
+    setNextHeight(next);
+  })
+
+  if (isLoading) return <LoadingComp />
   if (isError) return <ErrorComp />
+
+  if (!block){
+    return <NotFound />
+  }
 
   return (
     <>
@@ -39,7 +55,7 @@ export default function Block() {
               </li>
 
               <li className="breadcrumb-item">
-              <Link href="/blocks"><a>Blocks</a></Link>
+                <Link href="/blocks"><a>Blocks</a></Link>
               </li>
             </ol>
           </nav>
@@ -50,11 +66,19 @@ export default function Block() {
             <div className="col-lg-12">
 
               <div className="card">
-              <h5 className="card-title"></h5>
+                <h5 className="card-title"></h5>
                 <div className="card-body">
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Block Height </div>
-                    <div className={`col-sm-8 ${styles.value}`}>{block.Height}</div>
+                    <div className={`col-sm-8 ${styles.value}`}><strong>{block.Height}</strong>&nbsp;&nbsp;
+                      <Link href={`/block/height/${prevHeight}`}>
+                        <a><i className="bi bi-chevron-left"></i></a>
+                      </Link>
+                      &nbsp;&nbsp;
+                      <Link href={`/block/height/${nextHeight}`}>
+                        <a><i className="bi bi-chevron-right"></i></a>
+                      </Link>
+                    </div>
                   </div>
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Timestamp </div>
