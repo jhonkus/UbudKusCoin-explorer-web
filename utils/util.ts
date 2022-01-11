@@ -4,13 +4,13 @@ import TimeAgo from 'javascript-time-ago';
 // English.
 import en from 'javascript-time-ago/locale/en.json'
 
-TimeAgo.addDefaultLocale(en)
-// Create formatter (English).
-const timeFormater = new TimeAgo('en-US')
+
 
 
 
 export function timeAgo(unixTimestamp) {
+    TimeAgo.addDefaultLocale(en)
+    const timeFormater = new TimeAgo('en-US')
     return timeFormater.format(new Date(unixTimestamp * 1000));
 }
 
