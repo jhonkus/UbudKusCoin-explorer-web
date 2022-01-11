@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
-import bk from '../../public/bk.png'
 import ErrorComp from '../status/ErrorComp';
 import LoadingComp from '../status/LoadingComp';
 import styles from './Blocks.module.css';
