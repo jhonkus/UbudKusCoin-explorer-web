@@ -1,5 +1,5 @@
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Header from '../components/header/Header'
+import Footer from '../components/footer/Footer'
 import Link from 'next/link'
 
 export default function NoTxnId() {
@@ -9,7 +9,7 @@ export default function NoTxnId() {
             <main id="main" className="main">
 
                 <div className="pagetitle">
-                    <h1>Searh Result</h1>
+                    <h4>Searh Result</h4>
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
@@ -19,7 +19,7 @@ export default function NoTxnId() {
                             </li>
 
                             <li className="breadcrumb-item">
-                                <Link href="#"><a>Search</a></Link>
+                                <Link href="/notfound"><a>Not found</a></Link>
                             </li>
                         </ol>
                     </nav>
@@ -31,10 +31,8 @@ export default function NoTxnId() {
                             <div className="card">
                                 <div className="card-title" />
                                 <div className="card-body">
-                                    {/* content here */}
-                                                     ini hasil   
-
-                                    {/* content end */}
+                                    <p className="text-center">There is no data matching with your search keyword!</p>
+                                    <p className="text-center">Please use, block height, block hash, transaction hash or addres as keyword!</p>
                                 </div>
                             </div>
                         </div>

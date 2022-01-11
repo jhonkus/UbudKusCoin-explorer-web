@@ -21,6 +21,10 @@ export default function SearchBox() {
                 pathname: result.Url,
                 query: { search: result.status }
             });
+        } else {
+            router.push({
+                pathname: '/notfound'
+            });
         }
 
     };
