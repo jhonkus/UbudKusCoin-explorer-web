@@ -9,20 +9,6 @@ export default function NoTxnId() {
             <main id="main" className="main">
 
                 <div className="pagetitle">
-                    <h4>Searh Result</h4>
-                    <nav>
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
-                                <Link href="/">
-                                    <a>Home</a>
-                                </Link>
-                            </li>
-
-                            <li className="breadcrumb-item">
-                                <Link href="/notfound"><a>Not found</a></Link>
-                            </li>
-                        </ol>
-                    </nav>
                 </div>
 
                 <section className="section">
