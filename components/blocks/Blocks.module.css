@@ -32,8 +32,9 @@
 }
 
 .bk {
-    padding: 3px;
-    text-align: center;
+    text-align: left;
+    width: 30px;
+    height: 30px;
 }
 
 .amount {
