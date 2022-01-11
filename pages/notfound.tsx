@@ -17,7 +17,7 @@ export default function NoTxnId() {
                                 <div className="card-title" />
                                 <div className="card-body">
                                     <p className="text-center">There is no data matching with your search keyword!</p>
-                                    <p className="text-center">Please use, block height, block hash, transaction hash or addres as keyword!</p>
+                                    <p className="text-center">Please use, block height, block hash, transaction hash or address as keyword!</p>
                                 </div>
                             </div>
                         </div>
