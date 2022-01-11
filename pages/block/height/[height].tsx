@@ -21,16 +21,17 @@ export default function Block() {
   const [nextHeight, setNextHeight] = useState(0);
 
   const { block, isLoading, isError } = getBlock(height?.toString());
+  let prev = (parseInt(height?.toString() || '0') - 1);
+  prev = prev < 0 ? 0 : prev;
+
+  const next = (parseInt(height?.toString() || '1') + 1);
+
 
   useEffect(() => {
-    let prev = (parseInt(height?.toString() || '0') - 1);
-    prev = prev < 0 ? 0 : prev;
-
-    const next = (parseInt(height?.toString() || '1') + 1);
 
     setPrevHeight(prev);
     setNextHeight(next);
-  })
+  }, [next, prev])
 
   if (isLoading) return <LoadingComp />
   if (isError) return <ErrorComp />
