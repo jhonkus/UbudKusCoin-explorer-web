@@ -12,6 +12,12 @@
     font-size: 0.95em;
 }
 
+
+.success { 
+    color:green;   
+    font-size: 0.95em;
+}
+
 .valueWithLink {
     
     font-size: 0.95em;

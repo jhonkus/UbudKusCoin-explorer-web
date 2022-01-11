@@ -66,7 +66,7 @@ export default function Txn() {
 
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Status</div>
-                    <div className={`col-sm-8 ${styles.value}`}>Success</div>
+                    <div className={`col-sm-8 ${styles.success}`}><i className="bi bi-check-circle-fill"></i> Success</div>
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
