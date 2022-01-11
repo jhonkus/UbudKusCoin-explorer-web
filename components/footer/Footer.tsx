@@ -5,7 +5,7 @@ const Footer = () => {
     <footer id="footer" className="footer">
       <div className="copyright">
         @2022 <strong><span>
-          <Link href="/"><a>Ubudkuscoin.com</a></Link>
+          <Link href="https://ubudkuscoin.com"><a  target="_blank">Ubudkuscoin.com</a></Link> | <Link href="/"><a>Block Explorer</a></Link>
         </span></strong>
       </div>
       <div className="credits">
