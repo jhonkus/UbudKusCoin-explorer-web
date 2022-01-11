@@ -10,12 +10,11 @@
 }
 
 .title {
-    margin-top: 15px;
-    margin-bottom: 30px;
+    font-size: 0.7em;
 }
 
 .valueWithLink {
-    
+
     font-size: 0.95em;
 }
 

@@ -15,12 +15,11 @@ const Header = () => {
               <span className="d-none d-lg-block">Ubudkuscoin</span>
             </a>
           </Link>
-          <i className="bi bi-list toggle-sidebar-btn"></i>
-        </div>{/* <!-- End Logo --> */}
+        </div>
 
         <div className="search-bar">
           <SearchBox />
-        </div>{/* <!-- End Search Bar --> */}
+        </div>
 
         <nav className="header-nav">
           <ul className="d-flex justify-content-center">

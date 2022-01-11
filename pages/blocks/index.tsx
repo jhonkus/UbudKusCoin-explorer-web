@@ -12,7 +12,7 @@ export default function Blocks(props: any) {
       <main id="main" className="main">
 
         <div className="pagetitle">
-          <h5>Blocks</h5>
+          <h4>Blocks</h4>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">

@@ -11,7 +11,7 @@ export default function Txns(props: any) {
       <main id="main" className="main">
 
         <div className="pagetitle">
-          <h5>Transactions</h5>
+          <h4>Transactions</h4>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">

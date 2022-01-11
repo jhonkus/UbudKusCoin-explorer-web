@@ -28,7 +28,7 @@ export default function Txn() {
       <main id="main" className="main">
 
         <div className="pagetitle">
-          <h1>Transaction Details</h1>
+          <h5>Transaction Details</h5>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">

@@ -36,8 +36,8 @@ export default function Block() {
     };
 
     const { transactions, blocks, balance, numBlockValidate, isLoading, isError } = getAccount(address?.toString());
-  
-    if (isLoading) return  <LoadingComp />
+
+    if (isLoading) return <LoadingComp />
     if (isError) return <ErrorComp />
 
     return (
@@ -45,13 +45,8 @@ export default function Block() {
         <>
             <Header />
             <main id="main" className="main">
-
                 <div className="pagetitle">
-
-
-                    <h5>Address <span className={styles.address}>{address}</span></h5>
-
-
+                    <h5>Address <span className={`text-break ${styles.title}`}>{address}</span></h5>
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
@@ -95,7 +90,7 @@ export default function Block() {
 
                                 <div className="card-body">
 
-                                <div className="card-title"/>
+                                    <div className="card-title" />
 
                                     <ul className="nav nav-tabs">
                                         <li className="nav-item">

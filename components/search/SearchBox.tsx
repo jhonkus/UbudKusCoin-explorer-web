@@ -1,4 +1,3 @@
-import { Search } from 'react-bootstrap-icons';
 import { useRouter } from 'next/router';
 
 
@@ -28,7 +27,7 @@ export default function SearchBox() {
     return (
         <form className="search-form d-flex align-items-center" onSubmit={submitContact}>
             <input type="text" name="query" placeholder="Search by address/Txn hash/Block" title="Enter search keyword" />
-            <button type="submit" title="Search"><Search /></button>
+            <button type="submit" title="Search"><i className="bi bi-search"></i></button>
         </form>
     )
 }
