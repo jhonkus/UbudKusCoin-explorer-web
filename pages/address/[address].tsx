@@ -94,10 +94,10 @@ export default function Block() {
 
                                     <ul className="nav nav-tabs">
                                         <li className="nav-item">
-                                            <a onClick={() => handleClick('txns')} className={txnsClass} href="#">Transactions</a>
+                                            <a onClick={() => handleClick('txns')} className={txnsClass}>Transactions</a>
                                         </li>
-                                        <li onClick={() => handleClick('blocks')} className={blocksClass}>
-                                            <a className="nav-link" href="#">Validated Block</a>
+                                        <li className="nav-item">
+                                            <a onClick={() => handleClick('blocks')} className={blocksClass}>Validated Block</a>
                                         </li>
                                     </ul>
 
