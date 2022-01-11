@@ -25,14 +25,6 @@ const Header = () => {
           <ul className="d-flex justify-content-center">
 
             <li className="nav-item">
-              <Link href="/">
-                <a className="nav-link">
-                  <span>Home</span>
-                </a>
-              </Link>
-            </li>
-
-            <li className="nav-item">
               <Link href="/blocks">
                 <a className="nav-link">
                   <span>Blocks</span>
@@ -51,7 +43,7 @@ const Header = () => {
             <li className="nav-item">
               <Link href="https://ubudkuscoin.com">
                 <a className="nav-link" target="_blank">
-                  <span>Main web</span>
+                  <span>Main</span>
                 </a>
               </Link>
             </li>
