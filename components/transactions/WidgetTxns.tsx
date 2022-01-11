@@ -28,7 +28,7 @@ const WidgetTxns = () => {
           <div className={`row ${styles.divRow}`} key={tx.Hash}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.tx}>
-                <Image src={tximg} alt="block icon" width="20" height="20" />
+              <i className="bi bi-arrow-down-up"></i>
               </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">

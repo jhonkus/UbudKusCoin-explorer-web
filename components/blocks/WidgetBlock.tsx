@@ -28,7 +28,7 @@ const WidgetBlocks = () => {
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.bk}>
-                <Image src={bk} alt="block icon"/>
+              <i className="bi bi-box"></i>
               </div>
             </div>
             <div className="col-sm-3 d-flex flex-column">
