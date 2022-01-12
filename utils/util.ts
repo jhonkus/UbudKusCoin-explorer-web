@@ -20,7 +20,7 @@ export function toDate(unixTimestamp) {
 }
 
 export function formatAmount(amount) {
-    return numeral(amount).format('0,0.000')
+    return numeral(amount).format('0,0.00000')
 }
 
 export function formatFee(amount) {
