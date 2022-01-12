@@ -14,9 +14,7 @@ export default function Home() {
           <h1 className='display-6 fw-bold'>The UKC Blockchain Explorer</h1>
           <p className="lead">Block created every 30 seconds</p>
           <div className="alert alert-warning" role="alert">
-          WARNING!!<br/>
-          This website currently not doing any real business,  
-          this website for educational purposes only!. <br/> This website is live testing. 
+          This website currently not doing any real business.<br/>Under live testing. 
           version: alpha
           </div>
         </div>
