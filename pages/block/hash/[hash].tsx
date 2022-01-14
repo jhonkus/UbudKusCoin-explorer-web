@@ -29,7 +29,7 @@ export default function BlockHash() {
       <main id="main" className="main">
 
         <div className="pagetitle">
-          <h5>Block <span className={`text-wrap ${styles.title}`}>{block?.Hash}</span></h5>
+          <h5>Block Hash: <span className={`text-wrap ${styles.title}`}>{block?.Hash}</span></h5>
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
