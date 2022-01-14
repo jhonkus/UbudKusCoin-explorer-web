@@ -75,8 +75,6 @@ message TxnModel {
 	double Amount = 5;
 	float Fee = 6;
   int64 Height = 7;
-  int32 TxType = 8;
-  string Message = 9;
 }
 
 message BlockModel {
@@ -92,8 +90,8 @@ message BlockModel {
   double TotalAmount = 10;
   float TotalReward = 11;
   int32 Difficulty = 12;
-  float Size = 13;
-  int32 BuildTime = 14;
+  int32 BuildTime = 13;
+  float Size = 14;
 }
 
 

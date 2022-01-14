@@ -102,6 +102,7 @@ export default function Block() {
                       <Link href={`/address/${block.Validator}`}>
                         <a className={styles.valueWithLink}>{block.Validator}</a>
                       </Link>
+                      &nbsp;&nbsp; in {block.BuildTime} ms
                     </div>
                   </div>
 
@@ -116,16 +117,20 @@ export default function Block() {
                   </div>
 
 
-                  {/* <div className={`row ${styles.rowDiv}`}>
-            <div className="col-sm-4">Difficulty</div>
-            <div className={`col-sm-8 ${styles.value}`}>{block.Difficulty}</div>
-          </div> */}
+                  <div className={`row ${styles.rowDiv}`}>
+                    <div className="col-sm-4">Difficulty</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{block.Difficulty}</div>
+                  </div>
 
-                  {/* <div className={`row ${styles.rowDiv}`}>
-            <div className="col-sm-4">TotalAmount</div>
-            <div className={`col-sm-8 ${styles.value}`}>{block.TotalAmount}</div>
-          </div> */}
+                  <div className={`row ${styles.rowDiv}`}>
+                    <div className="col-sm-4">TotalAmount</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{block.TotalAmount}</div>
+                  </div>
 
+                  <div className={`row ${styles.rowDiv}`}>
+                    <div className="col-sm-4">Size</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{block.Size}</div>
+                  </div>
 
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Hash </div>
