@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 // custom function
-import { timeAgo, toDate } from '../../../utils/util';
+import { timeAgo, toDate, formatBytes, formatAmount, formatFee } from '../../../utils/util';
 import { getBlock } from '../../../grpc/useFetch';
 
 // custom component
@@ -21,14 +21,13 @@ export default function Block() {
   const [nextHeight, setNextHeight] = useState(0);
 
   const { block, isLoading, isError } = getBlock(height?.toString());
+
   let prev = (parseInt(height?.toString() || '0') - 1);
   prev = prev < 0 ? 0 : prev;
-
   const next = (parseInt(height?.toString() || '1') + 1);
 
 
   useEffect(() => {
-
     setPrevHeight(prev);
     setNextHeight(next);
   }, [next, prev])
@@ -97,7 +96,7 @@ export default function Block() {
 
 
                   <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">Validator</div>
+                    <div className="col-sm-4">Creator</div>
                     <div className={`col-sm-8 ${styles.value}`}>
                       <Link href={`/address/${block.Validator}`}>
                         <a className={styles.valueWithLink}>{block.Validator}</a>
@@ -107,8 +106,13 @@ export default function Block() {
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
+                    <div className="col-sm-4">Total Amount</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{formatAmount(block.TotalAmount)}</div>
+                  </div>
+
+                  <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Block Reward</div>
-                    <div className={`col-sm-8 ${styles.value}`}>{block.TotalReward}</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{formatFee(block.TotalReward)}</div>
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
@@ -116,20 +120,9 @@ export default function Block() {
                     <div className={`col-sm-8 ${styles.value}`}>{block.MerkleRoot}</div>
                   </div>
 
-
-                  <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">Difficulty</div>
-                    <div className={`col-sm-8 ${styles.value}`}>{block.Difficulty}</div>
-                  </div>
-
-                  <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">TotalAmount</div>
-                    <div className={`col-sm-8 ${styles.value}`}>{block.TotalAmount}</div>
-                  </div>
-
                   <div className={`row ${styles.rowDiv}`}>
                     <div className="col-sm-4">Size</div>
-                    <div className={`col-sm-8 ${styles.value}`}>{block.Size}</div>
+                    <div className={`col-sm-8 ${styles.value}`}>{formatBytes(block.Size)} bytes</div>
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
