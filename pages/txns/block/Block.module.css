@@ -15,3 +15,41 @@
 .valueWithLink {
     font-size: 0.95em;
 }
+
+
+.tableTitle {
+    margin-bottom: 15px;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+.divRow {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.viewall {
+    font-size: 0.8em;
+}
+
+.addrsInTable {
+    font-size: 0.8em;
+}
+
+.amountInTable {
+    padding: 5px;
+    font-size: 0.8em;
+    text-align: end;
+    white-space: nowrap;
+}
+
+.dateInTable {
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+
+.tableHeader {
+    font-size: 0.8em;
+    white-space: nowrap;
+}
