@@ -96,11 +96,11 @@ export default function Txn() {
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukuin</div>
+                    <div className="col-sm-4">Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukuci </div>
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukuin</div>
+                    <div className="col-sm-4">Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukuci </div>
                   </div>
                 </div>
               </div>
