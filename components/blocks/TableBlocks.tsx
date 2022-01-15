@@ -53,7 +53,7 @@ const TableBlocks = ({ page = 1 }) => {
                 <th className={styles.tableHeader}>Block</th>
                 <th className={styles.tableHeader}>Age</th>
                 <th className={styles.tableHeader}>Txn</th>
-                <th className={styles.tableHeader}>Validator</th>
+                <th className={styles.tableHeader}>Creator</th>
                 <th className={styles.tableHeader}>Value</th>
                 <th className={styles.tableHeader}>Reward</th>
               </tr>
