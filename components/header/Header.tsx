@@ -11,8 +11,7 @@ const Header = () => {
         <div className="d-flex align-items-center justify-content-between">
           <Link href="/">
             <a className="logo d-flex align-items-center">
-              <Image src={ukclogo} alt="Logo ubudkuscoin" />&nbsp;
-              <span className="d-none d-lg-block">Ubudkuscoin</span>
+              <Image src={ukclogo} alt="Logo ubudkuscoin" />
             </a>
           </Link>
         </div>
