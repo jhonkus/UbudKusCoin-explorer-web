@@ -11,7 +11,7 @@ export default function Home() {
       <main id="main" className="main">
 
         <div className='px-4 py-5 my-5 text-center flex-grow-1'>
-          <h1 className='display-6 fw-bold'>The UKC Blockchain Explorer</h1>
+          <h1 className='display-6 fw-bold'>Ubudkuscoin Explorer</h1>
           <p className="lead">Block created every 30 seconds</p>
           <div className="alert alert-warning" role="alert">
           This website in live TESTING mode. <br/> 
