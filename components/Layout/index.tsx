@@ -14,8 +14,11 @@ export default function Layout(props: LayoutProps) {
     return (
         <>
             <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="description" content="Ubudkuscoin is light coin form Bali, Indonesia, developed by Putu Kusuma" />
+                <meta name="author" content="I Putu Kusuma Negara" />
                 <title>UbudKusCoin | {pageTitle}</title>
-                <meta name="description" content="ini halaman percobaan" />
+                <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
             </Head>
             <div className={styles.container}>
                 <Header />
@@ -23,5 +26,5 @@ export default function Layout(props: LayoutProps) {
                 <Footer />
             </div>
         </>
-  );
+    );
 }
