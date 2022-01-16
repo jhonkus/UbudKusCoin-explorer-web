@@ -11,7 +11,7 @@ export default function Home() {
 
         <div className='px-4 py-5 my-5 text-center flex-grow-1'>
           <h1 className='display-6 fw-bold'>Ubudkuscoin Explorer</h1>
-          <p className="lead">Block forger every 30 seconds</p>
+          <p className="lead">Block created arround every 30 seconds</p>
           <div className="alert alert-warning" role="alert">
             This website in live TESTING mode. <br />
             version: Alpha
