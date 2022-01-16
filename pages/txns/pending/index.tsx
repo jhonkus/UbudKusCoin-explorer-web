@@ -37,7 +37,7 @@ export default function TablePending(props: any) {
     </Layout>
   )
 }
-TablePendingTxns
+
 TablePending.getInitialProps = async({ query: { page = 1 } }) => {
   return {
     page
