@@ -5,7 +5,7 @@ export default function Custom404() {
         <Layout pageTitle="Please visit by block height">
             <main id="main" className="main">
                 <div className="d-flex justify-content-center">
-                    <p>Thank you visiting UKC Scan,<br />
+                    <p>Thank you visiting UKSC Scan,<br />
                         but sorry, page you are looking not found.<br />
                         Please visit other page!</p>
                 </div>

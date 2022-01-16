@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import ukclogo from '../../public/logo-ubudkuscoin.png'
+import ukclogo from '../../public/logo-uksc-ubudkuscoin.png'
 import SearchBox from '../search/SearchBox';
 import { useState } from 'react';
 
