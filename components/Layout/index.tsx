@@ -19,6 +19,7 @@ export default function Layout(props: LayoutProps) {
                 <meta name="author" content="I Putu Kusuma Negara" />
                 <title>UbudKusCoin | {pageTitle}</title>
                 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+                <link rel="shortcut icon" href="/static/favicon.ico" />
             </Head>
             <div className={styles.container}>
                 <Header />
