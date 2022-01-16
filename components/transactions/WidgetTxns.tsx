@@ -55,7 +55,7 @@ const WidgetTxns = () => {
               </div>
             </div>
             <div className="col-sm-3">
-              <div className={styles.amount}>{formatAmount(tx.Amount)} Ukc </div>
+              <div className={styles.amount}>{formatAmount(tx.Amount)} Uks </div>
             </div>
           </div>
 

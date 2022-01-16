@@ -91,11 +91,11 @@ export default function TxnByHash() {
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukuci </div>
+                    <div className="col-sm-4">Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukusi </div>
                   </div>
 
                   <div className={`row ${styles.rowDiv}`}>
-                    <div className="col-sm-4">Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukuci </div>
+                    <div className="col-sm-4">Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukusi </div>
                   </div>
                 </div>
               </div>

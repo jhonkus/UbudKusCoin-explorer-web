@@ -83,7 +83,7 @@ const TableBlocks = ({ page = 1 }) => {
                     </Link>
                   </td>
                   <td>
-                    <div className={styles.amountInTable}>{formatAmount(block.TotalAmount)} Ukuci </div>
+                    <div className={styles.amountInTable}>{formatAmount(block.TotalAmount)} Ukusi </div>
                   </td>
                   <td>
                     <div className={styles.amountInTable}>{formatFee(block.TotalReward)}</div>
