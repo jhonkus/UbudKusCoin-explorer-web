@@ -16,7 +16,7 @@ export default function Layout(props: LayoutProps) {
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
                 <meta name="description" content="Ubudkuscoin is light coin form Bali, Indonesia, developed by Putu Kusuma" />
-                <meta name="author" content="I Putu Kusuma Negara" />
+                <meta name="author" content="pKusuma aka Jhonkus" />
                 <title>UbudKusCoin | {pageTitle}</title>
                 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
                 <link rel="shortcut icon" href="/static/favicon.ico" />
