@@ -6,9 +6,11 @@ export default function SearchBox() {
 
     const submitContact = async(event) => {
         event.preventDefault();
-        const searcText = event.target.query.value;
+        const searcText = event.target.keyword.value;
         if (!searcText) {
-            return;
+            router.push({
+                pathname: '/notfound'
+            });
         }
         const res = await fetch(`/api/search?q=${searcText}`, {
             method: 'POST',
@@ -32,9 +34,9 @@ export default function SearchBox() {
 
     };
     return (
-        <form className="search-form d-flex align-items-center" onSubmit={submitContact}>
-            <input type="text" name="query" placeholder="Search by address/Txn hash/Block" title="Enter search keyword" />
-            <button type="submit" title="Search"><i className="bi bi-search"></i></button>
+        <form className="d-flex align-items-center" onSubmit={submitContact}>
+            <input className="form-control me-2" type="search" name="keyword" placeholder="Search by address/Txn hash/Block" title="Enter search keyword" />
+            <button className="btn btn-outline-success" title="Search"><i className="bi bi-search"></i></button>
         </form>
     )
 }
