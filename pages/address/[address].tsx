@@ -1,13 +1,11 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState } from 'react';
-
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
-import TableAccountTxns from '../../components/account/TableAccountTxns';
-import TableAccountBlocks from '../../components/account/TableAccountBlocks';
 import styles from './Address.module.css'
 
+import Layout from '../../components/Layout'
+import TableAccountTxns from '../../components/account/TableAccountTxns';
+import TableAccountBlocks from '../../components/account/TableAccountBlocks';
 import { getAccount } from '../../grpc/useFetch'
 import { formatAmount } from '../../utils/util';
 import LoadingComp from '../../components/status/LoadingComp';
@@ -41,9 +39,7 @@ export default function Block() {
     if (isError) return <ErrorComp />
 
     return (
-
-        <>
-            <Header />
+        <Layout pageTitle="Account Address">
             <main id="main" className="main">
                 <div className="pagetitle">
                     <h5>Address <span className={`text-break ${styles.title}`}>{address}</span></h5>
@@ -111,8 +107,8 @@ export default function Block() {
                         </div></div>
                 </section>
             </main>
-            <Footer />
-        </>
+        </Layout>
+
     )
 }
 

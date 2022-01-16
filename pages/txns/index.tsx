@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
 import TableTxns from '../../components/transactions/TableTxns'
+import Layout from '../../components/Layout';
 
 export default function Txns(props: any) {
   const pageNum = parseInt(props.page, 10);
   return (
-    <>
-      <Header />
+    <Layout pageTitle="Home page">
       <main id="main" className="main">
 
         <div className="pagetitle">
@@ -36,8 +34,7 @@ export default function Txns(props: any) {
             </div></div>
         </section>
       </main>
-      <Footer />
-    </>
+    </Layout>
   )
 }
 

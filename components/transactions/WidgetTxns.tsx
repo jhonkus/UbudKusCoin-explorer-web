@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import { getTxns } from '../../grpc/useFetch';
 import { formatAmount, timeAgo } from '../../utils/util';
-import ErrorComp from '../status/ErrorComp';
-import LoadingComp from '../status/LoadingComp';
 import styles from './Txns.module.css';
-
+import Image from 'next/image';
+import loading from "../../public/loading.gif";
 /**
  * 
  * @returns Widget component
@@ -12,8 +11,9 @@ import styles from './Txns.module.css';
 const WidgetTxns = () => {
 
   const { transactions, isLoading, isError } = getTxns();
-  if (isLoading) return <LoadingComp />
-  if (isError) return <ErrorComp />
+  if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
+  if (isError) return <div><p>Error when loading</p></div>
+
 
   return (
     <div className="card">

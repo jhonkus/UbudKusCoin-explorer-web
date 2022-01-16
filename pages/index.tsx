@@ -1,12 +1,11 @@
-import Header from '../components/header/Header'
-import Footer from '../components/footer/Footer'
 import WidgetTxns from '../components/transactions/WidgetTxns'
 import WidgetBlocks from '../components/blocks/WidgetBlock'
+import Layout from '../components/Layout'
 
 export default function Home() {
   return (
-    <>
-      <Header />
+
+    <Layout pageTitle="Home page">
 
       <main id="main" className="main">
 
@@ -14,8 +13,8 @@ export default function Home() {
           <h1 className='display-6 fw-bold'>Ubudkuscoin Explorer</h1>
           <p className="lead">Block created every 30 seconds</p>
           <div className="alert alert-warning" role="alert">
-          This website in live TESTING mode. <br/> 
-          version: Alpha
+            This website in live TESTING mode. <br />
+            version: Alpha
           </div>
         </div>
 
@@ -30,8 +29,8 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
-    </>
+    </Layout>
+
   )
 }
 

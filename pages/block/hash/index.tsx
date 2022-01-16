@@ -1,16 +1,13 @@
-import Header from '../../../components/header/Header'
-import Footer from '../../../components/footer/Footer'
+import Layout from '../../../components/Layout'
 
-export default function NoTxnId() {
+export default function NoBlockHash() {
     return (
-        <>
-            <Header />
+        <Layout pageTitle="No Block Hash">
             <main id="main" className="main">
                 <div className="d-flex justify-content-center">
                     <p>Please visit this page with block hash!</p>
                 </div>
             </main>
-            <Footer />
-        </>
+        </Layout>
     )
 }

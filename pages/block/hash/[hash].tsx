@@ -3,14 +3,13 @@ import Link from 'next/link';
 
 import { GetBlockByHash } from '../../../grpc/useFetch';
 import { formatAmount, formatBytes, timeAgo, toDate } from '../../../utils/util';
-
-import Header from '../../../components/header/Header';
-import Footer from '../../../components/footer/Footer';
+import styles from '../Block.module.css';
 import ErrorComp from '../../../components/status/ErrorComp';
 import LoadingComp from '../../../components/status/LoadingComp';
 import NotFound from '../../../components/status/NotFound';
-import styles from '../Block.module.css';
+
 import { useEffect, useState } from 'react';
+import Layout from '../../../components/Layout';
 
 export default function BlockHash() {
   const router = useRouter()
@@ -38,8 +37,8 @@ export default function BlockHash() {
 
   return (
 
-    <>
-      <Header />
+    <Layout pageTitle="Block Hash">
+
       <main id="main" className="main">
 
         <div className="pagetitle">
@@ -144,8 +143,7 @@ export default function BlockHash() {
             </div></div>
         </section>
       </main>
-      <Footer />
-    </>
+    </Layout>
   )
 }
 

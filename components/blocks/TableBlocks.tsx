@@ -1,9 +1,10 @@
 import Link from 'next/link'
+import styles from './Blocks.module.css'
 import { timeAgo, formatAmount, formatFee } from '../../utils/util';
 import { getBlocks } from '../../grpc/useFetch';
-import ErrorComp from '../status/ErrorComp';
-import LoadingComp from '../status/LoadingComp';
-import styles from './Blocks.module.css'
+import Image from "next/image";
+import loading from "../../public/loading.gif";
+
 
 const Pagination = ({ pageNum = 1 }) => {
   return (
@@ -30,8 +31,9 @@ const Pagination = ({ pageNum = 1 }) => {
 const TableBlocks = ({ page = 1 }) => {
   const { blocks, isLoading, isError } = getBlocks(page, 25);
 
-  if (isLoading) return <LoadingComp />
-  if (isError) return <ErrorComp />
+  if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
+  if (isError) return <div><p>Error when loading</p></div>
+
   
   return (
     <div className="card">

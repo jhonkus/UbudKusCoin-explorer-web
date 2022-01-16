@@ -6,11 +6,10 @@ import { formatAmount, formatFee, timeAgo } from '../../../utils/util';
 import { GetTxnsByHeight } from '../../../grpc/useFetch';
 
 // custom component
-import Header from '../../../components/header/Header';
-import Footer from '../../../components/footer/Footer';
 import ErrorComp from '../../../components/status/ErrorComp';
 import LoadingComp from '../../../components/status/LoadingComp';
 import styles from './Block.module.css';
+import Layout from '../../../components/Layout';
 
 export default function Block() {
   const router = useRouter()
@@ -25,8 +24,8 @@ export default function Block() {
 
   return (
 
-    <>
-      <Header />
+    <Layout pageTitle="block by height">
+
       <main id="main" className="main">
 
         <div className="pagetitle">
@@ -127,8 +126,8 @@ export default function Block() {
             </div></div>
         </section>
       </main>
-      <Footer />
-    </>
+
+    </Layout>
 
   )
 }

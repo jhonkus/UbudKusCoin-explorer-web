@@ -1,14 +1,12 @@
 import Link from 'next/link';
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Layout from "../../components/Layout";
 import TableBlocks from '../../components/blocks/TableBlocks'
 
 export default function Blocks(props: any) {
   const pageNum = parseInt(props.page, 10);
   return (
 
-    <>
-      <Header />
+    <Layout pageTitle="Blocks">
       <main id="main" className="main">
 
         <div className="pagetitle">
@@ -37,8 +35,7 @@ export default function Blocks(props: any) {
             </div></div>
         </section>
       </main>
-      <Footer />
-    </>
+    </Layout>
   )
 }
 

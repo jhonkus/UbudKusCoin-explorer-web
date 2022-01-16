@@ -6,28 +6,23 @@ import { formatAmount, formatFee, timeAgo, toDate } from '../../utils/util';
 import { getTxn } from '../../grpc/useFetch'
 
 // custom compoents
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import styles from './Txn.module.css';
+import Layout from '../../components/Layout'
 import ErrorComp from '../../components/status/ErrorComp';
 import LoadingComp from '../../components/status/LoadingComp';
 import NotFound from '../../components/status/NotFound';
 
-import styles from './Txn.module.css';
-
-
-
-export default function Txn() {
+export default function TxnByHash() {
   const router = useRouter()
   const { hash } = router.query;
 
   const { txn, isLoading, isError } = getTxn(hash?.toString());
-  if (isLoading) return  <LoadingComp />
+  if (isLoading) return <LoadingComp />
   if (isError) return <ErrorComp />
   if (!txn) return <NotFound />
 
   return (
-    <>
-      <Header />
+    <Layout pageTitle="Transaction by Hash">
       <main id="main" className="main">
 
         <div className="pagetitle">
@@ -108,13 +103,11 @@ export default function Txn() {
             </div></div>
         </section>
       </main>
-      <Footer />
-    </>
-
+    </Layout>
   )
 }
 
-Txn.getInitialProps = async({ req }) => {
+TxnByHash.getInitialProps = async({ req }) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
   return { userAgent }
 }

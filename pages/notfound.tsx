@@ -1,15 +1,12 @@
-import Header from '../components/header/Header'
-import Footer from '../components/footer/Footer'
+import Layout from '../components/Layout'
+
 
 export default function NoTxnId() {
     return (
-        <>
-            <Header />
+        <Layout pageTitle="No transaction ID">
             <main id="main" className="main">
-
                 <div className="pagetitle">
                 </div>
-
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
@@ -24,8 +21,8 @@ export default function NoTxnId() {
                     </div>
                 </section>
             </main>
-            <Footer />
-        </>
+        </Layout>
+
 
     )
 }

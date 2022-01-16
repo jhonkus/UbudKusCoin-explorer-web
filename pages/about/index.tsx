@@ -1,12 +1,11 @@
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Layout from '../../components/Layout'
 
 export default function About() {
   return (
         <div className={'container'}>
-            <Header />
+            <Layout pageTitle="About">
             <h1>About</h1>
-            <Footer />
+            </Layout>
         </div>
   )
 }

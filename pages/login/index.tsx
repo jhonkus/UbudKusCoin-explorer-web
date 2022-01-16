@@ -1,12 +1,11 @@
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
+import Layout from '../../components/Layout'
 
 export default function Login() {
   return (
-        <div className={'container'}>
-            <Header />
-            <h1>Login</h1>
-            <Footer />
-        </div>
+    <Layout pageTitle="Login">
+      <div className={'container'}>
+        <h1>Login</h1>
+      </div>
+    </Layout>
   )
 }

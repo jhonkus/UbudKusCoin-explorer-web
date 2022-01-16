@@ -6,13 +6,12 @@ import { timeAgo, toDate, formatBytes, formatAmount, formatFee } from '../../../
 import { getBlock } from '../../../grpc/useFetch';
 
 // custom component
-import Header from '../../../components/header/Header';
-import Footer from '../../../components/footer/Footer';
+import styles from '../Block.module.css';
 import ErrorComp from '../../../components/status/ErrorComp';
 import LoadingComp from '../../../components/status/LoadingComp';
 import NotFound from '../../../components/status/NotFound';
-import styles from '../Block.module.css';
 import { useEffect, useState } from 'react';
+import Layout from '../../../components/Layout';
 
 export default function Block() {
   const router = useRouter()
@@ -40,8 +39,7 @@ export default function Block() {
   }
 
   return (
-    <>
-      <Header />
+    <Layout pageTitle="Block by height">
       <main id="main" className="main">
 
         <div className="pagetitle">
@@ -145,7 +143,7 @@ export default function Block() {
             </div></div>
         </section>
       </main>
-      <Footer />
-    </>
+
+    </Layout>
   )
 }
