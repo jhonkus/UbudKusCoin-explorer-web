@@ -54,6 +54,14 @@ const Header = () => {
                     </a>
                   </Link>
                 </li>
+                <li><hr className="dropdown-divider" /></li>
+                <li className="nav-item">
+                  <Link href="/txns/pending">
+                    <a className="dropdown-item">
+                      <span>Pending Trancactions</span>
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </li>
             <li className="nav-item">

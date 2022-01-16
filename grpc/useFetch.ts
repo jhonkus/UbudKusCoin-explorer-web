@@ -86,3 +86,17 @@ export function getTxns(page = 1, numOfRow = 10) {
         isError: error
     }
 }
+
+
+export function getPendingTxns() {
+    const dispatch = useDispatch();
+    const { data, error } = useSWR(`/api/txns/pending`, fetcher, { refreshInterval: 4000 })
+    if (!error && data?.transactions) {
+        dispatch(saveTransactions(data?.transactions))
+    }
+    return {
+        transactions: data?.transactions,
+        isLoading: !error && !data,
+        isError: error
+    }
+}
