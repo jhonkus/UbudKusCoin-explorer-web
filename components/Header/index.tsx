@@ -21,7 +21,7 @@ const Header = () => {
       <div className="container-fluid">
         <Link href="/">
           <a className="logo d-flex align-items-center">
-            <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="219" height="45"/>
+            <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="219" height="43"/>
           </a>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
