@@ -27,18 +27,19 @@ const Header = () => {
         </Link>
       </div>
 
-      <div className={`${search === true ? 'search-bar-show' : "search-bar"}`}>
+      {/* <div className={`${search === true ? 'search-bar-show' : "search-bar"}`}> */}
+      <div className="search-bar">
         <SearchBox />
       </div>
 
       <nav className="header-nav ms-auto">
         <ul className="d-flex align-items-center">
 
-          <li className="nav-item d-block d-lg-none">
+          {/* <li className="nav-item d-block d-lg-none">
             <a className="nav-link nav-icon search-bar-toggle " onClick={handleClick} href="#">
               <i className="bi bi-search"></i>
             </a>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link href="/blocks">
               <a className="nav-link">
