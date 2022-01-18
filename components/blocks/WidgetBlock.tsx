@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
 import loading from "../../public/loading.gif";
-import styles from './Blocks.module.css';
+import styles from './WidgetBlock.module.css';
 
 /**
  * Block component
@@ -36,16 +36,16 @@ const WidgetBlocks = () => {
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-5 d-flex flex-column">
-              <span className={styles.validatorLabel}>Creator : <span className={styles.validator}>
+              <span className={styles.addrsLabel}>Creator : <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
                     {block.Validator?.substring(0, 16)}...
                   </a>
                 </Link>
               </span></span>
-              <span className={styles.numTx}>
+              <span>
                 <Link href={`/txns/block/${block.Height}`}>
-                  <a className={styles.valueWithLink}>
+                  <a className={styles.numTnx}>
                   {block.NumOfTx} txns </a>
                 </Link>
                 <span className={styles.lblTx}> in this block</span></span>

@@ -100,3 +100,17 @@ export function getPendingTxns() {
         isError: error
     }
 }
+
+
+export function getBcInfo() {
+    const dispatch = useDispatch();
+    const { data, error } = useSWR(`/api/bcinfo`, fetcher, { refreshInterval: 1000 })
+    if (!error && data) {
+        dispatch(saveTransactions(data?.transactions))
+    }
+    return {
+        infos: data,
+        isLoading: !error && !data,
+        isError: error
+    }
+}

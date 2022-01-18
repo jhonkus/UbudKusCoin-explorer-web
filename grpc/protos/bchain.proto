@@ -18,6 +18,7 @@ service BChainService {
   rpc Search(CommonRequest) returns (SearchResponse);
   rpc GetTxns(PagingRequest) returns (TxnsResponse);
   rpc GetPendingTxns(PagingRequest) returns (TxnsResponse);
+  rpc GetBchainInfo(CommonRequest) returns (BcInfoResponse);
 }
 
 message SendRequest{
@@ -78,6 +79,7 @@ message TxnModel {
   int64 Height = 7;
 }
 
+
 message BlockModel {
 	int32 Version = 1;
 	int64 Height = 2;
@@ -112,6 +114,16 @@ message AccountResponse {
 	int32 numBlockValidate = 2;
   repeated TxnModel transactions = 3;
   repeated BlockModel blocks = 4;
+}
+
+message BcInfoResponse {
+  int64 NumBloks = 1;
+  int64  NumPool = 2;
+  double AmountPool = 3;
+  int64 NumTxns = 4;
+  double AmountTxns= 5;
+  int64 NumAcc = 6;
+  double AmountReward = 7;
 }
 
 message SearchResponse {

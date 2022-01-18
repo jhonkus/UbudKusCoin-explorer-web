@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getTxns } from '../../grpc/useFetch';
 import { formatAmount, timeAgo } from '../../utils/util';
-import styles from './Txns.module.css';
+import styles from './WidgetTxn.module.css';
 import Image from 'next/image';
 import loading from "../../public/loading.gif";
 /**

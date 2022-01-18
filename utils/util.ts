@@ -23,6 +23,11 @@ export function formatAmount(amount) {
     return numeral(amount).format('0,0.00000')
 }
 
+export function formatNum(amount) {
+    return numeral(amount).format('0,0')
+}
+
+
 export function formatFee(amount) {
     return numeral(amount).format('0,0.00000000')
 }
