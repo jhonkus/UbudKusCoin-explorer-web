@@ -21,7 +21,7 @@ const Header = () => {
       <div className="container-fluid">
         <Link href="/">
           <a className="logo d-flex align-items-center">
-            <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="219" height="43"/>
+            <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="219" height="43" />
           </a>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +31,7 @@ const Header = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link href="/">
-              <a className="nav-link active" aria-current="page" href="#">Home</a>
+                <a className="nav-link active" aria-current="page" href="#">Home</a>
               </Link>
             </li>
             <li className="nav-item dropdown">
@@ -64,15 +64,21 @@ const Header = () => {
                 </li>
               </ul>
             </li>
+ 
+
             <li className="nav-item">
               <Link href="https://ubudkuscoin.com">
                 <a className="nav-link" target="_blank">
-                  <span>Main</span>
+                  <span>Main Web</span>
                 </a>
               </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">&nbsp;&nbsp;</a>
+            </li>
+            <li className="nav-item">
+              <span className="text-danger small nav-link">
+                On Live Testing</span>
             </li>
           </ul>
           <SearchBox />
