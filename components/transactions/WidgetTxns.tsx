@@ -11,7 +11,7 @@ const WidgetTxns = () => {
 
   const { transactions, isLoading, isError } = getTxns();
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
- 
+
   return (
     <div className="card">
       <div className="card-header">
@@ -59,11 +59,12 @@ const WidgetTxns = () => {
 
         ))}
       </div>
-      <div className="card-footer text-center">
-        {transactions &&
+      {
+        transactions &&
+        <div className="card-footer text-center">
           <Link href="/txns"><a><span className={styles.viewall}>View all transactions</span></a></Link>
-        }
-      </div>
+        </div>
+      }
     </div>
   )
 }

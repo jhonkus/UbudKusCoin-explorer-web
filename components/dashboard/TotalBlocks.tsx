@@ -1,6 +1,7 @@
 import { formatNum } from '../../utils/util';
+import Skeleton from 'react-loading-skeleton'
 
-const TotalBlocks = ({data}) => {
+const TotalBlocks = ({data, isLoading}) => {
 
     return (
         <div className="col-xxl-3 col-md-3">
@@ -21,8 +22,7 @@ const TotalBlocks = ({data}) => {
 
               </div>
             </div>
-            {/* <div><p className="text-danger text-center">
-              Live TESTING</p></div> */}
+      
 
           </div>
         </div>

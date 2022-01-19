@@ -36,7 +36,7 @@ const WidgetBlocks = () => {
               </Link>
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
-            <div className="col-sm-5 d-flex flex-column">
+            <div className="col-sm-4 d-flex flex-column">
               <span className={styles.addrsLabel}>Creator : <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
@@ -51,7 +51,7 @@ const WidgetBlocks = () => {
                 </Link>
                 <span className={styles.lblTx}> in this block</span></span>
             </div>
-            <div className="col-sm-3 align-self-center">
+            <div className="col-sm-4 align-self-center">
               <div className={`align-self-end ${styles.amount}`}>{formatAmount(block.TotalAmount)} Uks</div>
             </div>
           </div>

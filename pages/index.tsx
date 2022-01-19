@@ -10,8 +10,8 @@ import TotalTxnPool from '../components/dashboard/TotalTxnPool'
 
 export default function Home() {
 
-  const { poolInfos } = getPoolInfo();
-  const { bcInfos } = getBcInfo();
+  const { poolInfos, isPoolLoading } = getPoolInfo();
+  const { bcInfos, isBCLoading } = getBcInfo();
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
 
@@ -27,7 +27,7 @@ export default function Home() {
 
             <div className="col-lg-12">
               <div className="row">
-                <TotalBlocks data={bcInfos} />
+                <TotalBlocks data={bcInfos}  isLoading={isBCLoading}/>
                 <TotalTxns data={bcInfos} />
                 <TotalReward data={bcInfos} />
                 <TotalTxnPool data={poolInfos} />
