@@ -18,8 +18,8 @@ const WidgetTxns = () => {
         <h6 className={styles.subTitle}>Latest Transactions</h6>
       </div>
       <div className="card-body">
-        {isLoading && <Skeleton count={10} />}
-        {isError && <div><p>Error when loading</p></div>}
+        {(isLoading || isError) && <Skeleton count={10} />}
+        {/* {isError && <div><p>Error when loading</p></div>} */}
         {transactions?.map((tx) => (
           <div className={`row ${styles.divRow}`} key={tx.Hash}>
             <div className="col-sm-1 align-self-center">

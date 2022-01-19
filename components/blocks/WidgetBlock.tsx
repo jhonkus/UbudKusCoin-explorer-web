@@ -21,8 +21,8 @@ const WidgetBlocks = () => {
       </div>
       <div className="card-body">
 
-        {isLoading && <Skeleton count={10} />}
-        {isError && <div><p>Error when loading</p></div>}
+        {(isLoading || isError) && <Skeleton count={10} />}
+        {/* {isError && <div><p>Error when loading</p></div>} */}
         {blocks?.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
