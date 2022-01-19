@@ -26,17 +26,17 @@ const Header = () => {
         </Link>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li className="nav-item">
-              <span className="text-danger small text-align-right">
-                <strong>&nbsp;&nbsp;&nbsp;&nbsp;On Live Testing&nbsp;&nbsp;&nbsp;&nbsp;</strong></span>
-            </li>
-            </ul>
+          <li className="nav-item">
+            <span className="text-danger small text-align-right">
+              <strong>&nbsp;&nbsp;&nbsp;Live Testing&nbsp;&nbsp;</strong></span>
+          </li>
+        </ul>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-{/* 
+            {/* 
             <li className="nav-item">
               <Link href="/">
                 <a className="nav-link active" aria-current="page" href="#">Home</a>
@@ -62,7 +62,6 @@ const Header = () => {
                     </a>
                   </Link>
                 </li>
-                <li><hr className="dropdown-divider" /></li>
                 <li className="nav-item">
                   <Link href="/txns/pending">
                     <a className="dropdown-item">
@@ -70,9 +69,17 @@ const Header = () => {
                     </a>
                   </Link>
                 </li>
+                <li><hr className="dropdown-divider" /></li>
+                <li className="nav-item">
+                  <Link href="/nodes">
+                    <a className="dropdown-item">
+                      <span>Nodes</span>
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </li>
- 
+
 
             <li className="nav-item">
               <Link href="https://ubudkuscoin.com">
@@ -84,7 +91,7 @@ const Header = () => {
             <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">&nbsp;&nbsp;</a>
             </li>
- 
+
           </ul>
           <SearchBox />
         </div>
