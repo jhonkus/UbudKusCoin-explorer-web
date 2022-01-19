@@ -1,5 +1,4 @@
 import { formatNum } from '../../utils/util';
-import Skeleton from 'react-loading-skeleton'
 
 const TotalBlocks = ({data, isLoading}) => {
 
