@@ -12,7 +12,7 @@ const WidgetBlocks = () => {
   const { blocks, isLoading, isError } = getBlocks(1, 10);
 
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  if (isError) return <div><p>Error when loading</p></div>
+  // if (isError) return <div><p>Error when loading</p></div>
 
   return (
     <div className="card">
