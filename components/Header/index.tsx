@@ -24,16 +24,24 @@ const Header = () => {
             <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="219" height="43" />
           </a>
         </Link>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li className="nav-item">
+              <span className="text-danger small text-align-right">
+                <strong>&nbsp;&nbsp;&nbsp;&nbsp;On Live Testing&nbsp;&nbsp;&nbsp;&nbsp;</strong></span>
+            </li>
+            </ul>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+{/* 
             <li className="nav-item">
               <Link href="/">
                 <a className="nav-link active" aria-current="page" href="#">Home</a>
               </Link>
-            </li>
+            </li> */}
             <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Blockchain
@@ -76,10 +84,7 @@ const Header = () => {
             <li className="nav-item">
               <a className="nav-link disabled" aria-disabled="true">&nbsp;&nbsp;</a>
             </li>
-            <li className="nav-item">
-              <span className="text-danger small nav-link">
-                On Live Testing</span>
-            </li>
+ 
           </ul>
           <SearchBox />
         </div>

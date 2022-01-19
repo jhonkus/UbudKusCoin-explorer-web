@@ -26,10 +26,10 @@ export default function Home() {
 
             <div className="col-lg-12">
               <div className="row">
-                <TotalTxnPool data={poolInfos} />
                 <TotalBlocks data={bcInfos} />
                 <TotalTxns data={bcInfos} />
                 <TotalReward data={bcInfos} />
+                <TotalTxnPool data={poolInfos} />
               </div>
             </div>
           </div>
