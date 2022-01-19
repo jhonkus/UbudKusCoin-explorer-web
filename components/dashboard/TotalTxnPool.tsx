@@ -2,7 +2,7 @@ import { formatAmount, formatNum } from '../../utils/util';
 
 const TotalTxnPool = ({ data }) => {
     return (
-        <div className="col-xxl-3 col-md-6">
+        <div className="col-xxl-3 col-md-3">
             <div className="card info-card customers-card">
                 <div className="card-body">
                     <h5 className="card-title">Transaction Pool <span></span></h5>

@@ -2,7 +2,7 @@ import { formatAmount } from '../../utils/util';
 const TotalReward = ({ data }) => {
 
     return (
-        <div className="col-xxl-3 col-md-6">
+        <div className="col-xxl-3 col-md-3">
             <div className="card info-card sales-card">
 
                 <div className="card-body">

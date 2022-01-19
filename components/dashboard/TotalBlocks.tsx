@@ -3,7 +3,7 @@ import { formatNum } from '../../utils/util';
 const TotalBlocks = ({data}) => {
 
     return (
-        <div className="col-xxl-3 col-md-6">
+        <div className="col-xxl-3 col-md-3">
 
         <div className="card info-card customers-card">
 
