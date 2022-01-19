@@ -1,4 +1,4 @@
-const client = require("../../grpc/client");
+const client = require("../../../grpc/client");
 
 export default async function handler(req, res) {
     const { hash } = req.query
@@ -7,7 +7,7 @@ export default async function handler(req, res) {
             if (!err && response) {
                 res.statusCode = 200
                 res.setHeader('Content-Type', 'application/json');
-                // res.setHeader('Cache-Control', 'max-age=10');
+                res.setHeader('Cache-Control', 'max-age=10');
                 res.end(JSON.stringify(response));
             } else {
                 res.json(err);

@@ -19,6 +19,7 @@ service BChainService {
   rpc GetTxns(PagingRequest) returns (TxnsResponse);
   rpc GetPendingTxns(PagingRequest) returns (TxnsResponse);
   rpc GetBchainInfo(CommonRequest) returns (BcInfoResponse);
+  rpc GetPoolInfo(CommonRequest) returns (TxnPoolResponse);
 }
 
 message SendRequest{
@@ -118,12 +119,14 @@ message AccountResponse {
 
 message BcInfoResponse {
   int64 NumBloks = 1;
-  int64  NumPool = 2;
-  double AmountPool = 3;
-  int64 NumTxns = 4;
-  double AmountTxns= 5;
-  int64 NumAcc = 6;
-  double AmountReward = 7;
+  int64 NumTxns = 2;
+  double AmountTxns= 3;
+  double AmountReward = 4;
+}
+
+message TxnPoolResponse {
+  int64  NumPool = 1;
+  double AmountPool = 2;
 }
 
 message SearchResponse {

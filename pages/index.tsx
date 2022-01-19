@@ -4,12 +4,13 @@ import Layout from '../components/Layout'
 import TotalReward from '../components/dashboard/TotalReward'
 import TotalTxns from '../components/dashboard/TotalTxns'
 import TotalBlocks from '../components/dashboard/TotalBlocks'
+import { getBcInfo, getPoolInfo } from '../grpc/useFetch'
 import TotalTxnPool from '../components/dashboard/TotalTxnPool'
-import { getBcInfo } from '../grpc/useFetch'
 
 export default function Home() {
 
-  const { infos } = getBcInfo();
+  const { poolInfos } = getPoolInfo();
+  const { bcInfos } = getBcInfo();
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
 
@@ -25,10 +26,10 @@ export default function Home() {
 
             <div className="col-lg-12">
               <div className="row">
-                <TotalBlocks data={infos} />
-                <TotalTxns data={infos} />
-                <TotalTxnPool data={infos} />
-                <TotalReward data={infos} />
+                <TotalTxnPool data={poolInfos} />
+                <TotalBlocks data={bcInfos} />
+                <TotalTxns data={bcInfos} />
+                <TotalReward data={bcInfos} />
               </div>
             </div>
           </div>

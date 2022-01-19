@@ -47,11 +47,11 @@ export function getTxn(hash = 'hash') {
 
 
 export function getBlocks(page = 1, numOfRow = 10) {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const { data, error } = useSWR(`/api/blocks/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
-    if (!error && data?.blocks) {
-        dispatch(saveBlocks(data?.blocks))
-    }
+    // if (!error && data?.blocks) {
+    //     dispatch(saveBlocks(data?.blocks))
+    // }
     return {
         blocks: data?.blocks,
         isLoading: !error && !data,
@@ -62,11 +62,11 @@ export function getBlocks(page = 1, numOfRow = 10) {
 
 
 export function GetTxnsByHeight(height = '0') {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const { data, error } = useSWR(`/api/txns/block/${height}`, fetcher, { refreshInterval: 30000 })
-    if (!error && data?.transactions) {
-        dispatch(saveTransactions(data?.transactions))
-    }
+    // if (!error && data?.transactions) {
+    //     dispatch(saveTransactions(data?.transactions))
+    // }
     return {
         transactions: data?.transactions,
         isLoading: !error && !data,
@@ -75,11 +75,11 @@ export function GetTxnsByHeight(height = '0') {
 }
 
 export function getTxns(page = 1, numOfRow = 10) {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const { data, error } = useSWR(`/api/txns/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
-    if (!error && data?.transactions) {
-        dispatch(saveTransactions(data?.transactions))
-    }
+    // if (!error && data?.transactions) {
+    //     dispatch(saveTransactions(data?.transactions))
+    // }
     return {
         transactions: data?.transactions,
         isLoading: !error && !data,
@@ -89,11 +89,7 @@ export function getTxns(page = 1, numOfRow = 10) {
 
 
 export function getPendingTxns() {
-    const dispatch = useDispatch();
     const { data, error } = useSWR(`/api/txns/pending`, fetcher, { refreshInterval: 4000 })
-    if (!error && data?.transactions) {
-        dispatch(saveTransactions(data?.transactions))
-    }
     return {
         transactions: data?.transactions,
         isLoading: !error && !data,
@@ -103,14 +99,19 @@ export function getPendingTxns() {
 
 
 export function getBcInfo() {
-    const dispatch = useDispatch();
-    const { data, error } = useSWR(`/api/bcinfo`, fetcher, { refreshInterval: 1000 })
-    if (!error && data) {
-        dispatch(saveTransactions(data?.transactions))
-    }
+    const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 5000 })
     return {
-        infos: data,
-        isLoading: !error && !data,
-        isError: error
+        bcInfos: data,
+        isBCLoading: !error && !data,
+        isBcError: error
+    }
+}
+
+export function getPoolInfo() {
+    const { data, error } = useSWR(`/api/infos/poolinfo`, fetcher, { refreshInterval: 1000 })
+    return {
+        poolInfos: data,
+        isPoolLoading: !error && !data,
+        isPoolError: error
     }
 }
