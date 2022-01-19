@@ -12,7 +12,7 @@ const TotalTxns = ({ data }) => {
 
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i className="text-secondary bi bi-arrow-down-up"></i>
+                            <i className="text-muted small bi bi-arrow-down-up"></i>
                         </div>
                         <div className="ps-3">
                             <h6>{formatNum(data?.NumTxns)}</h6>
