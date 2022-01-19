@@ -2,8 +2,7 @@ import Link from 'next/link';
 import { getTxns } from '../../grpc/useFetch';
 import { formatAmount, timeAgo } from '../../utils/util';
 import styles from './WidgetTxn.module.css';
-import Image from 'next/image';
-import loading from "../../public/loading.gif";
+import Skeleton from 'react-loading-skeleton'
 /**
  * 
  * @returns Widget component
@@ -11,22 +10,21 @@ import loading from "../../public/loading.gif";
 const WidgetTxns = () => {
 
   const { transactions, isLoading, isError } = getTxns();
-  if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  if (isError) return <div><p>Error when loading</p></div>
-
-
+  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
+ 
   return (
     <div className="card">
       <div className="card-header">
         <h6 className={styles.subTitle}>Latest Transactions</h6>
       </div>
       <div className="card-body">
-
+        {isLoading && <Skeleton count={10} />}
+        {isError && <div><p>Error when loading</p></div>}
         {transactions?.map((tx) => (
           <div className={`row ${styles.divRow}`} key={tx.Hash}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.tx}>
-              <i className="bi bi-arrow-down-up"></i>
+                <i className="bi bi-arrow-down-up"></i>
               </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
@@ -60,11 +58,11 @@ const WidgetTxns = () => {
           </div>
 
         ))}
-
-
       </div>
       <div className="card-footer text-center">
-        <Link href="/txns"><a><span className={styles.viewall}>View all transactions</span></a></Link>
+        {transactions &&
+          <Link href="/txns"><a><span className={styles.viewall}>View all transactions</span></a></Link>
+        }
       </div>
     </div>
   )

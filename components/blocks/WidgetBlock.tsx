@@ -22,7 +22,7 @@ const WidgetBlocks = () => {
       <div className="card-body">
 
         {isLoading && <Skeleton count={10} />}
-
+        {isError && <div><p>Error when loading</p></div>}
         {blocks?.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
@@ -58,9 +58,9 @@ const WidgetBlocks = () => {
         ))}
 
       </div>
-      <div className="card-footer text-center">
+      {blocks && <div className="card-footer text-center">
         <Link href="/blocks"><a><span className={styles.viewall}>View all bloks</span></a></Link>
-      </div>
+      </div>}
     </div>
   )
 }
