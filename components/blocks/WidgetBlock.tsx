@@ -1,18 +1,17 @@
 import Link from 'next/link';
-import Image from "next/image";
 import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
-import loading from "../../public/loading.gif";
 import styles from './WidgetBlock.module.css';
-
+import Skeleton from 'react-loading-skeleton'
 /**
  * Block component
  * @returns 
+ * 
  */
 const WidgetBlocks = () => {
   const { blocks, isLoading, isError } = getBlocks(1, 10);
 
-  if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
+  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   if (isError) return <div><p>Error when loading</p></div>
 
   return (
@@ -22,7 +21,9 @@ const WidgetBlocks = () => {
       </div>
       <div className="card-body">
 
-        {blocks.map((block) => (
+        {isLoading && <Skeleton count={10} />}
+
+        {blocks?.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.bk}>
@@ -46,7 +47,7 @@ const WidgetBlocks = () => {
               <span>
                 <Link href={`/txns/block/${block.Height}`}>
                   <a className={styles.numTnx}>
-                  {block.NumOfTx} txns </a>
+                    {block.NumOfTx} txns </a>
                 </Link>
                 <span className={styles.lblTx}> in this block</span></span>
             </div>

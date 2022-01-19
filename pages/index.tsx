@@ -7,6 +7,7 @@ import TotalBlocks from '../components/dashboard/TotalBlocks'
 import { getBcInfo, getPoolInfo } from '../grpc/useFetch'
 import TotalTxnPool from '../components/dashboard/TotalTxnPool'
 
+
 export default function Home() {
 
   const { poolInfos } = getPoolInfo();
