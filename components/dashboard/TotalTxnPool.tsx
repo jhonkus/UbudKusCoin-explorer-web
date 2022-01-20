@@ -8,6 +8,11 @@ const TotalTxnPool = ({ data, isLoading }) => {
                 <div className="card-body">
                     <h5 className="card-title">Pending Transactions <span></span></h5>
 
+                    <div className="filter">
+                        <div style={{width:'50px', marginRight:'10px'}}>
+                       <Skeleton/>
+                       </div>
+                    </div>
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i className="text-muted small bi bi-arrow-down-up"></i>
@@ -15,9 +20,9 @@ const TotalTxnPool = ({ data, isLoading }) => {
                         <div className="ps-3">
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
-                                    <>   <h6>{formatNum(data?.NumPool)}<span style={{fontSize:'0.6em'}} className="text-muted small pt-2 ps-1">Tx</span></h6>
-                                        <span className="text-dark small pt-1 fw-bold">{formatAmount(data?.AmountPool)} 
-                                        <span className="text-muted small pt-2 ps-1">uks</span></span></>
+                                    <>   <h6>{formatNum(data?.NumPool)}<span style={{ fontSize: '0.6em' }} className="text-muted small pt-2 ps-1">Tx</span></h6>
+                                        <span className="text-dark small pt-1 fw-bold">{formatAmount(data?.AmountPool)}
+                                            <span className="text-muted small pt-2 ps-1">uks</span></span></>
                             }
 
                         </div>
