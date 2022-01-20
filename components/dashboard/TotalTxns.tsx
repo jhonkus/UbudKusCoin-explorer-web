@@ -1,6 +1,7 @@
+import Skeleton from 'react-loading-skeleton';
 import { formatAmount, formatNum } from '../../utils/util';
 
-const TotalTxns = ({ data }) => {
+const TotalTxns = ({ data, isLoading }) => {
 
     return (
         <div className="col-xxl-3 col-md-3">
@@ -15,9 +16,14 @@ const TotalTxns = ({ data }) => {
                             <i className="text-muted small bi bi-arrow-down-up"></i>
                         </div>
                         <div className="ps-3">
-                            <h6>{formatNum(data?.NumTxns)}</h6>
-                            <span className="text-dark small pt-1 fw-bold">{formatAmount(data?.AmountTxns)} </span>
-                            <span className="text-muted small pt-2 ps-1">uks</span>
+                            {
+                                isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : <>
+                                    <h6>{formatNum(data?.NumTxns)}</h6>
+                                    <span className="text-dark small pt-1 fw-bold">{formatAmount(data?.AmountTxns)} </span>
+                                    <span className="text-muted small pt-2 ps-1">uks</span>
+
+                                </>
+                            }
 
                         </div>
                     </div>

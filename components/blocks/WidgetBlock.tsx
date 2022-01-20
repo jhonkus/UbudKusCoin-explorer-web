@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
 import styles from './WidgetBlock.module.css';
-import Skeleton from 'react-loading-skeleton'
+import Skeleton from 'react-loading-skeleton';
 /**
  * Block component
  * @returns 
