@@ -10,7 +10,7 @@ const TotalBlocks = ({ data, isLoading }) => {
 
 
         <div className="card-body">
-          <h5 className="card-title">Total Blocks <span>| All the times</span></h5>
+          <h5 className="card-title">Total Blocks <span> </span></h5>
 
           <div className="d-flex align-items-center">
 

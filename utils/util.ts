@@ -27,6 +27,9 @@ export function formatNum(amount) {
     return numeral(amount).format('0,0')
 }
 
+export function formatTotalTxns(amount) {
+    return numeral(amount).format('0,0.00')
+}
 
 export function formatFee(amount) {
     return numeral(amount).format('0,0.00000000')

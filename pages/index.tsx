@@ -6,7 +6,7 @@ import TotalTxns from '../components/dashboard/TotalTxns'
 import TotalBlocks from '../components/dashboard/TotalBlocks'
 import { getBcInfo, getPoolInfo } from '../grpc/useFetch'
 import TotalTxnPool from '../components/dashboard/TotalTxnPool'
-
+// import TxnsChart from '../components/charts/Txnschart'
 
 export default function Home() {
 
@@ -23,7 +23,7 @@ export default function Home() {
       <main id="main" className="main ">
 
 
-       <div className="pagetitle">
+        <div className="pagetitle">
           <h5>&nbsp;</h5>
           <nav>
           </nav>
@@ -41,6 +41,19 @@ export default function Home() {
               </div>
             </div>
           </div>
+
+
+          {/* <div className="row d-flex justify-content-center">
+            <div className="col-lg-6">
+
+              <TxnsChart />
+
+
+            </div>
+            <div className="col-lg-6">
+            </div>
+          </div> */}
+
 
           <div className="row d-flex justify-content-center">
             <div className="col-lg-6">

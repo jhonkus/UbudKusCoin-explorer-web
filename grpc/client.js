@@ -7,6 +7,7 @@ const dirRelativeToPublicFolder = 'protos'
 const dir = path.resolve('./grpc', dirRelativeToPublicFolder);
 const PROTO_PATH = dir + '/bchain.proto';
 const host = "209.126.3.159:5002";
+// const host = "localhost:5002";
 
 const options = {
     keepCase: true,
