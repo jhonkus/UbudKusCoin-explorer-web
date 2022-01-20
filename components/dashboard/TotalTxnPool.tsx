@@ -4,9 +4,9 @@ import { formatAmount, formatNum } from '../../utils/util';
 const TotalTxnPool = ({ data, isLoading }) => {
     return (
         <div className="col-xxl-3 col-md-3">
-            <div className="card info-card customers-card">
+            <div className="card info-card pending-card">
                 <div className="card-body">
-                    <h5 className="card-title">Transaction Pool <span></span></h5>
+                    <h5 className="card-title">Pending Transactions <span></span></h5>
 
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -15,7 +15,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                         <div className="ps-3">
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
-                                    <>   <h6>{formatNum(data?.NumPool)}</h6>
+                                    <>   <h6>{formatNum(data?.NumPool)}<span style={{fontSize:'0.6em'}} className="text-muted small pt-2 ps-1">Tx</span></h6>
                                         <span className="text-dark small pt-1 fw-bold">{formatAmount(data?.AmountPool)} 
                                         <span className="text-muted small pt-2 ps-1">uks</span></span></>
                             }

@@ -17,8 +17,8 @@ const TotalReward = ({ data, isLoading }) => {
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
                                
-                               <><span style={{fontSize:'1.5em'}}className="text-success medium pt-1 fw-bold">{formatAmount(data?.AmountReward)}</span> 
-                                    <span className="text-muted small pt-2 ps-1">uks</span></>
+                               <><span style={{fontSize:'1.2em'}}className="text-success medium pt-1 fw-bold">{formatAmount(data?.AmountReward)}</span> 
+                                   <br/> <span className="text-muted small pt-2 ps-1">Uks</span></>
                             }
                             {/* <h6>{formatAmount(data?.AmountReward)}</h6> */}
 

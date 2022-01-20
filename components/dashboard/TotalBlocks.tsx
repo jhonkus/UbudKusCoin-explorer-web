@@ -10,7 +10,7 @@ const TotalBlocks = ({ data, isLoading }) => {
 
 
         <div className="card-body">
-          <h5 className="card-title">Total Blocks <span>| All times</span></h5>
+          <h5 className="card-title">Total Blocks <span>| All the times</span></h5>
 
           <div className="d-flex align-items-center">
 
@@ -21,7 +21,7 @@ const TotalBlocks = ({ data, isLoading }) => {
               {
                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : <h6>{formatNum(data?.NumBloks)}</h6>
               }
-              {/* <span className="text-danger small pt-1 fw-bold">12%</span> <span className="text-muted small pt-2 ps-1">decrease</span> */}
+               <span className="text-muted small pt-2 ps-1">bloks</span>
 
             </div>
           </div>
