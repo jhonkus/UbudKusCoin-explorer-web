@@ -114,10 +114,10 @@ export default function Block() {
                                   </Link>
                                 </td>
                                 <td>
-                                  <div className={styles.amountInTable}>{formatAmount(tx.Amount)}</div>
+                                  <div className={styles.amountInTable}>{formatAmount(tx.Amount)} <span className="text-muted">Uks</span></div>
                                 </td>
                                 <td>
-                                  <div className={styles.amountInTable}>{formatFee(tx.Fee)}</div>
+                                  <div className={styles.amountInTable}>{formatFee(tx.Fee)} <span className="text-muted">Uks</span></div>
                                 </td>
                               </tr>
 
