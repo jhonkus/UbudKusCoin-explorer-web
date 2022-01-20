@@ -20,12 +20,19 @@ export default function Home() {
 
     <Layout pageTitle="Home page">
 
-      <main id="main" className="main">
+      <main id="main" className="main ">
+
+
+       <div className="pagetitle">
+          <h5>&nbsp;</h5>
+          <nav>
+          </nav>
+        </div>
 
         <section className="section dashboard">
-          <div className="row">
+          <div className="row d-flex justify-content-center">
 
-            <div className="col-lg-12">
+            <div className="col-lg-11">
               <div className="row">
                 <TotalBlocks data={bcInfos} isLoading={isBCLoading} />
                 <TotalTxns data={bcInfos} isLoading={isBCLoading} />
@@ -35,12 +42,12 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row d-flex justify-content-center">
             <div className="col-lg-6">
               <WidgetBlocks />
               <br />
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <WidgetTxns />
               <br />
             </div>

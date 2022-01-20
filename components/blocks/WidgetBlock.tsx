@@ -37,7 +37,7 @@ const WidgetBlocks = () => {
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-4 d-flex flex-column">
-              <span className={styles.addrsLabel}>Validator : <span className={styles.validator}>
+              <span className={styles.addrsLabel}>By: <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
                     {block.Validator?.substring(0, 16)}...
