@@ -90,7 +90,7 @@ export default function BlockHash() {
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">Transactions </div>
                         <div className={`col-sm-8 ${styles.value}`}>
-                          <Link href={`/txns/blocks/${block.Height}`}>
+                          <Link href={`/txns/block/${block.Height}`}>
                             <a className={styles.valueWithLink}>{block.NumOfTx} transaction(s) </a>
                           </Link>
                           in this block</div>
@@ -109,12 +109,12 @@ export default function BlockHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">Total Amount</div>
-                        <div className={`col-sm-8 ${styles.value}`}>{formatAmount(block.TotalAmount)}</div>
+                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatAmount(block.TotalAmount)}</strong> uks</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">Block Reward</div>
-                        <div className={`col-sm-8 ${styles.value}`}>{formatAmount(block.TotalReward)}</div>
+                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatAmount(block.TotalReward)}</strong> uks</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>

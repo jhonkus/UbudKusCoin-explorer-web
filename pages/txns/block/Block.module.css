@@ -37,8 +37,12 @@
     font-size: 0.8em;
 }
 
+.hashTx {
+    font-size: 0.9em;
+}
+
 .amountInTable {
-    padding: 5px;
+    font-weight: bold;
     font-size: 0.8em;
     text-align: end;
     white-space: nowrap;
