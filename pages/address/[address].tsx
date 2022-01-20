@@ -8,8 +8,7 @@ import TableAccountTxns from '../../components/account/TableAccountTxns';
 import TableAccountBlocks from '../../components/account/TableAccountBlocks';
 import { getAccount } from '../../grpc/useFetch'
 import { formatAmount } from '../../utils/util';
-import LoadingComp from '../../components/status/LoadingComp';
-import ErrorComp from '../../components/status/ErrorComp';
+import Skeleton from 'react-loading-skeleton';
 
 
 export default function Block() {
@@ -35,8 +34,8 @@ export default function Block() {
 
     const { transactions, blocks, balance, numBlockValidate, isLoading, isError } = getAccount(address?.toString());
 
-    if (isLoading) return <LoadingComp />
-    if (isError) return <ErrorComp />
+    // if (isLoading) return <LoadingComp />
+    // if (isError) return <ErrorComp />
 
     return (
         <Layout pageTitle="Account Address">
@@ -52,7 +51,7 @@ export default function Block() {
                             </li>
 
                             <li className="breadcrumb-item">
-                                <Link href="/blocks"><a>Blocks</a></Link>
+                                <Link href={`/address/${address}`}><a>Address</a></Link>
                             </li>
                         </ol>
                     </nav>
@@ -61,53 +60,61 @@ export default function Block() {
                 <section className="section">
                     <div className="row">
                         <div className="col-lg-12">
-
-
-
                             <div className="card">
                                 <div className="card-header">
                                     Overview
                                 </div>
                                 <div className="card-body">
-                                    <div className={`row ${styles.rowDiv}`}>
-                                        <div className="col-sm-2">Balance </div>
-                                        <div className={`col-sm-9 ${styles.value}`}>{formatAmount(balance)}</div>
-                                    </div>
-                                    <div className={`row ${styles.rowDiv}`}>
-                                        <div className="col-sm-2">Validated </div>
-                                        <div className={`col-sm-9 ${styles.value}`}>{numBlockValidate}</div>
-                                    </div>
-                                </div>
-                            </div>
+                                    {(!balance && !isLoading && !isError) &&
+                                        <div className="text-center"><p><br />Address not found! </p></div>
+                                    }
 
-                            <br />
-
-                            <div className="card">
-
-                                <div className="card-body">
-
-                                    <div className="card-title" />
-
-                                    <ul className="nav nav-tabs">
-                                        <li className="nav-item">
-                                            <a onClick={() => handleClick('txns')} className={txnsClass}>Transactions</a>
-                                        </li>
-                                        <li className="nav-item">
-                                            <a onClick={() => handleClick('blocks')} className={blocksClass}>Validated Block</a>
-                                        </li>
-                                    </ul>
-
-                                    {activeNav === 'txns' ? <TableAccountTxns transactions={transactions} /> :
-                                        <TableAccountBlocks blocks={blocks} />
+                                    {(isLoading || isError) && <Skeleton count={15} />}
+                                    {balance &&
+                                        <>
+                                            <div className={`row ${styles.rowDiv}`}>
+                                                <div className="col-sm-2">Balance </div>
+                                                <div className={`col-sm-9 ${styles.value}`}><strong>{formatAmount(balance)}</strong> Uks</div>
+                                            </div>
+                                            <div className={`row ${styles.rowDiv}`}>
+                                                <div className="col-sm-2">Validated </div>
+                                                <div className={`col-sm-9 ${styles.value}`}><strong>{numBlockValidate}</strong> block</div>
+                                            </div>
+                                        </>
                                     }
                                 </div>
                             </div>
 
 
+                            {transactions &&
+                                <>
+                                    <br />
+                                    <div className="card">
+
+                                        <div className="card-body">
+
+                                            <div className="card-title" />
+
+                                            <ul className="nav nav-tabs">
+                                                <li className="nav-item">
+                                                    <a onClick={() => handleClick('txns')} className={txnsClass}>Transactions</a>
+                                                </li>
+                                                <li className="nav-item">
+                                                    <a onClick={() => handleClick('blocks')} className={blocksClass}>Validated Block</a>
+                                                </li>
+                                            </ul>
+
+                                            {activeNav === 'txns' ? <TableAccountTxns transactions={transactions} /> :
+                                                <TableAccountBlocks blocks={blocks} />
+                                            }
+                                        </div>
+                                    </div>
+                                </>
+                            }
                         </div></div>
                 </section>
             </main>
-        </Layout>
+        </Layout >
 
     )
 }

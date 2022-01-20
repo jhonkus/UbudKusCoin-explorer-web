@@ -82,7 +82,7 @@ export default function Block() {
                             </td>
                             <td>
 
-                              <Link href={`/block/height/${tx.Height}`}><a>
+                              <Link href={`/blocks/height/${tx.Height}`}><a>
                                 <span className={styles.hashTx}>{tx.Height}
                                 </span></a></Link>
                             </td>

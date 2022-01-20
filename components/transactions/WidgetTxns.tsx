@@ -28,7 +28,7 @@ const WidgetTxns = () => {
               </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
-              <Link href={`/txn/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 12)}...
+              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 12)}...
               </span></a></Link>
               <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
             </div>

@@ -65,7 +65,7 @@ const TableBlocks = ({ page = 1 }) => {
               {blocks.map((block) => (
                 <tr key={block.Height}>
                   <td>
-                    <Link href={`/block/height/${block.Height}`}>
+                    <Link href={`/blocks/height/${block.Height}`}>
                       <a className={styles.heightBlock}>{block.Height}</a>
                     </Link>
                   </td>

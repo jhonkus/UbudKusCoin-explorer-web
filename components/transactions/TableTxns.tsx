@@ -67,12 +67,12 @@ const TableTxns = ({ page = 1 }) => {
 
                 <tr key={tx.Hash}>
                   <td>
-                    <Link href={`/txn/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                    <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
                     </span></a></Link>
                   </td>
                   <td>
 
-                    <Link href={`/block/height/${tx.Height}`}><a>
+                    <Link href={`/blocks/height/${tx.Height}`}><a>
                       <span className={styles.hashTx}>{tx.Height}
                       </span></a></Link>
                   </td>

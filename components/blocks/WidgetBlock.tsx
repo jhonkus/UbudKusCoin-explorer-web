@@ -31,13 +31,13 @@ const WidgetBlocks = () => {
               </div>
             </div>
             <div className="col-sm-3 d-flex flex-column">
-              <Link href={`/block/height/${block.Height}`}>
+              <Link href={`/blocks/height/${block.Height}`}>
                 <a><span className={styles.heightBlock}>{block.Height}</span></a>
               </Link>
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-4 d-flex flex-column">
-              <span className={styles.addrsLabel}>Creator : <span className={styles.validator}>
+              <span className={styles.addrsLabel}>Validator : <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
                     {block.Validator?.substring(0, 16)}...
