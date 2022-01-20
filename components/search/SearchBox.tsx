@@ -34,7 +34,7 @@ export default function SearchBox() {
     };
     return (
         <form className="d-flex align-items-center" onSubmit={submitContact}>
-            <input style={{marginLeft:'-22px',width:'294px'}} className="form-control me-2" type="search" name="keyword" placeholder="Search by address/Txn hash/Block" title="Enter search keyword" />
+            <input style={{marginLeft:'-24px',width:'294px'}} className="form-control me-2" type="search" name="keyword" placeholder="Search by address/Txn hash/Block" title="Enter search keyword" />
             <button className="btn btn-outline-success" title="Search"><i className="bi bi-search"></i></button>
         </form>
     )
