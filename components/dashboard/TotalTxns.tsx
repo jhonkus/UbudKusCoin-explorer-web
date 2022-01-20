@@ -18,9 +18,9 @@ const TotalTxns = ({ data, isLoading }) => {
                         <div className="ps-3">
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : <>
-                                    <h6>{formatNum(data?.NumTxns)}           <span style={{fontSize:'0.5em'}} className="text-muted small pt-2 ps-1">Tx</span></h6>
-                                    <span className="text-dark small pt-1 fw-bold">{formatTotalTxns(data?.AmountTxns)} </span>
-                                    <span className="text-muted small pt-2 ps-1">uks</span>
+                                    <h6 style={{fontSize:'1.2em'}}>{formatNum(data?.NumTxns)}           <span style={{fontSize:'0.7em'}} className="text-muted small pt-2 ps-1">Tx</span></h6>
+                                    <span style={{fontSize:'0.7em'}} className="text-dark small pt-1 fw-bold">{formatTotalTxns(data?.AmountTxns)} </span>
+                                    <span style={{fontSize:'0.7em'}} className="text-muted small pt-2 ps-1">uks</span>
 
                                 </>
                             }

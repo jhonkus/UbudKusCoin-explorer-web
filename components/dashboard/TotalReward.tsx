@@ -4,7 +4,7 @@ const TotalReward = ({ data, isLoading }) => {
 
     return (
         <div className="col-xxl-3 col-md-3">
-            <div className="card info-card sales-card">
+            <div className="card info-card reward-card">
 
                 <div className="card-body">
                     <h5 className="card-title">Total Rewards <span> </span></h5>

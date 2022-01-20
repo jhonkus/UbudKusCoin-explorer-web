@@ -19,9 +19,10 @@ const TotalBlocks = ({ data, isLoading }) => {
             </div>
             <div className="ps-3">
               {
-                isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : <h6>{formatNum(data?.NumBloks)}</h6>
+                isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : 
+                <h6>{formatNum(data?.NumBloks)}  <span style={{fontSize:'0.5em'}} className="text-muted small pt-2 ps-1">bloks</span></h6>
               }
-               <span className="text-muted small pt-2 ps-1">bloks</span>
+              
 
             </div>
           </div>

@@ -9,7 +9,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                     <h5 className="card-title">Pending Transactions <span></span></h5>
 
                     <div className="filter">
-                        <div style={{width:'50px', marginRight:'10px'}}>
+                        <div style={{width:'20px', marginRight:'10px'}}>
                        <Skeleton/>
                        </div>
                     </div>
