@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { GetBlockByHash } from '../../../grpc/useFetch';
 import { formatAmount, formatBytes, timeAgo, toDate } from '../../../utils/util';
 import styles from '../Block.module.css';
-import ErrorComp from '../../../components/status/ErrorComp';
-import LoadingComp from '../../../components/status/LoadingComp';
-import NotFound from '../../../components/status/NotFound';
 
 import { useEffect, useState } from 'react';
 import Layout from '../../../components/Layout';
@@ -152,7 +149,7 @@ export default function BlockHash() {
   )
 }
 
-BlockHash.getInitialProps = async ({ req }) => {
+BlockHash.getInitialProps = async({ req }) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
   return { userAgent }
 }

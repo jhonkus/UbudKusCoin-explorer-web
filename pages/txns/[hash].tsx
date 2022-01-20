@@ -116,7 +116,7 @@ export default function TxnByHash() {
   )
 }
 
-TxnByHash.getInitialProps = async ({ req }) => {
+TxnByHash.getInitialProps = async({ req }) => {
   const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
   return { userAgent }
 }

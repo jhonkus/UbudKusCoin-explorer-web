@@ -8,9 +8,6 @@ import { getBlock } from '../../../grpc/useFetch';
 
 // custom component
 import styles from '../Block.module.css';
-import ErrorComp from '../../../components/status/ErrorComp';
-import LoadingComp from '../../../components/status/LoadingComp';
-import NotFound from '../../../components/status/NotFound';
 import { useEffect, useState } from 'react';
 import Layout from '../../../components/Layout';
 
