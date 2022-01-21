@@ -56,11 +56,11 @@ export default function Home() {
 
 
           <div className="row d-flex justify-content-center">
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <WidgetBlocks />
               <br />
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-6">
               <WidgetTxns />
               <br />
             </div>
