@@ -11,11 +11,10 @@
 
 .amount {
     padding: 5px;
-    font-size: 0.8em;
+    font-size: 0.70em;
     min-width: 10%;
-    font-weight: bold;
     text-align: end;
-    /* background-color: #eee; */
+    background-color: #eee;
     white-space: nowrap;
 }
 
@@ -28,8 +27,8 @@
 }
 
 .addrsLabel {
-    font-size: 0.74em;
-    color: black;
+    font-size: 0.7em;
+    color: gray;
 }
 
 .numTnx {
@@ -40,8 +39,8 @@
     font-size: 0.7em;
 }
 
-.validator {
-    font-size: 1em;
+.address {
+    font-size: 0.9em;
 }
 
 .subTitle {

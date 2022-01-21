@@ -28,7 +28,7 @@ const WidgetTxns = () => {
               </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
-              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 12)}...
+              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 10)}..
               </span></a></Link>
               <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
             </div>
@@ -38,7 +38,7 @@ const WidgetTxns = () => {
                   <span className={styles.addrs}>
                     <Link href={`/address/${tx.Sender}`}>
                       <a>
-                        {tx.Sender.substring(0, 16)} ...
+                        {tx.Sender.substring(0, 10)} ...
                       </a>
                     </Link></span>
                 </span>
@@ -46,14 +46,14 @@ const WidgetTxns = () => {
                   <span className={styles.addrs}>
                     <Link href={`/address/${tx.Recipient}`}>
                       <a>
-                        {tx.Recipient.substring(0, 18)}...
+                        {tx.Recipient.substring(0, 10)}...
                       </a>
                     </Link></span>
                 </span>
               </div>
             </div>
             <div className="col-sm-3">
-              <div className={styles.amount}>{formatAmount(tx.Amount)} Uks </div>
+              <div className={styles.amount}>{formatAmount(tx.Amount)} <span className="text-muted" style={{fontSize:'0.9em'}}>Uks</span> </div>
             </div>
           </div>
 
@@ -61,10 +61,11 @@ const WidgetTxns = () => {
       </div>
       {
         transactions &&
-        <div className="card-footer text-center">
+        <div className="text-center">
           <Link href="/txns"><a><span className={styles.viewall}>View all transactions</span></a></Link>
         </div>
       }
+      <br/>
     </div>
   )
 }

@@ -37,10 +37,10 @@ const WidgetBlocks = () => {
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-4 d-flex flex-column">
-              <span className={styles.addrsLabel}>By: <span className={styles.validator}>
+              <span className={styles.addrsLabel}>By <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
-                    {block.Validator?.substring(0, 16)}...
+                    {block.Validator?.substring(0, 10)}...
                   </a>
                 </Link>
               </span></span>
@@ -49,18 +49,19 @@ const WidgetBlocks = () => {
                   <a className={styles.numTnx}>
                     {block.NumOfTx} txns </a>
                 </Link>
-                <span className={styles.lblTx}> in this block</span></span>
+                <span className={styles.lblTx}> in block</span></span>
             </div>
             <div className="col-sm-4 align-self-center">
-              <div className={`align-self-end ${styles.amount}`}>{formatAmount(block.TotalAmount)} Uks</div>
+              <div className={`align-self-end ${styles.amount}`}>{formatAmount(block.TotalAmount)} <span style={{fontSize: '0.8em'}} className="text-muted">Uks</span></div>
             </div>
           </div>
         ))}
 
       </div>
-      {blocks && <div className="card-footer text-center">
+      {blocks && <div className="text-center">
         <Link href="/blocks"><a><span className={styles.viewall}>View all bloks</span></a></Link>
       </div>}
+      <br/>
     </div>
   )
 }
