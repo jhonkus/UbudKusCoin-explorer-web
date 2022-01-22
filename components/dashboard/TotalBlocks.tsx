@@ -1,5 +1,7 @@
 import { formatNum } from '../../utils/util';
 import Skeleton from 'react-loading-skeleton';
+import Link from 'next/link';
+import styles from './InfoDashboard.module.css';
 
 const TotalBlocks = ({ data, isLoading }) => {
 
@@ -10,7 +12,12 @@ const TotalBlocks = ({ data, isLoading }) => {
 
 
         <div className="card-body">
-          <h5 className="card-title">Total Blocks <span> </span></h5>
+          <h5 className="card-title">
+            <Link href={`/blocks`}>
+              <a className={styles.titlebig}>
+                Total Blocks</a>
+            </Link>
+          </h5>
 
           <div className="d-flex align-items-center">
 
@@ -19,10 +26,10 @@ const TotalBlocks = ({ data, isLoading }) => {
             </div>
             <div className="ps-3">
               {
-                isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : 
-                <h6>{formatNum(data?.NumBloks)}  <span style={{fontSize:'0.5em'}} className="text-muted small pt-2 ps-1">bloks</span></h6>
+                isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
+                  <h6>{formatNum(data?.NumBloks)}  <span style={{ fontSize: '0.5em' }} className="text-muted small pt-2 ps-1">bloks</span></h6>
               }
-              
+
 
             </div>
           </div>

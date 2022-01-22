@@ -7,7 +7,9 @@ const TotalReward = ({ data, isLoading }) => {
             <div className="card info-card reward-card">
 
                 <div className="card-body">
-                    <h5 className="card-title">Total Rewards <span> </span></h5>
+                    <h5 className="card-title" style={{fontSize:'0.9em', color:'gray'}}>Total Rewards <span> </span></h5>
+
+                    
 
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
