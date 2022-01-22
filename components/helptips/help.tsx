@@ -1,8 +1,3 @@
-import copy from 'copy-to-clipboard';
-import { useState } from 'react';
-
-
-
 const HelpTips = ({ tips }) => {
     return (
             <span data-toggle="tooltip" data-placement="top" style={{ cursor: 'pointer' }} title={tips}>
