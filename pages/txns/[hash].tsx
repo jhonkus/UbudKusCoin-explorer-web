@@ -9,6 +9,8 @@ import { getTxn } from '../../grpc/useFetch'
 import styles from './Txn.module.css';
 import Layout from '../../components/Layout'
 import Skeleton from 'react-loading-skeleton';
+import CopyText from '../../components/copy/copy_text';
+
 
 export default function TxnByHash() {
   const router = useRouter()
@@ -56,7 +58,7 @@ export default function TxnByHash() {
                     <>
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">Transaction Hash</div>
-                        <div className={`col-sm-8 ${styles.value}`}>{txn.Hash}</div>
+                        <div className={`col-sm-8 ${styles.value}`}>{txn.Hash} <CopyText msg={'Copy TX hash to clipboard'} text={txn.hash}/></div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
@@ -83,7 +85,7 @@ export default function TxnByHash() {
                         <div className={`col-sm-8`}>
                           <Link href={`/address/${txn.Sender}`}>
                             <a className={styles.valueWithLink}>{txn.Sender}</a>
-                          </Link>
+                          </Link> <CopyText msg={'Copy from address to clipboard'} text={txn.Sender}/>
                         </div>
                       </div>
 
@@ -92,7 +94,7 @@ export default function TxnByHash() {
                         <div className={`col-sm-8`}>
                           <Link href={`/address/${txn.Recipient}`}>
                             <a className={styles.valueWithLink}>{txn.Recipient}</a>
-                          </Link>
+                          </Link> <CopyText msg={'Copy to address to clipboard'} text={txn.Recipient}/>
                         </div>
                       </div>
 

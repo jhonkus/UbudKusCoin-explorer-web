@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 export default function SearchBox() {
     const router = useRouter();
 
-    const submitContact = async (event) => {
+    const submitContact = async(event) => {
         event.preventDefault();
         const searcText = event.target.keyword.value;
         if (!searcText) {
