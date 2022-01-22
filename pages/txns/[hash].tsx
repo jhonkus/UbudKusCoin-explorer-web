@@ -66,7 +66,7 @@ export default function TxnByHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'Height or number of the block in which the transaction recorded.'} />
                           Block</div>
                         <div className={`col-sm-8`}>
                           <Link href={`/blocks/height/${txn.Height}`}>
@@ -77,21 +77,21 @@ export default function TxnByHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'The status of the transaction.'} />
                           Status</div>
                         <div className={`col-sm-8 ${styles.success}`}><i className="bi bi-check-circle-fill"></i> Success</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'The date and time at which a transaction is included onto block.'} />
                           Timestamp</div>
                         <div className={`col-sm-8 ${styles.value}`}><i className="bi bi-clock"></i> {timeAgo(txn.TimeStamp)} ({toDate(txn.TimeStamp)})</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'The sender of the transaction.'} />
                           From</div>
                         <div className={`col-sm-8`}>
                           <Link href={`/address/${txn.Sender}`}>
@@ -102,7 +102,7 @@ export default function TxnByHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'The recipient of the transaction.'} />
                           To</div>
                         <div className={`col-sm-8`}>
                           <Link href={`/address/${txn.Recipient}`}>
@@ -113,13 +113,13 @@ export default function TxnByHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'The value being transacted in Ukusi.'} />
                           Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukusi </div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={' '} />
+                          <HelpTips tips={'Amount paid to the validator when processing the transaction.'} />
                           Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukusi </div>
                       </div>
                     </>
