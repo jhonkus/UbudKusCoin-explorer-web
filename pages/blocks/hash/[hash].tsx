@@ -81,7 +81,7 @@ export default function BlockHash() {
                       </div>
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">Timestamp </div>
-                        <div className={`col-sm-8 ${styles.value}`}>{timeAgo(block.TimeStamp)} ({toDate(block.TimeStamp)})</div>
+                        <div className={`col-sm-8 ${styles.value}`}><i className="bi bi-clock"></i> {timeAgo(block.TimeStamp)} ({toDate(block.TimeStamp)})</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
@@ -95,7 +95,7 @@ export default function BlockHash() {
 
 
                       <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">Creator</div>
+                        <div className="col-sm-4">Validator</div>
                         <div className={`col-sm-8 ${styles.value}`}>
                           <Link href={`/address/${block.Validator}`}>
                             <a className={styles.valueWithLink}>{block.Validator}</a>

@@ -77,7 +77,7 @@ export default function TxnByHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">Timestamp</div>
-                        <div className={`col-sm-8 ${styles.value}`}>{timeAgo(txn.TimeStamp)} ({toDate(txn.TimeStamp)})</div>
+                        <div className={`col-sm-8 ${styles.value}`}><i className="bi bi-clock"></i> {timeAgo(txn.TimeStamp)} ({toDate(txn.TimeStamp)})</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>

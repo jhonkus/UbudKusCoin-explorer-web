@@ -9,6 +9,7 @@ import TableAccountBlocks from '../../components/account/TableAccountBlocks';
 import { getAccount } from '../../grpc/useFetch'
 import { formatAmount } from '../../utils/util';
 import Skeleton from 'react-loading-skeleton';
+import CopyText from '../../components/copy/copy_text';
 
 
 export default function Block() {
@@ -41,7 +42,9 @@ export default function Block() {
         <Layout pageTitle="Account Address">
             <main id="main" className="main">
                 <div className="pagetitle">
-                    <h5>Address <span className={`text-break ${styles.title}`}>{address}</span></h5>
+                    <h5>Address <span className={`text-break ${styles.title}`}>{address}    <CopyText msg={'Copy address to clipboard'} text={address}/></span>
+                 
+                    </h5>
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
