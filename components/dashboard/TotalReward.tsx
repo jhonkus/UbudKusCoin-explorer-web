@@ -13,7 +13,7 @@ const TotalReward = ({ data, isLoading }) => {
 
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i className="text-muted small bi bi-currency-exchange"></i>
+                            <i className="text-muted small bi bi-gem"></i>
                         </div>
                         <div className="ps-3">
                             {

@@ -9,7 +9,7 @@ import Skeleton from 'react-loading-skeleton';
  * 
  */
 const WidgetBlocks = () => {
-  const { blocks, isLoading, isError } = getBlocks(1, 7);
+  const { blocks, isLoading, isError } = getBlocks(1, 10);
 
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
@@ -27,7 +27,8 @@ const WidgetBlocks = () => {
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.bk}>
-                <i className="bi bi-box"></i>
+                <i className="bi bi-receipt"></i>
+                
               </div>
             </div>
             <div className="col-sm-3 d-flex flex-column">

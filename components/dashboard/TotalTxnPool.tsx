@@ -22,7 +22,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                     </div>
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i className="text-muted small bi bi-arrow-down-up"></i>
+                            <i className="text-muted small bi bi-clock-history"></i>
                         </div>
                         <div className="ps-3">
                             {

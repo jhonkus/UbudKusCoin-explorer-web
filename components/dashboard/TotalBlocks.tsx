@@ -22,7 +22,7 @@ const TotalBlocks = ({ data, isLoading }) => {
           <div className="d-flex align-items-center">
 
             <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
-              <i className="text-secondary bi bi-box"></i>
+              <i className="text-secondary bi bi-receipt"></i>
             </div>
             <div className="ps-3">
               {
