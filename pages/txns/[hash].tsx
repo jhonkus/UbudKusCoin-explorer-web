@@ -59,7 +59,7 @@ export default function TxnByHash() {
                     <>
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'TraThe date and time at wwhich a block created.'} />
+                          <HelpTips tips={'The unique 64 character that is generated with has function when transaction created.'} />
                           Transaction Hash</div>
                         <div className={`col-sm-8 ${styles.value}`}>{txn.Hash} <CopyText msg={'Copy TX hash to clipboard'} text={txn.Hash} /></div>
                       </div>
