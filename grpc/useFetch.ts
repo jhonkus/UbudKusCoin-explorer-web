@@ -99,7 +99,7 @@ export function getPendingTxns() {
 
 
 export function getBcInfo() {
-    const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 5000 })
+    const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 10000 })
     return {
         bcInfos: data,
         isBCLoading: !error && !data,
