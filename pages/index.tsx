@@ -12,6 +12,7 @@ export default function Home() {
 
   const { poolInfos, isPoolLoading } = getPoolInfo();
   const { bcInfos, isBCLoading } = getBcInfo();
+  console.log('== bcInfos:', bcInfos)
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
 
@@ -57,11 +58,11 @@ export default function Home() {
 
           <div className="row d-flex justify-content-center">
             <div className="col-lg-5">
-              <WidgetBlocks />
+              <WidgetBlocks data={bcInfos} isLoading={isBCLoading} />
               <br />
             </div>
             <div className="col-lg-6">
-              <WidgetTxns />
+              <WidgetTxns data={bcInfos} isLoading={isBCLoading} />
               <br />
             </div>
           </div>

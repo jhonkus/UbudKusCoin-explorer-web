@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import ukclogo from '../../public/logo-uksc-ubudkuscoin.png'
+import ukclogo from '../../public/ukscscan-logo.png'
 import SearchBox from '../search/SearchBox';
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
       <div className="container-fluid">
         <Link href="/">
           <a className="logo d-flex align-items-center">
-            <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="219" height="43" />
+            <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="188" height="42" />
           </a>
         </Link>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">

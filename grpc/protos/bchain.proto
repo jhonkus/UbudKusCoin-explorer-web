@@ -80,7 +80,6 @@ message TxnModel {
   int64 Height = 7;
 }
 
-
 message BlockModel {
 	int32 Version = 1;
 	int64 Height = 2;
@@ -90,7 +89,7 @@ message BlockModel {
 	string Transactions = 6;
   string Validator = 7;
   string MerkleRoot = 8;
-  int32  NumOfTx = 9;
+  int64  NumOfTx = 9;
   double TotalAmount = 10;
   float TotalReward = 11;
   int32 Difficulty = 12;
@@ -122,6 +121,8 @@ message BcInfoResponse {
   int64 NumTxns = 2;
   double AmountTxns= 3;
   double AmountReward = 4;
+  repeated TxnModel txns = 5;
+  repeated BlockModel blocks = 6;
 }
 
 message TxnPoolResponse {

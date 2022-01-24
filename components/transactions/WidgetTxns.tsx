@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { getTxns } from '../../grpc/useFetch';
 import { formatAmount, timeAgo } from '../../utils/util';
 import styles from './WidgetTxn.module.css';
 import Skeleton from 'react-loading-skeleton'
@@ -7,9 +6,9 @@ import Skeleton from 'react-loading-skeleton'
  * 
  * @returns Widget component
  */
-const WidgetTxns = () => {
+const WidgetTxns = ({ data, isLoading }) => {
 
-  const { transactions, isLoading, isError } = getTxns(1,10);
+  // const { transactions, isLoading, isError } = getTxns(1,10);
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
 
   return (
@@ -18,9 +17,9 @@ const WidgetTxns = () => {
         <h6 className={styles.subTitle}>Latest Transactions</h6>
       </div>
       <div className="card-body">
-        {(isLoading || isError) && <Skeleton count={6} />}
+        {(isLoading) && <Skeleton count={6} />}
         {/* {isError && <div><p>Error when loading</p></div>} */}
-        {transactions?.map((tx) => (
+        {data?.txns?.map((tx) => (
           <div className={`row ${styles.divRow}`} key={tx.Hash}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.tx}>
@@ -60,7 +59,7 @@ const WidgetTxns = () => {
         ))}
       </div>
       {
-        transactions &&
+        data?.txns &&
         <div className="text-center">
           <Link href="/txns"><a><span className={styles.viewall}>View all transactions</span></a></Link>
         </div>

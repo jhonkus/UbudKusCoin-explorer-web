@@ -3,7 +3,7 @@ const client = require("../../../../grpc/client");
 export default async function handler(req, res) {
     // const { slug } = req.query;
     return new Promise(() => {
-      client.GetPendingTxns({ page_number: 1, result_per_page: 500 }, function(err, response) {
+      client.GetPendingTxns({ page_number: 1, result_per_page: 50 }, function(err, response) {
             if (!err) {
                 res.statusCode = 200
                 res.setHeader('Content-Type', 'application/json');

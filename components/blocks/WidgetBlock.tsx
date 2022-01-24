@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { getBlocks } from '../../grpc/useFetch'
 import { timeAgo, formatAmount } from '../../utils/util';
 import styles from './WidgetBlock.module.css';
 import Skeleton from 'react-loading-skeleton';
@@ -8,8 +7,8 @@ import Skeleton from 'react-loading-skeleton';
  * @returns 
  * 
  */
-const WidgetBlocks = () => {
-  const { blocks, isLoading, isError } = getBlocks(1, 10);
+const WidgetBlocks = ({ data, isLoading }) => {
+  // const { blocks, isLoading, isError } = getBlocks(1, 10);
 
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
@@ -21,9 +20,9 @@ const WidgetBlocks = () => {
       </div>
       <div className="card-body">
 
-        {(isLoading || isError) && <Skeleton count={5} />}
+        {(isLoading) && <Skeleton count={5} />}
         {/* {isError && <div><p>Error when loading</p></div>} */}
-        {blocks?.map((block) => (
+        {data?.blocks?.map((block) => (
           <div className={`row ${styles.divRow}`} key={block.Height}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.bk}>
@@ -59,7 +58,7 @@ const WidgetBlocks = () => {
         ))}
 
       </div>
-      {blocks && <div className="text-center">
+      {data?.blocks && <div className="text-center">
         <Link href="/blocks"><a><span className={styles.viewall}>View all bloks</span></a></Link>
       </div>}
       <br/>
