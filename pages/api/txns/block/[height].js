@@ -1,4 +1,4 @@
-const client = require("../../../../grpc/client");
+const {client} = require("../../../../grpc/client");
 
 export default async function handler(req, res) {
     const { height } = req.query;

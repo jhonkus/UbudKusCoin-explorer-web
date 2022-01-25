@@ -1,4 +1,4 @@
-const client = require("../../grpc/client");
+const {client} = require("../../grpc/client");
 
 export default function handler(req, res) {
 
