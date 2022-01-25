@@ -11,7 +11,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                     <h5 className="card-title">                      
                         <Link href={`/txns/pending`}>
                             <a className={styles.title}>
-                            Pending Transactions </a>
+                            Transaction Pool </a>
                         </Link>
                         <span></span></h5>
 

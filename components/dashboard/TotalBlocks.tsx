@@ -15,7 +15,13 @@ const TotalBlocks = ({ data, isLoading }) => {
           <h5 className="card-title">
             <Link href={`/blocks`}>
               <a className={styles.titlebig}>
-                Total Blocks</a>
+                Blocks</a>
+            </Link>
+             &nbsp; and &nbsp; 
+            <Link href={`/accounts`}>
+              <a className={styles.titlebig}>
+                Accounts
+              </a>
             </Link>
           </h5>
 
@@ -27,7 +33,16 @@ const TotalBlocks = ({ data, isLoading }) => {
             <div className="ps-3">
               {
                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
-                  <h6>{formatNum(data?.NumBloks)}  <span style={{ fontSize: '0.5em' }} className="text-muted small pt-2 ps-1">bloks</span></h6>
+                  <> <h6>
+                    {formatNum(data?.NumBloks)}  <span style={{ fontSize: '0.5em' }} className="text-muted small pt-2 ps-1">bloks</span></h6>
+                    <span className="text-muted small pt-2 ps-1">
+                      <Link href={`/accounts`}>
+                        <a className={styles.titlebig}>
+                          TOP Accounts
+                        </a>
+                      </Link>
+                    </span>
+                  </>
               }
 
 
