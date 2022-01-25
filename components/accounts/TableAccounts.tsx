@@ -3,25 +3,8 @@ import styles from './Accounts.module.css'
 import { timeAgo, formatAmount, formatNum } from '../../utils/util';
 import { getAccounts } from '../../grpc/useFetch';
 import Skeleton from 'react-loading-skeleton';
+import Pagination from '../paging/Pagination';
 
-
-const Pagination = ({ pageNum = 1 }) => {
-  return (
-    <nav aria-label="block paging">
-      <ul className="pagination">
-        {/* <li className="page-item"><a className="page-link" href={`/blocks?page=1`}>First</a></li> */}
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum - 1}`}>Prev</a></li>
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum}`}>{pageNum}</a></li>
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum + 1}`}>{pageNum + 1}</a></li>
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum + 2}`}>{pageNum + 2}</a></li>
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum + 3}`}>{pageNum + 3}</a></li>
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum + 4}`}>{pageNum + 4}</a></li>
-        <li className="page-item"><a className="page-link" href={`/accounts?page=${pageNum + 5}`}>Next</a></li>
-        {/* <li className="page-item"><a className="page-link" href={`/blocks?page=${pageNum + 1}`}>Last</a></li> */}
-      </ul>
-    </nav>
-  )
-}
 
 /**
  * Block component
@@ -50,7 +33,9 @@ const TableAccounts = ({ page = 1 }) => {
                 <p>Showing 25 Accounts</p>
               </div>
               <div className="col d-flex justify-content-end">
-                <Pagination pageNum={page} />
+                {accounts.length < 25 ? <Pagination isLast={true} pageNum={page} url="accounts"/> :
+                  <Pagination isLast={false} pageNum={page} url="accounts"/>
+                }
               </div>
             </div>
             <div className="table-responsive">
@@ -58,9 +43,9 @@ const TableAccounts = ({ page = 1 }) => {
                 <thead>
                   <tr>
                     <th className={styles.tableHeader}>Address</th>
-                    <th className={styles.tableHeader} style={{textAlign:'right'}}>Balance</th>
-                    <th className={styles.tableHeader} style={{textAlign:'right'}}>Txn Count</th>
-                    <th className={styles.tableHeader} style={{textAlign:'right'}}>Updated</th>
+                    <th className={styles.tableHeader} style={{ textAlign: 'right' }}>Balance</th>
+                    <th className={styles.tableHeader} style={{ textAlign: 'right' }}>Txn Count</th>
+                    <th className={styles.tableHeader} style={{ textAlign: 'right' }}>Updated</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -78,7 +63,7 @@ const TableAccounts = ({ page = 1 }) => {
                       <td>
                         <div className={styles.amountInTable}><b>{formatNum(acc.txn_count)}</b></div>
                       </td>
-                      <td  style={{textAlign:'right'}}>
+                      <td style={{ textAlign: 'right' }}>
                         <span className={styles.dateInTable}>{timeAgo(acc.last_update)}</span>
                       </td>
                     </tr>
@@ -89,7 +74,9 @@ const TableAccounts = ({ page = 1 }) => {
             </div>
             <div className="row">
               <div className="col d-flex justify-content-end">
-                <Pagination pageNum={page} />
+                {accounts.length < 25 ? <Pagination isLast={true} pageNum={page} url="accounts"/> :
+                  <Pagination isLast={false} pageNum={page} url="accounts"/>
+                }
               </div>
             </div>
 

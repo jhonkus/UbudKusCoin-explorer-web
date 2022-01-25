@@ -35,8 +35,8 @@ const TableBlocks = ({ page = 1 }) => {
               </div>
               <div className="col d-flex justify-content-end">
 
-                {blocks.length < 25 ? <Pagination isLast={true} pageNum={page} /> :
-                  <Pagination isLast={false} pageNum={page} />
+                {blocks.length < 25 ? <Pagination isLast={true} pageNum={page} url="blocks"/> :
+                  <Pagination isLast={false} pageNum={page} url="blocks"/>
                 }
 
               </div>
@@ -93,8 +93,8 @@ const TableBlocks = ({ page = 1 }) => {
             </div>
             <div className="row">
               <div className="col d-flex justify-content-end">
-                {blocks.length < 25 ? <Pagination isLast={true} pageNum={page} /> :
-                  <Pagination isLast={false} pageNum={page} />
+                {blocks.length < 25 ? <Pagination isLast={true} pageNum={page} url="blocks"/> :
+                  <Pagination isLast={false} pageNum={page} url="blocks"/>
                 }
               </div>
             </div>
