@@ -2,7 +2,6 @@ const {client} = require("../../../../grpc/client");
 
 export default async function handler(req, res) {
     const { hash } = req.query
-    console.log('== hash:', hash);
     
     return new Promise(() => {
        client.GetBlockByHash({ blockHash: hash }, function(err, response) {

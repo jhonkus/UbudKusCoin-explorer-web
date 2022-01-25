@@ -11,7 +11,6 @@ export default function handler(req, res) {
   const param = req.query.q;
   return new Promise(() => {
     client.Search({ searchText: param }, function(err, response) {
-      console.log('== res:', response);
 
       if (!err) {
         res.statusCode = 200
