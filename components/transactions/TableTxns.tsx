@@ -50,8 +50,8 @@ const TableTxns = ({ page = 1 }) => {
                     <th className={styles.tableHeader}>Age</th>
                     <th className={styles.tableHeader}>From</th>
                     <th className={styles.tableHeader}>To</th>
-                    <th className={styles.tableHeader}>Value</th>
-                    <th className={styles.tableHeader}>Fee</th>
+                    <th className={styles.tableHeader} style={{ textAlign: 'right' }}>Value</th>
+                    <th className={styles.tableHeader} style={{ textAlign: 'right' }}>Fee</th>
                   </tr>
                 </thead>
                 <tbody>

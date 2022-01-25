@@ -49,8 +49,8 @@ const TableBlocks = ({ page = 1 }) => {
                     <th className={styles.tableHeader}>Age</th>
                     <th className={styles.tableHeader}>Txns</th>
                     <th className={styles.tableHeader}>Validator</th>
-                    <th className={styles.tableHeader}>Value</th>
-                    <th className={styles.tableHeader}>Reward</th>
+                    <th className={styles.tableHeader} style={{textAlign:'right'}}>Value</th>
+                    <th className={styles.tableHeader} style={{textAlign:'right'}}>Reward</th>
                   </tr>
                 </thead>
                 <tbody>
