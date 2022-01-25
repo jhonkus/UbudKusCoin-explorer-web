@@ -74,10 +74,16 @@ export default function Block() {
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4"><HelpTips tips={'Block height also known as block number is length of blockchain.'} />Block Height </div>
                         <div className={`col-sm-8 ${styles.value}`}><strong>{block.Height}</strong>&nbsp;&nbsp;
-                          <Link href={`/blocks/height/${prevHeight}`}>
-                            <a><i className="bi bi-chevron-left"></i></a>
-                          </Link>
-                          &nbsp;&nbsp;
+
+                          {block.Height <= 1 ? <a><i className="bi bi-chevron-left"></i></a> : (
+                            <Link href={`/blocks/height/${prevHeight}`}>
+                              <a><i className="bi bi-chevron-left"></i></a>
+                            </Link>
+                          )
+
+                          }
+
+                          &nbsp;&nbsp;  &nbsp;&nbsp;
                           <Link href={`/blocks/height/${nextHeight}`}>
                             <a><i className="bi bi-chevron-right"></i></a>
                           </Link>
