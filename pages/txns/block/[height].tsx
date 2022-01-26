@@ -60,7 +60,7 @@ export default function Block() {
                       <div className="card-title" />
                       <div className="row">
                         <div className="col d-flex justify-content-start">
-                          <p>Showing last 50 transactions</p>
+                          <p>Showing maks. 300 transactions</p>
                         </div>
                       </div>
 
