@@ -1,5 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 import { formatAmount } from '../../utils/util';
+import HelpTips from '../helptips/help';
 const TotalReward = ({ data, isLoading }) => {
 
     return (
@@ -7,7 +8,7 @@ const TotalReward = ({ data, isLoading }) => {
             <div className="card info-card reward-card">
 
                 <div className="card-body">
-                    <h5 className="card-title" style={{fontSize:'0.9em', color:'gray'}}>Total Rewards <span> </span></h5>
+                    <h5 className="card-title" style={{fontSize:'0.9em', color:'gray'}}>Total Rewards <HelpTips tips={'Total coins received by all validators as a reward for creating/validating blocks, taken from transaction fees.'} /><span> </span></h5>
 
                     
 
@@ -19,7 +20,7 @@ const TotalReward = ({ data, isLoading }) => {
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
                                
-                               <><span style={{fontSize:'1.2em'}}className="text-success medium pt-1 fw-bold">{formatAmount(data?.AmountReward)} <span style={{fontSize:'0.6em'}} className="text-muted small pt-2 ps-1">Uks</span></span> 
+                               <><span style={{fontSize:'1.2em'}}className="text-success medium pt-1 fw-bold">{formatAmount(data?.AmountReward)} <span style={{fontSize:'0.6em'}} className="text-muted small pt-2 ps-1">Uks</span></span>
                                    <br/> <span className="text-muted small pt-2 ps-1">10 Validator</span></>
                             }
                             {/* <h6>{formatAmount(data?.AmountReward)}</h6> */}

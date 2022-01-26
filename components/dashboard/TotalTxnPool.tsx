@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styles from './InfoDashboard.module.css';
 import Skeleton from 'react-loading-skeleton';
 import { formatAmount, formatNum } from '../../utils/util';
+import HelpTips from '../helptips/help';
 
 const TotalTxnPool = ({ data, isLoading }) => {
     return (
@@ -16,8 +17,8 @@ const TotalTxnPool = ({ data, isLoading }) => {
                         <span></span></h5>
 
                     <div className="filter">
-                        <div style={{ width: '20px', marginRight: '10px' }}>
-                            <Skeleton />
+                        <div style={{ width: '30px', marginRight: '10px' }}>
+                        <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} /><Skeleton />
                         </div>
                     </div>
                     <div className="d-flex align-items-center">

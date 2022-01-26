@@ -2,6 +2,7 @@ import { formatNum } from '../../utils/util';
 import Skeleton from 'react-loading-skeleton';
 import Link from 'next/link';
 import styles from './InfoDashboard.module.css';
+import HelpTips from '../helptips/help';
 
 const TotalBlocks = ({ data, isLoading }) => {
 
@@ -22,7 +23,7 @@ const TotalBlocks = ({ data, isLoading }) => {
               <a className={styles.titlebig}>
                 Accounts
               </a>
-            </Link>
+            </Link>&nbsp;&nbsp;<HelpTips tips={'Block created since begining. Top accounts ordered by its remaining balance.'} />
           </h5>
 
           <div className="d-flex align-items-center">
@@ -38,7 +39,7 @@ const TotalBlocks = ({ data, isLoading }) => {
                     <span className="text-muted small pt-2 ps-1">
                       <Link href={`/accounts`}>
                         <a className={styles.titlebig}>
-                          TOP Accounts
+                          TOP Accounts  
                         </a>
                       </Link>
                     </span>
