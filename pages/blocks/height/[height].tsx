@@ -83,10 +83,15 @@ export default function Block() {
 
                           }
 
+                          
+
                           &nbsp;&nbsp;  &nbsp;&nbsp;
-                          <Link href={`/blocks/height/${nextHeight}`}>
-                            <a><i className="bi bi-chevron-right"></i></a>
-                          </Link>
+                          {block.isLast === 'false' ?  <i className="bi bi-chevron-right"></i> : <Link href={`/blocks/height/${nextHeight}`}>
+                              <a><i className="bi bi-chevron-right"></i></a>
+                            </Link>
+                          }
+
+
                         </div>
                       </div>
                       <div className={`row ${styles.rowDiv}`}>

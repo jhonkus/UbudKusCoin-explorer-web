@@ -1,7 +1,8 @@
 import { Chart } from "react-google-charts";
+import { getChart } from "../../grpc/useFetch";
 
 export const data2 = [
-  ["Year", "Num. Txn"],
+  ["Year", "Num. Accounts"],
   ["1", 20],
   ["2", 40],
   ["3", 50],
@@ -18,21 +19,14 @@ export const data2 = [
   ["14", 70],
   ["15", 60],
   ["16", 130],
-  ["17", 130],
-  ["18", 10],
-  ["19", 70],
-  ["20", 60],
-  ["21", 30],
-  ["22", 10],
-  ["23", 70],
-  ["24", 60]
 ];
 
 export const options = {
-  title: "Amount Transaction last 1 hour",
+  title: "Number of Transaction in Last 1 hour",
   curveType: "function",
   legend: { position: "bottom" },
 };
+
 
 function convertDate(unix_timestamp: number) {
 
@@ -52,7 +46,8 @@ function convertDate(unix_timestamp: number) {
   return formattedTime
 }
 
-const TxnsChart = ({ data, isLoading }) => {
+const TxnsAccount = ({ data, isLoading }) => {
+
   var data3 = data2;
 
   if (data && data.length > 0) {
@@ -60,9 +55,10 @@ const TxnsChart = ({ data, isLoading }) => {
   }
 
   let temp = [];
-  temp.push(['Hour', 'Amount']);
-  data3.forEach((item) => temp.push([convertDate(item.timestamp), parseInt(item.amount)]));
+  temp.push(['Hour', 'Num. Txns']);
+  data3.forEach((item) => temp.push([convertDate(item.timestamp), parseInt(item.txn_count)]));
   console.log("=== temp :", temp);
+
 
   return (
 
@@ -77,4 +73,4 @@ const TxnsChart = ({ data, isLoading }) => {
   );
 }
 
-export default TxnsChart;
+export default TxnsAccount;

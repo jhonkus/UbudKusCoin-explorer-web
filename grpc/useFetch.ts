@@ -109,6 +109,15 @@ export function getPendingTxns() {
     }
 }
 
+export function getChart() {
+    const { data, error } = useSWR(`/api/chart`, fetcher, { refreshInterval: 4000 })
+    return {
+        data: data?.datas,
+        isLoading: !error && !data,
+        isError: error
+    }
+}
+
 
 export function getBcInfo() {
     const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 10000 })
