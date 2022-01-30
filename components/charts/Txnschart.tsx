@@ -34,11 +34,11 @@ export const options = {
   legend: { position: "bottom" },
 };
 
-function convertDate(unix_timestamp: number) {
+function convertDate(unix_timestamp: string) {
 
   // Create a new JavaScript Date object based on the timestamp
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-  var date = new Date(unix_timestamp * 1000);
+  var date = new Date(parseInt(unix_timestamp) * 1000);
   // Hours part from the timestamp
   var hours = date.getHours();
   // Minutes part from the timestamp
@@ -59,10 +59,9 @@ const TxnsChart = ({ data, isLoading }) => {
     data3 = data;
   }
 
-  let temp = [];
-  temp.push(['Hour', 'Amount']);
-  data3.forEach((item) => temp.push([convertDate(item.timestamp), parseInt(item.amount)]));
-  console.log("=== temp :", temp);
+  let temp = [['Hour', 'Amount']];
+  data3.forEach((item) => temp.push([convertDate(item?.timestamp), parseInt(item?.amount)]));
+
 
   return (
 

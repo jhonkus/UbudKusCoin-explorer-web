@@ -28,11 +28,11 @@ export const options = {
 };
 
 
-function convertDate(unix_timestamp: number) {
+function convertDate(unix_timestamp: string) {
 
   // Create a new JavaScript Date object based on the timestamp
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-  var date = new Date(unix_timestamp * 1000);
+  var date = new Date(parseInt(unix_timestamp) * 1000);
   // Hours part from the timestamp
   var hours = date.getHours();
   // Minutes part from the timestamp
@@ -54,10 +54,10 @@ const TxnsAccount = ({ data, isLoading }) => {
     data3 = data;
   }
 
-  let temp = [];
-  temp.push(['Hour', 'Num. Txns']);
-  data3.forEach((item) => temp.push([convertDate(item.timestamp), parseInt(item.txn_count)]));
-  console.log("=== temp :", temp);
+
+  let temp = [['Hour', 'Num. Txns']];
+  data3.forEach((item) => temp.push([convertDate(item?.timestamp), parseInt(item?.txn_count)]));
+
 
 
   return (
