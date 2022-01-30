@@ -34,8 +34,8 @@ const TotalBlocks = ({ data, isLoading }) => {
             <div className="ps-3">
               {
                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
-                  <> <h6 style={{font-size: '0.8em'}}>
-                    {formatNum(data?.NumBloks)}  <span style={{ fontSize: '0.7em' }} className="text-muted small pt-2 ps-1">bck</span></h6>
+                  <> <h6>
+                    {formatNum(data?.NumBloks)}  <span style={{ fontSize: '0.5em' }} className="text-muted small pt-2 ps-1">blocks</span></h6>
                     <span className="text-muted small pt-2 ps-1">
                       <Link href={`/accounts`}>
                         <a className={styles.titlebig}>
