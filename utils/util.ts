@@ -23,6 +23,10 @@ export function formatAmount(amount) {
     return numeral(amount).format('0,0.00000')
 }
 
+export function formatTotalReward(amount) {
+    return numeral(amount).format('0,0.00')
+}
+
 export function formatNum(amount) {
     return numeral(amount).format('0,0')
 }

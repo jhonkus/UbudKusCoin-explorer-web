@@ -92,7 +92,7 @@ const Header = () => {
             <li className="nav-item">
               <Link href="https://ubudkuscoin.com">
                 <a className="nav-link" target="_blank">
-                  <span>Main Web</span>
+                  <span>Main</span>
                 </a>
               </Link>
             </li>

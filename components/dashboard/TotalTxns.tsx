@@ -16,7 +16,7 @@ const TotalTxns = ({ data, isLoading }) => {
                     <h5 className="card-title">
                         <Link href={`/txns`}>
                             <a className={styles.titlebig}>
-                                Total Transactions</a>
+                                Num of Transactions</a>
                         </Link> <HelpTips tips={'Total transaction since begining. TPS is transaction per second for last 30 seconds.'} />
                     </h5>
 
@@ -28,8 +28,8 @@ const TotalTxns = ({ data, isLoading }) => {
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> : <>
                                     <h6 style={{ fontSize: '1.2em' }}>{formatNum(data?.NumTxns)}           <span style={{ fontSize: '0.7em' }} className="text-muted small pt-2 ps-1">Tx</span></h6>
-                                    <span style={{ fontSize: '0.7em' }} className="text-dark small pt-1 fw-bold">{formatTotalTxns(data?.Tps)} </span>
-                                    <span style={{ fontSize: '0.7em' }} className="text-muted small pt-2 ps-1">TPS</span>
+                                    <span style={{ fontSize: '0.7em' }} className="text-dark small pt-1 fw-bold">({formatTotalTxns(data?.Tps)} </span>
+                                    <span style={{ fontSize: '0.7em' }} className="text-muted small pt-2 ps-1">TPS)</span>
 
                                 </>
                             }
