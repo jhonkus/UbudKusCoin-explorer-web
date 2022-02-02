@@ -33,7 +33,7 @@ message AllTxnData {
 
 message TxnData {
   int64 timestamp  = 1;
-  int64 txn_count = 2;
+  double txn_count = 2;
   double amount = 3;
 }
 

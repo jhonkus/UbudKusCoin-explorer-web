@@ -110,7 +110,7 @@ export function getPendingTxns() {
 }
 
 export function getChart() {
-    const { data, error } = useSWR(`/api/chart`, fetcher, { refreshInterval: 4000 })
+    const { data, error } = useSWR(`/api/chart`, fetcher, { refreshInterval: 10000 })
     return {
         data: data?.datas,
         isLoading: !error && !data,

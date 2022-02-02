@@ -6,7 +6,7 @@ export default async function handler(req, res) {
             if (!err) {
                 res.statusCode = 200
                 res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Cache-Control', 'max-age=10000');
+                res.setHeader('Cache-Control', 'max-age=30');
                 res.end(JSON.stringify(response));
             } else {
                 res.json(err);

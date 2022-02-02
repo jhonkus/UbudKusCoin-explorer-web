@@ -6,7 +6,6 @@ import TotalTxns from '../components/dashboard/TotalTxns'
 import TotalBlocks from '../components/dashboard/TotalBlocks'
 import { getBcInfo, getChart, getPoolInfo } from '../grpc/useFetch'
 import TotalTxnPool from '../components/dashboard/TotalTxnPool'
-import React from 'react'
 import TxnsChart from '../components/charts/Txnschart'
 import TxnsAccount from '../components/charts/TxnsAccount'
 

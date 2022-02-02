@@ -1,8 +1,7 @@
 import { Chart } from "react-google-charts";
-import { getChart } from "../../grpc/useFetch";
+
 
 export const data2 = [
-  ["Year", "Num. Accounts"],
   ["1", 20],
   ["2", 40],
   ["3", 50],
@@ -22,42 +21,43 @@ export const data2 = [
 ];
 
 export const options = {
-  title: "Number of Transaction in Last 1 hour",
+  title: "Number of Transaction in Last 4 hour",
   curveType: "function",
   legend: { position: "bottom" },
 };
 
 
-function convertDate(unix_timestamp: string) {
+function convertDate(unixTimestamp: string) {
 
   // Create a new JavaScript Date object based on the timestamp
   // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-  var date = new Date(parseInt(unix_timestamp) * 1000);
+  const date = new Date(parseInt(unixTimestamp) * 1000);
   // Hours part from the timestamp
-  var hours = date.getHours();
+  const hours = date.getHours();
   // Minutes part from the timestamp
-  var minutes = "0" + date.getMinutes();
+  const minutes = "0" + date.getMinutes();
   // Seconds part from the timestamp
-  var seconds = "0" + date.getSeconds();
+  // var seconds = "0" + date.getSeconds();
 
   // Will display time in 10:30:23 format
   // var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-  var formattedTime = hours + ':' + minutes.substr(-2);
+  const formattedTime = hours + ':' + minutes.substr(-2);
   return formattedTime
 }
 
 const TxnsAccount = ({ data, isLoading }) => {
 
-  var data3 = data2;
+  let data3 = data2;
 
   if (data && data.length > 0) {
     data3 = data;
   }
 
+  console.log('=== data: ', data);
 
-  let temp = [['Hour', 'Num. Txns']];
-  data3.forEach((item) => temp.push([convertDate(item?.timestamp), parseInt(item?.txn_count)]));
-
+  const temp = [['Hour', 'Num-Txns']];
+  data3.forEach((item:any) => temp.push([convertDate(item?.timestamp), item?.txn_count]));
+  // data3.forEach((item:any) => temp.push([convertDate(item?.timestamp), item?.amount]));
 
 
   return (
