@@ -14,7 +14,9 @@ const TotalReward = ({ data, isLoading }) => {
                     {/* <h5 className="card-title" style={{ fontSize: '0.9em', color: 'gray' }}>Total Rewards <HelpTips tips={'Total coins received by all validators as a reward for creating/validating blocks, taken from transaction fees.'} /><span> </span></h5> */}
 
                     <h5 className="card-title">
-                        Rewards 
+                        <span className={styles.titlebig}>
+                            Rewards
+                        </span>
                         &nbsp; and &nbsp;
                         <Link href={`/accounts`}>
                             <a className={styles.titlebig}>

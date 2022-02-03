@@ -1,9 +1,7 @@
-.title {
-    font-size: 0.75em;
-    color: darkblue;
-}
+
 .titlebig {
-    font-size: 0.9em;
+    font-size: 0.75em;
+    font-weight: bold;
     color: darkblue;
 }
 

@@ -9,16 +9,17 @@ const TotalTxnPool = ({ data, isLoading }) => {
         <div className="col-xxl-3 col-md-3">
             <div className="card info-card pending-card">
                 <div className="card-body">
-                    <h5 className="card-title">                      
+                    <h5 className="card-title">
                         <Link href={`/txns/pending`}>
-                            <a className={styles.title}>
-                            Transaction Pool </a>
+                            <a className={styles.titlebig}>
+                                Transaction Pool </a>
                         </Link>
-                        <span></span></h5>
+                        <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} />
+                        </h5>
 
                     <div className="filter">
                         <div style={{ width: '30px', marginRight: '10px' }}>
-                        <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} /><Skeleton />
+                            <Skeleton />
                         </div>
                     </div>
                     <div className="d-flex align-items-center">
