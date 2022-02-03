@@ -4,7 +4,7 @@ import { convertDate } from "../../utils/util";
 
 
 export const options = {
-  title: "Number of Transaction in Last 4 hour",
+  title: "Number of Transactions in Last 4 hours",
   curveType: "function",
   legend: { position: "bottom" },
 };

@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 import { convertDate } from "../../utils/util";
 
 export const options = {
-  title: "Amount Transaction last 4 hour",
+  title: "Amount of Transactions in last 4 hours",
   curveType: "function",
   legend: { position: "bottom" },
 };
