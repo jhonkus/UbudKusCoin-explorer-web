@@ -1,18 +1,22 @@
 
-.titlebig {
-    font-size: 0.9em;
+.title{
+    font-size: 0.85em;
     font-weight: bold;
+    color: #2471A3;
+}
+
+.infoSmall {
+    font-size: 0.8em;
     color: darkblue;
 }
 
-.titlesmall {
-    font-size: 0.75em;
-    font-weight: bold;
-    color: darkblue;
+
+.textSufix {
+    font-size: 0.8em;
+    color: grey;
 }
 
-
-.titledis {
+.titleDis {
     font-size: 0.80em;
     color: grey;
 }

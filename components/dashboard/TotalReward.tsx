@@ -14,12 +14,12 @@ const TotalReward = ({ data, isLoading }) => {
                     {/* <h5 className="card-title" style={{ fontSize: '0.9em', color: 'gray' }}>Total Rewards <HelpTips tips={'Total coins received by all validators as a reward for creating/validating blocks, taken from transaction fees.'} /><span> </span></h5> */}
 
                     <h5 className="card-title">
-                        <span className={styles.titlebig}>
+                        <span className={styles.title}>
                             Rewards and &nbsp;
                         </span>
          
                         <Link href={`/accounts`}>
-                            <a className={styles.titlebig}>
+                            <a className={styles.title}>
                                 Accounts
                             </a>
                         </Link>
@@ -33,20 +33,18 @@ const TotalReward = ({ data, isLoading }) => {
                         <div className="ps-3">
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
-
-                                    <><span style={{ fontSize: '1.2em' }} className="text-success medium pt-1 fw-bold">{formatTotalReward(data?.AmountReward)} <span style={{ fontSize: '0.6em' }} className="text-muted small pt-2 ps-1">Uks</span></span>
-                                        <br />
-                                        {/* <span className="text-muted small pt-2 ps-1">10 Validator</span> */}
-                                        <span className="text-muted small pt-2 ps-1">
+                                    <>
+                                    <h6>{formatTotalReward(data?.AmountReward)}&nbsp;<span className={styles.textSufix}>Uks</span></h6>
+                                        <span>
                                             <Link href={`/accounts`}>
-                                                <a className={styles.titlebig}>
+                                                <a className={styles.infoSmall}>
                                                     Show All Accounts
                                                 </a>
                                             </Link>
                                         </span>
                                     </>
                             }
-                            {/* <h6>{formatAmount(data?.AmountReward)}</h6> */}
+                            
 
 
                         </div>

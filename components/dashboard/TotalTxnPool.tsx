@@ -11,11 +11,11 @@ const TotalTxnPool = ({ data, isLoading }) => {
                 <div className="card-body">
                     <h5 className="card-title">
                         <Link href={`/txns/pending`}>
-                            <a className={styles.titlesmall}>
+                            <a className={styles.title}>
                                 Transaction Pool </a>
                         </Link>
                         <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} />
-                        </h5>
+                    </h5>
 
                     <div className="filter">
                         <div style={{ width: '30px', marginRight: '10px' }}>
@@ -29,9 +29,12 @@ const TotalTxnPool = ({ data, isLoading }) => {
                         <div className="ps-3">
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
-                                    <>   <h6>{formatNum(data?.NumPool)}<span style={{ fontSize: '0.6em' }} className="text-muted small pt-2 ps-1">Tx</span></h6>
-                                        <span className="text-dark small pt-1 fw-bold">{formatAmount(data?.AmountPool)}
-                                            <span className="text-muted small pt-2 ps-1">uks</span></span></>
+                                    <>
+                                        <h6>{formatNum(data?.NumPool)}&nbsp;<span className={styles.textSufix}>Tx</span>
+                                        </h6>
+                                        <span className={styles.infoSmall}>{formatAmount(data?.AmountPool)}
+                                        &nbsp;<span className={styles.textSufix}>Uks</span></span>
+                                    </>
                             }
 
                         </div>

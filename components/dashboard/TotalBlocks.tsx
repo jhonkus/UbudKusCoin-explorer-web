@@ -15,15 +15,9 @@ const TotalBlocks = ({ data, isLoading }) => {
         <div className="card-body">
           <h5 className="card-title">
             <Link href={`/blocks`}>
-              <a className={styles.titlebig}>
+              <a className={styles.title}>
                 Blocks</a>
             </Link>
-             {/* &nbsp; and &nbsp; 
-            <Link href={`/accounts`}>
-              <a className={styles.titlebig}>
-                Accounts
-              </a> */}
-            {/* </Link> */}
             &nbsp;&nbsp;<HelpTips tips={'Number of blocks that created since begining. Block created constantly every 30 seconds. Top accounts ordered by its remaining balance.'} />
           </h5>
 
@@ -36,12 +30,9 @@ const TotalBlocks = ({ data, isLoading }) => {
               {
                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
                   <> <h6>
-                    {formatNum(data?.NumBloks)}  
-                    <span style={{ fontSize: '0.8em' }} className="text-muted small pt-2 ps-1">bk</span>
+                    {formatNum(data?.NumBloks)}&nbsp;<span className={styles.textSufix}>Bk</span>
                     </h6>
-                    <span className="text-muted small pt-2 ps-1">Block created every 30s
-                  
-                    </span>
+                    <span className={styles.infoSmall}>Block created every 30s</span>
                   </>
               }
 
