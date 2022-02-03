@@ -1,9 +1,16 @@
 
 .titlebig {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.titlesmall {
     font-size: 0.75em;
     font-weight: bold;
     color: darkblue;
 }
+
 
 .titledis {
     font-size: 0.80em;

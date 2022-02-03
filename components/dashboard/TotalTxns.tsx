@@ -16,7 +16,7 @@ const TotalTxns = ({ data, isLoading }) => {
                     <h5 className="card-title">
                         <Link href={`/txns`}>
                             <a className={styles.titlebig}>
-                                Num of Transactions</a>
+                                Transactions</a>
                         </Link> <HelpTips tips={'Total transaction since begining. TPS is transaction per second for last 30 seconds.'} />
                     </h5>
 

@@ -11,7 +11,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                 <div className="card-body">
                     <h5 className="card-title">
                         <Link href={`/txns/pending`}>
-                            <a className={styles.titlebig}>
+                            <a className={styles.titlesmall}>
                                 Transaction Pool </a>
                         </Link>
                         <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} />
