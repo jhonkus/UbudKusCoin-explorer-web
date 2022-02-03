@@ -42,3 +42,15 @@ export function formatFee(amount) {
 export function formatBytes(amount) {
     return numeral(amount).format('0,0')
 }
+
+export function convertDate(unixTimestamp: string) {
+
+    const date = new Date(parseInt(unixTimestamp) * 1000);
+    const hours = date.getHours();
+    const minutes = "0" + date.getMinutes();
+    // var seconds = "0" + date.getSeconds();
+  
+    // var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+    const formattedTime = hours + ':' + minutes.substr(-2);
+    return formattedTime
+  }
