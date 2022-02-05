@@ -8,11 +8,14 @@ export const options = {
   legend: { position: "bottom" },
   vAxis: {
     title: 'Amount  (Uks)',
-    ticks: [0, 50, 100, 150, 200]
+    ticks: [0, 50, 100, 150, 200],
+    gridlines: {
+      color: 'transparent'
+    }
   }
 };
 
-const TxnsChart = ({ data, isLoading }) => {
+const TxnsAmountChart = ({ data, isLoading }) => {
   if (!data || data.length < 1) {
     return <Skeleton count={4} />
   }
@@ -33,4 +36,4 @@ const TxnsChart = ({ data, isLoading }) => {
   );
 }
 
-export default TxnsChart;
+export default TxnsAmountChart;

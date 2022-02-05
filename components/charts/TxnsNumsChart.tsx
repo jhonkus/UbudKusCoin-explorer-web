@@ -9,11 +9,14 @@ export const options = {
   legend: { position: "bottom" },
   vAxis: {
     title: 'Number of Transactions',
-    ticks: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+    ticks: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+    gridlines: {
+      color: 'transparent'
+    }
   }
 };
 
-const TxnsAccount = ({ data, isLoading }) => {
+const TxnsNumsChart = ({ data, isLoading }) => {
 
   if (!data || data.length < 1) {
     return <Skeleton count={4} />
@@ -37,4 +40,4 @@ const TxnsAccount = ({ data, isLoading }) => {
   );
 }
 
-export default TxnsAccount;
+export default TxnsNumsChart;
