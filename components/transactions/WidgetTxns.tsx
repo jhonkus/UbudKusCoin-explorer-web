@@ -8,9 +8,6 @@ import Skeleton from 'react-loading-skeleton'
  */
 const WidgetTxns = ({ data, isLoading }) => {
 
-  // const { transactions, isLoading, isError } = getTxns(1,10);
-  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-
   return (
     <div className="card">
       <div className="card-header">
@@ -18,9 +15,8 @@ const WidgetTxns = ({ data, isLoading }) => {
       </div>
       <div className="card-body">
         {(isLoading) && <Skeleton count={6} />}
-        {/* {isError && <div><p>Error when loading</p></div>} */}
-        {data?.txns?.map((tx) => (
-          <div className={`row ${styles.divRow}`} key={tx.Hash}>
+        {data?.txns?.map((tx, idx) => (
+          idx < 10 && <div className={`row ${styles.divRow}`} key={tx.Hash}>
             <div className="col-sm-1 align-self-center">
               <div className={styles.tx}>
                 <i className="bi bi-arrow-down-up"></i>

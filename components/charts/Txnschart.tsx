@@ -3,16 +3,20 @@ import Skeleton from "react-loading-skeleton";
 import { convertDate } from "../../utils/util";
 
 export const options = {
-  title: "Amount of Transactions in last 4 hours",
+  title: "Transactions in last 4 hours",
   curveType: "function",
   legend: { position: "bottom" },
+  vAxis: {
+    title: 'Amount  (Uks)',
+    ticks: [0, 50, 100, 150, 200]
+  }
 };
 
 const TxnsChart = ({ data, isLoading }) => {
   if (!data || data.length < 1) {
     return <Skeleton count={4} />
   }
-  const chartData = [['Hour', 'Amount']];
+  const chartData = [['Hour', 'Amount vs Time']];
   data.forEach((item: any) => chartData.push([convertDate(item?.timestamp), item?.amount]));
 
   return (

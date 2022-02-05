@@ -7,6 +7,10 @@ export const options = {
   title: "Number of Transactions in Last 4 hours",
   curveType: "function",
   legend: { position: "bottom" },
+  vAxis: {
+    title: 'Number of Transactions',
+    ticks: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+  }
 };
 
 const TxnsAccount = ({ data, isLoading }) => {
@@ -15,7 +19,7 @@ const TxnsAccount = ({ data, isLoading }) => {
     return <Skeleton count={4} />
   }
 
-  const chartData = [['Hour', 'Num. Txns']];
+  const chartData = [['Hour', 'Num. Txns vs Time']];
   data.forEach((item: any) => chartData.push([convertDate(item?.timestamp), item?.txn_count]));
 
   return (
