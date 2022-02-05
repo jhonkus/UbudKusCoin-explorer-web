@@ -1,7 +1,4 @@
-import { useDispatch } from "react-redux";
 import useSWR from "swr"
-import { saveBlocks } from "../redux/blockSlice";
-import { saveTransactions } from "../redux/transactionSlice";
 const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json())
 
 
@@ -9,6 +6,7 @@ export function getBlock(height = '1') {
     const { data, error } = useSWR(`/api/block/height/${height}`, fetcher)
     return {
         block: data?.block,
+        isLast: data?.isLast,
         isLoading: !error && !data,
         isError: error
     }
@@ -19,6 +17,7 @@ export function GetBlockByHash(hash = 'hash') {
     const { data, error } = useSWR(`/api/block/hash/${hash}`, fetcher)
     return {
         block: data?.block,
+        isLast: data?.isLast,
         isLoading: !error && !data,
         isError: error
     }

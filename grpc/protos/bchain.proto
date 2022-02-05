@@ -14,6 +14,7 @@ service BChainService {
   rpc GetAccount(CommonRequest) returns (AccountResponse);
   rpc GetBalance(CommonRequest) returns (BalanceResponse);
   rpc GetTxnsByAccount(CommonRequest) returns (TxnsResponse);
+  rpc GetTxnsByAccountWithPaging(AccountPagingRequest) returns (TxnsResponse);
   rpc GetTxnsByHeight(CommonRequest) returns (TxnsResponse);
   rpc Search(CommonRequest) returns (SearchResponse);
   rpc GetTxns(PagingRequest) returns (TxnsResponse);
@@ -61,6 +62,12 @@ message PagingRequest{
   int32 result_per_page = 2; 
 }
 
+message AccountPagingRequest{
+  int32 page_number = 1;
+  int32 result_per_page = 2; 
+  string address = 3;
+}
+
 message CommonRequest{
   string txnHash = 1;
   int32  blockHeight = 2;
@@ -75,6 +82,7 @@ message BlocksResponse {
 
 message BlockResponse {
   BlockModel block = 1;
+  bool isLast = 2;
 }
 
 message TxnsResponse {
@@ -140,6 +148,7 @@ message BcInfoResponse {
   repeated TxnModel txns = 5;
   repeated BlockModel blocks = 6;
   double Tps = 7;
+  int64 NumAcc = 8;
 }
 
 message TxnPoolResponse {

@@ -19,7 +19,7 @@ export default function Block() {
   const [prevHeight, setPrevHeight] = useState(0);
   const [nextHeight, setNextHeight] = useState(0);
 
-  const { block, isLoading, isError } = getBlock(height?.toString());
+  const { block, isLast, isLoading, isError } = getBlock(height?.toString());
 
   let prev = (parseInt(height?.toString() || '0') - 1);
   prev = prev < 0 ? 0 : prev;
@@ -30,11 +30,6 @@ export default function Block() {
     setPrevHeight(prev);
     setNextHeight(next);
   }, [next, prev])
-
-  // if (isLoading) return <LoadingComp />
-  // if (isError) return <ErrorComp />
-
-
 
   return (
     <Layout pageTitle="Block by height">
@@ -73,22 +68,21 @@ export default function Block() {
                     <>
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4"><HelpTips tips={'Block height also known as block number is length of blockchain.'} />Block Height </div>
-                        <div className={`col-sm-8 ${styles.value}`}><strong>{block.Height}</strong>&nbsp;&nbsp;
+                        <div className={`col-sm-8 ${styles.value}`}>
 
-                          {block.Height <= 1 ? <a><i className="bi bi-chevron-left"></i></a> : (
+
+
+                          {block.Height <= 1 ? "" :
                             <Link href={`/blocks/height/${prevHeight}`}>
                               <a><i className="bi bi-chevron-left"></i></a>
                             </Link>
-                          )
-
                           }
-
-                          
-
-                          &nbsp;&nbsp;  &nbsp;&nbsp;
-                          {block.isLast === 'false' ?  <i className="bi bi-chevron-right"></i> : <Link href={`/blocks/height/${nextHeight}`}>
-                              <a><i className="bi bi-chevron-right"></i></a>
-                            </Link>
+                           &nbsp;&nbsp;<strong>{block.Height}</strong>&nbsp;&nbsp;
+                          {
+                            isLast ? "" :
+                              <Link href={`/blocks/height/${nextHeight}`}>
+                                <a><i className="bi bi-chevron-right"></i></a>
+                              </Link>
                           }
 
 

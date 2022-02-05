@@ -38,7 +38,7 @@ const TotalReward = ({ data, isLoading }) => {
                                         <span>
                                             <Link href={`/accounts`}>
                                                 <a className={styles.infoSmall}>
-                                                    Show All Accounts
+                                                {data?.NumAcc} Accounts
                                                 </a>
                                             </Link>
                                         </span>

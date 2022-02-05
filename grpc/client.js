@@ -8,8 +8,6 @@ const dir = path.resolve('./grpc', dirRelativeToPublicFolder);
 
 const PROTO_PATH = dir + '/bchain.proto';
 const PROTO_ACOUNT_PATH = dir + '/account.proto';
-// const host = "209.126.3.159:5002";
-const host22 = "localhost:5002";
 
 // const host = "localhost:5002";
 const host = "45.63.87.189:5002";
