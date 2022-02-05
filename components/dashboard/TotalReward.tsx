@@ -1,5 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
-import { formatTotalReward } from '../../utils/util';
+import { formatTotalReward, formatNum } from '../../utils/util';
 import HelpTips from '../helptips/help';
 import styles from './InfoDashboard.module.css';
 import Link from 'next/link';
@@ -17,7 +17,7 @@ const TotalReward = ({ data, isLoading }) => {
                         <span className={styles.title}>
                             Rewards and &nbsp;
                         </span>
-         
+
                         <Link href={`/accounts`}>
                             <a className={styles.title}>
                                 Accounts
@@ -34,17 +34,17 @@ const TotalReward = ({ data, isLoading }) => {
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
                                     <>
-                                    <h6>{formatTotalReward(data?.AmountReward)}&nbsp;<span className={styles.textSufix}>Uks</span></h6>
+                                        <h6>{formatTotalReward(data?.AmountReward)}&nbsp;<span className={styles.textSufix}>Uks</span></h6>
                                         <span>
                                             <Link href={`/accounts`}>
                                                 <a className={styles.infoSmall}>
-                                                {data?.NumAcc} Accounts
+                                                    {formatNum(data?.NumAcc)} Accounts
                                                 </a>
                                             </Link>
                                         </span>
                                     </>
                             }
-                            
+
 
 
                         </div>
