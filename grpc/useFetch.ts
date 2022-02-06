@@ -100,7 +100,7 @@ export function getTxns(page = 1, numOfRow = 10) {
 
 
 export function getPendingTxns() {
-    const { data, error } = useSWR(`/api/txns/pending`, fetcher, { refreshInterval: 4000 })
+    const { data, error } = useSWR(`/api/txns/pending`, fetcher, { refreshInterval: 3000 })
     return {
         transactions: data?.transactions,
         isLoading: !error && !data,
@@ -109,7 +109,7 @@ export function getPendingTxns() {
 }
 
 export function getChart() {
-    const { data, error } = useSWR(`/api/chart`, fetcher, { refreshInterval: 10000 })
+    const { data, error } = useSWR(`/api/chart`, fetcher, { refreshInterval: 15000 })
     return {
         data: data?.datas,
         isLoading: !error && !data,
@@ -119,7 +119,7 @@ export function getChart() {
 
 
 export function getBcInfo() {
-    const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 10000 })
+    const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 15000 })
     return {
         bcInfos: data,
         isBCLoading: !error && !data,
@@ -128,7 +128,7 @@ export function getBcInfo() {
 }
 
 export function getPoolInfo() {
-    const { data, error } = useSWR(`/api/infos/poolinfo`, fetcher, { refreshInterval: 1000 })
+    const { data, error } = useSWR(`/api/infos/poolinfo`, fetcher, { refreshInterval: 4000 })
     return {
         poolInfos: data,
         isPoolLoading: !error && !data,
