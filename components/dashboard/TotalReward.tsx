@@ -15,7 +15,7 @@ const TotalReward = ({ data, isLoading }) => {
 
                     <h5 className="card-title">
                         <span className={styles.title}>
-                            Reward and &nbsp;
+                            Rewards and &nbsp;
                         </span>
 
                         <Link href={`/accounts`}>
