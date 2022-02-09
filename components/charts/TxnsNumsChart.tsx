@@ -9,7 +9,7 @@ export const options = {
   legend: { position: "bottom" },
   vAxis: {
     title: 'Number of Transactions',
-    ticks: [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
+    ticks: [0, 100, 200, 300, 400, 500],
     gridlines: {
       color: 'transparent'
     }
