@@ -128,7 +128,7 @@ export function getBcInfo() {
 }
 
 export function getPoolInfo() {
-    const { data, error } = useSWR(`/api/infos/poolinfo`, fetcher, { refreshInterval: 4000 })
+    const { data, error } = useSWR(`/api/infos/poolinfo`, fetcher, { refreshInterval: 2000 })
     return {
         poolInfos: data,
         isPoolLoading: !error && !data,
