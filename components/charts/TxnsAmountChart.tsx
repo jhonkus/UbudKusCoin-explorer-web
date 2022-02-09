@@ -8,7 +8,7 @@ export const options = {
   legend: { position: "bottom" },
   vAxis: {
     title: 'Amount  (Uks)',
-    ticks: [0, 50, 100, 150, 200],
+    ticks: [0, 50, 100, 150],
     gridlines: {
       color: 'transparent'
     }
