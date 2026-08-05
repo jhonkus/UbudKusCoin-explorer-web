@@ -1,4 +1,5 @@
 const {client} = require("../../grpc/client");
+const { normalizeSearchResult } = require("../../utils/normalize");
 
 export default function handler(req, res) {
   if (req.method !== 'POST') {
@@ -22,6 +23,6 @@ export default function handler(req, res) {
       return;
     }
 
-    res.status(200).json(response);
+    res.status(200).json(normalizeSearchResult(response));
   });
 }
