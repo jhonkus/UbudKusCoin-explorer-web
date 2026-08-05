@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { formatAmount, timeAgo } from '../../utils/util';
+import { formatAmount, timeAgo, truncateText } from '../../utils/util';
 import styles from './WidgetTxn.module.css';
 import Skeleton from 'react-loading-skeleton'
 /**
@@ -23,7 +23,7 @@ const WidgetTxns = ({ data, isLoading }) => {
               </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
-              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 10)}..
+              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 10)}
               </span></a></Link>
               <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
             </div>
@@ -33,7 +33,7 @@ const WidgetTxns = ({ data, isLoading }) => {
                   <span className={styles.addrs}>
                     <Link href={`/address/${tx.Sender}`}>
                       <a>
-                        {tx.Sender.substring(0, 10)} ...
+                        {truncateText(tx.Sender, 10)}
                       </a>
                     </Link></span>
                 </span>
@@ -41,7 +41,7 @@ const WidgetTxns = ({ data, isLoading }) => {
                   <span className={styles.addrs}>
                     <Link href={`/address/${tx.Recipient}`}>
                       <a>
-                        {tx.Recipient.substring(0, 10)}...
+                        {truncateText(tx.Recipient, 10)}
                       </a>
                     </Link></span>
                 </span>

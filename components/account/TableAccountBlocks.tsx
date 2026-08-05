@@ -1,6 +1,6 @@
 import styles from './Acc.module.css'
 import Link from 'next/link'
-import { timeAgo } from '../../utils/util';
+import { timeAgo, truncateText } from '../../utils/util';
 
 /**
  * Block Account component
@@ -35,7 +35,7 @@ const TableAccountBlocks = ({ blocks }) => {
               <td>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
-                    <span className={styles.addrsInTable}>{block.Validator?.substring(0, 20)}...</span>
+                    <span className={styles.addrsInTable}>{truncateText(block.Validator, 20)}</span>
                   </a>
                 </Link>
               </td>
@@ -43,10 +43,10 @@ const TableAccountBlocks = ({ blocks }) => {
                 <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
               </td>
               <td>
-                <div className={styles.amountInTable}>{block.TotalAmount} Ukuci</div>
+                <div className={styles.amountInTable}>{block.TotalAmount} Ukusi</div>
               </td>
               <td>
-                <div className={styles.amountInTable}>{block.TotalReward.toFixed(8)}</div>
+                <div className={styles.amountInTable}>{Number(block.TotalReward).toFixed(8)} Ukusi</div>
               </td>
             </tr>
           ))}

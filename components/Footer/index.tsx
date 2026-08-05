@@ -4,12 +4,18 @@ const Footer = () => {
   return (
     <footer id="footer" className="footer">
       <div className="copyright">
-        @2022 <strong><span>
-          <Link href="https://ubudkuscoin.com"><a  target="_blank">Ubudkuscoin.com</a></Link> | <Link href="/"><a>Block Explorer</a></Link>
-        </span></strong>
+        <strong>
+          <span>
+            <a href="https://ubudkuscoin.com" target="_blank" rel="noreferrer">UbudKusCoin</a>
+          </span>
+        </strong>
+        <span> | </span>
+        <Link href="/">
+          <a>Block Explorer</a>
+        </Link>
       </div>
       <div className="credits">
-        &nbsp;
+        Secure blockchain lookup for blocks, transactions, and accounts.
       </div>
     </footer>
 

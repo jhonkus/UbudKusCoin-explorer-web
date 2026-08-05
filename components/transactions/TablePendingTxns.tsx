@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { getPendingTxns } from '../../grpc/useFetch';
-import { timeAgo, formatAmount, formatFee } from '../../utils/util';
+import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import styles from './Txns.module.css'
 
 // import Image from "next/image";
@@ -60,7 +60,7 @@ const TablePendingTxns = ({ page = 1 }) => {
 
                     <tr key={tx.Hash}>
                       <td>
-                        <span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                        <span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
                         </span>
                       </td>
                       <td>
@@ -70,7 +70,7 @@ const TablePendingTxns = ({ page = 1 }) => {
                         <Link href={`/address/${tx.Sender}`}>
                           <a>
                             <span className={styles.addrsInTable}>
-                              {tx.Sender.substring(0, 20)}...
+                              {truncateText(tx.Sender, 20)}
                             </span>
                           </a>
                         </Link>
@@ -79,7 +79,7 @@ const TablePendingTxns = ({ page = 1 }) => {
                         <Link href={`/address/${tx.Recipient}`}>
                           <a>
                             <span className={styles.addrsInTable}>
-                              {tx.Recipient.substring(0, 20)}...
+                              {truncateText(tx.Recipient, 20)}
                             </span>
                           </a>
                         </Link>

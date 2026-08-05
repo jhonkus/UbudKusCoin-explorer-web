@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './Blocks.module.css'
-import { timeAgo, formatAmount, formatFee } from '../../utils/util';
+import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import { getBlocks } from '../../grpc/useFetch';
 import Skeleton from 'react-loading-skeleton';
 import Pagination from '../paging/Pagination';
@@ -75,7 +75,7 @@ const TableBlocks = ({ page = 1 }) => {
                       <td>
                         <Link href={`/address/${block.Validator}`}>
                           <a className={styles.addrsInTable}>
-                            {block.Validator?.substring(0, 20)}...
+                            {truncateText(block.Validator, 20)}
                           </a>
                         </Link>
                       </td>

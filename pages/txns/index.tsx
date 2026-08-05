@@ -5,7 +5,7 @@ import Layout from '../../components/Layout';
 export default function Txns(props: any) {
   const pageNum = parseInt(props.page, 10);
   return (
-    <Layout pageTitle="Home page">
+    <Layout pageTitle="Transactions">
       <main id="main" className="main">
 
         <div className="pagetitle">

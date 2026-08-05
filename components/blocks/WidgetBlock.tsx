@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { timeAgo, formatAmount } from '../../utils/util';
+import { timeAgo, formatAmount, truncateText } from '../../utils/util';
 import styles from './WidgetBlock.module.css';
 import Skeleton from 'react-loading-skeleton';
 /**
@@ -40,7 +40,7 @@ const WidgetBlocks = ({ data, isLoading }) => {
               <span className={styles.addrsLabel}>By <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
                   <a>
-                    {block.Validator?.substring(0, 10)}...
+                    {truncateText(block.Validator, 10)}
                   </a>
                 </Link>
               </span></span>
@@ -59,7 +59,7 @@ const WidgetBlocks = ({ data, isLoading }) => {
 
       </div>
       {data?.blocks && <div className="text-center">
-        <Link href="/blocks"><a><span className={styles.viewall}>View all bloks</span></a></Link>
+        <Link href="/blocks"><a><span className={styles.viewall}>View all blocks</span></a></Link>
       </div>}
       <br/>
     </div>

@@ -6,7 +6,7 @@ export default function AccountList(props: any) {
   const pageNum = parseInt(props.page, 10);
   return (
 
-    <Layout pageTitle="Blocks">
+    <Layout pageTitle="Accounts">
       <main id="main" className="main">
 
         <div className="pagetitle">

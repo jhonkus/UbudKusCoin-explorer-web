@@ -1,28 +1,27 @@
 const {client} = require("../../grpc/client");
 
 export default function handler(req, res) {
-
-
   if (req.method !== 'POST') {
-    res.status(405).send({ message: 'Only POST requests allowed' })
+    res.status(405).json({ message: 'Only POST requests allowed' })
     return;
   }
 
-  const param = req.query.q;
-  return new Promise(() => {
-    client.Search({ searchText: param }, function(err, response) {
+  const param = String(req.body?.q || req.query.q || '').trim();
 
-      if (!err) {
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify(response));
-      } else {
-        res.json(err);
-        res.status(405).end();
-        res.end('error');
-      }
-    });
+  if (!param) {
+    res.status(400).json({ status: 'error', message: 'Search query is required' });
+    return;
+  }
+
+  client.Search({ searchText: param }, function(err, response) {
+    if (err) {
+      res.status(502).json({
+        status: 'error',
+        message: 'Search service unavailable',
+      });
+      return;
+    }
+
+    res.status(200).json(response);
   });
-
-  
 }

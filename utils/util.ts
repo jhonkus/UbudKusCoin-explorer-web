@@ -54,3 +54,16 @@ export function convertDate(unixTimestamp: string) {
     const formattedTime = hours + ':' + minutes.substr(-2);
     return formattedTime
   }
+
+export function truncateText(value, visible = 12) {
+    if (!value) {
+        return '-';
+    }
+
+    const text = String(value);
+    if (text.length <= visible * 2) {
+        return text;
+    }
+
+    return `${text.slice(0, visible)}...${text.slice(-visible)}`;
+}

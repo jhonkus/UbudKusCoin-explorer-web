@@ -11,13 +11,15 @@ interface LayoutProps {
 
 export default function Layout(props: LayoutProps) {
     const { children, pageTitle } = props;
+    const fullTitle = pageTitle ? `${pageTitle} | UbudKusCoin Explorer` : 'UbudKusCoin Explorer';
     return (
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="Ubudkuscoin is simple, light, fast coin developed in Bali, Indonesia by I Putu Kusuma Negara. UbudKuscoin using Proof of Stake Consesnsus. With UbudKusCoin you can send or transfer coin with other user. UbudKusCoin open to use to other use cases." />
+                <meta name="description" content="UbudKusCoin Explorer is the official blockchain explorer for viewing blocks, transactions, addresses, and network activity on the UbudKusCoin network." />
                 <meta name="author" content="I Putu Kusuma Negara github account: Jhonkus." />
-                <title>UbudKusCoin.com | {pageTitle}</title>
+                <meta name="theme-color" content="#0f62fe" />
+                <title>{fullTitle}</title>
             </Head>
             <div className={styles.container}>
                 <Header />

@@ -63,7 +63,7 @@ export default function BlockHash() {
                 <div className="card-body">
 
                   {(!block && !isLoading && !isError) &&
-                    <div className="text-center"><p>Block not found or net yet created! </p></div>
+                    <div className="text-center"><p>Block not found or not yet created.</p></div>
                   }
                   {(isLoading || isError) && <Skeleton count={10} />}
                   {block &&
@@ -87,7 +87,7 @@ export default function BlockHash() {
                       </div>
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'The date and time at wwhich a block created.'} />
+                          <HelpTips tips={'The date and time at which this block was created.'} />
                           Timestamp </div>
                         <div className={`col-sm-8 ${styles.value}`}><i className="bi bi-clock"></i> {timeAgo(block.TimeStamp)} ({toDate(block.TimeStamp)})</div>
                       </div>
@@ -112,7 +112,7 @@ export default function BlockHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'The validator who successfuly include the block onto blockshain.'} />
+                          <HelpTips tips={'The validator who successfully included this block on the blockchain.'} />
                           Validator</div>
                         <div className={`col-sm-8 ${styles.value}`}>
                           <Link href={`/address/${block.Validator}`}>
@@ -126,7 +126,7 @@ export default function BlockHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'For each block, the validator is rewarded with a finite amount of Ukusi on top of the fees paid for all transactions in the block.'} />
+                          <HelpTips tips={'For each block, the validator is rewarded with a finite amount of Ukusi on top of transaction fees paid in the block.'} />
                           Block Reward</div>
                         <div className={`col-sm-8 ${styles.value}`}><strong>{formatFee(block.TotalReward)}</strong> uks</div>
                       </div>

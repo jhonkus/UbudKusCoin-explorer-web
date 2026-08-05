@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 // custom function
-import { formatAmount, formatFee, timeAgo } from '../../../utils/util';
+import { formatAmount, formatFee, timeAgo, truncateText } from '../../../utils/util';
 import { GetTxnsByHeight } from '../../../grpc/useFetch';
 
 // custom component
@@ -60,7 +60,7 @@ export default function Block() {
                       <div className="card-title" />
                       <div className="row">
                         <div className="col d-flex justify-content-start">
-                          <p>Showing maks. 300 transactions</p>
+                          <p>Showing up to 300 transactions</p>
                         </div>
                       </div>
 
@@ -83,7 +83,7 @@ export default function Block() {
 
                               <tr key={tx.Hash}>
                                 <td>
-                                  <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                                  <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
                                   </span></a></Link>
                                 </td>
                                 <td>
@@ -99,7 +99,7 @@ export default function Block() {
                                   <Link href={`/address/${tx.Sender}`}>
                                     <a>
                                       <span className={styles.addrsInTable}>
-                                        {tx.Sender.substring(0, 20)}...
+                                        {truncateText(tx.Sender, 20)}
                                       </span>
                                     </a>
                                   </Link>
@@ -108,7 +108,7 @@ export default function Block() {
                                   <Link href={`/address/${tx.Recipient}`}>
                                     <a>
                                       <span className={styles.addrsInTable}>
-                                        {tx.Recipient.substring(0, 20)}...
+                                        {truncateText(tx.Recipient, 20)}
                                       </span>
                                     </a>
                                   </Link>

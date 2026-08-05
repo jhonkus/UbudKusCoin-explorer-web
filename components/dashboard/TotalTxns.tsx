@@ -17,7 +17,7 @@ const TotalTxns = ({ data, isLoading }) => {
                         <Link href={`/txns`}>
                             <a className={styles.title}>
                                 Transactions</a>
-                        </Link> <HelpTips tips={'Number of transactions since begining. TPS is transaction per second for last 30 seconds.'} />
+                        </Link> <HelpTips tips={'Number of transactions recorded since the network began. TPS reflects recent throughput over the last interval.'} />
                     </h5>
 
                     <div className="d-flex align-items-center">

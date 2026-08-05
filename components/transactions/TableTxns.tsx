@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { getTxns } from '../../grpc/useFetch';
-import { timeAgo, formatAmount, formatFee } from '../../utils/util';
+import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import styles from './Txns.module.css'
 import Skeleton from 'react-loading-skeleton';
 import Pagination from '../paging/Pagination';
@@ -60,7 +60,7 @@ const TableTxns = ({ page = 1 }) => {
 
                     <tr key={tx.Hash}>
                       <td>
-                        <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{tx.Hash.substring(0, 15)}...
+                        <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
                         </span></a></Link>
                       </td>
                       <td>
@@ -76,7 +76,7 @@ const TableTxns = ({ page = 1 }) => {
                         <Link href={`/address/${tx.Sender}`}>
                           <a>
                             <span className={styles.addrsInTable}>
-                              {tx.Sender.substring(0, 20)}...
+                              {truncateText(tx.Sender, 20)}
                             </span>
                           </a>
                         </Link>
@@ -85,7 +85,7 @@ const TableTxns = ({ page = 1 }) => {
                         <Link href={`/address/${tx.Recipient}`}>
                           <a>
                             <span className={styles.addrsInTable}>
-                              {tx.Recipient.substring(0, 20)}...
+                              {truncateText(tx.Recipient, 20)}
                             </span>
                           </a>
                         </Link>

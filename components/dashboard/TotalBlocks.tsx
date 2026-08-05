@@ -18,7 +18,7 @@ const TotalBlocks = ({ data, isLoading }) => {
               <a className={styles.title}>
                 Blocks</a>
             </Link>
-            &nbsp;&nbsp;<HelpTips tips={'Number of blocks that created since begining. Block created constantly every 30 seconds. Top accounts ordered by its remaining balance.'} />
+            &nbsp;&nbsp;<HelpTips tips={'Number of blocks created since the network began. Blocks are produced continuously at regular intervals.'} />
           </h5>
 
           <div className="d-flex align-items-center">

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styles from './Accounts.module.css'
-import { timeAgo, formatAmount, formatNum } from '../../utils/util';
+import { timeAgo, formatAmount, formatNum, truncateText } from '../../utils/util';
 import { getAccounts } from '../../grpc/useFetch';
 import Skeleton from 'react-loading-skeleton';
 import Pagination from '../paging/Pagination';
@@ -54,7 +54,7 @@ const TableAccounts = ({ page = 1 }) => {
                     <tr key={acc.Id}>
                       <td>
                         <Link href={`/address/${acc.address}`}>
-                          <a className={styles.heightBlock}>{acc.address}</a>
+                          <a className={styles.heightBlock}>{truncateText(acc.address, 18)}</a>
                         </Link>
                       </td>
                       <td>
