@@ -4,7 +4,7 @@ import { convertDate } from "../../utils/util";
 
 
 export const options = {
-  title: "Number of Transactions in Last 4 hours",
+  title: "Number of Transactions in Last 30 hours",
   curveType: "function",
   legend: { position: "bottom" },
   vAxis: {
@@ -19,7 +19,7 @@ export const options = {
 const TxnsNumsChart = ({ data, isLoading }) => {
 
   if (!data || data.length < 1) {
-    return <Skeleton count={4} />
+    return <div className="text-muted py-5 text-center">No transaction activity yet.</div>
   }
 
   const chartData = [['Hour', 'Num. Txns vs Time']];

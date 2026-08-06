@@ -1,18 +1,14 @@
 const {client} = require("../../../grpc/client");
 
 export default async function handler(req, res) {
-    return new Promise(() => {
-       client.GetTxnChart({ charttype: 'txn' }, function(err, response) {
-            if (!err) {
-                res.statusCode = 200
-                res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Cache-Control', 'max-age=30');
-                res.end(JSON.stringify(response));
-            } else {
-                res.json(err);
-                res.status(405).end();
-                res.end('error');
-            }
-        }); 
+    client.GetTxnChart({ charttype: 'txn' }, function(err, response) {
+        if (!err) {
+            res.status(200)
+                .setHeader('Content-Type', 'application/json')
+                .setHeader('Cache-Control', 'max-age=30')
+                .json(response);
+        } else {
+            res.status(502).json({ status: 'error', message: 'Node is unavailable' });
+        }
     });
 }

@@ -25,11 +25,12 @@ const TablePendingTxns = ({ page = 1 }) => {
       <div className="card-body">
         <div className="card-title" />
 
-        {(!transactions && !isLoading && !isError) &&
-          <div className="text-center"><p>Blocks not found! </p></div>
+        {(!isLoading && !isError && transactions.length === 0) &&
+          <div className="text-center text-muted py-4"><p>No pending transactions.</p></div>
         }
-        {(isLoading || isError) && <Skeleton count={10} />}
-        {transactions &&
+        {isLoading && <Skeleton count={10} />}
+        {isError && <div className="text-center text-danger py-4"><p>Unable to load the transaction pool.</p></div>}
+        {!isLoading && !isError && transactions.length > 0 &&
 
           <>
 
