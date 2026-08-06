@@ -23,8 +23,8 @@ const WidgetTxns = ({ data, isLoading }) => {
               </div>
             </div>
             <div className="col-sm-3  d-flex flex-column">
-              <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 10)}
-              </span></a></Link>
+              <Link href={`/txns/${tx.Hash}`}><span className={styles.hashTx}>{truncateText(tx.Hash, 10)}
+              </span></Link>
               <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
             </div>
             <div className="col-sm-5">
@@ -32,17 +32,13 @@ const WidgetTxns = ({ data, isLoading }) => {
                 <span className={styles.addrsLabel}>From&nbsp;&nbsp;
                   <span className={styles.addrs}>
                     <Link href={`/address/${tx.Sender}`}>
-                      <a>
-                        {truncateText(tx.Sender, 10)}
-                      </a>
+                      {truncateText(tx.Sender, 10)}
                     </Link></span>
                 </span>
                 <span className={styles.addrsLabel}>To&nbsp;&nbsp;
                   <span className={styles.addrs}>
                     <Link href={`/address/${tx.Recipient}`}>
-                      <a>
-                        {truncateText(tx.Recipient, 10)}
-                      </a>
+                      {truncateText(tx.Recipient, 10)}
                     </Link></span>
                 </span>
               </div>
@@ -57,7 +53,7 @@ const WidgetTxns = ({ data, isLoading }) => {
       {
         data?.txns &&
         <div className="text-center">
-          <Link href="/txns"><a><span className={styles.viewall}>View all transactions</span></a></Link>
+          <Link href="/txns"><span className={styles.viewall}>View all transactions</span></Link>
         </div>
       }
       <br/>

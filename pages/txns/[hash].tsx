@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 // custom function
 import { formatAmount, formatFee, timeAgo, toDate } from '../../utils/util';
-import { getTxn } from '../../grpc/useFetch'
+import { useTxn } from '../../grpc/useFetch'
 
 // custom compoents
 import styles from './Txn.module.css';
@@ -17,7 +17,7 @@ export default function TxnByHash() {
   const router = useRouter()
   const { hash } = router.query;
 
-  const { txn, isLoading, isError } = getTxn(hash?.toString());
+  const { txn, isLoading, isError } = useTxn(hash?.toString());
   // if (isLoading) return <LoadingComp />
   // if (isError) return <ErrorComp />
   // if (!txn) return <NotFound />
@@ -31,13 +31,11 @@ export default function TxnByHash() {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/txns"><a>Transactions</a></Link>
+                <Link href="/txns">Transactions</Link>
               </li>
             </ol>
           </nav>
@@ -69,9 +67,7 @@ export default function TxnByHash() {
                           <HelpTips tips={'Height or number of the block in which the transaction recorded.'} />
                           Block</div>
                         <div className={`col-sm-8`}>
-                          <Link href={`/blocks/height/${txn.Height}`}>
-                            <a className={styles.valueWithLink}>{txn.Height}</a>
-                          </Link>
+                          <Link href={`/blocks/height/${txn.Height}`} className={styles.valueWithLink}>{txn.Height}</Link>
                         </div>
                       </div>
 
@@ -94,9 +90,7 @@ export default function TxnByHash() {
                           <HelpTips tips={'The sender of the transaction.'} />
                           From</div>
                         <div className={`col-sm-8`}>
-                          <Link href={`/address/${txn.Sender}`}>
-                            <a className={styles.valueWithLink}>{txn.Sender}</a>
-                          </Link> <CopyText msg={'Copy from address to clipboard'} text={txn.Sender} />
+                          <Link href={`/address/${txn.Sender}`} className={styles.valueWithLink}>{txn.Sender}</Link> <CopyText msg={'Copy from address to clipboard'} text={txn.Sender} />
                         </div>
                       </div>
 
@@ -105,9 +99,7 @@ export default function TxnByHash() {
                           <HelpTips tips={'The recipient of the transaction.'} />
                           To</div>
                         <div className={`col-sm-8`}>
-                          <Link href={`/address/${txn.Recipient}`}>
-                            <a className={styles.valueWithLink}>{txn.Recipient}</a>
-                          </Link> <CopyText msg={'Copy to address to clipboard'} text={txn.Recipient} />
+                          <Link href={`/address/${txn.Recipient}`} className={styles.valueWithLink}>{txn.Recipient}</Link> <CopyText msg={'Copy to address to clipboard'} text={txn.Recipient} />
                         </div>
                       </div>
 

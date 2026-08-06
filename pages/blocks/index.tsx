@@ -14,13 +14,11 @@ export default function Blocks(props: any) {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/blocks"><a>Blocks</a></Link>
+                <Link href="/blocks">Blocks</Link>
               </li>
             </ol>
           </nav>

@@ -13,13 +13,11 @@ export default function TablePending(props: any) {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/txns/pending"><a>Pending Transactions</a></Link>
+                <Link href="/txns/pending">Pending Transactions</Link>
               </li>
             </ol>
           </nav>

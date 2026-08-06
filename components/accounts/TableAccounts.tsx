@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from './Accounts.module.css'
 import { timeAgo, formatAmount, formatNum, truncateText } from '../../utils/util';
-import { getAccounts } from '../../grpc/useFetch';
+import { useAccounts } from '../../grpc/useFetch';
 import Skeleton from 'react-loading-skeleton';
 import Pagination from '../paging/Pagination';
 
@@ -11,7 +11,7 @@ import Pagination from '../paging/Pagination';
  * @returns 
  */
 const TableAccounts = ({ page = 1 }) => {
-  const { accounts, isLoading, isError } = getAccounts(page, 25);
+  const { accounts, isLoading, isError } = useAccounts(page, 25);
 
 
 
@@ -53,9 +53,7 @@ const TableAccounts = ({ page = 1 }) => {
                   {accounts.map((acc) => (
                     <tr key={acc.Id}>
                       <td>
-                        <Link href={`/address/${acc.address}`}>
-                          <a className={styles.heightBlock}>{truncateText(acc.address, 18)}</a>
-                        </Link>
+                        <Link href={`/address/${acc.address}`} className={styles.heightBlock}>{truncateText(acc.address, 18)}</Link>
                       </td>
                       <td>
                         <div className={styles.amountInTable}><b>{formatAmount(acc.balance)}</b> Ukusi </div>

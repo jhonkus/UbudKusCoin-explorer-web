@@ -13,13 +13,11 @@ export default function Txns(props: any) {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/txns"><a>Transactions</a></Link>
+                <Link href="/txns">Transactions</Link>
               </li>
             </ol>
           </nav>

@@ -13,13 +13,11 @@ export default function Nodes() {
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
-                                <Link href="/">
-                                    <a>Home</a>
-                                </Link>
+                                <Link href="/">Home</Link>
                             </li>
 
                             <li className="breadcrumb-item">
-                                <Link href="/nodes"><a>Nodes</a></Link>
+                                <Link href="/nodes">Nodes</Link>
                             </li>
                         </ol>
                     </nav>

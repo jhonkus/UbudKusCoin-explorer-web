@@ -6,7 +6,7 @@ import styles from './Address.module.css'
 import Layout from '../../components/Layout'
 import TableAccountTxns from '../../components/account/TableAccountTxns';
 import TableAccountBlocks from '../../components/account/TableAccountBlocks';
-import { getAccount } from '../../grpc/useFetch'
+import { useAccount } from '../../grpc/useFetch'
 import { formatAmount } from '../../utils/util';
 import Skeleton from 'react-loading-skeleton';
 import CopyText from '../../components/copy/copy_text';
@@ -33,7 +33,7 @@ export default function Block() {
 
     };
 
-    const { transactions, blocks, balance, numBlockValidate, isLoading, isError } = getAccount(address?.toString());
+    const { transactions, blocks, balance, numBlockValidate, isLoading, isError } = useAccount(address?.toString());
 
     // if (isLoading) return <LoadingComp />
     // if (isError) return <ErrorComp />
@@ -48,13 +48,11 @@ export default function Block() {
                     <nav>
                         <ol className="breadcrumb">
                             <li className="breadcrumb-item">
-                                <Link href="/">
-                                    <a>Home</a>
-                                </Link>
+                                <Link href="/">Home</Link>
                             </li>
 
                             <li className="breadcrumb-item">
-                                <Link href={`/address/${address}`}><a>Address</a></Link>
+                                <Link href={`/address/${address}`}>Address</Link>
                             </li>
                         </ol>
                     </nav>

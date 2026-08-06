@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getPendingTxns } from '../../grpc/useFetch';
+import { usePendingTxns } from '../../grpc/useFetch';
 import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import styles from './Txns.module.css'
 
@@ -14,7 +14,7 @@ import Skeleton from 'react-loading-skeleton';
  * @returns Transactions component
  */
 const TablePendingTxns = ({ page = 1 }) => {
-  const { transactions, isLoading, isError } = getPendingTxns();
+  const { transactions, isLoading, isError } = usePendingTxns();
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
 
@@ -68,20 +68,16 @@ const TablePendingTxns = ({ page = 1 }) => {
                       </td>
                       <td className={styles.address}>
                         <Link href={`/address/${tx.Sender}`}>
-                          <a>
-                            <span className={styles.addrsInTable}>
-                              {truncateText(tx.Sender, 20)}
-                            </span>
-                          </a>
+                          <span className={styles.addrsInTable}>
+                            {truncateText(tx.Sender, 20)}
+                          </span>
                         </Link>
                       </td>
                       <td>
                         <Link href={`/address/${tx.Recipient}`}>
-                          <a>
-                            <span className={styles.addrsInTable}>
-                              {truncateText(tx.Recipient, 20)}
-                            </span>
-                          </a>
+                          <span className={styles.addrsInTable}>
+                            {truncateText(tx.Recipient, 20)}
+                          </span>
                         </Link>
                       </td>
                       <td>

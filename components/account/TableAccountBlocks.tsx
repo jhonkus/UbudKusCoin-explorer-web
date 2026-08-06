@@ -25,18 +25,14 @@ const TableAccountBlocks = ({ blocks }) => {
           {blocks.map((block) => (
             <tr key={block.Height}>
               <td>
-                <Link href={`/blocks/height/${block.Height}`}>
-                  <a><span className={styles.heightBlock}>{block.Height}</span></a>
-                </Link>
+                <Link href={`/blocks/height/${block.Height}`}><span className={styles.heightBlock}>{block.Height}</span></Link>
               </td>
               <td>
                 <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
               </td>
               <td>
                 <Link href={`/address/${block.Validator}`}>
-                  <a>
-                    <span className={styles.addrsInTable}>{truncateText(block.Validator, 20)}</span>
-                  </a>
+                  <span className={styles.addrsInTable}>{truncateText(block.Validator, 20)}</span>
                 </Link>
               </td>
               <td>

@@ -10,9 +10,7 @@ const Footer = () => {
           </span>
         </strong>
         <span> | </span>
-        <Link href="/">
-          <a>Block Explorer</a>
-        </Link>
+        <Link href="/">Block Explorer</Link>
       </div>
       <div className="credits">
         Secure blockchain lookup for blocks, transactions, and accounts.

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getTxns } from '../../grpc/useFetch';
+import { useTxns } from '../../grpc/useFetch';
 import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import styles from './Txns.module.css'
 import Skeleton from 'react-loading-skeleton';
@@ -11,7 +11,7 @@ import Pagination from '../paging/Pagination';
  * @returns Transactions component
  */
 const TableTxns = ({ page = 1 }) => {
-  const { transactions, isLoading, isError } = getTxns(page, 25);
+  const { transactions, isLoading, isError } = useTxns(page, 25);
   // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
   // if (isError) return <div><p>Error when loading</p></div>
 
@@ -60,34 +60,30 @@ const TableTxns = ({ page = 1 }) => {
 
                     <tr key={tx.Hash}>
                       <td>
-                        <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
-                        </span></a></Link>
+                        <Link href={`/txns/${tx.Hash}`}><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
+                        </span></Link>
                       </td>
                       <td>
 
-                        <Link href={`/blocks/height/${tx.Height}`}><a>
+                        <Link href={`/blocks/height/${tx.Height}`}>
                           <span className={styles.hashTx}>{tx.Height}
-                          </span></a></Link>
+                          </span></Link>
                       </td>
                       <td>
                         <span className={styles.dateTx}>{timeAgo(tx.TimeStamp)}</span>
                       </td>
                       <td className={styles.address}>
                         <Link href={`/address/${tx.Sender}`}>
-                          <a>
-                            <span className={styles.addrsInTable}>
-                              {truncateText(tx.Sender, 20)}
-                            </span>
-                          </a>
+                          <span className={styles.addrsInTable}>
+                            {truncateText(tx.Sender, 20)}
+                          </span>
                         </Link>
                       </td>
                       <td>
                         <Link href={`/address/${tx.Recipient}`}>
-                          <a>
-                            <span className={styles.addrsInTable}>
-                              {truncateText(tx.Recipient, 20)}
-                            </span>
-                          </a>
+                          <span className={styles.addrsInTable}>
+                            {truncateText(tx.Recipient, 20)}
+                          </span>
                         </Link>
                       </td>
                       <td>

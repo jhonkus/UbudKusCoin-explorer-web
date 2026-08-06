@@ -14,13 +14,11 @@ export default function AccountList(props: any) {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/accounts"><a>Accounts</a></Link>
+                <Link href="/accounts">Accounts</Link>
               </li>
             </ol>
           </nav>

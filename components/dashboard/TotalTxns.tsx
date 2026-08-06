@@ -14,9 +14,8 @@ const TotalTxns = ({ data, isLoading }) => {
 
                 <div className="card-body">
                     <h5 className="card-title">
-                        <Link href={`/txns`}>
-                            <a className={styles.title}>
-                                Transactions</a>
+                        <Link href={`/txns`} className={styles.title}>
+                            Transactions
                         </Link> <HelpTips tips={'Number of transactions recorded since the network began. TPS reflects recent throughput over the last interval.'} />
                     </h5>
 

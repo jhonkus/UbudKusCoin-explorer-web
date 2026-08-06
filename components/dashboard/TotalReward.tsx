@@ -18,10 +18,8 @@ const TotalReward = ({ data, isLoading }) => {
                             Rewards and &nbsp;
                         </span>
 
-                        <Link href={`/accounts`}>
-                            <a className={styles.title}>
-                                Accounts
-                            </a>
+                        <Link href={`/accounts`} className={styles.title}>
+                            Accounts
                         </Link>
                         &nbsp;&nbsp;<HelpTips tips={'Rewards is total coins received by all validators as a reward for creating/validating blocks. \n Top accounts is list of account ordered by its balance.'} />
                     </h5>
@@ -36,10 +34,8 @@ const TotalReward = ({ data, isLoading }) => {
                                     <>
                                         <h6>{formatTotalReward(data?.AmountReward)}&nbsp;<span className={styles.textSufix}>Uks</span></h6>
                                         <span>
-                                            <Link href={`/accounts`}>
-                                                <a className={styles.infoSmall}>
-                                                    {formatNum(data?.NumAcc)} Accounts
-                                                </a>
+                                            <Link href={`/accounts`} className={styles.infoSmall}>
+                                                {formatNum(data?.NumAcc)} Accounts
                                             </Link>
                                         </span>
                                     </>

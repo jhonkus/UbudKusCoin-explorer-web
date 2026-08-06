@@ -14,9 +14,8 @@ const TotalBlocks = ({ data, isLoading }) => {
 
         <div className="card-body">
           <h5 className="card-title">
-            <Link href={`/blocks`}>
-              <a className={styles.title}>
-                Blocks</a>
+            <Link href={`/blocks`} className={styles.title}>
+              Blocks
             </Link>
             &nbsp;&nbsp;<HelpTips tips={'Number of blocks created since the network began. Blocks are produced continuously at regular intervals.'} />
           </h5>

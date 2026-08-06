@@ -4,11 +4,10 @@ import Skeleton from 'react-loading-skeleton';
 
 // custom function
 import { timeAgo, toDate, formatBytes, formatAmount, formatFee } from '../../../utils/util';
-import { getBlock } from '../../../grpc/useFetch';
+import { useBlock } from '../../../grpc/useFetch';
 
 // custom component
 import styles from '../Block.module.css';
-import { useEffect, useState } from 'react';
 import Layout from '../../../components/Layout';
 import HelpTips from '../../../components/helptips/help';
 
@@ -16,20 +15,12 @@ import HelpTips from '../../../components/helptips/help';
 export default function Block() {
   const router = useRouter()
   const { height } = router.query;
-  const [prevHeight, setPrevHeight] = useState(0);
-  const [nextHeight, setNextHeight] = useState(0);
 
-  const { block, isLast, isLoading, isError } = getBlock(height?.toString());
+  const { block, isLast, isLoading, isError } = useBlock(height?.toString());
 
   let prev = (parseInt(height?.toString() || '0') - 1);
   prev = prev < 0 ? 0 : prev;
   const next = (parseInt(height?.toString() || '1') + 1);
-
-
-  useEffect(() => {
-    setPrevHeight(prev);
-    setNextHeight(next);
-  }, [next, prev])
 
   return (
     <Layout pageTitle="Block by height">
@@ -40,13 +31,11 @@ export default function Block() {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/blocks"><a>Blocks</a></Link>
+                <Link href="/blocks">Blocks</Link>
               </li>
             </ol>
           </nav>
@@ -73,16 +62,12 @@ export default function Block() {
 
 
                           {block.Height <= 1 ? "" :
-                            <Link href={`/blocks/height/${prevHeight}`}>
-                              <a><i className="bi bi-chevron-left"></i></a>
-                            </Link>
+                            <Link href={`/blocks/height/${prev}`}><i className="bi bi-chevron-left"></i></Link>
                           }
                            &nbsp;&nbsp;<strong>{block.Height}</strong>&nbsp;&nbsp;
                           {
                             isLast ? "" :
-                              <Link href={`/blocks/height/${nextHeight}`}>
-                                <a><i className="bi bi-chevron-right"></i></a>
-                              </Link>
+                              <Link href={`/blocks/height/${next}`}><i className="bi bi-chevron-right"></i></Link>
                           }
 
 
@@ -100,9 +85,7 @@ export default function Block() {
                           <HelpTips tips={'The number of transactions in the block.'} />
                           Transactions </div>
                         <div className={`col-sm-8 ${styles.value}`}>
-                          <Link href={`/txns/block/${block.Height}`}>
-                            <a className={styles.valueWithLink}>{block.NumOfTx} transaction(s) </a>
-                          </Link>
+                          <Link href={`/txns/block/${block.Height}`} className={styles.valueWithLink}>{block.NumOfTx} transaction(s) </Link>
                           in this block</div>
                       </div>
 
@@ -118,9 +101,7 @@ export default function Block() {
                           <HelpTips tips={'The validator who successfully included this block on the blockchain.'} />
                           Validator</div>
                         <div className={`col-sm-8 ${styles.value}`}>
-                          <Link href={`/address/${block.Validator}`}>
-                            <a className={styles.valueWithLink}>{block.Validator}</a>
-                          </Link>
+                          <Link href={`/address/${block.Validator}`} className={styles.valueWithLink}>{block.Validator}</Link>
                           &nbsp;&nbsp; in {block.BuildTime} ms
                         </div>
                       </div>
@@ -159,9 +140,7 @@ export default function Block() {
                         <div className="col-sm-4">
                           <HelpTips tips={'The hash of the previous block in the blockchain.'} /> Prev. hash </div>
                         <div className={`col-sm-8`}>
-                          <Link href={`/blocks/hash/${block.PrevHash}`}>
-                            <a className={styles.valueWithLink}>{block.PrevHash}</a>
-                          </Link>
+                          <Link href={`/blocks/hash/${block.PrevHash}`} className={styles.valueWithLink}>{block.PrevHash}</Link>
                         </div>
                       </div>
 
