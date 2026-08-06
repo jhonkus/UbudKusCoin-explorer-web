@@ -1,19 +1,12 @@
-const {client} = require("../../../grpc/client");
+const { client } = require("../../../grpc/client");
+import { ensureMethod, runGrpc } from "../../../lib/apiHelper";
 
 export default async function handler(req, res) {
-    const { address } = req.query
-    return new Promise(() => {
-       client.GetAccount({ address: address }, function(err, response) {
-            if (!err) {
-                res.statusCode = 200
-                res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Cache-Control', 'max-age=10000');
-                res.end(JSON.stringify(response));
-            } else {
-                res.json(err);
-                res.status(405).end();
-                res.end('error');
-            }
-        }); 
-    });
+  if (ensureMethod(req, res)) return;
+
+  const { address } = req.query;
+  runGrpc(res, (cb) => client.GetAccount({ address }, cb), {
+    cache: 's-maxage=30, stale-while-revalidate=60',
+  });
 }
+

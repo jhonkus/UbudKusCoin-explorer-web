@@ -31,24 +31,18 @@ const WidgetBlocks = ({ data, isLoading }) => {
               </div>
             </div>
             <div className="col-sm-3 d-flex flex-column">
-              <Link href={`/blocks/height/${block.Height}`}>
-                <a><span className={styles.heightBlock}>{block.Height}</span></a>
-              </Link>
+              <Link href={`/blocks/height/${block.Height}`}><span className={styles.heightBlock}>{block.Height}</span></Link>
               <span className={styles.dateTx}>{timeAgo(block.TimeStamp)}</span>
             </div>
             <div className="col-sm-4 d-flex flex-column">
               <span className={styles.addrsLabel}>By <span className={styles.validator}>
                 <Link href={`/address/${block.Validator}`}>
-                  <a>
-                    {truncateText(block.Validator, 10)}
-                  </a>
+                  {truncateText(block.Validator, 10)}
                 </Link>
               </span></span>
               <span>
-                <Link href={`/txns/block/${block.Height}`}>
-                  <a className={styles.numTnx}>
-                    {block.NumOfTx} txns </a>
-                </Link>
+                <Link href={`/txns/block/${block.Height}`} className={styles.numTnx}>
+                  {block.NumOfTx} txns </Link>
                 <span className={styles.lblTx}> in block</span></span>
             </div>
             <div className="col-sm-4 align-self-center">
@@ -59,7 +53,7 @@ const WidgetBlocks = ({ data, isLoading }) => {
 
       </div>
       {data?.blocks && <div className="text-center">
-        <Link href="/blocks"><a><span className={styles.viewall}>View all blocks</span></a></Link>
+        <Link href="/blocks"><span className={styles.viewall}>View all blocks</span></Link>
       </div>}
       <br/>
     </div>

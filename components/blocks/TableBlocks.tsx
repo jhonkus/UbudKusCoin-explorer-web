@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from './Blocks.module.css'
 import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
-import { getBlocks } from '../../grpc/useFetch';
+import { useBlocks } from '../../grpc/useFetch';
 import Skeleton from 'react-loading-skeleton';
 import Pagination from '../paging/Pagination';
 
@@ -10,11 +10,7 @@ import Pagination from '../paging/Pagination';
  * @returns 
  */
 const TableBlocks = ({ page = 1 }) => {
-  const { blocks, isLoading, isError } = getBlocks(page, 25);
-
-  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  // if (isError) return <div><p>Error when loading</p></div>
-
+  const { blocks, isLoading, isError } = useBlocks(page, 25);
 
   return (
     <div className="card">
@@ -58,25 +54,19 @@ const TableBlocks = ({ page = 1 }) => {
                   {blocks.map((block) => (
                     <tr key={block.Height}>
                       <td>
-                        <Link href={`/blocks/height/${block.Height}`}>
-                          <a className={styles.heightBlock}>{block.Height}</a>
-                        </Link>
+                        <Link href={`/blocks/height/${block.Height}`} className={styles.heightBlock}>{block.Height}</Link>
                       </td>
                       <td>
                         <span className={styles.dateInTable}>{timeAgo(block.TimeStamp)}</span>
                       </td>
                       <td className={styles.numTxInTable}>
-                        <Link href={`/txns/block/${block.Height}`}>
-                          <a className={styles.numTnx}>
-                            <span >{block.NumOfTx}  txns</span>
-                          </a>
+                        <Link href={`/txns/block/${block.Height}`} className={styles.numTnx}>
+                          <span >{block.NumOfTx}  txns</span>
                         </Link>
                       </td>
                       <td>
-                        <Link href={`/address/${block.Validator}`}>
-                          <a className={styles.addrsInTable}>
-                            {truncateText(block.Validator, 20)}
-                          </a>
+                        <Link href={`/address/${block.Validator}`} className={styles.addrsInTable}>
+                          {truncateText(block.Validator, 20)}
                         </Link>
                       </td>
                       <td>

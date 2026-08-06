@@ -1,16 +1,26 @@
 import useSWR from "swr"
+import type { Account, BcInfo, Block, ChartPoint, PoolInfo, Txn } from "../types"
 import {
     normalizeAccount,
     normalizeArray,
     normalizeBlock,
     normalizeChartPoint,
-    normalizeSearchResult,
     normalizeTxn,
 } from "../utils/normalize"
+
 const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json())
 
+interface ListResult<T> {
+    isLoading: boolean;
+    isError: any;
+}
 
-export function getBlock(height = '1') {
+export interface BlockResult extends ListResult<Block> {
+    block: Block | null;
+    isLast: boolean;
+}
+
+export function useBlock(height = '1'): BlockResult {
     const { data, error } = useSWR(`/api/block/height/${height}`, fetcher)
     return {
         block: normalizeBlock(data?.block ?? data?.Block),
@@ -21,7 +31,7 @@ export function getBlock(height = '1') {
 }
 
 
-export function GetBlockByHash(hash = 'hash') {
+export function useBlockByHash(hash = 'hash'): BlockResult {
     const { data, error } = useSWR(`/api/block/hash/${hash}`, fetcher)
     return {
         block: normalizeBlock(data?.block ?? data?.Block),
@@ -31,7 +41,14 @@ export function GetBlockByHash(hash = 'hash') {
     }
 }
 
-export function getAccount(address = 'address') {
+export interface AccountResult extends ListResult<Account> {
+    transactions: Txn[];
+    blocks: Block[];
+    balance: number;
+    numBlockValidate: number;
+}
+
+export function useAccount(address = 'address'): AccountResult {
     const { data, error } = useSWR(`/api/address/${address}`, fetcher)
     const transactions = normalizeArray(data?.transactions ?? data?.Transactions, normalizeTxn);
     const blocks = normalizeArray(data?.blocks ?? data?.Blocks, normalizeBlock);
@@ -45,7 +62,11 @@ export function getAccount(address = 'address') {
     }
 }
 
-export function getTxn(hash = 'hash') {
+export interface TxnResult extends ListResult<Txn> {
+    txn: Txn | null;
+}
+
+export function useTxn(hash = 'hash'): TxnResult {
     const { data, error } = useSWR(`/api/txn/${hash}`, fetcher)
     return {
         txn: normalizeTxn(data?.txn ?? data?.Txn),
@@ -54,13 +75,12 @@ export function getTxn(hash = 'hash') {
     }
 }
 
+export interface BlocksResult extends ListResult<Block> {
+    blocks: Block[];
+}
 
-export function getBlocks(page = 1, numOfRow = 10) {
-    // const dispatch = useDispatch();
+export function useBlocks(page = 1, numOfRow = 10): BlocksResult {
     const { data, error } = useSWR(`/api/blocks/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
-    // if (!error && data?.blocks) {
-    //     dispatch(saveBlocks(data?.blocks))
-    // }
     return {
         blocks: normalizeArray(data?.blocks ?? data?.Blocks, normalizeBlock),
         isLoading: !error && !data,
@@ -68,12 +88,12 @@ export function getBlocks(page = 1, numOfRow = 10) {
     }
 }
 
-export function getAccounts(page = 1, numOfRow = 10) {
-    // const dispatch = useDispatch();
+export interface AccountsResult extends ListResult<Account> {
+    accounts: Account[];
+}
+
+export function useAccounts(page = 1, numOfRow = 10): AccountsResult {
     const { data, error } = useSWR(`/api/accounts/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
-    // if (!error && data?.blocks) {
-    //     dispatch(saveBlocks(data?.blocks))
-    // }
     return {
         accounts: normalizeArray(data?.accounts ?? data?.Accounts, normalizeAccount),
         isLoading: !error && !data,
@@ -81,13 +101,12 @@ export function getAccounts(page = 1, numOfRow = 10) {
     }
 }
 
+export interface TxnsResult extends ListResult<Txn> {
+    transactions: Txn[];
+}
 
-export function GetTxnsByHeight(height = '0') {
-    // const dispatch = useDispatch();
+export function useTxnsByHeight(height = '0'): TxnsResult {
     const { data, error } = useSWR(`/api/txns/block/${height}`, fetcher, { refreshInterval: 30000 })
-    // if (!error && data?.transactions) {
-    //     dispatch(saveTransactions(data?.transactions))
-    // }
     return {
         transactions: normalizeArray(data?.transactions ?? data?.Transactions, normalizeTxn),
         isLoading: !error && !data,
@@ -95,12 +114,8 @@ export function GetTxnsByHeight(height = '0') {
     }
 }
 
-export function getTxns(page = 1, numOfRow = 10) {
-    // const dispatch = useDispatch();
+export function useTxns(page = 1, numOfRow = 10): TxnsResult {
     const { data, error } = useSWR(`/api/txns/${page}/${numOfRow}`, fetcher, { refreshInterval: 30000 })
-    // if (!error && data?.transactions) {
-    //     dispatch(saveTransactions(data?.transactions))
-    // }
     return {
         transactions: normalizeArray(data?.transactions ?? data?.Transactions, normalizeTxn),
         isLoading: !error && !data,
@@ -108,8 +123,7 @@ export function getTxns(page = 1, numOfRow = 10) {
     }
 }
 
-
-export function getPendingTxns() {
+export function usePendingTxns(): TxnsResult {
     const { data, error } = useSWR(`/api/txns/pending`, fetcher, { refreshInterval: 3000 })
     return {
         transactions: normalizeArray(data?.transactions ?? data?.Transactions, normalizeTxn),
@@ -118,7 +132,11 @@ export function getPendingTxns() {
     }
 }
 
-export function getChart() {
+export interface ChartResult extends ListResult<ChartPoint> {
+    data: ChartPoint[];
+}
+
+export function useChart(): ChartResult {
     const { data, error } = useSWR(`/api/chart`, fetcher, { refreshInterval: 15000 })
     return {
         data: normalizeArray(data?.datas ?? data?.Datas ?? data?.data, normalizeChartPoint),
@@ -127,8 +145,13 @@ export function getChart() {
     }
 }
 
+export interface BcInfoResult {
+    bcInfos: BcInfo | undefined;
+    isBCLoading: boolean;
+    isBcError: any;
+}
 
-export function getBcInfo() {
+export function useBcInfo(): BcInfoResult {
     const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 15000 })
     return {
         bcInfos: data ? {
@@ -141,20 +164,26 @@ export function getBcInfo() {
             AmountReward: Number(data?.AmountReward ?? data?.amountReward ?? 0),
             Tps: Number(data?.Tps ?? data?.tps ?? 0),
             NumAcc: Number(data?.NumAcc ?? data?.numAcc ?? 0),
-        } : data,
+        } as BcInfo : data,
         isBCLoading: !error && !data,
         isBcError: error
     }
 }
 
-export function getPoolInfo() {
+export interface PoolInfoResult {
+    poolInfos: PoolInfo | undefined;
+    isPoolLoading: boolean;
+    isPoolError: any;
+}
+
+export function usePoolInfo(): PoolInfoResult {
     const { data, error } = useSWR(`/api/infos/poolinfo`, fetcher, { refreshInterval: 2000 })
     return {
         poolInfos: data ? {
             ...data,
             NumPool: Number(data?.NumPool ?? data?.numPool ?? 0),
             AmountPool: Number(data?.AmountPool ?? data?.amountPool ?? 0),
-        } : data,
+        } as PoolInfo : data,
         isPoolLoading: !error && !data,
         isPoolError: error
     }

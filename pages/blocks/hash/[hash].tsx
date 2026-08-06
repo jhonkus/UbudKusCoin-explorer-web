@@ -1,34 +1,25 @@
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
-import { GetBlockByHash } from '../../../grpc/useFetch';
+import { useBlockByHash } from '../../../grpc/useFetch';
 import { formatAmount, formatBytes, formatFee, timeAgo, toDate } from '../../../utils/util';
 import styles from '../Block.module.css';
 
-import { useEffect, useState } from 'react';
 import Layout from '../../../components/Layout';
 import Skeleton from 'react-loading-skeleton';
 
 import HelpTips from '../../../components/helptips/help';
 
-export default function BlockHash() {
+function BlockHash() {
   const router = useRouter()
   const { hash } = router.query;
-  const [prevHeight, setPrevHeight] = useState(0);
-  const [nextHeight, setNextHeight] = useState(0);
 
-  const { block, isLast, isLoading, isError } = GetBlockByHash(hash?.toString());
+  const { block, isLast, isLoading, isError } = useBlockByHash(hash?.toString());
   const height = block?.Height;
 
   let prev = (parseInt(height?.toString() || '0') - 1);
   prev = prev < 0 ? 0 : prev;
   const next = (parseInt(height?.toString() || '1') + 1);
-
-
-  useEffect(() => {
-    setPrevHeight(prev);
-    setNextHeight(next);
-  }, [next, prev])
 
 
   return (
@@ -42,13 +33,11 @@ export default function BlockHash() {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/blocks"><a>Blocks</a></Link>
+                <Link href="/blocks">Blocks</Link>
               </li>
             </ol>
           </nav>
@@ -72,16 +61,12 @@ export default function BlockHash() {
                         <div className="col-sm-4"><HelpTips tips={'Block height also known as block number is length of blockchain.'} />Block Height </div>
                         <div className={`col-sm-8 ${styles.value}`}>
                           {block.Height <= 1 ? "" :
-                            <Link href={`/blocks/height/${prevHeight}`}>
-                              <a><i className="bi bi-chevron-left"></i></a>
-                            </Link>
+                            <Link href={`/blocks/height/${prev}`}><i className="bi bi-chevron-left"></i></Link>
                           }
                           &nbsp;&nbsp;<strong>{block.Height}</strong>&nbsp;&nbsp;
                           {
                             isLast ? "" :
-                              <Link href={`/blocks/height/${nextHeight}`}>
-                                <a><i className="bi bi-chevron-right"></i></a>
-                              </Link>
+                              <Link href={`/blocks/height/${next}`}><i className="bi bi-chevron-right"></i></Link>
                           }
                         </div>
                       </div>
@@ -97,9 +82,7 @@ export default function BlockHash() {
                           <HelpTips tips={'The number of transactions in the block.'} />
                           Transactions </div>
                         <div className={`col-sm-8 ${styles.value}`}>
-                          <Link href={`/txns/block/${block.Height}`}>
-                            <a className={styles.valueWithLink}>{block.NumOfTx} transaction(s) </a>
-                          </Link>
+                          <Link href={`/txns/block/${block.Height}`} className={styles.valueWithLink}>{block.NumOfTx} transaction(s) </Link>
                           in this block</div>
                       </div>
 
@@ -115,9 +98,7 @@ export default function BlockHash() {
                           <HelpTips tips={'The validator who successfully included this block on the blockchain.'} />
                           Validator</div>
                         <div className={`col-sm-8 ${styles.value}`}>
-                          <Link href={`/address/${block.Validator}`}>
-                            <a className={styles.valueWithLink}>{block.Validator}</a>
-                          </Link>
+                          <Link href={`/address/${block.Validator}`} className={styles.valueWithLink}>{block.Validator}</Link>
                           &nbsp;&nbsp; in {block.BuildTime} ms
                         </div>
                       </div>
@@ -156,9 +137,7 @@ export default function BlockHash() {
                         <div className="col-sm-4">
                           <HelpTips tips={'The hash of the previous block in the blockchain.'} /> Prev. hash </div>
                         <div className={`col-sm-8`}>
-                          <Link href={`/blocks/hash/${block.PrevHash}`}>
-                            <a className={styles.valueWithLink}>{block.PrevHash}</a>
-                          </Link>
+                          <Link href={`/blocks/hash/${block.PrevHash}`} className={styles.valueWithLink}>{block.PrevHash}</Link>
                         </div>
                       </div>
 
@@ -174,7 +153,4 @@ export default function BlockHash() {
   )
 }
 
-BlockHash.getInitialProps = async({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-  return { userAgent }
-}
+export default BlockHash;

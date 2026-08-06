@@ -1,45 +1,26 @@
-import Link from 'next/link';
 import TablePendingTxns from '../../../components/transactions/TablePendingTxns'
 import Layout from '../../../components/Layout';
+import Breadcrumb from '../../../components/Breadcrumb';
 
-export default function TablePending(props: any) {
-  const pageNum = parseInt(props.page, 10);
+export default function TablePending() {
   return (
-    <Layout pageTitle="Home page">
+    <Layout pageTitle="Pending Transactions">
       <main id="main" className="main">
 
         <div className="pagetitle">
           <h4>Pending Transactions</h4>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
-              </li>
-
-              <li className="breadcrumb-item">
-                <Link href="/txns/pending"><a>Pending Transactions</a></Link>
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/txns/pending', label: 'Pending Transactions' }]} />
         </div>
 
         <section className="section">
           <div className="row">
             <div className="col-lg-12">
 
-              <TablePendingTxns page={pageNum} />
+              <TablePendingTxns />
 
             </div></div>
         </section>
       </main>
     </Layout>
   )
-}
-
-TablePending.getInitialProps = async({ query: { page = 1 } }) => {
-  return {
-    page
-  }
 }

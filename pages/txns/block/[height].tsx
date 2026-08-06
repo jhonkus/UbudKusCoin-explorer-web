@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 // custom function
 import { formatAmount, formatFee, timeAgo, truncateText } from '../../../utils/util';
-import { GetTxnsByHeight } from '../../../grpc/useFetch';
+import { useTxnsByHeight } from '../../../grpc/useFetch';
 
 // custom component
 import styles from './Block.module.css';
@@ -15,7 +15,7 @@ export default function Block() {
   const { height } = router.query;
 
 
-  const { transactions, isLoading, isError } = GetTxnsByHeight(height?.toString());
+  const { transactions, isLoading, isError } = useTxnsByHeight(height?.toString());
 
 
   // if (isLoading) return <LoadingComp />
@@ -32,13 +32,11 @@ export default function Block() {
           <nav>
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+                <Link href="/">Home</Link>
               </li>
 
               <li className="breadcrumb-item">
-                <Link href="/txns"><a>Transactions</a></Link>
+                <Link href="/txns">Transactions</Link>
               </li>
             </ol>
           </nav>
@@ -83,34 +81,30 @@ export default function Block() {
 
                               <tr key={tx.Hash}>
                                 <td>
-                                  <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
-                                  </span></a></Link>
+                                  <Link href={`/txns/${tx.Hash}`}><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
+                                  </span></Link>
                                 </td>
                                 <td>
 
-                                  <Link href={`/blocks/height/${tx.Height}`}><a>
+                                  <Link href={`/blocks/height/${tx.Height}`}>
                                     <span className={styles.hashTx}>{tx.Height}
-                                    </span></a></Link>
+                                    </span></Link>
                                 </td>
                                 <td>
                                   <span className={styles.dateInTable}>{timeAgo(tx.TimeStamp)}</span>
                                 </td>
                                 <td className={styles.address}>
                                   <Link href={`/address/${tx.Sender}`}>
-                                    <a>
-                                      <span className={styles.addrsInTable}>
-                                        {truncateText(tx.Sender, 20)}
-                                      </span>
-                                    </a>
+                                    <span className={styles.addrsInTable}>
+                                      {truncateText(tx.Sender, 20)}
+                                    </span>
                                   </Link>
                                 </td>
                                 <td>
                                   <Link href={`/address/${tx.Recipient}`}>
-                                    <a>
-                                      <span className={styles.addrsInTable}>
-                                        {truncateText(tx.Recipient, 20)}
-                                      </span>
-                                    </a>
+                                    <span className={styles.addrsInTable}>
+                                      {truncateText(tx.Recipient, 20)}
+                                    </span>
                                   </Link>
                                 </td>
                                 <td>

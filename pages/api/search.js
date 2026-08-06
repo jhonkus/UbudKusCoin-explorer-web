@@ -1,9 +1,9 @@
-const {client} = require("../../grpc/client");
+const { client } = require("../../grpc/client");
 const { normalizeSearchResult } = require("../../utils/normalize");
 
 export default function handler(req, res) {
   if (req.method !== 'POST') {
-    res.status(405).json({ message: 'Only POST requests allowed' })
+    res.status(405).json({ status: 'error', message: 'Only POST requests allowed' });
     return;
   }
 
@@ -14,7 +14,7 @@ export default function handler(req, res) {
     return;
   }
 
-  client.Search({ searchText: param }, function(err, response) {
+  client.Search({ searchText: param }, function (err, response) {
     if (err) {
       res.status(502).json({
         status: 'error',

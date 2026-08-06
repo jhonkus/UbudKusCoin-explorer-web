@@ -3,7 +3,7 @@ import Layout from '../components/Layout'
 import TotalReward from '../components/dashboard/TotalReward'
 import TotalTxns from '../components/dashboard/TotalTxns'
 import TotalBlocks from '../components/dashboard/TotalBlocks'
-import { getBcInfo, getChart, getPoolInfo } from '../grpc/useFetch'
+import { useBcInfo, useChart, usePoolInfo } from '../grpc/useFetch'
 import TotalTxnPool from '../components/dashboard/TotalTxnPool'
 import TxnsChart from '../components/charts/TxnsAmountChart'
 import TxnsAccount from '../components/charts/TxnsNumsChart'
@@ -21,9 +21,9 @@ const quickLinks = [
 ]
 
 export default function Home() {
-  const { poolInfos, isPoolLoading } = getPoolInfo()
-  const { bcInfos, isBCLoading } = getBcInfo()
-  const { data, isLoading } = getChart()
+  const { poolInfos, isPoolLoading } = usePoolInfo()
+  const { bcInfos, isBCLoading } = useBcInfo()
+  const { data, isLoading } = useChart()
 
   const snapshotCards = [
     {
@@ -68,11 +68,9 @@ export default function Home() {
             </div>
             <div className={styles.quickLinks}>
               {quickLinks.map((item) => (
-                <Link href={item.href} key={item.href}>
-                  <a className={styles.quickLink}>
-                    <i className={`bi ${item.icon}`} />
-                    <span>{item.label}</span>
-                  </a>
+                <Link href={item.href} key={item.href} className={styles.quickLink}>
+                  <i className={`bi ${item.icon}`} />
+                  <span>{item.label}</span>
                 </Link>
               ))}
             </div>

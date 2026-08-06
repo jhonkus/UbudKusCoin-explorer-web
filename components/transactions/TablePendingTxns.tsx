@@ -1,12 +1,8 @@
 import Link from 'next/link'
-import { getPendingTxns } from '../../grpc/useFetch';
+import { usePendingTxns } from '../../grpc/useFetch';
 import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import styles from './Txns.module.css'
-
-// import Image from "next/image";
-// import loading from "../../public/loading.gif";
 import Skeleton from 'react-loading-skeleton';
-
 
 
 /**
@@ -14,9 +10,7 @@ import Skeleton from 'react-loading-skeleton';
  * @returns Transactions component
  */
 const TablePendingTxns = ({ page = 1 }) => {
-  const { transactions, isLoading, isError } = getPendingTxns();
-  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  // if (isError) return <div><p>Error when loading</p></div>
+  const { transactions, isLoading, isError } = usePendingTxns();
 
   return (
 
@@ -25,11 +19,12 @@ const TablePendingTxns = ({ page = 1 }) => {
       <div className="card-body">
         <div className="card-title" />
 
-        {(!transactions && !isLoading && !isError) &&
-          <div className="text-center"><p>Blocks not found! </p></div>
+        {(!isLoading && !isError && transactions.length === 0) &&
+          <div className="text-center text-muted py-4"><p>No pending transactions.</p></div>
         }
-        {(isLoading || isError) && <Skeleton count={10} />}
-        {transactions &&
+        {isLoading && <Skeleton count={10} />}
+        {isError && <div className="text-center text-danger py-4"><p>Unable to load the transaction pool.</p></div>}
+        {!isLoading && !isError && transactions.length > 0 &&
 
           <>
 
@@ -68,20 +63,16 @@ const TablePendingTxns = ({ page = 1 }) => {
                       </td>
                       <td className={styles.address}>
                         <Link href={`/address/${tx.Sender}`}>
-                          <a>
-                            <span className={styles.addrsInTable}>
-                              {truncateText(tx.Sender, 20)}
-                            </span>
-                          </a>
+                          <span className={styles.addrsInTable}>
+                            {truncateText(tx.Sender, 20)}
+                          </span>
                         </Link>
                       </td>
                       <td>
                         <Link href={`/address/${tx.Recipient}`}>
-                          <a>
-                            <span className={styles.addrsInTable}>
-                              {truncateText(tx.Recipient, 20)}
-                            </span>
-                          </a>
+                          <span className={styles.addrsInTable}>
+                            {truncateText(tx.Recipient, 20)}
+                          </span>
                         </Link>
                       </td>
                       <td>

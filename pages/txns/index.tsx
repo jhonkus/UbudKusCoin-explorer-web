@@ -1,35 +1,26 @@
-import Link from 'next/link';
 import TableTxns from '../../components/transactions/TableTxns'
 import Layout from '../../components/Layout';
+import Breadcrumb from '../../components/Breadcrumb';
 
-export default function Txns(props: any) {
-  const pageNum = parseInt(props.page, 10);
+interface TxnsProps {
+  page: number;
+}
+
+export default function Txns({ page }: TxnsProps) {
   return (
     <Layout pageTitle="Transactions">
       <main id="main" className="main">
 
         <div className="pagetitle">
           <h4>Transactions</h4>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
-              </li>
-
-              <li className="breadcrumb-item">
-                <Link href="/txns"><a>Transactions</a></Link>
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/txns', label: 'Transactions' }]} />
         </div>
 
         <section className="section">
           <div className="row">
             <div className="col-lg-12">
 
-              <TableTxns page={pageNum} />
+              <TableTxns page={page} />
 
             </div></div>
         </section>
@@ -38,8 +29,11 @@ export default function Txns(props: any) {
   )
 }
 
-Txns.getInitialProps = async({ query: { page = 1 } }) => {
+export async function getServerSideProps({ query }) {
+  const raw = parseInt(query.page, 10);
   return {
-    page
-  }
+    props: {
+      page: Number.isFinite(raw) && raw > 0 ? raw : 1,
+    },
+  };
 }

@@ -31,8 +31,8 @@ const TableAccountTxns = ({ transactions }) => {
 
               <tr key={tx.Hash}>
                 <td>
-                  <Link href={`/txns/${tx.Hash}`}><a><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
-                  </span></a></Link>
+                  <Link href={`/txns/${tx.Hash}`}><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
+                  </span></Link>
                 </td>
                 <td>
                   <span className={styles.dateTx}>{tx.Height}</span>
@@ -42,17 +42,13 @@ const TableAccountTxns = ({ transactions }) => {
                 </td>
                 <td className={styles.address}>
                   <Link href={`/address/${tx.Sender}`}>
-                    <a>
-                      <span className={styles.addrsInTable}>{truncateText(tx.Sender, 15)}</span>
-                    </a>
+                    <span className={styles.addrsInTable}>{truncateText(tx.Sender, 15)}</span>
                   </Link>
                 </td>
                 <td>
                   <Link href={`/address/${tx.Recipient}`}>
-                    <a>
-                      <span className={styles.addrsInTable}>
-                        {truncateText(tx.Recipient, 15)}</span>
-                    </a>
+                    <span className={styles.addrsInTable}>
+                      {truncateText(tx.Recipient, 15)}</span>
                   </Link>
                 </td>
                 <td>
