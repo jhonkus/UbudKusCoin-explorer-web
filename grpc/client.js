@@ -25,10 +25,12 @@ const target = nodeAddress.replace(/^https?:\/\//, '');
 const BlockService = loadService('block.node.proto', 'BlockService');
 const TransactionService = loadService('transaction.node.proto', 'TransactionService');
 const AccountService = loadService('account.node.proto', 'AccountService');
+const ReadModelService = loadService('read_model.node.proto', 'ReadModelService');
 
 const blockClient = new BlockService(target, credentials);
 const transactionClient = new TransactionService(target, credentials);
 const accountClient = new AccountService(target, credentials);
+const readModelClient = new ReadModelService(target, credentials);
 
 function call(client, method, request, callback) {
   client[method](request, callback);
@@ -59,20 +61,21 @@ const client = {
     callback(error, { balance: response?.balance || 0 })),
   GetAccounts: (request, callback) => call(accountClient, 'getRange', request, (error, response) =>
     callback(error, { accounts: response?.accounts || [] })),
-  GetPoolInfo: (request, callback) => call(transactionClient, 'getPoolRange', { page_number: 1, result_per_page: 1 }, (error, response) =>
-    callback(error, { NumPool: response?.transactions?.length || 0, AmountPool: 0 })),
-  GetBchainInfo: (request, callback) => call(blockClient, 'getLast', {}, (error, response) =>
+  GetPoolInfo: (request, callback) => call(readModelClient, 'getStats', {}, (error, response) =>
+    callback(error, { NumPool: response?.pending_count || 0, AmountPool: response?.pending_amount || 0 })),
+  GetBchainInfo: (request, callback) => call(readModelClient, 'getStats', {}, (error, response) =>
     callback(error, {
-      NumBloks: Number(response?.height || 0),
-      NumTxns: 0,
-      AmountTxns: 0,
-      AmountReward: Number(response?.total_reward || 0),
-      blocks: response ? [response] : [],
+      NumBloks: response?.block_count || 0,
+      NumTxns: response?.transaction_count || 0,
+      AmountTxns: response?.transaction_amount || 0,
+      AmountReward: response?.reward_amount || 0,
+      NumAcc: response?.account_count || 0,
+      blocks: [],
       txns: [],
       Tps: 0,
-      NumAcc: 0,
     })),
-  GetTxnChart: (request, callback) => callback(null, { datas: [] }),
+  GetTxnChart: (request, callback) => call(readModelClient, 'getTransactionChart', { limit: 30 }, (error, response) =>
+    callback(error, { datas: response?.points || [] })),
   Search: (request, callback) => {
     const query = String(request?.searchText || '').trim();
     const found = (title, url) => callback(null, {
