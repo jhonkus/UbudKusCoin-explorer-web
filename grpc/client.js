@@ -101,7 +101,7 @@ const client = {
       Title: title,
       SarchText: query,
       Url: url,
-      status: 'success',
+      status: 'ok',
     });
     const notFound = () => callback(null, {
       Id: 0,

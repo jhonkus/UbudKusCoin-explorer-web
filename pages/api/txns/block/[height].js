@@ -1,12 +1,12 @@
-const {client} = require("../../../../grpc/client");
+const { client } = require("../../../../grpc/client");
+import { ensureMethod, runGrpc } from "../../../../lib/apiHelper";
 
 export default async function handler(req, res) {
-    const { height } = req.query;
-        client.GetTxnsByHeight({ blockHeight: Number(height) }, function(err, response) {
-            if (!err) {
-                res.status(200).setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate=30').json(response);
-            } else {
-                res.status(502).json({ status: 'error', message: 'Node is unavailable' });
-            }
-        });
+  if (ensureMethod(req, res)) return;
+
+  const { height } = req.query;
+  runGrpc(res, (cb) =>
+    client.GetTxnsByHeight({ blockHeight: Number(height) }, cb),
+    { cache: 's-maxage=10, stale-while-revalidate=30' },
+  );
 }

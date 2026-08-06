@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { useState } from 'react';
 import styles from './Address.module.css'
 
 import Layout from '../../components/Layout'
+import Breadcrumb from '../../components/Breadcrumb';
 import TableAccountTxns from '../../components/account/TableAccountTxns';
 import TableAccountBlocks from '../../components/account/TableAccountBlocks';
 import { useAccount } from '../../grpc/useFetch'
@@ -35,27 +35,14 @@ export default function Block() {
 
     const { transactions, blocks, balance, numBlockValidate, isLoading, isError } = useAccount(address?.toString());
 
-    // if (isLoading) return <LoadingComp />
-    // if (isError) return <ErrorComp />
-
     return (
         <Layout pageTitle="Account Address">
-            <main id="main" className="main">
+<main id="main" className="main">
                 <div className="pagetitle">
                     <h5>Address <span className={`text-break ${styles.title}`}>{address}    <CopyText msg={'Copy address to clipboard'} text={address}/></span>
                  
                     </h5>
-                    <nav>
-                        <ol className="breadcrumb">
-                            <li className="breadcrumb-item">
-                                <Link href="/">Home</Link>
-                            </li>
-
-                            <li className="breadcrumb-item">
-                                <Link href={`/address/${address}`}>Address</Link>
-                            </li>
-                        </ol>
-                    </nav>
+                    <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: `/address/${address}`, label: 'Address' }]} />
                 </div>
 
                 <section className="section">

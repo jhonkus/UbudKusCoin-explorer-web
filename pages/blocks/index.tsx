@@ -1,34 +1,26 @@
-import Link from 'next/link';
 import Layout from "../../components/Layout";
+import Breadcrumb from '../../components/Breadcrumb';
 import TableBlocks from '../../components/blocks/TableBlocks'
 
-export default function Blocks(props: any) {
-  const pageNum = parseInt(props.page, 10);
-  return (
+interface BlocksProps {
+  page: number;
+}
 
+export default function Blocks({ page }: BlocksProps) {
+  return (
     <Layout pageTitle="Blocks">
       <main id="main" className="main">
 
         <div className="pagetitle">
           <h4>Blocks</h4>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link href="/">Home</Link>
-              </li>
-
-              <li className="breadcrumb-item">
-                <Link href="/blocks">Blocks</Link>
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/blocks', label: 'Blocks' }]} />
         </div>
 
         <section className="section">
           <div className="row">
             <div className="col-lg-12">
 
-              <TableBlocks page={pageNum} />
+              <TableBlocks page={page} />
 
             </div></div>
         </section>
@@ -37,8 +29,11 @@ export default function Blocks(props: any) {
   )
 }
 
-Blocks.getInitialProps = async({ query: { page = 1 } }) => {
+export async function getServerSideProps({ query }) {
+  const raw = parseInt(query.page, 10);
   return {
-    page
-  }
+    props: {
+      page: Number.isFinite(raw) && raw > 0 ? raw : 1,
+    },
+  };
 }

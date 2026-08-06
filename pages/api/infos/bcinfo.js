@@ -1,19 +1,11 @@
-const {client} = require("../../../grpc/client");
+const { client } = require("../../../grpc/client");
+import { ensureMethod, runGrpc } from "../../../lib/apiHelper";
 
 export default async function handler(req, res) {
-    const { hash } = req.query
-    return new Promise(() => {
-        client.GetBchainInfo({ txnHash: hash }, function(err, response) {
-            if (!err && response) {
-                res.statusCode = 200
-                res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Cache-Control', 'max-age=30');
-                res.end(JSON.stringify(response));
-            } else {
-                res.json(err);
-                res.status(405).end();
-                res.end('error');
-            }
-        });
-    });
+  if (ensureMethod(req, res)) return;
+
+  runGrpc(res, (cb) => client.GetBchainInfo({}, cb), {
+    cache: 'max-age=30',
+  });
 }
+

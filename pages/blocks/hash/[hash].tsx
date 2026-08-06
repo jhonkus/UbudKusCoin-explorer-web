@@ -10,7 +10,7 @@ import Skeleton from 'react-loading-skeleton';
 
 import HelpTips from '../../../components/helptips/help';
 
-export default function BlockHash() {
+function BlockHash() {
   const router = useRouter()
   const { hash } = router.query;
 
@@ -153,7 +153,4 @@ export default function BlockHash() {
   )
 }
 
-BlockHash.getInitialProps = async({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-  return { userAgent }
-}
+export default BlockHash;

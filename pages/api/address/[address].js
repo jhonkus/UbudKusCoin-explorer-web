@@ -1,12 +1,12 @@
-const {client} = require("../../../grpc/client");
+const { client } = require("../../../grpc/client");
+import { ensureMethod, runGrpc } from "../../../lib/apiHelper";
 
 export default async function handler(req, res) {
-    const { address } = req.query
-       client.GetAccount({ address: address }, function(err, response) {
-            if (!err) {
-                res.status(200).setHeader('Cache-Control', 's-maxage=30, stale-while-revalidate=60').json(response);
-            } else {
-                res.status(502).json({ status: 'error', message: 'Node is unavailable' });
-            }
-        }); 
+  if (ensureMethod(req, res)) return;
+
+  const { address } = req.query;
+  runGrpc(res, (cb) => client.GetAccount({ address }, cb), {
+    cache: 's-maxage=30, stale-while-revalidate=60',
+  });
 }
+

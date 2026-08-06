@@ -1,69 +1,58 @@
-var numeral = require('numeral');
-
+import numeral from 'numeral';
 import { format } from 'timeago.js';
 
-
-
-export function timeAgo(unixTimestamp) {
-    return format(new Date(unixTimestamp * 1000));
+export function timeAgo(unixTimestamp: number): string {
+  return format(new Date(unixTimestamp * 1000));
 }
 
-
-export function toDate(unixTimestamp) {
-    const date = new Date(unixTimestamp * 1000);
-    const formattedTime = date.getDate() +
-        "/" + (date.getMonth() + 1) +
-        "/" + date.getFullYear() +
-        " " + date.getHours() +
-        ":" + date.getMinutes();
-    return formattedTime;
+export function toDate(unixTimestamp: number): string {
+  const date = new Date(unixTimestamp * 1000);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${day}/${month}/${date.getFullYear()} ${hours}:${minutes}`;
 }
 
-export function formatAmount(amount) {
-    return numeral(amount).format('0,0.00000')
+export function formatAmount(amount: number): string {
+  return numeral(amount).format('0,0.00000');
 }
 
-export function formatTotalReward(amount) {
-    return numeral(amount).format('0,0.00')
+export function formatTotalReward(amount: number): string {
+  return numeral(amount).format('0,0.00');
 }
 
-export function formatNum(amount) {
-    return numeral(amount).format('0,0')
+export function formatNum(amount: number): string {
+  return numeral(amount).format('0,0');
 }
 
-export function formatTotalTxns(amount) {
-    return numeral(amount).format('0,0.00')
+/** Alias for formatting a total amount with 2 decimals. */
+export const formatTotalTxns = formatTotalReward;
+
+export function formatFee(amount: number): string {
+  return numeral(amount).format('0,0.00000000');
 }
 
-export function formatFee(amount) {
-    return numeral(amount).format('0,0.00000000')
+export function formatBytes(amount: number): string {
+  return numeral(amount).format('0,0');
 }
 
-export function formatBytes(amount) {
-    return numeral(amount).format('0,0')
+export function convertDate(unixTimestamp: string | number): string {
+  const date = new Date(Number(unixTimestamp) * 1000);
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${hours}:${minutes}`;
 }
 
-export function convertDate(unixTimestamp: string) {
-
-    const date = new Date(parseInt(unixTimestamp) * 1000);
-    const hours = date.getHours();
-    const minutes = "0" + date.getMinutes();
-    // var seconds = "0" + date.getSeconds();
-  
-    // var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-    const formattedTime = hours + ':' + minutes.substr(-2);
-    return formattedTime
+export function truncateText(value: string | null | undefined, visible = 12): string {
+  if (!value) {
+    return '-';
   }
 
-export function truncateText(value, visible = 12) {
-    if (!value) {
-        return '-';
-    }
+  const text = String(value);
+  if (text.length <= visible * 2) {
+    return text;
+  }
 
-    const text = String(value);
-    if (text.length <= visible * 2) {
-        return text;
-    }
-
-    return `${text.slice(0, visible)}...${text.slice(-visible)}`;
+  return `${text.slice(0, visible)}...${text.slice(-visible)}`;
 }

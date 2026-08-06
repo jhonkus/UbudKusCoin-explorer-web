@@ -12,10 +12,6 @@ import Pagination from '../paging/Pagination';
 const TableBlocks = ({ page = 1 }) => {
   const { blocks, isLoading, isError } = useBlocks(page, 25);
 
-  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  // if (isError) return <div><p>Error when loading</p></div>
-
-
   return (
     <div className="card">
 

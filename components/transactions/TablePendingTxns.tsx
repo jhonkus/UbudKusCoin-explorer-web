@@ -2,11 +2,7 @@ import Link from 'next/link'
 import { usePendingTxns } from '../../grpc/useFetch';
 import { timeAgo, formatAmount, formatFee, truncateText } from '../../utils/util';
 import styles from './Txns.module.css'
-
-// import Image from "next/image";
-// import loading from "../../public/loading.gif";
 import Skeleton from 'react-loading-skeleton';
-
 
 
 /**
@@ -15,8 +11,6 @@ import Skeleton from 'react-loading-skeleton';
  */
 const TablePendingTxns = ({ page = 1 }) => {
   const { transactions, isLoading, isError } = usePendingTxns();
-  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  // if (isError) return <div><p>Error when loading</p></div>
 
   return (
 

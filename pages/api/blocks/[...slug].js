@@ -1,12 +1,16 @@
-const {client} = require("../../../grpc/client");
+const { client } = require("../../../grpc/client");
+import { ensureMethod, runGrpc } from "../../../lib/apiHelper";
 
 export default async function handler(req, res) {
-    const { slug } = req.query;
-        client.GetBlocks({ page_number: Number(slug[0]), result_per_page: Number(slug[1]) }, function(err, response) {
-            if (!err) {
-                res.status(200).setHeader('Cache-Control', 's-maxage=10, stale-while-revalidate=30').json(response);
-            } else {
-                res.status(502).json({ status: 'error', message: 'Node is unavailable' });
-            }
-        });
+  if (ensureMethod(req, res)) return;
+
+  const { slug } = req.query;
+  runGrpc(res, (cb) =>
+    client.GetBlocks(
+      { page_number: Number(slug[0]), result_per_page: Number(slug[1]) },
+      cb,
+    ),
+    { cache: 's-maxage=10, stale-while-revalidate=30' },
+  );
 }
+

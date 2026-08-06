@@ -12,8 +12,6 @@ import Pagination from '../paging/Pagination';
  */
 const TableTxns = ({ page = 1 }) => {
   const { transactions, isLoading, isError } = useTxns(page, 25);
-  // if (isLoading) return <div><Image src={loading} width="20" height="20" alt="Please wait loading ..." /></div>
-  // if (isError) return <div><p>Error when loading</p></div>
 
   return (
 

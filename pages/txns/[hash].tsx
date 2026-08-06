@@ -5,40 +5,28 @@ import { useRouter } from 'next/router';
 import { formatAmount, formatFee, timeAgo, toDate } from '../../utils/util';
 import { useTxn } from '../../grpc/useFetch'
 
-// custom compoents
+// custom components
 import styles from './Txn.module.css';
 import Layout from '../../components/Layout'
+import Breadcrumb from '../../components/Breadcrumb';
 import Skeleton from 'react-loading-skeleton';
 import CopyText from '../../components/copy/copy_text';
 import HelpTips from '../../components/helptips/help';
 
 
-export default function TxnByHash() {
+function TxnByHash() {
   const router = useRouter()
   const { hash } = router.query;
 
   const { txn, isLoading, isError } = useTxn(hash?.toString());
-  // if (isLoading) return <LoadingComp />
-  // if (isError) return <ErrorComp />
-  // if (!txn) return <NotFound />
 
   return (
     <Layout pageTitle="Transaction by Hash">
       <main id="main" className="main">
 
-        <div className="pagetitle">
+<div className="pagetitle">
           <h5>Transaction Details</h5>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link href="/">Home</Link>
-              </li>
-
-              <li className="breadcrumb-item">
-                <Link href="/txns">Transactions</Link>
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/txns', label: 'Transactions' }]} />
         </div>
 
         <section className="section">
@@ -127,7 +115,4 @@ export default function TxnByHash() {
   )
 }
 
-TxnByHash.getInitialProps = async({ req }) => {
-  const userAgent = req ? req.headers['user-agent'] : navigator.userAgent
-  return { userAgent }
-}
+export default TxnByHash;
