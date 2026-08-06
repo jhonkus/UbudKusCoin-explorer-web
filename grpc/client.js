@@ -73,7 +73,45 @@ const client = {
       NumAcc: 0,
     })),
   GetTxnChart: (request, callback) => callback(null, { datas: [] }),
-  Search: (request, callback) => callback(null, { status: 'unsupported', title: 'Search is not available from the node API yet' }),
+  Search: (request, callback) => {
+    const query = String(request?.searchText || '').trim();
+    const found = (title, url) => callback(null, {
+      Id: 1,
+      Title: title,
+      SarchText: query,
+      Url: url,
+      status: 'success',
+    });
+    const notFound = () => callback(null, {
+      Id: 0,
+      Title: 'Not found',
+      SarchText: query,
+      Url: '/notfound',
+      status: 'not_found',
+    });
+    if (!query) return notFound();
+
+    const tryAccount = () => accountClient.getByAddress({ address: query }, (error, account) => {
+      if (!error && account?.address) return found('Account', `/address/${query}`);
+      notFound();
+    });
+    const tryTransaction = () => transactionClient.getByHash({ hash: query }, (error, transaction) => {
+      if (!error && transaction?.hash) return found('Transaction', `/txns/${query}`);
+      tryAccount();
+    });
+    const tryBlock = () => blockClient.getByHash({ hash: query }, (error, block) => {
+      if (!error && block?.hash) return found('Block', `/blocks/hash/${query}`);
+      tryTransaction();
+    });
+
+    if (/^\d+$/.test(query)) {
+      return blockClient.getByHeight({ height: Number(query) }, (error, block) => {
+        if (!error && block?.height) return found('Block', `/blocks/height/${query}`);
+        tryBlock();
+      });
+    }
+    tryBlock();
+  },
 };
 
 const actClient = {
