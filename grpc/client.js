@@ -11,7 +11,7 @@ const protoOptions = {
 };
 
 function loadService(file, service) {
-  const definition = protoLoader.loadSync(path.join(__dirname, 'protos', file), protoOptions);
+  const definition = protoLoader.loadSync(path.join(process.cwd(), 'grpc', 'protos', file), protoOptions);
   const loaded = grpc.loadPackageDefinition(definition);
   return loaded[service];
 }
@@ -55,25 +55,43 @@ const client = {
     callback(error, { transactions: response?.transactions || [] })),
   GetPendingTxns: (request, callback) => call(transactionClient, 'getPendingTxns', request, (error, response) =>
     callback(error, { transactions: response?.transactions || [] })),
-  GetAccount: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) =>
-    callback(error, { balance: response?.balance || 0, numBlockValidate: 0, transactions: [], blocks: [] })),
+  GetAccount: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) => {
+    if (error) return callback(error);
+    call(transactionClient, 'getRange', { address: request.address, page_number: 1, result_per_page: 100 }, (transactionError, transactions) => {
+      if (transactionError) return callback(transactionError);
+      callback(null, {
+        balance: response?.balance || 0,
+        numBlockValidate: 0,
+        transactions: transactions?.transactions || [],
+        blocks: [],
+      });
+    });
+  }),
   GetBalance: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) =>
     callback(error, { balance: response?.balance || 0 })),
   GetAccounts: (request, callback) => call(accountClient, 'getRange', request, (error, response) =>
     callback(error, { accounts: response?.accounts || [] })),
   GetPoolInfo: (request, callback) => call(readModelClient, 'getStats', {}, (error, response) =>
     callback(error, { NumPool: response?.pending_count || 0, AmountPool: response?.pending_amount || 0 })),
-  GetBchainInfo: (request, callback) => call(readModelClient, 'getStats', {}, (error, response) =>
-    callback(error, {
-      NumBloks: response?.block_count || 0,
-      NumTxns: response?.transaction_count || 0,
-      AmountTxns: response?.transaction_amount || 0,
-      AmountReward: response?.reward_amount || 0,
-      NumAcc: response?.account_count || 0,
-      blocks: [],
-      txns: [],
-      Tps: 0,
-    })),
+  GetBchainInfo: (request, callback) => call(readModelClient, 'getStats', {}, (error, response) => {
+    if (error) return callback(error);
+    call(blockClient, 'getRange', { page_number: 1, result_per_page: 10 }, (blockError, blocks) => {
+      if (blockError) return callback(blockError);
+      call(transactionClient, 'getRange', { page_number: 1, result_per_page: 10 }, (transactionError, transactions) => {
+        if (transactionError) return callback(transactionError);
+        callback(null, {
+          NumBloks: response?.block_count || 0,
+          NumTxns: response?.transaction_count || 0,
+          AmountTxns: response?.transaction_amount || 0,
+          AmountReward: response?.reward_amount || 0,
+          NumAcc: response?.account_count || 0,
+          blocks: blocks?.blocks || [],
+          txns: transactions?.transactions || [],
+          Tps: 0,
+        });
+      });
+    });
+  }),
   GetTxnChart: (request, callback) => call(readModelClient, 'getTransactionChart', { limit: 30 }, (error, response) =>
     callback(error, { datas: response?.points || [] })),
   Search: (request, callback) => {
