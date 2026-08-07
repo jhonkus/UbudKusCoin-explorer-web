@@ -1,4 +1,5 @@
 import {
+  timeAgo,
   formatAmount,
   formatFee,
   formatNum,
@@ -57,7 +58,12 @@ describe('util.ts', () => {
     });
   });
 
-  describe('toDate() and convertDate()', () => {
+  describe('timeAgo(), toDate() and convertDate()', () => {
+    it('returns "-" when unixTimestamp is 0 or uninitialized', () => {
+      expect(timeAgo(0)).toBe('-');
+      expect(toDate(0)).toBe('-');
+    });
+
     it('converts unix timestamp to formatted date string', () => {
       const timestamp = 1700000000;
       expect(typeof toDate(timestamp)).toBe('string');

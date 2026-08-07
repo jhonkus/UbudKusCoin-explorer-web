@@ -2,11 +2,17 @@ import numeral from 'numeral';
 import { format } from 'timeago.js';
 
 export function timeAgo(unixTimestamp: number): string {
-  return format(new Date(unixTimestamp * 1000));
+  if (!unixTimestamp || Number(unixTimestamp) <= 0) {
+    return '-';
+  }
+  return format(new Date(Number(unixTimestamp) * 1000));
 }
 
 export function toDate(unixTimestamp: number): string {
-  const date = new Date(unixTimestamp * 1000);
+  if (!unixTimestamp || Number(unixTimestamp) <= 0) {
+    return '-';
+  }
+  const date = new Date(Number(unixTimestamp) * 1000);
   const day = String(date.getDate()).padStart(2, '0');
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const hours = String(date.getHours()).padStart(2, '0');
