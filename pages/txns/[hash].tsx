@@ -93,14 +93,14 @@ function TxnByHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'The value being transacted in Ukusi.'} />
-                          Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukusi </div>
+                          <HelpTips tips={'The value being transacted in UKC.'} />
+                          Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} UKC </div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
                           <HelpTips tips={'Amount paid to the validator when processing the transaction.'} />
-                          Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukusi </div>
+                          Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} UKC </div>
                       </div>
                     </>
                   }

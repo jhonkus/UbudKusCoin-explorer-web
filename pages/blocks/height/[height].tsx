@@ -93,7 +93,7 @@ export default function Block() {
                         <div className="col-sm-4">
                           <HelpTips tips={'Total amount of all transactions in this block.'} />
                           Amount</div>
-                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatAmount(block.TotalAmount)}</strong> uks</div>
+                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatAmount(block.TotalAmount)}</strong> UKC</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
@@ -110,9 +110,9 @@ export default function Block() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'For each block, the validator is rewarded with a finite amount of Ukusi on top of transaction fees paid in the block.'} />
+                          <HelpTips tips={'For each block, the validator is rewarded with a finite amount of UKC on top of transaction fees paid in the block.'} />
                           Block Reward</div>
-                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatFee(block.TotalReward)}</strong> uks</div>
+                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatFee(block.TotalReward)}</strong> UKC</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>

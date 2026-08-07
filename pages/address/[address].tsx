@@ -62,7 +62,7 @@ export default function Block() {
                                         <>
                                             <div className={`row ${styles.rowDiv}`}>
                                                 <div className="col-sm-2">Balance </div>
-                                                <div className={`col-sm-9 ${styles.value}`}><strong>{formatAmount(balance)}</strong> Uks</div>
+                                                <div className={`col-sm-9 ${styles.value}`}><strong>{formatAmount(balance)}</strong> UKC</div>
                                             </div>
                                             <div className={`row ${styles.rowDiv}`}>
                                                 <div className="col-sm-2">Validated </div>

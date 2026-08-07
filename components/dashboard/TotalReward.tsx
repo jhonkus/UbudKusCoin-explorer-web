@@ -32,7 +32,7 @@ const TotalReward = ({ data, isLoading }) => {
                             {
                                 isLoading ? <div style={{ width: '100px' }}><Skeleton count={2} /> </div> :
                                     <>
-                                        <h6>{formatTotalReward(data?.AmountReward)}&nbsp;<span className={styles.textSufix}>Uks</span></h6>
+                                        <h6>{formatTotalReward(data?.AmountReward)}&nbsp;<span className={styles.textSufix}>UKC</span></h6>
                                         <span>
                                             <Link href={`/accounts`} className={styles.infoSmall}>
                                                 {formatNum(data?.NumAcc)} Accounts

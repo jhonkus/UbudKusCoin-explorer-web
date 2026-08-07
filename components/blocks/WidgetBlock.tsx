@@ -46,7 +46,7 @@ const WidgetBlocks = ({ data, isLoading }) => {
                 <span className={styles.lblTx}> in block</span></span>
             </div>
             <div className="col-sm-4 align-self-center">
-              <div className={`align-self-end ${styles.amount}`}>{formatAmount(block.TotalAmount)} <span style={{fontSize: '0.8em'}} className="text-muted">Uks</span></div>
+              <div className={`align-self-end ${styles.amount}`}>{formatAmount(block.TotalAmount)} <span style={{fontSize: '0.8em'}} className="text-muted">UKC</span></div>
             </div>
           </div>
         ))}

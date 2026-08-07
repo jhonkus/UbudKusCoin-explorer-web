@@ -7,7 +7,7 @@ export const options = {
   curveType: "function",
   legend: { position: "bottom" },
   vAxis: {
-    title: 'Amount  (Uks)',
+    title: 'Amount (UKC)',
     ticks: [0, 50, 100, 150],
     gridlines: {
       color: 'transparent'
