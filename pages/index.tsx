@@ -40,15 +40,15 @@ export default function Home() {
     },
     {
       label: 'Rewards',
-      value: formatTotalReward(bcInfos?.AmountReward ?? 0),
-      suffix: 'Uks',
+      value: formatTotalReward((bcInfos?.AmountReward ?? 0) / 100000000),
+      suffix: 'UKC',
       hint: 'Validator rewards collected',
     },
     {
       label: 'Pool',
       value: formatNum(poolInfos?.NumPool ?? 0),
       suffix: 'Tx',
-      hint: `${formatAmount(poolInfos?.AmountPool ?? 0)} Uks queued`,
+      hint: `${formatAmount((poolInfos?.AmountPool ?? 0) / 100000000)} UKC queued`,
     },
   ]
 
