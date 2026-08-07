@@ -60,63 +60,168 @@ img {
 }
 
 .navbar {
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 .header2 {
-  min-height: 78px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.82) !important;
-  box-shadow: 0 10px 30px rgba(10, 20, 35, 0.08);
+  min-height: 72px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+  transition: all 0.3s ease;
 }
 
 .logo {
-  gap: 0.75rem;
+  transition: opacity 0.2s ease;
 }
 
-.logo span {
-  font-family: Inter, "Segoe UI", sans-serif;
+.logo:hover {
+  opacity: 0.9;
 }
 
-.header-tagline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.85rem;
+/* Network Badge */
+.network-badge {
+  background: rgba(16, 185, 129, 0.08);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 0.25rem 0.65rem;
   border-radius: 999px;
-  background: var(--primary-soft);
-  color: var(--primary-strong);
-  font-size: 0.79rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  gap: 0.4rem;
 }
 
-.navbar .nav-link {
-  color: #26334d !important;
-  font-weight: 600;
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  animation: pulse-green 2s infinite;
 }
 
-.navbar .nav-link.active,
-.navbar .nav-link:hover {
-  color: var(--primary) !important;
+@keyframes pulse-green {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.nav-dropdown-btn {
+  font-size: 0.95rem;
+  font-weight: 650;
+  color: #1e293b !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-dropdown-btn:hover {
+  background: rgba(15, 98, 254, 0.06);
+  color: #0f62fe !important;
+}
+
+.nav-chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s ease;
+}
+
+.dropdown:hover .nav-chevron,
+.dropdown.show .nav-chevron {
+  transform: rotate(180deg);
 }
 
 .navbar .dropdown-menu {
-  border: 0;
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  padding: 0.65rem;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12) !important;
+  padding: 0.5rem;
+  min-width: 220px;
 }
 
 .navbar .dropdown-item {
-  border-radius: 12px;
+  border-radius: 8px;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: #304058;
+  color: #334155;
+  transition: all 0.15s ease;
 }
 
 .navbar .dropdown-item:hover {
   background: rgba(15, 98, 254, 0.08);
+  color: #0f62fe;
+  transform: translateX(3px);
+}
+
+/* Search Box Styling */
+.header-search-container {
+  width: 100%;
+  max-width: 420px;
+}
+
+.search-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-input-group .search-icon {
+  position: absolute;
+  left: 14px;
+  color: #94a3b8;
+  font-size: 0.9rem;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.search-input-group input {
+  padding-left: 38px !important;
+  padding-right: 44px !important;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.search-input-group input:focus {
+  background: #ffffff;
+  border-color: #0f62fe;
+  box-shadow: 0 0 0 3px rgba(15, 98, 254, 0.12);
+  outline: none;
+}
+
+.search-input-group .btn-search {
+  position: absolute;
+  right: 5px;
+  height: 30px;
+  width: 32px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: #0f62fe;
+  color: #ffffff;
+  border: none;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.search-input-group .btn-search:hover {
+  background: #0043ce;
+  transform: scale(1.03);
 }
 
 .navbar .navbar-toggler {
