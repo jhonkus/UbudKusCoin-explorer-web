@@ -10,7 +10,7 @@ import TxnsAccount from '../components/charts/TxnsNumsChart'
 import WidgetTxns from '../components/transactions/WidgetTxns'
 import WidgetBlocks from '../components/blocks/WidgetBlock'
 import SearchBox from '../components/search/SearchBox'
-import { formatAmount, formatNum, formatTotalReward, formatTotalTxns } from '../utils/util'
+import { formatAmount, formatFee, formatNum, formatTotalReward, formatTotalTxns } from '../utils/util'
 import styles from './Home.module.css'
 
 const quickLinks = [
@@ -24,6 +24,9 @@ export default function Home() {
   const { poolInfos, isPoolLoading } = usePoolInfo()
   const { bcInfos, isBCLoading } = useBcInfo()
   const { data, isLoading } = useChart()
+
+  const totalFeesBaseUnits = (bcInfos?.txns || []).reduce((sum: number, tx: any) => sum + Number(tx.fee || tx.Fee || 0), 0);
+  const totalFeesUKC = totalFeesBaseUnits > 0 ? totalFeesBaseUnits / 100000000 : 0;
 
   const snapshotCards = [
     {
@@ -39,10 +42,10 @@ export default function Home() {
       hint: `Throughput ${formatTotalTxns(bcInfos?.Tps ?? 0)} TPS`,
     },
     {
-      label: 'Rewards',
-      value: formatTotalReward((bcInfos?.AmountReward ?? 0) / 100000000),
+      label: 'Tx Fees',
+      value: formatFee(totalFeesUKC),
       suffix: 'UKC',
-      hint: 'Validator rewards collected',
+      hint: 'Total transaction fees collected',
     },
     {
       label: 'Pool',
