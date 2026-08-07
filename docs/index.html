@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UbudKusCoin Explorer — Live Blockchain Explorer</title>
+  <meta name="description" content="Open-source web explorer for the UbudKusCoin blockchain. Monitor blocks, transactions, accounts, pending pool, and live network metrics through a server-side gRPC gateway." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="container nav">
+      <a href="#" class="brand">
+        <img src="assets/ukscscan-logo.png" alt="UbudKusCoin Explorer logo" class="brand-logo" />
+        <span class="brand-tagline">Live network explorer</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#tech">Tech Stack</a></li>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-ghost">View on GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="kicker">UbudKusCoin Explorer</span>
+          <h1>Monitor the network with a cleaner, faster blockchain dashboard.</h1>
+          <p>
+            An open-source web explorer for the UbudKusCoin blockchain. Search any address,
+            block, or transaction hash and inspect live network activity through a layout
+            designed for clarity.
+          </p>
+          <div class="hero-actions">
+            <a href="#getting-started" class="btn btn-primary">Get Started</a>
+            <a href="#features" class="btn btn-ghost">Explore Features</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-header">
+            <span>Network snapshot</span>
+            <span class="panel-chip">Live</span>
+          </div>
+          <div class="snapshot-grid">
+            <div class="snapshot-card">
+              <span class="snapshot-label">Blocks</span>
+              <strong>12,4<img src="assets/bk.png" class="inline-icon" alt="blocks" />3</strong>
+              <small>Validated blocks on chain</small>
+            </div>
+            <div class="snapshot-card">
+              <span class="snapshot-label">Transactions</span>
+              <strong>48,2<img src="assets/tx.png" class="inline-icon" alt="txns" />1</strong>
+              <small>Throughput 12.5 TPS</small>
+            </div>
+            <div class="snapshot-card">
+              <span class="snapshot-label">Rewards</span>
+              <strong>1.2M <span>Uks</span></strong>
+              <small>Validator rewards collected</small>
+            </div>
+            <div class="snapshot-card">
+              <span class="snapshot-label">Pool</span>
+              <strong>142 <span>Tx</span></strong>
+              <small>256,000 Uks queued</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK LINKS STRIP -->
+    <section class="strip">
+      <div class="container strip-inner">
+        <a href="#blocks" class="strip-item"><i class="ic ic-box"></i><span>Latest blocks</span></a>
+        <a href="#txns" class="strip-item"><i class="ic ic-arrow"></i><span>Transactions</span></a>
+        <a href="#accounts" class="strip-item"><i class="ic ic-people"></i><span>Top accounts</span></a>
+        <a href="#pending" class="strip-item"><i class="ic ic-clock"></i><span>Pending pool</span></a>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">Overview</span>
+          <h2>Everything you need to inspect the chain</h2>
+          <p>Key modules exposed by the explorer, backed by a secure server-side gRPC gateway.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card" id="blocks">
+            <div class="feature-icon ic ic-box"></div>
+            <h3>Blocks</h3>
+            <p>Browse validated blocks, inspect individual blocks by height or hash, and follow the chain as it grows.</p>
+          </article>
+          <article class="feature-card" id="txns">
+            <div class="feature-icon ic ic-arrow"></div>
+            <h3>Transactions</h3>
+            <p>Review confirmed transactions, drill into details by hash, and trace activity across the network.</p>
+          </article>
+          <article class="feature-card" id="accounts">
+            <div class="feature-icon ic ic-people"></div>
+            <h3>Accounts</h3>
+            <p>Explore top accounts by balance, view balances, validation counts, and linked activity in one place.</p>
+          </article>
+          <article class="feature-card" id="pending">
+            <div class="feature-icon ic ic-clock"></div>
+            <h3>Pending Pool</h3>
+            <p>Watch the mempool with near-real-time updates of queued transactions awaiting confirmation.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon ic ic-chart"></div>
+            <h3>Live Charts</h3>
+            <p>Visualize transaction amount and count trends with refreshable charts driven by the node read model.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon ic ic-search"></div>
+            <h3>Powerful Search</h3>
+            <p>Search any address, block, or transaction hash using the node's block, transaction, and account read models.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section id="architecture" class="section alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">Architecture</span>
+          <h2>Secure by design</h2>
+          <p>The browser never talks directly to a validator.</p>
+        </div>
+        <div class="arch-grid">
+          <div class="arch-diagram">
+            <div class="arch-node arch-browser">
+              <span class="arch-icon">&#127760;</span>
+              <strong>Browser</strong>
+              <small>Explorer UI (Next.js)</small>
+            </div>
+            <div class="arch-arrow">&#8594;</div>
+            <div class="arch-node arch-server">
+              <span class="arch-icon">&#128421;</span>
+              <strong>Next.js Server</strong>
+              <small>API routes &amp; gRPC gateway</small>
+            </div>
+            <div class="arch-arrow">&#8594;</div>
+            <div class="arch-node arch-node-node">
+              <span class="arch-icon">&#128274;</span>
+              <strong>Node</strong>
+              <small>UbudKusCoin gRPC services</small>
+            </div>
+          </div>
+          <div class="arch-notes">
+            <ul>
+              <li>Server-side API proxies read-only node queries to the node's gRPC services.</li>
+              <li>Connects to the native gRPC port, not the CometBFT RPC port.</li>
+              <li>Node endpoint is never exposed directly to browsers.</li>
+              <li>Returns <code>502</code> when the configured node is unavailable.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH STACK -->
+    <section id="tech" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">Built With</span>
+          <h2>Modern, familiar stack</h2>
+          <p>Leverages proven libraries for a fast and reliable experience.</p>
+        </div>
+        <div class="tech-grid">
+          <div class="tech-card"><img src="assets/logo-uksc.png" alt="Next.js" /><strong>Next.js</strong><small>React framework</small></div>
+          <div class="tech-card"><span class="tech-emoji">⚛️</span><strong>React 19</strong><small>UI library</small></div>
+          <div class="tech-card"><span class="tech-emoji">🔌</span><strong>gRPC</strong><small>Node gateway</small></div>
+          <div class="tech-card"><span class="tech-emoji">📡</span><strong>SWR</strong><small>Data fetching</small></div>
+          <div class="tech-card"><span class="tech-emoji">🎨</span><strong>Bootstrap 5</strong><small>Styling</small></div>
+          <div class="tech-card"><span class="tech-emoji">📊</span><strong>Chart.js</strong><small>Visualization</small></div>
+          <div class="tech-card"><span class="tech-emoji">📦</span><strong>protobuf</strong><small>Contracts</small></div>
+          <div class="tech-card"><span class="tech-emoji">✅</span><strong>TypeScript</strong><small>Type safety</small></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GETTING STARTED -->
+    <section id="getting-started" class="section alt">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-kicker">Get Started</span>
+          <h2>Run it locally in minutes</h2>
+          <p>Point the explorer at a UbudKusCoin node and start browsing.</p>
+        </div>
+        <div class="steps">
+          <ol>
+            <li>
+              <span class="step-num">1</span>
+              <div>
+                <strong>Clone the repository</strong>
+                <pre><code>git clone https://github.com/jhonkus/UbudKusCoin-explorer-web.git</code></pre>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <div>
+                <strong>Install dependencies</strong>
+                <pre><code>npm install</code></pre>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <div>
+                <strong>Configure the node endpoint</strong>
+                <pre><code># .env.local
+UKC_NODE_GRPC_URL=127.0.0.1:5000</code></pre>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">4</span>
+              <div>
+                <strong>Start the dev server</strong>
+                <pre><code>npm run dev</code></pre>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="cta">
+          <a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-primary">Star &amp; Fork on GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 UbudKusCoin Explorer. Open source under the MIT-style license.</span>
+      <a href="https://ubudkuscoin.com" target="_blank" rel="noreferrer">ubudkuscoin.com</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
