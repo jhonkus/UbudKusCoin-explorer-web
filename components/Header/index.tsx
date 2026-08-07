@@ -45,11 +45,36 @@ const Header = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/validators" className="dropdown-item">
+                    Validators
+                  </Link>
+                </li>
+                <li>
                   <Link href="/nodes" className="dropdown-item">
                     Nodes
                   </Link>
                 </li>
+                <li>
+                  <Link href="/charts" className="dropdown-item">
+                    Analytics & Charts
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/api/docs" className="dropdown-item">
+                    API Documentation
+                  </Link>
+                </li>
               </ul>
+            </li>
+            <li className="nav-item">
+              <Link href="/validators" className="nav-link">
+                Validators
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/api/docs" className="nav-link">
+                API Docs
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="https://ubudkuscoin.com" target="_blank" rel="noreferrer">

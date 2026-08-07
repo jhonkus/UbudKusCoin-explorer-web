@@ -83,14 +83,41 @@ export default function Block() {
 
                                             <div className="card-title" />
 
-                                            <ul className="nav nav-tabs">
-                                                <li className="nav-item">
-                                                    <a onClick={() => handleClick('txns')} className={txnsClass}>Transactions</a>
-                                                </li>
-                                                <li className="nav-item">
-                                                    <a onClick={() => handleClick('blocks')} className={blocksClass}>Validated Block</a>
-                                                </li>
-                                            </ul>
+                                            <div className="d-flex justify-content-between align-items-center mb-3">
+                                                <ul className="nav nav-tabs mb-0">
+                                                    <li className="nav-item">
+                                                        <a onClick={() => handleClick('txns')} className={txnsClass}>Transactions</a>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <a onClick={() => handleClick('blocks')} className={blocksClass}>Validated Block</a>
+                                                    </li>
+                                                </ul>
+                                                <button
+                                                    className="btn btn-sm btn-outline-secondary"
+                                                    onClick={() => {
+                                                        if (!transactions || transactions.length === 0) return;
+                                                        const headers = ['TxHash', 'Height', 'Timestamp', 'Sender', 'Recipient', 'Amount', 'Fee'];
+                                                        const rows = transactions.map((t: any) => [
+                                                            t.hash,
+                                                            t.height,
+                                                            t.time_stamp,
+                                                            t.sender,
+                                                            t.recipient,
+                                                            t.amount,
+                                                            t.fee,
+                                                        ]);
+                                                        const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+                                                        const encodedUri = encodeURI(csvContent);
+                                                        const link = document.createElement('a');
+                                                        link.setAttribute('href', encodedUri);
+                                                        link.setAttribute('download', `tx_history_${address}.csv`);
+                                                        document.body.appendChild(link);
+                                                        link.click();
+                                                        document.body.removeChild(link);
+                                                    }}>
+                                                    📥 Export CSV
+                                                </button>
+                                            </div>
 
                                             {activeNav === 'txns' ? <TableAccountTxns transactions={transactions} /> :
                                                 <TableAccountBlocks blocks={blocks} />
