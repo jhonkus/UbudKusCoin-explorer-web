@@ -58,36 +58,6 @@
   line-height: 1.7;
 }
 
-.searchArea {
-  margin-top: 1.5rem;
-}
-
-.quickLinks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.25rem;
-}
-
-.quickLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.75rem 1rem;
-  border-radius: 999px;
-  background: #f4f8ff;
-  color: #22304a;
-  font-weight: 700;
-  border: 1px solid rgba(15, 98, 254, 0.1);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease;
-}
-
-.quickLink:hover {
-  color: #0f62fe;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(15, 98, 254, 0.12);
-}
-
 .heroPanel {
   padding: 1.25rem;
 }

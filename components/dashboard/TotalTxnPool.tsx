@@ -16,11 +16,6 @@ const TotalTxnPool = ({ data, isLoading }) => {
                         <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} />
                     </h5>
 
-                    <div className="filter">
-                        <div style={{ width: '30px', marginRight: '10px' }}>
-                            <Skeleton />
-                        </div>
-                    </div>
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i className="text-muted small bi bi-clock-history"></i>

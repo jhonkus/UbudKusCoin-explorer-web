@@ -31,7 +31,7 @@ const TotalBlocks = ({ data, isLoading }) => {
                   <> <h6>
                     {formatNum(data?.NumBloks)}&nbsp;<span className={styles.textSufix}>Bk</span>
                     </h6>
-                    <span className={styles.infoSmall}>Block created every 30s</span>
+                    <span className={styles.infoSmall}>Total validated blocks</span>
                   </>
               }
 
