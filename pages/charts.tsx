@@ -1,6 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import Layout from '../components/Layout';
+import Breadcrumb from '../components/Breadcrumb';
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement } from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
 
@@ -39,38 +40,56 @@ export default function AnalyticsChartsPage() {
     ],
   };
 
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top' as const },
+    },
+  };
+
   return (
-    <Layout pageTitle="Analytics & Charts - UbudKusCoin Explorer">
-      <div className="container my-5 pt-4">
-        <h1 className="h3 font-weight-bold mb-2">Network Analytics & Charts</h1>
-        <p className="text-muted mb-4">
-          Visual metrics tracking block creation, transaction velocity, and account adoption.
-        </p>
-
-        <div className="row g-4">
-          <div className="col-lg-6">
-            <div className="card shadow-sm border-0 h-100">
-              <div className="card-header bg-light">
-                <h5 className="card-title mb-0 fs-6 fw-bold">Transaction History Trend</h5>
-              </div>
-              <div className="card-body">
-                <Line data={lineChartData} options={{ responsive: true, plugins: { legend: { position: 'top' } } }} />
-              </div>
-            </div>
-          </div>
-
-          <div className="col-lg-6">
-            <div className="card shadow-sm border-0 h-100">
-              <div className="card-header bg-light">
-                <h5 className="card-title mb-0 fs-6 fw-bold">Consensus & State Distribution</h5>
-              </div>
-              <div className="card-body">
-                <Bar data={barChartData} options={{ responsive: true, plugins: { legend: { position: 'top' } } }} />
-              </div>
-            </div>
-          </div>
+    <Layout pageTitle="Analytics & Charts">
+      <main id="main" className="main">
+        <div className="pagetitle">
+          <h4>Analytics &amp; Charts</h4>
+          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/charts', label: 'Analytics & Charts' }]} />
         </div>
-      </div>
+
+        <section className="section">
+          <p className="text-muted mb-4">
+            Visual metrics tracking block creation, transaction velocity, and account adoption.
+          </p>
+
+          <div className="row g-4">
+            <div className="col-lg-6">
+              <div className="card shadow-sm border-0 h-100">
+                <div className="card-header bg-transparent">
+                  <h5 className="card-title mb-0 fs-6 fw-bold">Transaction History Trend</h5>
+                </div>
+                <div className="card-body">
+                  <div style={{ height: 320 }}>
+                    <Line data={lineChartData} options={chartOptions} />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-lg-6">
+              <div className="card shadow-sm border-0 h-100">
+                <div className="card-header bg-transparent">
+                  <h5 className="card-title mb-0 fs-6 fw-bold">Consensus &amp; State Distribution</h5>
+                </div>
+                <div className="card-body">
+                  <div style={{ height: 320 }}>
+                    <Bar data={barChartData} options={chartOptions} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </Layout>
   );
 }

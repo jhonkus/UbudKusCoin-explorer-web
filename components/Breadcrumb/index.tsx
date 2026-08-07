@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 interface Crumb {
-  href: string;
+  href?: string;
   label: string;
 }
 
@@ -20,8 +20,8 @@ const Breadcrumb = ({ items }: BreadcrumbProps) => {
         {items.map((item, idx) => {
           const isLast = idx === items.length - 1;
           return (
-            <li className="breadcrumb-item" key={item.href}>
-              {isLast ? (
+            <li className={`breadcrumb-item ${isLast ? 'active' : ''}`} key={item.href || item.label}>
+              {isLast || !item.href ? (
                 item.label
               ) : (
                 <Link href={item.href}>{item.label}</Link>

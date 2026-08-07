@@ -1,9 +1,17 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import ukclogo from '../../public/ukscscan-logo.png'
-import SearchBox from '../search/SearchBox';
+import SearchBox from '../search/SearchBox'
 
 const Header = () => {
+  const router = useRouter()
+
+  const isActive = (path: string) => {
+    const p = router.pathname
+    return p === path || p.startsWith(path + '/') || (path === '/blocks' && p.startsWith('/blocks'))
+  }
+
   return (
     <nav className="navbar header2 navbar-expand-lg navbar-light fixed-top py-2">
       <div className="container-fluid px-lg-4">
@@ -28,17 +36,19 @@ const Header = () => {
                 <span>Blockchain</span>
                 <i className="bi bi-chevron-down nav-chevron"></i>
               </button>
-              <ul className="dropdown-menu shadow-lg border-0 mt-2" aria-labelledby="navbarDropdown">
+              <ul className="dropdown-menu shadow-lg border-0 mt-2 dropdown-animated" aria-labelledby="navbarDropdown">
                 <li>
-                  <Link href="/blocks" className="dropdown-item d-flex align-items-center gap-2 py-2">
-                    <i className="bi bi-box-seam text-primary fs-6"></i>
+                  <Link href="/blocks" className={`dropdown-item d-flex align-items-center gap-2 py-2 ${isActive('/blocks') ? 'active' : ''}`}>
+                    <i className={`bi bi-box-seam ${isActive('/blocks') ? '' : 'text-primary'} fs-6`}></i>
                     <span>Blocks</span>
+                    {isActive('/blocks') && <i className="bi bi-check2 ms-auto"></i>}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/txns" className="dropdown-item d-flex align-items-center gap-2 py-2">
-                    <i className="bi bi-arrow-left-right text-success fs-6"></i>
+                  <Link href="/txns" className={`dropdown-item d-flex align-items-center gap-2 py-2 ${isActive('/txns') ? 'active' : ''}`}>
+                    <i className={`bi bi-arrow-left-right ${isActive('/txns') ? '' : 'text-success'} fs-6`}></i>
                     <span>Transactions</span>
+                    {isActive('/txns') && <i className="bi bi-check2 ms-auto"></i>}
                   </Link>
                 </li>
                 <li>
@@ -81,4 +91,5 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header
+
