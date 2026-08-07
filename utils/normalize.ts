@@ -6,6 +6,8 @@ import type {
   Txn,
 } from '../types';
 
+const UKC_BASE_UNITS = 100000000; // 1 UKC = 10^8 base units
+
 function getField(source: RawRecord | null | undefined, keys: string[], fallback: any = undefined) {
   if (!source) {
     return fallback;
@@ -31,14 +33,21 @@ export function normalizeTxn(txn: RawRecord | null | undefined): Txn | null {
     return null;
   }
 
+  const rawAmount = toNumber(getField(txn, ['Amount', 'amount']));
+  const rawFee = toNumber(getField(txn, ['Fee', 'fee']));
+
+  // Convert raw base units (10^8) to decimal UKC values
+  const amount = rawAmount > 0 ? rawAmount / UKC_BASE_UNITS : 0;
+  const fee = rawFee > 0 ? rawFee / UKC_BASE_UNITS : 0;
+
   return {
     ...txn,
     Hash: getField(txn, ['Hash', 'hash', 'txnHash']),
     TimeStamp: toNumber(getField(txn, ['TimeStamp', 'timestamp', 'time_stamp'])),
     Sender: getField(txn, ['Sender', 'sender', 'sender_address']),
     Recipient: getField(txn, ['Recipient', 'recipient', 'recipient_address']),
-    Amount: toNumber(getField(txn, ['Amount', 'amount'])),
-    Fee: toNumber(getField(txn, ['Fee', 'fee'])),
+    Amount: amount,
+    Fee: fee,
     Height: toNumber(getField(txn, ['Height', 'height', 'blockHeight'])),
   } as Txn;
 }
@@ -47,6 +56,9 @@ export function normalizeBlock(block: RawRecord | null | undefined): Block | nul
   if (!block) {
     return null;
   }
+
+  const rawTotalAmount = toNumber(getField(block, ['TotalAmount', 'totalAmount', 'total_amount']));
+  const rawTotalReward = toNumber(getField(block, ['TotalReward', 'totalReward', 'total_reward']));
 
   return {
     ...block,
@@ -59,8 +71,8 @@ export function normalizeBlock(block: RawRecord | null | undefined): Block | nul
     Validator: getField(block, ['Validator', 'validator']),
     MerkleRoot: getField(block, ['MerkleRoot', 'merkleRoot']),
     NumOfTx: toNumber(getField(block, ['NumOfTx', 'numOfTx', 'num_of_tx'])),
-    TotalAmount: toNumber(getField(block, ['TotalAmount', 'totalAmount', 'total_amount'])),
-    TotalReward: toNumber(getField(block, ['TotalReward', 'totalReward', 'total_reward'])),
+    TotalAmount: rawTotalAmount > 0 ? rawTotalAmount / UKC_BASE_UNITS : 0,
+    TotalReward: rawTotalReward > 0 ? rawTotalReward / UKC_BASE_UNITS : 0,
     Difficulty: toNumber(getField(block, ['Difficulty', 'difficulty'])),
     BuildTime: toNumber(getField(block, ['BuildTime', 'buildTime', 'build_time'])),
     Size: toNumber(getField(block, ['Size', 'size'])),
@@ -72,11 +84,14 @@ export function normalizeAccount(account: RawRecord | null | undefined): Account
     return null;
   }
 
+  const rawBalance = toNumber(getField(account, ['balance', 'Balance']));
+  const balance = rawBalance > 0 ? rawBalance / UKC_BASE_UNITS : 0;
+
   return {
     ...account,
     Id: toNumber(getField(account, ['Id', 'id'])),
     address: getField(account, ['address', 'Address']),
-    balance: toNumber(getField(account, ['balance', 'Balance'])),
+    balance: balance,
     txn_count: toNumber(getField(account, ['txn_count', 'txnCount', 'tx_count'])),
     last_update: toNumber(getField(account, ['last_update', 'lastUpdate'])),
   } as Account;
