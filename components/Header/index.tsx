@@ -7,11 +7,11 @@ const Header = () => {
   return (
     <nav className="navbar header2 navbar-expand-lg navbar-light fixed-top py-2">
       <div className="container-fluid px-lg-4">
-        <div className="d-flex align-items-center me-3">
-          <Link href="/" className="logo d-flex align-items-center me-3">
+        <div className="d-flex align-items-center me-lg-4 me-3">
+          <Link href="/" className="logo d-flex align-items-center me-4">
             <Image src={ukclogo} alt="Logo UbudKusCoin Scan" width="170" height="38" style={{ width: 'auto', height: 'auto' }} priority />
           </Link>
-          <div className="network-badge d-none d-sm-inline-flex align-items-center">
+          <div className="network-badge d-none d-sm-inline-flex align-items-center ms-2">
             <span className="pulse-dot"></span>
             <span className="network-name">Mainnet</span>
           </div>
