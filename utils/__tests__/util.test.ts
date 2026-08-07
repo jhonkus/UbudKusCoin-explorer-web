@@ -97,8 +97,8 @@ describe('normalize.ts', () => {
       expect(normalized?.TimeStamp).toBe(1700000000);
       expect(normalized?.Sender).toBe('4sender');
       expect(normalized?.Recipient).toBe('4recipient');
-      expect(normalized?.Amount).toBe(1); // 100000000 base units = 1 UKC
-      expect(normalized?.Fee).toBe(0.0001); // 10000 base units = 0.0001 UKC
+      expect(normalized?.Amount).toBe(1); // 100000000 base units = 1 UKSC
+      expect(normalized?.Fee).toBe(0.0001); // 10000 base units = 0.0001 UKSC
       expect(normalized?.Height).toBe(500);
     });
   });

@@ -44,7 +44,7 @@ const WidgetTxns = ({ data, isLoading }) => {
               </div>
             </div>
             <div className="col-sm-3">
-              <div className={styles.amount}>{formatAmount(tx.Amount)} <span className="text-muted" style={{fontSize:'0.9em'}}>UKC</span> </div>
+              <div className={styles.amount}>{formatAmount(tx.Amount)} <span className="text-muted" style={{fontSize:'0.9em'}}>UKSC</span> </div>
             </div>
           </div>
 

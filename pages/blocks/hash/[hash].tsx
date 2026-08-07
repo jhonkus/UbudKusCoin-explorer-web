@@ -90,7 +90,7 @@ function BlockHash() {
                         <div className="col-sm-4">
                           <HelpTips tips={'Total amount of all transactions in this block.'} />
                           Amount</div>
-                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatAmount(block.TotalAmount)}</strong> UKC</div>
+                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatAmount(block.TotalAmount)}</strong> UKSC</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>
@@ -107,9 +107,9 @@ function BlockHash() {
 
                       <div className={`row ${styles.rowDiv}`}>
                         <div className="col-sm-4">
-                          <HelpTips tips={'For each block, the validator is rewarded with a finite amount of UKC on top of transaction fees paid in the block.'} />
+                          <HelpTips tips={'For each block, the validator is rewarded with a finite amount of UKSC on top of transaction fees paid in the block.'} />
                           Block Reward</div>
-                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatFee(block.TotalReward)}</strong> UKC</div>
+                        <div className={`col-sm-8 ${styles.value}`}><strong>{formatFee(block.TotalReward)}</strong> UKSC</div>
                       </div>
 
                       <div className={`row ${styles.rowDiv}`}>

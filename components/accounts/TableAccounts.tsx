@@ -56,7 +56,7 @@ const TableAccounts = ({ page = 1 }: TableAccountsProps) => {
                       </td>
                       <td style={{ textAlign: 'right' }}>
                         <div className={styles.amountInTable}>
-                          <b>{formatAmount(acc.balance)}</b> UKC
+                          <b>{formatAmount(acc.balance)}</b> UKSC
                         </div>
                       </td>
                       <td style={{ textAlign: 'right' }}>

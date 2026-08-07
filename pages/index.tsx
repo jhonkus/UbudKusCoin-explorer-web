@@ -26,7 +26,7 @@ export default function Home() {
   const { data, isLoading } = useChart()
 
   const totalFeesBaseUnits = (bcInfos?.txns || []).reduce((sum: number, tx: any) => sum + Number(tx.fee || tx.Fee || 0), 0);
-  const totalFeesUKC = totalFeesBaseUnits > 0 ? totalFeesBaseUnits / 100000000 : 0;
+  const totalFeesUKSC = totalFeesBaseUnits > 0 ? totalFeesBaseUnits / 100000000 : 0;
 
   const snapshotCards = [
     {
@@ -43,15 +43,15 @@ export default function Home() {
     },
     {
       label: 'Tx Fees',
-      value: formatFee(totalFeesUKC),
-      suffix: 'UKC',
+      value: formatFee(totalFeesUKSC),
+      suffix: 'UKSC',
       hint: 'Total transaction fees collected',
     },
     {
       label: 'Pool',
       value: formatNum(poolInfos?.NumPool ?? 0),
       suffix: 'Tx',
-      hint: `${formatAmount((poolInfos?.AmountPool ?? 0) / 100000000)} UKC queued`,
+      hint: `${formatAmount((poolInfos?.AmountPool ?? 0) / 100000000)} UKSC queued`,
     },
   ]
 

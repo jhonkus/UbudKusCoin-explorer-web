@@ -76,10 +76,10 @@ const TablePendingTxns = ({ page = 1 }) => {
                         </Link>
                       </td>
                       <td>
-                        <div className={styles.amountInTable}>{formatAmount(tx.Amount)} UKC</div>
+                        <div className={styles.amountInTable}>{formatAmount(tx.Amount)} UKSC</div>
                       </td>
                       <td>
-                        <div className={styles.amountInTable}>{formatFee(tx.Fee)} UKC</div>
+                        <div className={styles.amountInTable}>{formatFee(tx.Fee)} UKSC</div>
                       </td>
                     </tr>
 

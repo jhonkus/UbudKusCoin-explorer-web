@@ -32,7 +32,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                                         <h6>{formatNum(data?.NumPool)}&nbsp;<span className={styles.textSufix}>Tx</span>
                                         </h6>
                                         <span className={styles.infoSmall}>{formatAmount(data?.AmountPool)}
-                                        &nbsp;<span className={styles.textSufix}>UKC</span></span>
+                                        &nbsp;<span className={styles.textSufix}>UKSC</span></span>
                                     </>
                             }
 

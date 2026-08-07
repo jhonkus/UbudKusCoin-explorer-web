@@ -6,7 +6,7 @@ import type {
   Txn,
 } from '../types';
 
-const UKC_BASE_UNITS = 100000000; // 1 UKC = 10^8 base units
+const UKSC_BASE_UNITS = 100000000; // 1 UKSC = 10^8 base units
 
 function getField(source: RawRecord | null | undefined, keys: string[], fallback: any = undefined) {
   if (!source) {
@@ -36,9 +36,9 @@ export function normalizeTxn(txn: RawRecord | null | undefined): Txn | null {
   const rawAmount = toNumber(getField(txn, ['Amount', 'amount']));
   const rawFee = toNumber(getField(txn, ['Fee', 'fee']));
 
-  // Convert raw base units (10^8) to decimal UKC values
-  const amount = rawAmount > 0 ? rawAmount / UKC_BASE_UNITS : 0;
-  const fee = rawFee > 0 ? rawFee / UKC_BASE_UNITS : 0;
+  // Convert raw base units (10^8) to decimal UKSC values
+  const amount = rawAmount > 0 ? rawAmount / UKSC_BASE_UNITS : 0;
+  const fee = rawFee > 0 ? rawFee / UKSC_BASE_UNITS : 0;
 
   return {
     ...txn,
@@ -71,8 +71,8 @@ export function normalizeBlock(block: RawRecord | null | undefined): Block | nul
     Validator: getField(block, ['Validator', 'validator']),
     MerkleRoot: getField(block, ['MerkleRoot', 'merkleRoot']),
     NumOfTx: toNumber(getField(block, ['NumOfTx', 'numOfTx', 'num_of_tx'])),
-    TotalAmount: rawTotalAmount > 0 ? rawTotalAmount / UKC_BASE_UNITS : 0,
-    TotalReward: rawTotalReward > 0 ? rawTotalReward / UKC_BASE_UNITS : 0,
+    TotalAmount: rawTotalAmount > 0 ? rawTotalAmount / UKSC_BASE_UNITS : 0,
+    TotalReward: rawTotalReward > 0 ? rawTotalReward / UKSC_BASE_UNITS : 0,
     Difficulty: toNumber(getField(block, ['Difficulty', 'difficulty'])),
     BuildTime: toNumber(getField(block, ['BuildTime', 'buildTime', 'build_time'])),
     Size: toNumber(getField(block, ['Size', 'size'])),
@@ -85,7 +85,7 @@ export function normalizeAccount(account: RawRecord | null | undefined): Account
   }
 
   const rawBalance = toNumber(getField(account, ['balance', 'Balance']));
-  const balance = rawBalance > 0 ? rawBalance / UKC_BASE_UNITS : 0;
+  const balance = rawBalance > 0 ? rawBalance / UKSC_BASE_UNITS : 0;
 
   return {
     ...account,
