@@ -10,15 +10,11 @@ const Header = () => {
         <Link href="/" className="logo d-flex align-items-center">
           <Image src={ukclogo} alt="Logo ubudkuscoin scan" width="188" height="42" style={{ width: 'auto', height: 'auto' }} />
         </Link>
-        <span className="header-tagline ms-3 d-none d-lg-inline-flex">Live network explorer</span>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
-            <li className="nav-item">
-              <Link href="/" className="nav-link active" aria-current="page">Home</Link>
-            </li>
             <li className="nav-item dropdown">
               <button className="nav-link dropdown-toggle btn btn-link p-0 border-0" id="navbarDropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Blockchain
