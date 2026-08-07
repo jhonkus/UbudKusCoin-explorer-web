@@ -57,14 +57,11 @@ const client = {
     callback(error, { transactions: response?.transactions || [] })),
   GetAccount: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) => {
     if (error) return callback(error);
-    call(transactionClient, 'getRange', { address: request.address, page_number: 1, result_per_page: 100 }, (transactionError, transactions) => {
-      if (transactionError) return callback(transactionError);
-      callback(null, {
-        balance: response?.balance || 0,
-        numBlockValidate: 0,
-        transactions: transactions?.transactions || [],
-        blocks: [],
-      });
+    callback(null, {
+      balance: response?.balance || 0,
+      numBlockValidate: response?.num_block_validate ?? response?.numBlockValidate ?? 0,
+      transactions: response?.transactions || [],
+      blocks: response?.blocks || [],
     });
   }),
   GetBalance: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) =>
