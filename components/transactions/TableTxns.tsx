@@ -28,14 +28,14 @@ const TableTxns = ({ page = 1 }) => {
         {transactions &&
 
           <>
-            <div className="row">
+            <div className="row align-items-center mb-3">
               <div className="col d-flex justify-content-start">
-                <p>Showing 25 transactions</p>
+                <p className="text-secondary mb-0 fw-semibold">
+                  Showing {transactions.length > 0 ? (page - 1) * 25 + 1 : 0} to {(page - 1) * 25 + transactions.length} Transactions
+                </p>
               </div>
               <div className="col d-flex justify-content-end">
-                {transactions.length < 25 ? <Pagination isLast={true} pageNum={page} url="txns" /> :
-                  <Pagination isLast={false} pageNum={page} url="txns" />
-                }
+                <Pagination isLast={transactions.length < 25} pageNum={page} url="txns" />
               </div>
             </div>
 
