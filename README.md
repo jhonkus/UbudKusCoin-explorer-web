@@ -4,6 +4,20 @@ Web explorer for a UbudKusCoin node. The server-side Next.js API connects to
 the node's current gRPC services (`BlockService`, `TransactionService`, and
 `AccountService`); the browser never connects directly to a validator.
 
+## GitHub Pages
+
+A static overview page describing this project is hosted on GitHub Pages and
+built from the `docs/` folder via the `.github/workflows/deploy-pages.yml`
+workflow. After enabling Pages (Settings → Pages → Source: **GitHub Actions**),
+the site is available at:
+
+```text
+https://jhonkus.github.io/UbudKusCoin-explorer-web/
+```
+
+Edit the files under `docs/` to update the landing page; changes pushed to the
+`development` branch trigger an automatic redeploy.
+
 ## Configuration
 
 Copy `.env.example` to `.env.local` and set the gRPC endpoint:
