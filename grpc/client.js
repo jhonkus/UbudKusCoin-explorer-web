@@ -76,15 +76,28 @@ const client = {
       if (blockError) return callback(blockError);
       call(transactionClient, 'getRange', { page_number: 1, result_per_page: 10 }, (transactionError, transactions) => {
         if (transactionError) return callback(transactionError);
+
+        const recentBlocks = blocks?.blocks || [];
+        let tps = 0;
+        if (recentBlocks.length >= 2) {
+          const newestTime = Number(recentBlocks[0].time_stamp);
+          const oldestTime = Number(recentBlocks[recentBlocks.length - 1].time_stamp);
+          const timeSpan = newestTime - oldestTime;
+          const totalTxsInWindow = recentBlocks.reduce((acc, b) => acc + Number(b.num_of_tx || 0), 0);
+          if (timeSpan > 0) {
+            tps = Number((totalTxsInWindow / timeSpan).toFixed(2));
+          }
+        }
+
         callback(null, {
           NumBloks: response?.block_count || 0,
           NumTxns: response?.transaction_count || 0,
           AmountTxns: response?.transaction_amount || 0,
           AmountReward: response?.reward_amount || 0,
           NumAcc: response?.account_count || 0,
-          blocks: blocks?.blocks || [],
+          blocks: recentBlocks,
           txns: transactions?.transactions || [],
-          Tps: 0,
+          Tps: tps,
         });
       });
     });
