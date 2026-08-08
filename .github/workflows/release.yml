@@ -3,7 +3,7 @@ name: Release Explorer
 'on':
   pull_request:
     branches: [main]
-    types: [opened, synchronize, reopened, closed]
+    types: [closed]
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
   quality:
     name: 'Lint, Typecheck, Test & Build (Node ${{ matrix.node-version }})'
     runs-on: ubuntu-latest
-    if: "github.event.action != 'closed' || github.event.pull_request.merged == true"
+    if: "github.event.pull_request.merged == true"
     strategy:
       matrix:
         node-version: [20.x, 22.x]
