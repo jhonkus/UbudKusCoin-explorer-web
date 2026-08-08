@@ -9,15 +9,15 @@ const Footer = () => {
         <div className="row g-4">
           {/* Brand */}
           <div className="col-lg-4 col-md-6">
-            <div className="footer-brand">
-              <Link href="/" className="logo d-inline-flex">
-                <Image src={ukclogo} alt="UbudKusCoin Scan" width="170" height="38" style={{ width: 'auto', height: 'auto' }} />
-              </Link>
-              <p>
-                The official blockchain explorer for the UbudKusCoin network. Search and inspect
-                blocks, transactions, and accounts in real time.
-              </p>
-            </div>
+              <div className="footer-brand">
+                <Link href="/" className="logo d-inline-flex">
+                  <Image src={ukclogo} alt="UbudKusChain Scan" width="170" height="38" style={{ width: 'auto', height: '40px', maxHeight: '40px' }} />
+                </Link>
+                <p>
+                  Production-oriented proof-of-stake blockchain infrastructure for business networks.
+                  Verifiable records, digital assets, and enterprise integrations.
+                </p>
+              </div>
           </div>
 
           {/* Explorer */}
@@ -65,7 +65,7 @@ const Footer = () => {
 
         <div className="footer-bottom">
           <div className="copyright">
-            © {new Date().getFullYear()} <strong>UbudKusCoin</strong> · All rights reserved.
+            © {new Date().getFullYear()} <strong>UbudKusChain</strong> · All rights reserved.
           </div>
           <div className="credits">
             Secure blockchain lookup for blocks, transactions, and accounts.

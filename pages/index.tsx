@@ -59,17 +59,16 @@ export default function Home() {
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
             <span className={styles.kicker}>UbudKusChain Explorer</span>
-            <h1>Monitor the network with a cleaner, faster blockchain dashboard.</h1>
+            <h1>Production-oriented proof-of-stake blockchain infrastructure for business networks.</h1>
             <p>
-              Search any address, block, or transaction hash and inspect live network activity with
-              a layout designed for clarity.
+              Verifiable records, digital assets, loyalty programs, and enterprise integrations.
+              Inspect blocks, transactions, and accounts on a transparent, auditable chain.
             </p>
           </div>
 
           <aside className={styles.heroPanel}>
             <div className={styles.panelHeader}>
               <span>Network snapshot</span>
-              <span className={styles.panelChip}>{isBCLoading || isPoolLoading ? 'Refreshing' : 'Live'}</span>
             </div>
             <div className={styles.snapshotGrid}>
               {snapshotCards.map((card) => (

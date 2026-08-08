@@ -1,6 +1,6 @@
-# UbudKusCoin Explorer
+# UbudKusChain Explorer
 
-Web explorer for a UbudKusCoin node. The server-side Next.js API connects to
+Web explorer for a UbudKusChain node. The server-side Next.js API connects to
 the node's current gRPC services (`BlockService`, `TransactionService`, and
 `AccountService`); the browser never connects directly to a validator.
 
@@ -12,7 +12,7 @@ workflow. After enabling Pages (Settings → Pages → Source: **GitHub Actions*
 the site is available at:
 
 ```text
-https://jhonkus.github.io/UbudKusCoin-explorer-web/
+https://jhonkus.github.io/UbudKusChain-explorer-web/
 ```
 
 Edit the files under `docs/` to update the landing page; changes pushed to the
@@ -53,7 +53,7 @@ npm run build
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;
 its protobuf contracts are kept in `grpc/protos/*node.proto` and must match the
-node repository's `UbudKusCoin/Protos` definitions.
+node repository's `UbudKusChain/Protos` definitions.
 
 ## Supported Data
 
