@@ -17,6 +17,7 @@ const TableAccountTxns = ({ transactions }) => {
           <thead>
             <tr>
               <th className={styles.tableHeader}>Txn Hash</th>
+              <th className={styles.tableHeader}>Type</th>
               <th className={styles.tableHeader}>Block</th>
               <th className={styles.tableHeader}>Age</th>
               <th className={styles.tableHeader}>From</th>
@@ -34,6 +35,7 @@ const TableAccountTxns = ({ transactions }) => {
                   <Link href={`/txns/${tx.Hash}`}><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
                   </span></Link>
                 </td>
+                <td><span className={styles.hashTx}>{tx.TxType}</span></td>
                 <td>
                   <span className={styles.dateTx}>{tx.Height}</span>
                 </td>

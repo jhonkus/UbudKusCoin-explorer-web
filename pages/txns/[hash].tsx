@@ -67,6 +67,14 @@ function TxnByHash() {
                       </div>
 
                       <div className="detail-row">
+                        <div className="detail-label">
+                          <HelpTips tips={'The protocol operation performed by this transaction, such as Transfer, Bond, Unbond, or Withdraw.'} />
+                          Type
+                        </div>
+                        <div className="detail-value"><strong>{txn.TxType}</strong></div>
+                      </div>
+
+                      <div className="detail-row">
                         <div className="detail-label"><HelpTips tips={'The date and time at which a transaction is included onto block.'} />Timestamp</div>
                         <div className="detail-value"><i className="bi bi-clock text-muted"></i> {timeAgo(txn.TimeStamp)} ({toDate(txn.TimeStamp)})</div>
                       </div>

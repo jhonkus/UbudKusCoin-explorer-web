@@ -43,6 +43,7 @@ export function normalizeTxn(txn: RawRecord | null | undefined): Txn | null {
   return {
     ...txn,
     Hash: getField(txn, ['Hash', 'hash', 'txnHash']),
+    TxType: getField(txn, ['TxType', 'tx_type', 'txType', 'type', 'kind'], 'Transfer'),
     TimeStamp: toNumber(getField(txn, ['TimeStamp', 'timestamp', 'time_stamp'])),
     Sender: getField(txn, ['Sender', 'sender', 'sender_address']),
     Recipient: getField(txn, ['Recipient', 'recipient', 'recipient_address']),

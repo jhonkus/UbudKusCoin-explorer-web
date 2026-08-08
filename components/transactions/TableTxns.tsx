@@ -44,6 +44,7 @@ const TableTxns = ({ page = 1 }) => {
                 <thead>
                   <tr>
                     <th className={styles.tableHeader}>Txn Hash</th>
+                    <th className={styles.tableHeader}>Type</th>
                     <th className={styles.tableHeader}>Block</th>
                     <th className={styles.tableHeader}>Age</th>
                     <th className={styles.tableHeader}>From</th>
@@ -61,6 +62,7 @@ const TableTxns = ({ page = 1 }) => {
                         <Link href={`/txns/${tx.Hash}`}><span className={styles.hashTx}>{truncateText(tx.Hash, 15)}
                         </span></Link>
                       </td>
+                      <td><span className={styles.hashTx}>{tx.TxType}</span></td>
                       <td>
 
                         <Link href={`/blocks/height/${tx.Height}`}>
