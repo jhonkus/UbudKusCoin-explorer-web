@@ -2,9 +2,9 @@ name: UbudKusCoin Explorer Web – CI Pipeline
 
 on:
   push:
-    branches: [main, development]
+    branches: [main, development, master]
   pull_request:
-    branches: [main, development]
+    branches: [main, development, master]
 
 jobs:
   test-and-build:

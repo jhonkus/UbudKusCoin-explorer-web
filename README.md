@@ -50,6 +50,21 @@ npm run lint
 npm run build
 ```
 
+## Releases
+
+The release version is kept in the root `VERSION` file and follows Semantic
+Versioning (`MAJOR.MINOR.PATCH`). The initial development release is `0.1.0`.
+
+Before merging a release PR into `master`, update `VERSION`:
+
+- Increment `PATCH` for backward-compatible fixes, such as `0.1.1`.
+- Increment `MINOR` for backward-compatible features, such as `0.2.0`.
+- Increment `MAJOR` for breaking changes, such as `1.0.0`.
+
+The release workflow validates the version, runs typecheck, lint, tests, and
+the production build, then creates a GitHub Release with the matching `vX.Y.Z`
+tag after the merge reaches `master`. Each version must be used only once.
+
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;
 its protobuf contracts are kept in `grpc/protos/*node.proto` and must match the
