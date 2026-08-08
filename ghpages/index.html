@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UbudKusChain Explorer — Blockchain intelligence</title>
-  <meta name="description" content="Open-source UbudKusChain explorer for blocks, transactions, accounts, pending pool activity, and network metrics." />
+  <title>UKSCScan — UbudKusCoin Explorer</title>
+  <meta name="description" content="Open-source block explorer for UbudKusCoin. Track blocks, transactions, accounts, and network metrics." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,15 +14,15 @@
   <header class="site-header">
     <nav class="container nav">
       <a href="#" class="brand">
-        <img src="assets/ukscscan-logo.png" alt="UbudKusChain Explorer logo" class="brand-logo" />
-        <span class="brand-tagline">Blockchain intelligence</span>
+        <img src="assets/ukscscan-logo.png" alt="UKSCScan logo" class="brand-logo" />
+        <span class="brand-tagline">UbudKusCoin Explorer</span>
       </a>
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#architecture">Architecture</a></li>
-        <li><a href="#tech">Tech Stack</a></li>
-        <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="https://github.com/jhonkus/UbudKusChain-explorer-web" target="_blank" rel="noreferrer" class="btn btn-ghost">View on GitHub</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#getting-started">Get Started</a></li>
+        <li><a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-ghost">GitHub</a></li>
       </ul>
     </nav>
   </header>
@@ -32,28 +32,26 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="kicker">UbudKusChain Explorer</span>
-          <h1>See the chain clearly. Follow every block with confidence.</h1>
+          <h1>Explore the UbudKusCoin chain with clarity.</h1>
           <p>
-            An open-source explorer for the UbudKusChain network. Search addresses, blocks,
-            or transaction hashes and understand network activity through a focused interface
-            built for builders, validators, and curious minds.
+            An open-source explorer for searching addresses, blocks, and transactions.
+            Built for developers, validators, and anyone curious about the network.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Get Started</a>
-            <a href="#features" class="btn btn-ghost">Explore Features</a>
+            <a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-ghost">View on GitHub</a>
           </div>
         </div>
         <div class="hero-panel">
           <div class="panel-header">
-          <span>Explorer capabilities</span>
-          <span class="panel-chip">Ready</span>
+            <span>Explorer features</span>
+            <span class="panel-chip">Ready</span>
           </div>
           <div class="snapshot-grid">
             <div class="snapshot-card">
               <span class="snapshot-label">Blocks</span>
-              <strong>Explore</strong>
-              <small>Inspect height, hashes, and validators</small>
+              <strong>Browse</strong>
+              <small>Inspect heights, hashes, and validators</small>
             </div>
             <div class="snapshot-card">
               <span class="snapshot-label">Transactions</span>
@@ -63,25 +61,15 @@
             <div class="snapshot-card">
               <span class="snapshot-label">Accounts</span>
               <strong>Discover</strong>
-              <small>Review balances and account activity</small>
+              <small>Review balances and activity</small>
             </div>
             <div class="snapshot-card">
               <span class="snapshot-label">Network</span>
-              <strong>Observe</strong>
-              <small>Monitor pool and chain statistics</small>
+              <strong>Monitor</strong>
+              <small>Track pool and chain statistics</small>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- QUICK LINKS STRIP -->
-    <section class="strip">
-      <div class="container strip-inner">
-        <a href="#blocks" class="strip-item"><i class="ic ic-box"></i><span>Latest blocks</span></a>
-        <a href="#txns" class="strip-item"><i class="ic ic-arrow"></i><span>Transactions</span></a>
-        <a href="#accounts" class="strip-item"><i class="ic ic-people"></i><span>Top accounts</span></a>
-        <a href="#pending" class="strip-item"><i class="ic ic-clock"></i><span>Pending pool</span></a>
       </div>
     </section>
 
@@ -89,40 +77,30 @@
     <section id="features" class="section">
       <div class="container">
         <div class="section-heading">
-          <span class="section-kicker">Overview</span>
+          <span class="section-kicker">Features</span>
           <h2>Everything you need to inspect the chain</h2>
-            <p>Everything currently exposed by the explorer, backed by a secure server-side gRPC gateway.</p>
+          <p>Explore the UbudKusCoin network through a focused, secure interface.</p>
         </div>
         <div class="feature-grid">
-          <article class="feature-card" id="blocks">
+          <article class="feature-card">
             <div class="feature-icon ic ic-box"></div>
             <h3>Blocks</h3>
-            <p>Browse validated blocks, inspect individual blocks by height or hash, and follow the chain as it grows.</p>
+            <p>Browse validated blocks and inspect details by height or hash.</p>
           </article>
-          <article class="feature-card" id="txns">
+          <article class="feature-card">
             <div class="feature-icon ic ic-arrow"></div>
             <h3>Transactions</h3>
-            <p>Review confirmed transactions, drill into details by hash, and trace activity across the network.</p>
+            <p>Review confirmed transactions and trace activity across the network.</p>
           </article>
-          <article class="feature-card" id="accounts">
+          <article class="feature-card">
             <div class="feature-icon ic ic-people"></div>
             <h3>Accounts</h3>
-            <p>Explore top accounts by balance, view balances, validation counts, and linked activity in one place.</p>
+            <p>Explore top accounts by balance and view account activity.</p>
           </article>
-          <article class="feature-card" id="pending">
+          <article class="feature-card">
             <div class="feature-icon ic ic-clock"></div>
-            <h3>Pending Pool</h3>
-            <p>Watch the mempool with near-real-time updates of queued transactions awaiting confirmation.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon ic ic-chart"></div>
-            <h3>Live Charts</h3>
-            <p>Visualize transaction amount and count trends with refreshable charts driven by the node read model.</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-icon ic ic-search"></div>
-            <h3>Powerful Search</h3>
-            <p>Search any address, block, or transaction hash using the node's block, transaction, and account read models.</p>
+            <h3>Live Data</h3>
+            <p>Monitor pending transactions and network metrics in real time.</p>
           </article>
         </div>
       </div>
@@ -134,34 +112,40 @@
         <div class="section-heading">
           <span class="section-kicker">Architecture</span>
           <h2>Secure by design</h2>
-          <p>The browser never talks directly to a validator.</p>
+          <p>The browser never connects directly to a validator node.</p>
         </div>
         <div class="arch-grid">
           <div class="arch-diagram">
             <div class="arch-node arch-browser">
               <span class="arch-icon">&#127760;</span>
-              <strong>Browser</strong>
-              <small>Explorer UI (Next.js)</small>
+              <div>
+                <strong>Browser</strong>
+                <small>Explorer UI</small>
+              </div>
             </div>
             <div class="arch-arrow">&#8594;</div>
             <div class="arch-node arch-server">
               <span class="arch-icon">&#128421;</span>
-              <strong>Next.js Server</strong>
-              <small>API routes &amp; gRPC gateway</small>
+              <div>
+                <strong>Server</strong>
+                <small>API routes & gRPC gateway</small>
+              </div>
             </div>
             <div class="arch-arrow">&#8594;</div>
             <div class="arch-node arch-node-node">
               <span class="arch-icon">&#128274;</span>
-              <strong>Node</strong>
-              <small>UbudKusChain gRPC services</small>
+              <div>
+                <strong>Node</strong>
+                <small>UbudKusCoin gRPC services</small>
+              </div>
             </div>
           </div>
           <div class="arch-notes">
             <ul>
-              <li>Server-side API proxies read-only node queries to the node's gRPC services.</li>
-              <li>Connects to the native gRPC port, not the CometBFT RPC port.</li>
-              <li>Node endpoint is never exposed directly to browsers.</li>
-              <li>Returns <code>502</code> when the configured node is unavailable.</li>
+              <li>Server-side API proxies read-only queries to the node.</li>
+              <li>Connects via native gRPC, not CometBFT RPC.</li>
+              <li>Node endpoint is never exposed to browsers.</li>
+              <li>Returns <code>502</code> when the node is unreachable.</li>
             </ul>
           </div>
         </div>
@@ -172,19 +156,17 @@
     <section id="tech" class="section">
       <div class="container">
         <div class="section-heading">
-          <span class="section-kicker">Built With</span>
-          <h2>Modern, familiar stack</h2>
-          <p>Leverages proven libraries for a fast and reliable experience.</p>
+          <span class="section-kicker">Tech Stack</span>
+          <h2>Built with proven tools</h2>
+          <p>A modern stack focused on performance and developer experience.</p>
         </div>
         <div class="tech-grid">
-          <div class="tech-card"><img src="assets/logo-uksc.png" alt="Next.js" /><strong>Next.js</strong><small>React framework</small></div>
-          <div class="tech-card"><span class="tech-emoji">⚛️</span><strong>React 19</strong><small>UI library</small></div>
+          <div class="tech-card"><span class="tech-emoji">⚛️</span><strong>Next.js</strong><small>React framework</small></div>
+          <div class="tech-card"><span class="tech-emoji">⚡</span><strong>React 19</strong><small>UI library</small></div>
           <div class="tech-card"><span class="tech-emoji">🔌</span><strong>gRPC</strong><small>Node gateway</small></div>
           <div class="tech-card"><span class="tech-emoji">📡</span><strong>SWR</strong><small>Data fetching</small></div>
-          <div class="tech-card"><span class="tech-emoji">🎨</span><strong>Bootstrap 5</strong><small>Styling</small></div>
           <div class="tech-card"><span class="tech-emoji">📊</span><strong>Chart.js</strong><small>Visualization</small></div>
-          <div class="tech-card"><span class="tech-emoji">📦</span><strong>protobuf</strong><small>Contracts</small></div>
-          <div class="tech-card"><span class="tech-emoji">✅</span><strong>TypeScript</strong><small>Type safety</small></div>
+          <div class="tech-card"><span class="tech-emoji">🛡️</span><strong>TypeScript</strong><small>Type safety</small></div>
         </div>
       </div>
     </section>
@@ -194,8 +176,8 @@
       <div class="container">
         <div class="section-heading">
           <span class="section-kicker">Get Started</span>
-          <h2>Run it locally in minutes</h2>
-          <p>Point the explorer at a UbudKusChain node and start browsing.</p>
+          <h2>Run it locally</h2>
+          <p>Point the explorer at your UbudKusCoin node and start browsing.</p>
         </div>
         <div class="steps">
           <ol>
@@ -203,7 +185,7 @@
               <span class="step-num">1</span>
               <div>
                 <strong>Clone the repository</strong>
-                <pre><code>git clone https://github.com/jhonkus/UbudKusChain-explorer-web.git</code></pre>
+                <pre><code>git clone https://github.com/jhonkus/UbudKusCoin-explorer-web.git</code></pre>
               </div>
             </li>
             <li>
@@ -216,7 +198,7 @@
             <li>
               <span class="step-num">3</span>
               <div>
-                <strong>Configure the node endpoint</strong>
+                <strong>Configure node endpoint</strong>
                 <pre><code># .env.local
 UKC_NODE_GRPC_URL=127.0.0.1:5000</code></pre>
               </div>
@@ -231,7 +213,7 @@ UKC_NODE_GRPC_URL=127.0.0.1:5000</code></pre>
           </ol>
         </div>
         <div class="cta">
-          <a href="https://github.com/jhonkus/UbudKusChain-explorer-web" target="_blank" rel="noreferrer" class="btn btn-primary">Explore the repository</a>
+          <a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-primary">Explore the repository</a>
         </div>
       </div>
     </section>
@@ -239,7 +221,7 @@ UKC_NODE_GRPC_URL=127.0.0.1:5000</code></pre>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© 2026 UbudKusChain Explorer. Open source for the UbudKusChain community.</span>
+      <span>&copy; 2026 UKSCScan. Open source for the UbudKusCoin community.</span>
       <a href="https://ubudkuschain.com" target="_blank" rel="noreferrer">ubudkuschain.com</a>
     </div>
   </footer>

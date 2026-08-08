@@ -13,21 +13,3 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     }
   });
 });
-
-// Reveal-on-scroll animation
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.12 }
-);
-
-document.querySelectorAll('.feature-card, .tech-card, .snapshot-card, .steps li').forEach((el) => {
-  el.classList.add('reveal');
-  observer.observe(el);
-});
