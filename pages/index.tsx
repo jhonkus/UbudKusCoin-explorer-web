@@ -59,7 +59,7 @@ export default function Home() {
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
             <span className={styles.kicker}>UbudKusChain Explorer</span>
-            <h1>Blockchain infrastructure for SME business networks.</h1>
+            <h1>Blockchain infrastructure for SME business.</h1>
             <p>
               Verifiable records, digital assets, loyalty programs, and enterprise integrations.
               Inspect blocks, transactions, and accounts on a transparent, auditable chain.

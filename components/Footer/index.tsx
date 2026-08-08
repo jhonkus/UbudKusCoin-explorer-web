@@ -14,7 +14,7 @@ const Footer = () => {
                   <Image src={ukclogo} alt="UbudKusChain Scan" width="170" height="38" style={{ width: 'auto', height: '40px', maxHeight: '40px' }} />
                 </Link>
                 <p>
-                  Blockchain infrastructure for SME business networks.
+                  Blockchain infrastructure for SME business.
                   Verifiable records, digital assets, and enterprise integrations.
                 </p>
               </div>
@@ -68,7 +68,7 @@ const Footer = () => {
             © {new Date().getFullYear()} <strong>UbudKusChain</strong> · All rights reserved.
           </div>
           <div className="credits">
-            Blockchain infrastructure for SME business networks.
+            Blockchain infrastructure for SME business.
           </div>
         </div>
       </div>
