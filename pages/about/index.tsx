@@ -58,7 +58,7 @@ export default function About() {
               <div className="col-md-6 col-lg-3" key={f.title}>
                 <div className="card h-100 card-hover border-0 shadow-sm">
                   <div className="card-body p-4">
-                    <div className="d-inline-flex align-items-center justify-content-center mb-3" style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(15,98,254,0.1)', color: 'var(--primary)' }}>
+                    <div className="d-inline-flex align-items-center justify-content-center mb-3" style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(255,193,7,0.15)', color: 'var(--primary)' }}>
                       <i className={`bi ${f.icon} fs-5`}></i>
                     </div>
                     <h5 className="h6 fw-bold mb-2">{f.title}</h5>
