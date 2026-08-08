@@ -6,6 +6,8 @@ name: Deploy GitHub Pages
     types: [completed]
     branches: [main]
   workflow_dispatch:
+  push:
+    branches: [ghpages]
 
 permissions:
   contents: read
@@ -21,13 +23,14 @@ jobs:
     name: Build Pages artifact
     if: >-
       github.event_name == 'workflow_dispatch' ||
+      github.event_name == 'push' ||
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'main' }}
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || 'ghpages' }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
