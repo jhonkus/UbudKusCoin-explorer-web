@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UbudKusCoin Explorer — Live Blockchain Explorer</title>
-  <meta name="description" content="Open-source web explorer for the UbudKusCoin blockchain. Monitor blocks, transactions, accounts, pending pool, and live network metrics through a server-side gRPC gateway." />
+  <title>UbudKusChain Explorer — Blockchain intelligence</title>
+  <meta name="description" content="Open-source UbudKusChain explorer for blocks, transactions, accounts, pending pool activity, and network metrics." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -14,15 +14,15 @@
   <header class="site-header">
     <nav class="container nav">
       <a href="#" class="brand">
-        <img src="assets/ukscscan-logo.png" alt="UbudKusCoin Explorer logo" class="brand-logo" />
-        <span class="brand-tagline">Live network explorer</span>
+        <img src="assets/ukscscan-logo.png" alt="UbudKusChain Explorer logo" class="brand-logo" />
+        <span class="brand-tagline">Blockchain intelligence</span>
       </a>
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#architecture">Architecture</a></li>
         <li><a href="#tech">Tech Stack</a></li>
         <li><a href="#getting-started">Getting Started</a></li>
-        <li><a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-ghost">View on GitHub</a></li>
+        <li><a href="https://github.com/jhonkus/UbudKusChain-explorer-web" target="_blank" rel="noreferrer" class="btn btn-ghost">View on GitHub</a></li>
       </ul>
     </nav>
   </header>
@@ -32,12 +32,12 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <span class="kicker">UbudKusCoin Explorer</span>
-          <h1>Monitor the network with a cleaner, faster blockchain dashboard.</h1>
+          <span class="kicker">UbudKusChain Explorer</span>
+          <h1>See the chain clearly. Follow every block with confidence.</h1>
           <p>
-            An open-source web explorer for the UbudKusCoin blockchain. Search any address,
-            block, or transaction hash and inspect live network activity through a layout
-            designed for clarity.
+            An open-source explorer for the UbudKusChain network. Search addresses, blocks,
+            or transaction hashes and understand network activity through a focused interface
+            built for builders, validators, and curious minds.
           </p>
           <div class="hero-actions">
             <a href="#getting-started" class="btn btn-primary">Get Started</a>
@@ -46,29 +46,29 @@
         </div>
         <div class="hero-panel">
           <div class="panel-header">
-            <span>Network snapshot</span>
-            <span class="panel-chip">Live</span>
+          <span>Explorer capabilities</span>
+          <span class="panel-chip">Ready</span>
           </div>
           <div class="snapshot-grid">
             <div class="snapshot-card">
               <span class="snapshot-label">Blocks</span>
-              <strong>12,4<img src="assets/bk.png" class="inline-icon" alt="blocks" />3</strong>
-              <small>Validated blocks on chain</small>
+              <strong>Explore</strong>
+              <small>Inspect height, hashes, and validators</small>
             </div>
             <div class="snapshot-card">
               <span class="snapshot-label">Transactions</span>
-              <strong>48,2<img src="assets/tx.png" class="inline-icon" alt="txns" />1</strong>
-              <small>Throughput 12.5 TPS</small>
+              <strong>Trace</strong>
+              <small>Follow activity by transaction hash</small>
             </div>
             <div class="snapshot-card">
-              <span class="snapshot-label">Rewards</span>
-              <strong>1.2M <span>Uks</span></strong>
-              <small>Validator rewards collected</small>
+              <span class="snapshot-label">Accounts</span>
+              <strong>Discover</strong>
+              <small>Review balances and account activity</small>
             </div>
             <div class="snapshot-card">
-              <span class="snapshot-label">Pool</span>
-              <strong>142 <span>Tx</span></strong>
-              <small>256,000 Uks queued</small>
+              <span class="snapshot-label">Network</span>
+              <strong>Observe</strong>
+              <small>Monitor pool and chain statistics</small>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
         <div class="section-heading">
           <span class="section-kicker">Overview</span>
           <h2>Everything you need to inspect the chain</h2>
-          <p>Key modules exposed by the explorer, backed by a secure server-side gRPC gateway.</p>
+            <p>Everything currently exposed by the explorer, backed by a secure server-side gRPC gateway.</p>
         </div>
         <div class="feature-grid">
           <article class="feature-card" id="blocks">
@@ -153,7 +153,7 @@
             <div class="arch-node arch-node-node">
               <span class="arch-icon">&#128274;</span>
               <strong>Node</strong>
-              <small>UbudKusCoin gRPC services</small>
+              <small>UbudKusChain gRPC services</small>
             </div>
           </div>
           <div class="arch-notes">
@@ -195,7 +195,7 @@
         <div class="section-heading">
           <span class="section-kicker">Get Started</span>
           <h2>Run it locally in minutes</h2>
-          <p>Point the explorer at a UbudKusCoin node and start browsing.</p>
+          <p>Point the explorer at a UbudKusChain node and start browsing.</p>
         </div>
         <div class="steps">
           <ol>
@@ -203,7 +203,7 @@
               <span class="step-num">1</span>
               <div>
                 <strong>Clone the repository</strong>
-                <pre><code>git clone https://github.com/jhonkus/UbudKusCoin-explorer-web.git</code></pre>
+                <pre><code>git clone https://github.com/jhonkus/UbudKusChain-explorer-web.git</code></pre>
               </div>
             </li>
             <li>
@@ -231,7 +231,7 @@ UKC_NODE_GRPC_URL=127.0.0.1:5000</code></pre>
           </ol>
         </div>
         <div class="cta">
-          <a href="https://github.com/jhonkus/UbudKusCoin-explorer-web" target="_blank" rel="noreferrer" class="btn btn-primary">Star &amp; Fork on GitHub</a>
+          <a href="https://github.com/jhonkus/UbudKusChain-explorer-web" target="_blank" rel="noreferrer" class="btn btn-primary">Explore the repository</a>
         </div>
       </div>
     </section>
@@ -239,8 +239,8 @@ UKC_NODE_GRPC_URL=127.0.0.1:5000</code></pre>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© 2026 UbudKusCoin Explorer. Open source under the MIT-style license.</span>
-      <a href="https://ubudkuscoin.com" target="_blank" rel="noreferrer">ubudkuscoin.com</a>
+      <span>© 2026 UbudKusChain Explorer. Open source for the UbudKusChain community.</span>
+      <a href="https://ubudkuschain.com" target="_blank" rel="noreferrer">ubudkuschain.com</a>
     </div>
   </footer>
 

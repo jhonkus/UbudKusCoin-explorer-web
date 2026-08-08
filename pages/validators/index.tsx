@@ -20,7 +20,7 @@ export default function ValidatorsPage() {
         <section className="section">
           <div className="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
             <p className="text-muted small mb-0">
-              Active consensus validators producing blocks on the UbudKusCoin network.
+              Active consensus validators producing blocks on the UbudKusChain network.
             </p>
             <span className="status-badge success">
               <i className="bi bi-activity"></i> Active Validators: {data?.activeValidators || 0}

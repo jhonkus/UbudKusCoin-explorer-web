@@ -1,32 +1,65 @@
 name: Release Explorer
 
-on:
-  push:
+'on':
+  pull_request:
     branches: [master]
-  workflow_dispatch:
+    types: [opened, synchronize, reopened, closed]
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: release-master
   cancel-in-progress: false
 
 jobs:
-  release:
-    name: Validate, build, and publish release
+  quality:
+    name: 'Lint, Typecheck, Test & Build (Node ${{ matrix.node-version }})'
     runs-on: ubuntu-latest
+    if: "github.event.action != 'closed' || github.event.pull_request.merged == true"
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
     steps:
-      - name: Checkout
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: ${{ matrix.node-version }}
           cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Run TypeScript compiler check
+        run: npm run typecheck
+
+      - name: Run Jest test suite with coverage
+        run: npm run test:coverage -- --forceExit
+
+      - name: Build Next.js application
+        run: npm run build
+
+  release:
+    name: Publish release
+    needs: quality
+    if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout merged master
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: master
 
       - name: Read and validate version
         id: version
@@ -48,32 +81,48 @@ jobs:
             exit 1
           fi
 
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Lint
-        run: npm run lint
-
-      - name: Test
-        run: npm test -- --runInBand
-
-      - name: Build
-        run: npm run build
-
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_VERSION: ${{ steps.version.outputs.version }}
+          TARGET_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          RELEASE_NOTES: |
+            ## UbudKusChain Explorer v${{ steps.version.outputs.version }}
         run: |
           gh release create "v${RELEASE_VERSION}" \
-            --target "${GITHUB_SHA}" \
+            --target "${TARGET_SHA}" \
             --title "UbudKusChain Explorer v${RELEASE_VERSION}" \
             --generate-notes \
-            --notes "## UbudKusChain Explorer v${RELEASE_VERSION}
+            --notes "${RELEASE_NOTES}"
 
-This release was created automatically after the versioned change reached the master branch.
+  pages-build:
+    name: Build Pages artifact
+    needs: release
+    if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout merged master
+        uses: actions/checkout@v4
+        with:
+          ref: master
 
-Release notes below are generated from merged pull requests and grouped using .github/release.yml."
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ghpages
+
+  pages-deploy:
+    name: Deploy to GitHub Pages
+    needs: pages-build
+    if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

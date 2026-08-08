@@ -7,7 +7,7 @@ the node's current gRPC services (`BlockService`, `TransactionService`, and
 ## GitHub Pages
 
 A static overview page describing this project is hosted on GitHub Pages and
-built from the `docs/` folder via the `.github/workflows/deploy-pages.yml`
+built from the `ghpages/` folder by the unified `.github/workflows/release.yml`
 workflow. After enabling Pages (Settings → Pages → Source: **GitHub Actions**),
 the site is available at:
 
@@ -15,8 +15,9 @@ the site is available at:
 https://jhonkus.github.io/UbudKusChain-explorer-web/
 ```
 
-Edit the files under `docs/` to update the landing page; changes pushed to the
-`development` branch trigger an automatic redeploy.
+Edit the files under `ghpages/` to update the landing page. A pull request
+targeting `master` runs the quality checks; after it is merged successfully,
+the workflow creates the release and deploys the updated Pages artifact.
 
 ## Configuration
 
@@ -61,11 +62,10 @@ Before merging a release PR into `master`, update `VERSION`:
 - Increment `MINOR` for backward-compatible features, such as `0.2.0`.
 - Increment `MAJOR` for breaking changes, such as `1.0.0`.
 
-The release workflow validates the version, runs typecheck, lint, tests, and
-the production build, then creates a GitHub Release with the matching `vX.Y.Z`
-tag after the merge reaches `master`. Release notes are generated from merged
-pull requests and grouped by the labels configured in `.github/release.yml`.
-Each version must be used only once.
+The release workflow runs typecheck, lint, tests, and the production build for
+pull requests targeting `master`. After a successful merge, it validates the
+version, creates a GitHub Release with the matching `vX.Y.Z` tag, and deploys
+the `ghpages/` content to GitHub Pages. Each version must be used only once.
 
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;
