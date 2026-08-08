@@ -84,7 +84,9 @@ export function normalizeAccount(account: RawRecord | null | undefined): Account
     return null;
   }
 
-  const rawBalance = toNumber(getField(account, ['balance', 'Balance']));
+  const rawBalance = toNumber(
+    getField(account, ['balance_base_units', 'BalanceBaseUnits', 'balance', 'Balance']),
+  );
   const balance = rawBalance > 0 ? rawBalance / UKSC_BASE_UNITS : 0;
 
   return {
@@ -93,7 +95,9 @@ export function normalizeAccount(account: RawRecord | null | undefined): Account
     address: getField(account, ['address', 'Address']),
     balance: balance,
     txn_count: toNumber(getField(account, ['txn_count', 'txnCount', 'tx_count'])),
-    last_update: toNumber(getField(account, ['last_update', 'lastUpdate'])),
+    last_update: toNumber(
+      getField(account, ['last_update', 'lastUpdate', 'updated', 'Updated']),
+    ),
   } as Account;
 }
 

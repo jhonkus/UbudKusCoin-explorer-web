@@ -38,9 +38,6 @@ export default function About() {
         <section className="section">
           <div className="row g-4">
             <div className="col-lg-12">
-              <span className="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 mb-3">
-                UbudKusChain Explorer
-              </span>
               <h1 className="h2 fw-bold mb-3" style={{ letterSpacing: '-0.03em' }}>
                 Production-oriented proof-of-stake blockchain infrastructure for business networks
               </h1>
@@ -50,21 +47,13 @@ export default function About() {
                 addresses, validators, and network activity — making the chain transparent and
                 accessible to developers, validators, and businesses.
               </p>
-              <div className="d-flex gap-3 flex-wrap">
-                <a className="btn btn-primary px-4" href="https://ubudkuschain.com" target="_blank" rel="noreferrer">
-                  <i className="bi bi-globe me-2"></i>Visit UbudKusChain
-                </a>
- <Link className="btn btn-outline-primary px-4" href="/blocks">
-                  Start Exploring
-                </Link>
-              </div>
             </div>
           </div>
         </section>
 
         {/* Features */}
         <section className="section">
-          <div className="row g-4">
+          <div className="row g-4 g-lg-5">
             {features.map((f) => (
               <div className="col-md-6 col-lg-3" key={f.title}>
                 <div className="card h-100 card-hover border-0 shadow-sm">
@@ -83,7 +72,7 @@ export default function About() {
 
         {/* Mission */}
         <section className="section">
-          <div className="card border-0 shadow-sm">
+          <div className="card border-0 shadow-sm mt-4 mt-lg-5">
             <div className="card-body p-4 p-lg-5">
               <h2 className="h4 fw-bold mb-3">Our mission</h2>
               <p className="text-muted mb-0" style={{ lineHeight: 1.8 }}>
