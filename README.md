@@ -16,7 +16,7 @@ https://jhonkus.github.io/UbudKusChain-explorer-web/
 ```
 
 Edit the files under `ghpages/` to update the landing page. A pull request
-targeting `master` runs the quality checks; after it is merged successfully,
+targeting `main` runs the quality checks; after it is merged successfully,
 the workflow creates the release and deploys the updated Pages artifact.
 
 ## Configuration
@@ -56,14 +56,14 @@ npm run build
 The release version is kept in the root `VERSION` file and follows Semantic
 Versioning (`MAJOR.MINOR.PATCH`). The initial development release is `0.1.0`.
 
-Before merging a release PR into `master`, update `VERSION`:
+Before merging a release PR into `main`, update `VERSION`:
 
 - Increment `PATCH` for backward-compatible fixes, such as `0.1.1`.
 - Increment `MINOR` for backward-compatible features, such as `0.2.0`.
 - Increment `MAJOR` for breaking changes, such as `1.0.0`.
 
 The release workflow runs typecheck, lint, tests, and the production build for
-pull requests targeting `master`. After a successful merge, it validates the
+pull requests targeting `main`. After a successful merge, it validates the
 version, creates a GitHub Release with the matching `vX.Y.Z` tag, and deploys
 the `ghpages/` content to GitHub Pages. Each version must be used only once.
 
