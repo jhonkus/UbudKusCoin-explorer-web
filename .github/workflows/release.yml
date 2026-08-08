@@ -6,8 +6,6 @@ name: Release Explorer
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: release-main
@@ -88,33 +86,3 @@ jobs:
             --title "UbudKusChain Explorer v${RELEASE_VERSION}" \
             --generate-notes \
             --notes "${RELEASE_NOTES}"
-
-  pages-build:
-    name: Build Pages artifact
-    needs: release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout merged main
-        uses: actions/checkout@v4
-        with:
-          ref: main
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ghpages
-
-  pages-deploy:
-    name: Deploy to GitHub Pages
-    needs: pages-build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

@@ -7,7 +7,7 @@ the node's current gRPC services (`BlockService`, `TransactionService`, and
 ## GitHub Pages
 
 A static overview page describing this project is hosted on GitHub Pages and
-built from the `ghpages/` folder by the unified `.github/workflows/release.yml`
+built from the `ghpages/` folder by `.github/workflows/deploy-pages.yml`.
 workflow. After enabling Pages (Settings → Pages → Source: **GitHub Actions**),
 the site is available at:
 
@@ -17,8 +17,8 @@ https://jhonkus.github.io/UbudKusChain-explorer-web/
 
 Edit the files under `ghpages/` to update the landing page. A pull request
 targeting `main` is processed after it is merged successfully; the resulting
-push to `main` runs the quality checks, creates the release, and deploys the
-updated Pages artifact.
+push to `main` runs the quality checks and creates the release. Pages deployment
+then runs automatically after a successful release, or manually from Actions.
 
 ## Configuration
 
@@ -65,9 +65,9 @@ Before merging a release PR into `main`, update `VERSION`:
 
 The release workflow runs on pushes to `main` (the protected branch receiving
 merged pull requests). It runs typecheck, lint, tests, and the production build,
-then validates the version, creates a GitHub Release with the matching `vX.Y.Z`
-tag, and deploys the `ghpages/` content to GitHub Pages. Each version must be
-used only once.
+then validates the version and creates a GitHub Release with the matching
+`vX.Y.Z` tag. The separate Pages workflow deploys `ghpages/` after a successful
+release and can also be started manually. Each version must be used only once.
 
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;
