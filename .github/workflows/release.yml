@@ -2,7 +2,7 @@ name: Release Explorer
 
 'on':
   pull_request:
-    branches: [master]
+    branches: [main]
     types: [opened, synchronize, reopened, closed]
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: release-master
+  group: release-main
   cancel-in-progress: false
 
 jobs:
@@ -55,11 +55,11 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout merged master
+      - name: Checkout merged main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: master
+          ref: main
 
       - name: Read and validate version
         id: version
@@ -101,10 +101,10 @@ jobs:
     if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout merged master
+      - name: Checkout merged main
         uses: actions/checkout@v4
         with:
-          ref: master
+          ref: main
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
