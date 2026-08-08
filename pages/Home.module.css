@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.9fr);
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: start;
   margin-bottom: 2rem;
 }
 

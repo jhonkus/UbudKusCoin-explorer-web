@@ -58,7 +58,7 @@ export default function Home() {
         {/* Hero: Branding + Live Network Snapshot */}
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <span className={styles.kicker}>UbudKusCoin Explorer</span>
+            <span className={styles.kicker}>UbudKusChain Explorer</span>
             <h1>Monitor the network with a cleaner, faster blockchain dashboard.</h1>
             <p>
               Search any address, block, or transaction hash and inspect live network activity with
