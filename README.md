@@ -16,8 +16,9 @@ https://jhonkus.github.io/UbudKusChain-explorer-web/
 ```
 
 Edit the files under `ghpages/` to update the landing page. A pull request
-targeting `main` is processed after it is merged successfully; the workflow
-runs the quality checks, creates the release, and deploys the updated Pages artifact.
+targeting `main` is processed after it is merged successfully; the resulting
+push to `main` runs the quality checks, creates the release, and deploys the
+updated Pages artifact.
 
 ## Configuration
 
@@ -62,10 +63,11 @@ Before merging a release PR into `main`, update `VERSION`:
 - Increment `MINOR` for backward-compatible features, such as `0.2.0`.
 - Increment `MAJOR` for breaking changes, such as `1.0.0`.
 
-The release workflow processes merged pull requests targeting `main`. It runs
-typecheck, lint, tests, and the production build, then validates the version,
-creates a GitHub Release with the matching `vX.Y.Z` tag, and deploys the
-`ghpages/` content to GitHub Pages. Each version must be used only once.
+The release workflow runs on pushes to `main` (the protected branch receiving
+merged pull requests). It runs typecheck, lint, tests, and the production build,
+then validates the version, creates a GitHub Release with the matching `vX.Y.Z`
+tag, and deploys the `ghpages/` content to GitHub Pages. Each version must be
+used only once.
 
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;

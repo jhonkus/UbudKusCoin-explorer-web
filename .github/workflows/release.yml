@@ -1,9 +1,8 @@
 name: Release Explorer
 
 'on':
-  pull_request:
+  push:
     branches: [main]
-    types: [closed]
 
 permissions:
   contents: read
@@ -18,7 +17,6 @@ jobs:
   quality:
     name: 'Lint, Typecheck, Test & Build (Node 22.x)'
     runs-on: ubuntu-latest
-    if: "github.event.pull_request.merged == true"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -47,7 +45,6 @@ jobs:
   release:
     name: Publish release
     needs: quality
-    if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -82,7 +79,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_VERSION: ${{ steps.version.outputs.version }}
-          TARGET_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+          TARGET_SHA: ${{ github.sha }}
           RELEASE_NOTES: |
             ## UbudKusChain Explorer v${{ steps.version.outputs.version }}
         run: |
@@ -95,7 +92,6 @@ jobs:
   pages-build:
     name: Build Pages artifact
     needs: release
-    if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout merged main
@@ -114,7 +110,6 @@ jobs:
   pages-deploy:
     name: Deploy to GitHub Pages
     needs: pages-build
-    if: "github.event.action == 'closed' && github.event.pull_request.merged == true"
     runs-on: ubuntu-latest
     environment:
       name: github-pages
