@@ -39,7 +39,7 @@ export default function About() {
           <div className="row g-4">
             <div className="col-lg-12">
               <h1 className="h2 fw-bold mb-3" style={{ letterSpacing: '-0.03em' }}>
-                Production-oriented proof-of-stake blockchain infrastructure for business networks
+                Blockchain infrastructure for SME business networks
               </h1>
               <p className="text-muted mb-4" style={{ lineHeight: 1.8 }}>
                 UbudKusChain Explorer is the official block explorer for the UbudKusChain network.
