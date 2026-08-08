@@ -36,6 +36,43 @@ function call(client, method, request, callback) {
   client[method](request, callback);
 }
 
+function callAsync(clientInstance, method, request) {
+  return new Promise((resolve, reject) => {
+    call(clientInstance, method, request, (error, response) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve(response);
+    });
+  });
+}
+
+async function fetchPagedItems(clientInstance, method, baseRequest, collectionKey, pageSize = 1000, maxPages = 50) {
+  const items = [];
+
+  for (let page = 1; page <= maxPages; page += 1) {
+    const response = await callAsync(clientInstance, method, {
+      ...baseRequest,
+      page_number: page,
+      result_per_page: pageSize,
+    });
+    const pageItems = Array.isArray(response?.[collectionKey]) ? response[collectionKey] : [];
+
+    if (pageItems.length === 0) {
+      break;
+    }
+
+    items.push(...pageItems);
+
+    if (pageItems.length < pageSize) {
+      break;
+    }
+  }
+
+  return items;
+}
+
 // Compatibility facade for the existing explorer pages. All calls now target
 // the current node service contracts instead of the retired BChainService.
 const client = {
@@ -57,12 +94,29 @@ const client = {
     callback(error, { transactions: response?.transactions || [] })),
   GetAccount: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) => {
     if (error) return callback(error);
-    callback(null, {
-      balance: response?.balance || 0,
-      numBlockValidate: response?.num_block_validate ?? response?.numBlockValidate ?? 0,
-      transactions: response?.transactions || [],
-      blocks: response?.blocks || [],
-    });
+
+    const address = String(request?.address || '').trim();
+    const account = response || {};
+
+    Promise.all([
+      fetchPagedItems(transactionClient, 'getRange', { address }, 'transactions'),
+      fetchPagedItems(blockClient, 'getRange', {}, 'blocks'),
+    ]).then(([transactions, blocks]) => {
+      const validatedBlocks = blocks.filter((block) => String(block?.validator || '') === address);
+      const exists = Boolean(account?.address)
+        || Number(account?.balance || 0) > 0
+        || transactions.length > 0
+        || validatedBlocks.length > 0;
+
+      callback(null, {
+        address: account?.address || address,
+        exists,
+        balance: account?.balance || 0,
+        numBlockValidate: validatedBlocks.length,
+        transactions,
+        blocks: validatedBlocks,
+      });
+    }).catch((fetchError) => callback(fetchError));
   }),
   GetBalance: (request, callback) => call(accountClient, 'getByAddress', { address: request.address }, (error, response) =>
     callback(error, { balance: response?.balance || 0 })),

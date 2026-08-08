@@ -14,6 +14,7 @@ import CopyText from '../../components/copy/copy_text';
 export default function Block() {
     const router = useRouter()
     const { address } = router.query;
+    const accountAddress = Array.isArray(address) ? address[0] : address;
 
     const [txnsClass, setTxnsClass] = useState('nav-link active');
     const [blocksClass, setBlocksClass] = useState('nav-link');
@@ -30,7 +31,10 @@ export default function Block() {
         }
     };
 
-    const { transactions, blocks, balance, numBlockValidate, isLoading, isError } = useAccount(address?.toString());
+    const { transactions, blocks, balance, numBlockValidate, exists, isLoading, isError } = useAccount(accountAddress?.toString());
+    const hasAccountData = Boolean(accountAddress) && exists && !isLoading && !isError;
+    const hasTransactions = transactions.length > 0;
+    const hasBlocks = blocks.length > 0;
 
     return (
         <Layout pageTitle="Account Address">
@@ -38,8 +42,8 @@ export default function Block() {
                 <div className="pagetitle">
                     <h5 className="d-inline-flex align-items-center gap-2 flex-wrap">
                         <span>Address</span>
-                        <span className="hash-mono text-break text-muted fw-normal">{address}</span>
-                        <CopyText msg="Copy address to clipboard" text={address} />
+                        <span className="hash-mono text-break text-muted fw-normal">{accountAddress}</span>
+                        <CopyText msg="Copy address to clipboard" text={accountAddress} />
                     </h5>
                     <Breadcrumb items={[{ href: '/', label: 'Home' }, { label: 'Address' }]} />
                 </div>
@@ -53,16 +57,28 @@ export default function Block() {
                                     <span className="status-badge primary"><i className="bi bi-shield-check"></i> Account</span>
                                 </div>
                                 <div className="card-body p-lg-4">
-                                    {(!balance && !isLoading && !isError) &&
+                                    {isLoading && <Skeleton count={5} />}
+
+                                    {isError && !isLoading &&
+                                        <div className="empty-state">
+                                            <i className="bi bi-exclamation-triangle"></i>
+                                            <p>Unable to load address details right now.</p>
+                                        </div>
+                                    }
+
+                                    {!isLoading && !isError && accountAddress && !exists &&
                                         <div className="empty-state">
                                             <i className="bi bi-wallet2"></i>
                                             <p>Address not found!</p>
                                         </div>
                                     }
 
-                                    {(isLoading || isError) && <Skeleton count={5} />}
-                                    {balance &&
+                                    {hasAccountData &&
                                         <>
+                                            <div className="detail-row">
+                                                <div className="detail-label">Address</div>
+                                                <div className="detail-value hash-mono text-break">{accountAddress}</div>
+                                            </div>
                                             <div className="detail-row">
                                                 <div className="detail-label">Balance</div>
                                                 <div className="detail-value"><strong>{formatAmount(balance)}</strong>&nbsp;UKSC</div>
@@ -76,7 +92,7 @@ export default function Block() {
                                 </div>
                             </div>
 
-                            {transactions &&
+                            {hasAccountData &&
                                 <>
                                     <br />
                                     <div className="card">
@@ -117,9 +133,25 @@ export default function Block() {
                                                 </button>
                                             </div>
 
-                                            {activeNav === 'txns' ? <TableAccountTxns transactions={transactions} /> :
-                                                <TableAccountBlocks blocks={blocks} />
-                                            }
+                                            {activeNav === 'txns' ? (
+                                                hasTransactions ? (
+                                                    <TableAccountTxns transactions={transactions} />
+                                                ) : (
+                                                    <div className="empty-state mt-4">
+                                                        <i className="bi bi-receipt"></i>
+                                                        <p>No transactions were found for this address.</p>
+                                                    </div>
+                                                )
+                                            ) : (
+                                                hasBlocks ? (
+                                                    <TableAccountBlocks blocks={blocks} />
+                                                ) : (
+                                                    <div className="empty-state mt-4">
+                                                        <i className="bi bi-kanban"></i>
+                                                        <p>No validated blocks were found for this address.</p>
+                                                    </div>
+                                                )
+                                            )}
                                         </div>
                                     </div>
                                 </>

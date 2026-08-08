@@ -46,10 +46,12 @@ export interface AccountResult extends ListResult<Account> {
     blocks: Block[];
     balance: number;
     numBlockValidate: number;
+    exists: boolean;
 }
 
-export function useAccount(address = 'address'): AccountResult {
-    const { data, error } = useSWR(`/api/address/${address}`, fetcher)
+export function useAccount(address?: string): AccountResult {
+    const key = address ? `/api/address/${encodeURIComponent(address)}` : null;
+    const { data, error } = useSWR(key, fetcher)
     const transactions = normalizeArray(data?.transactions ?? data?.Transactions, normalizeTxn);
     const blocks = normalizeArray(data?.blocks ?? data?.Blocks, normalizeBlock);
     return {
@@ -57,7 +59,8 @@ export function useAccount(address = 'address'): AccountResult {
         blocks,
         balance: Number(data?.balance ?? data?.Balance ?? 0),
         numBlockValidate: Number(data?.numBlockValidate ?? data?.NumBlockValidate ?? 0),
-        isLoading: !error && !data,
+        exists: Boolean(data?.exists ?? data?.Exists),
+        isLoading: Boolean(address) ? !error && !data : true,
         isError: error
     }
 }
