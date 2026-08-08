@@ -71,4 +71,9 @@ jobs:
           gh release create "v${RELEASE_VERSION}" \
             --target "${GITHUB_SHA}" \
             --title "UbudKusChain Explorer v${RELEASE_VERSION}" \
-            --generate-notes
+            --generate-notes \
+            --notes "## UbudKusChain Explorer v${RELEASE_VERSION}
+
+This release was created automatically after the versioned change reached the master branch.
+
+Release notes below are generated from merged pull requests and grouped using .github/release.yml."

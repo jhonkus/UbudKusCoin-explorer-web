@@ -63,7 +63,9 @@ Before merging a release PR into `master`, update `VERSION`:
 
 The release workflow validates the version, runs typecheck, lint, tests, and
 the production build, then creates a GitHub Release with the matching `vX.Y.Z`
-tag after the merge reaches `master`. Each version must be used only once.
+tag after the merge reaches `master`. Release notes are generated from merged
+pull requests and grouped by the labels configured in `.github/release.yml`.
+Each version must be used only once.
 
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;
