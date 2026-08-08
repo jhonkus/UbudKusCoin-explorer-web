@@ -68,7 +68,7 @@ const Footer = () => {
             © {new Date().getFullYear()} <strong>UbudKusChain</strong> · All rights reserved.
           </div>
           <div className="credits">
-            Secure blockchain lookup for blocks, transactions, and accounts.
+            Production-oriented proof-of-stake blockchain infrastructure for business networks.
           </div>
         </div>
       </div>

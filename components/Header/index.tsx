@@ -21,7 +21,7 @@ const Header = () => {
           </Link>
           <div className="network-badge d-none d-sm-inline-flex align-items-center ms-2">
             <span className="pulse-dot"></span>
-            <span className="network-name">UbudKusChain</span>
+            <span className="network-name">Testnet</span>
           </div>
         </div>
 
