@@ -58,7 +58,6 @@ export default function Home() {
         {/* Hero: Branding + Live Network Snapshot */}
         <section className={styles.hero}>
           <div className={styles.heroCopy}>
-            <span className={styles.kicker}>UbudKusChain Explorer</span>
             <h1>Blockchain infrastructure for SME business.</h1>
             <p>
               Verifiable records, digital assets, loyalty programs, and enterprise integrations.
@@ -91,7 +90,6 @@ export default function Home() {
               <div className={styles.chartCard}>
                 <div className={styles.sectionHeading}>
                   <div>
-                    <span className={styles.sectionKicker}>Activity</span>
                     <h2>Transaction amount trend</h2>
                   </div>
                 </div>
@@ -102,7 +100,6 @@ export default function Home() {
               <div className={styles.chartCard}>
                 <div className={styles.sectionHeading}>
                   <div>
-                    <span className={styles.sectionKicker}>Activity</span>
                     <h2>Transaction count trend</h2>
                   </div>
                 </div>
