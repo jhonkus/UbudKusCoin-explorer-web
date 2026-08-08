@@ -13,7 +13,7 @@ jest.mock('next/router', () => ({
 describe('<Header /> Component', () => {
   it('renders logo and brand navigation links', () => {
     render(<Header />);
-    expect(screen.getByAltText('Logo UbudKusCoin Scan')).toBeInTheDocument();
+    expect(screen.getByAltText('Logo UbudKusChain Scan')).toBeInTheDocument();
     expect(screen.getAllByText('Blockchain').length).toBeGreaterThan(0);
   });
 

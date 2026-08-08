@@ -79,7 +79,7 @@ export default function About() {
                 We believe blockchain data should be open and easy to understand. Our goal is to
                 give builders, validators, and the broader UbudKusChain community the tools they
                 need to verify activity, audit the chain, and make informed decisions. Whether
-                you're a developer, a validator, or a business looking to leverage blockchain
+                you&apos;re a developer, a validator, or a business looking to leverage blockchain
                 infrastructure, the explorer is here to help you navigate the network with confidence.
               </p>
             </div>

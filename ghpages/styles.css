@@ -1,13 +1,14 @@
 :root {
-  --blue: #0f62fe;
+  --blue: #635bff;
+  --blue-deep: #332b8f;
   --blue-soft: rgba(15, 98, 254, 0.1);
   --ink: #22304a;
   --muted: #5b6980;
   --border: rgba(27, 40, 66, 0.1);
   --card: rgba(255, 255, 255, 0.9);
-  --teal: #14b8a6;
+  --teal: #13c4a3;
   --teal-soft: rgba(20, 184, 166, 0.12);
-  --bg: #f5f8ff;
+  --bg: #f4f5ff;
   --radius: 24px;
   --shadow: 0 18px 60px rgba(14, 27, 48, 0.08);
 }
@@ -22,6 +23,7 @@ body {
   color: var(--ink);
   background: var(--bg);
   line-height: 1.6;
+  background-image: radial-gradient(circle at 8% 2%, rgba(99, 91, 255, 0.12), transparent 30rem), radial-gradient(circle at 92% 12%, rgba(19, 196, 163, 0.1), transparent 28rem);
 }
 
 .container {
@@ -36,7 +38,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(250, 251, 255, 0.82);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
@@ -119,6 +121,10 @@ body {
 /* ===== Hero ===== */
 .hero { padding: 3.5rem 0 2rem; }
 
+.hero-copy {
+  background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(238,239,255,.9));
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(340px, 0.9fr);
@@ -167,6 +173,10 @@ body {
   font-size: clamp(2.2rem, 4vw, 3.6rem);
   line-height: 1.04;
   letter-spacing: -0.05em;
+  background: linear-gradient(120deg, var(--ink), var(--blue-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero-copy p {
@@ -288,6 +298,9 @@ body {
 }
 
 .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+
+.feature-card:nth-child(3n + 2) .feature-icon { color: var(--teal); background: var(--teal-soft); }
+.feature-card:nth-child(3n) .feature-icon { color: var(--blue-deep); background: rgba(99, 91, 255, .14); }
 
 .feature-card h3 { margin: 1rem 0 0.4rem; font-size: 1.15rem; }
 
@@ -471,7 +484,7 @@ pre {
   .nav { flex-wrap: wrap; }
   .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
   .snapshot-grid { grid-template-columns: 1fr; }
-.feature-grid { grid-template-columns: 1fr; }
+  .feature-grid { grid-template-columns: 1fr; }
   .tech-grid { grid-template-columns: 1fr; }
   .hero-copy, .hero-panel, .feature-card { border-radius: 22px; }
 }

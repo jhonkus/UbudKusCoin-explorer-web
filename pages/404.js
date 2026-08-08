@@ -14,7 +14,7 @@ export default function Custom404() {
                 </div>
                 <h1 className="h4 fw-bold mt-2">Page not found</h1>
                 <p>
-                  Thank you for visiting UbudKusCoin Scan, but the page you&apos;re looking for
+                  Thank you for visiting UbudKusChain Scan, but the page you&apos;re looking for
                   doesn&apos;t exist or may have been moved.
                 </p>
                 <div className="d-flex gap-2 justify-content-center flex-wrap mt-2">
