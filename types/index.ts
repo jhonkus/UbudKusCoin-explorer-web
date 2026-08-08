@@ -1,5 +1,6 @@
 export interface Txn {
   Hash: string;
+  TxType: string;
   TimeStamp: number;
   Sender: string;
   Recipient: string;

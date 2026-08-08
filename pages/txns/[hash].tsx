@@ -6,7 +6,6 @@ import { formatAmount, formatFee, timeAgo, toDate } from '../../utils/util';
 import { useTxn } from '../../grpc/useFetch'
 
 // custom components
-import styles from './Txn.module.css';
 import Layout from '../../components/Layout'
 import Breadcrumb from '../../components/Breadcrumb';
 import Skeleton from 'react-loading-skeleton';
@@ -24,83 +23,86 @@ function TxnByHash() {
     <Layout pageTitle="Transaction by Hash">
       <main id="main" className="main">
 
-<div className="pagetitle">
+        <div className="pagetitle">
           <h5>Transaction Details</h5>
-          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/txns', label: 'Transactions' }]} />
+          <Breadcrumb items={[{ href: '/', label: 'Home' }, { href: '/txns', label: 'Transactions' }, { label: hash ? hash.slice(0, 12) + '…' : '' }]} />
         </div>
 
         <section className="section">
           <div className="row">
             <div className="col-lg-12">
-              <div className="card">
-                <div className="card-title" />
-                <div className="card-body">
+              <div className="card detail-card">
+                <div className="card-body p-lg-4">
 
                   {(!txn && !isLoading && !isError) &&
-                    <div className="text-center"><p>Transaction not found! </p></div>
+                    <div className="empty-state">
+                      <i className="bi bi-arrow-left-right"></i>
+                      <p>Transaction not found!</p>
+                    </div>
                   }
                   {(isLoading || isError) && <Skeleton count={15} />}
                   {txn &&
 
                     <>
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'The unique 64 character that is generated with has function when transaction created.'} />
-                          Transaction Hash</div>
-                        <div className={`col-sm-8 ${styles.value}`}>{txn.Hash} <CopyText msg={'Copy TX hash to clipboard'} text={txn.Hash} /></div>
-                      </div>
-
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'Height or number of the block in which the transaction recorded.'} />
-                          Block</div>
-                        <div className={`col-sm-8`}>
-                          <Link href={`/blocks/height/${txn.Height}`} className={styles.valueWithLink}>{txn.Height}</Link>
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'The unique 64 character hash generated when the transaction was created.'} />Transaction Hash</div>
+                        <div className="detail-value hash-mono">
+                          {txn.Hash}
+                          <CopyText msg="Copy TX hash to clipboard" text={txn.Hash} />
                         </div>
                       </div>
 
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'The status of the transaction.'} />
-                          Status</div>
-                        <div className={`col-sm-8 ${styles.success}`}><i className="bi bi-check-circle-fill"></i> Success</div>
-                      </div>
-
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'The date and time at which a transaction is included onto block.'} />
-                          Timestamp</div>
-                        <div className={`col-sm-8 ${styles.value}`}><i className="bi bi-clock"></i> {timeAgo(txn.TimeStamp)} ({toDate(txn.TimeStamp)})</div>
-                      </div>
-
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'The sender of the transaction.'} />
-                          From</div>
-                        <div className={`col-sm-8`}>
-                          <Link href={`/address/${txn.Sender}`} className={styles.valueWithLink}>{txn.Sender}</Link> <CopyText msg={'Copy from address to clipboard'} text={txn.Sender} />
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'Height or number of the block in which the transaction recorded.'} />Block</div>
+                        <div className="detail-value">
+                          <Link href={`/blocks/height/${txn.Height}`} className="text-primary fw-semibold hash-mono">{txn.Height}</Link>
                         </div>
                       </div>
 
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'The recipient of the transaction.'} />
-                          To</div>
-                        <div className={`col-sm-8`}>
-                          <Link href={`/address/${txn.Recipient}`} className={styles.valueWithLink}>{txn.Recipient}</Link> <CopyText msg={'Copy to address to clipboard'} text={txn.Recipient} />
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'The status of the transaction.'} />Status</div>
+                        <div className="detail-value">
+                          <span className="status-badge success"><i className="bi bi-check-circle-fill"></i> Success</span>
                         </div>
                       </div>
 
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'The value being transacted in Ukusi.'} />
-                          Value</div>  <div className={`col-sm-8 ${styles.value}`}>{formatAmount(txn.Amount)} Ukusi </div>
+                      <div className="detail-row">
+                        <div className="detail-label">
+                          <HelpTips tips={'The protocol operation performed by this transaction, such as Transfer, Bond, Unbond, or Withdraw.'} />
+                          Type
+                        </div>
+                        <div className="detail-value"><strong>{txn.TxType}</strong></div>
                       </div>
 
-                      <div className={`row ${styles.rowDiv}`}>
-                        <div className="col-sm-4">
-                          <HelpTips tips={'Amount paid to the validator when processing the transaction.'} />
-                          Transaction Fee</div>  <div className={`col-sm-8 ${styles.value}`}>{formatFee(txn.Fee)} Ukusi </div>
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'The date and time at which a transaction is included onto block.'} />Timestamp</div>
+                        <div className="detail-value"><i className="bi bi-clock text-muted"></i> {timeAgo(txn.TimeStamp)} ({toDate(txn.TimeStamp)})</div>
+                      </div>
+
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'The sender of the transaction.'} />From</div>
+                        <div className="detail-value hash-mono">
+                          <Link href={`/address/${txn.Sender}`} className="text-primary">{txn.Sender}</Link>
+                          <CopyText msg="Copy from address to clipboard" text={txn.Sender} />
+                        </div>
+                      </div>
+
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'The recipient of the transaction.'} />To</div>
+                        <div className="detail-value hash-mono">
+                          <Link href={`/address/${txn.Recipient}`} className="text-primary">{txn.Recipient}</Link>
+                          <CopyText msg="Copy to address to clipboard" text={txn.Recipient} />
+                        </div>
+                      </div>
+
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'The value being transacted in UKSC.'} />Value</div>
+                        <div className="detail-value"><strong>{formatAmount(txn.Amount)}</strong>&nbsp;UKSC</div>
+                      </div>
+
+                      <div className="detail-row">
+                        <div className="detail-label"><HelpTips tips={'Amount paid to the validator when processing the transaction.'} />Transaction Fee</div>
+                        <div className="detail-value"><strong>{formatFee(txn.Fee)}</strong>&nbsp;UKSC</div>
                       </div>
                     </>
                   }

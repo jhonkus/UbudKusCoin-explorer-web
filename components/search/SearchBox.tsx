@@ -37,18 +37,18 @@ export default function SearchBox() {
         router.push('/notfound');
     };
     return (
-        <form className="d-flex align-items-center gap-2" onSubmit={submitContact}>
+        <form className="search-input-group ms-auto" onSubmit={submitContact}>
+            <i className="bi bi-search search-icon"></i>
             <input
                 className="form-control"
-                style={{ minWidth: 'min(380px, 58vw)' }}
                 type="search"
                 name="keyword"
-                placeholder="Search address, block height, or transaction hash"
+                placeholder="Search Address, Block Height, Txn Hash..."
                 title="Enter search keyword"
                 aria-label="Search blockchain data"
             />
-            <button className="btn btn-primary" type="submit" title="Search">
-                <i className="bi bi-search"></i>
+            <button className="btn-search" type="submit" title="Search">
+                <i className="bi bi-arrow-right"></i>
             </button>
         </form>
     )

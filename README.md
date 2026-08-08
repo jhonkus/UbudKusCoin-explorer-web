@@ -1,6 +1,6 @@
-# UbudKusCoin Explorer
+# UbudKusChain Explorer
 
-Web explorer for a UbudKusCoin node. The server-side Next.js API connects to
+Web explorer for a UbudKusChain node. The server-side Next.js API connects to
 the node's current gRPC services (`BlockService`, `TransactionService`, and
 `AccountService`); the browser never connects directly to a validator.
 
@@ -12,7 +12,7 @@ workflow. After enabling Pages (Settings → Pages → Source: **GitHub Actions*
 the site is available at:
 
 ```text
-https://jhonkus.github.io/UbudKusCoin-explorer-web/
+https://jhonkus.github.io/UbudKusChain-explorer-web/
 ```
 
 Edit the files under `docs/` to update the landing page; changes pushed to the
@@ -50,10 +50,27 @@ npm run lint
 npm run build
 ```
 
+## Releases
+
+The release version is kept in the root `VERSION` file and follows Semantic
+Versioning (`MAJOR.MINOR.PATCH`). The initial development release is `0.1.0`.
+
+Before merging a release PR into `master`, update `VERSION`:
+
+- Increment `PATCH` for backward-compatible fixes, such as `0.1.1`.
+- Increment `MINOR` for backward-compatible features, such as `0.2.0`.
+- Increment `MAJOR` for breaking changes, such as `1.0.0`.
+
+The release workflow validates the version, runs typecheck, lint, tests, and
+the production build, then creates a GitHub Release with the matching `vX.Y.Z`
+tag after the merge reaches `master`. Release notes are generated from merged
+pull requests and grouped by the labels configured in `.github/release.yml`.
+Each version must be used only once.
+
 The explorer's API routes proxy read-only node queries and return `502` when
 the configured node is unavailable. The node adapter is in `grpc/client.js`;
 its protobuf contracts are kept in `grpc/protos/*node.proto` and must match the
-node repository's `UbudKusCoin/Protos` definitions.
+node repository's `UbudKusChain/Protos` definitions.
 
 ## Supported Data
 

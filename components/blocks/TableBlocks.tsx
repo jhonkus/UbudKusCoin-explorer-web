@@ -25,16 +25,14 @@ const TableBlocks = ({ page = 1 }) => {
 
           <>
 
-            <div className="row">
+            <div className="row align-items-center mb-3">
               <div className="col d-flex justify-content-start">
-                <p>Showing 25 blocks</p>
+                <p className="text-secondary mb-0 fw-semibold">
+                  Showing {blocks.length > 0 ? (page - 1) * 25 + 1 : 0} to {(page - 1) * 25 + blocks.length} Blocks
+                </p>
               </div>
               <div className="col d-flex justify-content-end">
-
-                {blocks.length < 25 ? <Pagination isLast={true} pageNum={page} url="blocks"/> :
-                  <Pagination isLast={false} pageNum={page} url="blocks"/>
-                }
-
+                <Pagination isLast={blocks.length < 25} pageNum={page} url="blocks" />
               </div>
             </div>
             <div className="table-responsive">
@@ -70,10 +68,10 @@ const TableBlocks = ({ page = 1 }) => {
                         </Link>
                       </td>
                       <td>
-                        <div className={styles.amountInTable}><b>{formatAmount(block.TotalAmount)}</b> Ukusi </div>
+                        <div className={styles.amountInTable}><b>{formatAmount(block.TotalAmount)}</b> UKSC </div>
                       </td>
                       <td>
-                        <div className={styles.amountInTable}><b>{formatFee(block.TotalReward)}</b> Ukusi</div>
+                        <div className={styles.amountInTable}><b>{formatFee(block.TotalReward)}</b> UKSC</div>
                       </td>
                     </tr>
                   ))}

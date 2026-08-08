@@ -153,6 +153,8 @@ export interface BcInfoResult {
 
 export function useBcInfo(): BcInfoResult {
     const { data, error } = useSWR(`/api/infos/bcinfo`, fetcher, { refreshInterval: 15000 })
+    const points = normalizeArray(data?.datas ?? data?.Datas ?? data?.data, normalizeChartPoint);
+    const tps = points.length >= 2 ? points[points.length - 1].transaction_count / ((points[points.length - 1].timestamp - points[0].timestamp) / 1000) : 0;
     return {
         bcInfos: data ? {
             ...data,
@@ -162,7 +164,7 @@ export function useBcInfo(): BcInfoResult {
             NumTxns: Number(data?.NumTxns ?? data?.numTxns ?? data?.NumTransactions ?? 0),
             AmountTxns: Number(data?.AmountTxns ?? data?.amountTxns ?? 0),
             AmountReward: Number(data?.AmountReward ?? data?.amountReward ?? 0),
-            Tps: Number(data?.Tps ?? data?.tps ?? 0),
+            Tps: Number.isFinite(tps) ? tps : 0,
             NumAcc: Number(data?.NumAcc ?? data?.numAcc ?? 0),
         } as BcInfo : data,
         isBCLoading: !error && !data,

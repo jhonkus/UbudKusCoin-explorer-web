@@ -39,10 +39,10 @@ const TableAccountBlocks = ({ blocks }) => {
                 <span className={styles.numTx}>{block.NumOfTx} </span><span className={styles.lblTx}>txns</span>
               </td>
               <td>
-                <div className={styles.amountInTable}>{block.TotalAmount} Ukusi</div>
+                <div className={styles.amountInTable}>{block.TotalAmount} UKSC</div>
               </td>
               <td>
-                <div className={styles.amountInTable}>{Number(block.TotalReward).toFixed(8)} Ukusi</div>
+                <div className={styles.amountInTable}>{Number(block.TotalReward).toFixed(8)} UKSC</div>
               </td>
             </tr>
           ))}

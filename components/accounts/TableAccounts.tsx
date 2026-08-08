@@ -1,45 +1,43 @@
-import Link from 'next/link'
-import styles from './Accounts.module.css'
+import Link from 'next/link';
+import styles from './Accounts.module.css';
 import { timeAgo, formatAmount, formatNum, truncateText } from '../../utils/util';
 import { useAccounts } from '../../grpc/useFetch';
 import Skeleton from 'react-loading-skeleton';
 import Pagination from '../paging/Pagination';
 
+interface TableAccountsProps {
+  page?: number;
+}
 
-/**
- * Block component
- * @returns 
- */
-const TableAccounts = ({ page = 1 }) => {
-  const { accounts, isLoading, isError } = useAccounts(page, 25);
+const TableAccounts = ({ page = 1 }: TableAccountsProps) => {
+  const pageSize = 25;
+  const { accounts, isLoading, isError } = useAccounts(page, pageSize);
 
-
+  const startItem = accounts && accounts.length > 0 ? (page - 1) * pageSize + 1 : 0;
+  const endItem = (page - 1) * pageSize + (accounts ? accounts.length : 0);
+  const isLast = !accounts || accounts.length < pageSize;
 
   return (
-    <div className="card">
-
+    <div className="card shadow-sm border-0">
       <div className="card-body">
-        <div className="card-title" />
-        {(!accounts && !isLoading && !isError) &&
-          <div className="text-center"><p>Accounts not found! </p></div>
-        }
+        {(!accounts && !isLoading && !isError) && (
+          <div className="text-center py-4"><p className="text-muted mb-0">No accounts found.</p></div>
+        )}
         {(isLoading || isError) && <Skeleton count={10} />}
-        {accounts &&
-
+        {accounts && (
           <>
-
-            <div className="row">
+            <div className="row align-items-center mb-3">
               <div className="col d-flex justify-content-start">
-                <p>Showing 25 Accounts</p>
+                <p className="text-secondary mb-0 fw-semibold">
+                  Showing {startItem} to {endItem} Accounts
+                </p>
               </div>
               <div className="col d-flex justify-content-end">
-                {accounts.length < 25 ? <Pagination isLast={true} pageNum={page} url="accounts"/> :
-                  <Pagination isLast={false} pageNum={page} url="accounts"/>
-                }
+                <Pagination isLast={isLast} pageNum={page} url="accounts" />
               </div>
             </div>
             <div className="table-responsive">
-              <table className="table datatable">
+              <table className="table datatable align-middle">
                 <thead>
                   <tr>
                     <th className={styles.tableHeader}>Address</th>
@@ -49,40 +47,41 @@ const TableAccounts = ({ page = 1 }) => {
                   </tr>
                 </thead>
                 <tbody>
-
                   {accounts.map((acc) => (
-                    <tr key={acc.Id}>
+                    <tr key={acc.address || acc.Id}>
                       <td>
-                        <Link href={`/address/${acc.address}`} className={styles.heightBlock}>{truncateText(acc.address, 18)}</Link>
+                        <Link href={`/address/${acc.address}`} className={`${styles.heightBlock} font-monospace fw-bold text-primary`}>
+                          {truncateText(acc.address, 18)}
+                        </Link>
                       </td>
-                      <td>
-                        <div className={styles.amountInTable}><b>{formatAmount(acc.balance)}</b> Ukusi </div>
+                      <td style={{ textAlign: 'right' }}>
+                        <div className={styles.amountInTable}>
+                          <b>{formatAmount(acc.balance)}</b> UKSC
+                        </div>
                       </td>
-                      <td>
-                        <div className={styles.amountInTable}><b>{formatNum(acc.txn_count)}</b></div>
+                      <td style={{ textAlign: 'right' }}>
+                        <div className={styles.amountInTable}>
+                          <b>{formatNum(acc.txn_count)}</b>
+                        </div>
                       </td>
                       <td style={{ textAlign: 'right' }}>
                         <span className={styles.dateInTable}>{timeAgo(acc.last_update)}</span>
                       </td>
                     </tr>
                   ))}
-
                 </tbody>
               </table>
             </div>
-            <div className="row">
+            <div className="row align-items-center mt-3">
               <div className="col d-flex justify-content-end">
-                {accounts.length < 25 ? <Pagination isLast={true} pageNum={page} url="accounts"/> :
-                  <Pagination isLast={false} pageNum={page} url="accounts"/>
-                }
+                <Pagination isLast={isLast} pageNum={page} url="accounts" />
               </div>
             </div>
-
           </>
-        }
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TableAccounts
+export default TableAccounts;

@@ -6,4 +6,5 @@
 
 .content {
   flex: 1 1 auto;
+  padding: 0 clamp(1rem, 4vw, 4rem);
 }

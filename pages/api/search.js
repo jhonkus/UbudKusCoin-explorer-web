@@ -14,7 +14,7 @@ export default function handler(req, res) {
     return;
   }
 
-  client.Search({ searchText: param }, function (err, response) {
+  client.Search({ searchText: param }, function(err, response) {
     if (err) {
       res.status(502).json({
         status: 'error',

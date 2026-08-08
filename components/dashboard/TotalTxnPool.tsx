@@ -16,11 +16,6 @@ const TotalTxnPool = ({ data, isLoading }) => {
                         <HelpTips tips={'The number of transactions that are in the queue to be processed for inclusion in the next block.'} />
                     </h5>
 
-                    <div className="filter">
-                        <div style={{ width: '30px', marginRight: '10px' }}>
-                            <Skeleton />
-                        </div>
-                    </div>
                     <div className="d-flex align-items-center">
                         <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i className="text-muted small bi bi-clock-history"></i>
@@ -32,7 +27,7 @@ const TotalTxnPool = ({ data, isLoading }) => {
                                         <h6>{formatNum(data?.NumPool)}&nbsp;<span className={styles.textSufix}>Tx</span>
                                         </h6>
                                         <span className={styles.infoSmall}>{formatAmount(data?.AmountPool)}
-                                        &nbsp;<span className={styles.textSufix}>Uks</span></span>
+                                        &nbsp;<span className={styles.textSufix}>UKSC</span></span>
                                     </>
                             }
 
